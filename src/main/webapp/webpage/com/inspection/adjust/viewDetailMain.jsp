@@ -173,18 +173,15 @@
 					  <div class="card-body">
 						  <table class="table table-bordered" width="100%" cellspacing="0">
 							  <tr>
-								  <td rowspan="4" style="width: 100px;font-size: 14px;font-weight: bold">现职级期间加减项目</td>
-								  <td></td>
+								  <td rowspan="${fn:length(adjustPage.jiaJianXiang)+1}" style="width: 100px;font-size: 14px;font-weight: bold">现职级期间加减项目</td>
 							  </tr>
-							  <tr>
-								  <td></td>
-							  </tr>
-							  <tr>
-								  <td></td>
-							  </tr>
-							  <tr>
-								  <td></td>
-							  </tr>
+                              <c:if test="${fn:length(adjustPage.jiaJianXiang)  > 0 }">
+                                  <c:forEach items="${adjustPage.jiaJianXiang}" var="recommend" varStatus="stuts">
+                                      <tr>
+                                          <td>${recommend}</td>
+                                      </tr>
+                                  </c:forEach>
+                              </c:if>
 						  </table>
 					  </div>
 				  </div>
@@ -226,7 +223,7 @@
 								<th>体能总评</th>
 								<th>军事理论</th>
 								<th>图上作业</th>
-								<th rowspan="2" >军事成绩评定</th>
+								<th rowspan="2" style="vertical-align: middle">军事成绩评定</th>
 							</tr>
 							<tr>
 								<td>成绩</td>
@@ -243,7 +240,7 @@
 								<th>作战计算</th>
 								<th>射击</th>
 								<th>军事科目得分</th>
-								<td rowspan="2">${adjustPage.junShiChengJi}</td>
+								<td rowspan="2" style="vertical-align: middle">${adjustPage.junShiChengJi}</td>
 							</tr>
 							<tr>
 								<td>成绩</td>

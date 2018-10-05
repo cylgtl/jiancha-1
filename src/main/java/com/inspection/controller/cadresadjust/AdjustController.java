@@ -536,6 +536,7 @@ public class AdjustController extends BaseController {
 			result.setAdjust(adjust);
 			ArrayList<String> jiaJianXiang = new ArrayList<String>();
 			jiaJianXiang.add("加分项1");
+            jiaJianXiang.add("加分项2");
 			result.setJiaJianXiang(jiaJianXiang);
 			req.setAttribute("adjustPage", result);
 		}
