@@ -500,26 +500,6 @@ public class AdjustController extends BaseController {
 
 	}
 
-	/**
-	 * 表彰奖励处理详情
-	 * 
-	 * @param soldierLeave
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewMainDetial")
-	public ModelAndView viewMainDetial(AdjustEntity adjust, HttpServletRequest req) {
-		String id = StringUtils.isNotEmpty(req.getParameter("id")) ? req.getParameter("id") : adjust.getId();
-
-		/*
-		 * if (StringUtils.isNotEmpty(id)) { officerLeave =
-		 * officerLeaveService.findEntity(OfficerLeaveEntity.class, id);
-		 * req.setAttribute("officerLeavePage", officerLeave); }
-		 */
-		req.setAttribute("residualId", id);
-		return new ModelAndView("com/inspection/adjust/mainDetial");
-	}
-
 /*	@RequestMapping(params = "viewDetailMain")
 	public ModelAndView viewDetailMain(AdjustEntity adjust, HttpServletRequest req) {
 		String id = req.getParameter("id");
@@ -552,11 +532,19 @@ public class AdjustController extends BaseController {
 		String id = req.getParameter("id");
 		AdjustMain result = new AdjustMain();
 		if (StringUtils.isNotEmpty(id)) {
+			adjust = adjustService.findEntity(AdjustEntity.class, id);
+			result.setAdjust(adjust);
 			ArrayList<String> jiaJianXiang = new ArrayList<String>();
 			jiaJianXiang.add("加分项1");
 			result.setJiaJianXiang(jiaJianXiang);
 			req.setAttribute("adjustPage", result);
 		}
-		return new ModelAndView("com/inspection/adjust/viewDetailMain");
+        String isView = req.getParameter("isView");
+        if(isView.equals("true")){
+            return new ModelAndView("com/inspection/adjust/viewDetailMain");
+        } else {
+            return new ModelAndView("com/inspection/adjust/processAdjust");
+        }
+//		return new ModelAndView("com/inspection/adjust/viewDetailMain");
 	}
 }

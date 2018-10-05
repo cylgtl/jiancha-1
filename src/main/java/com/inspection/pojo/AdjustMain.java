@@ -1,8 +1,20 @@
 package com.inspection.pojo;
 
+import com.inspection.entity.cadresadjust.AdjustEntity;
+
 import java.util.List;
 
 public class AdjustMain extends BasicInfo {
+    public AdjustEntity getAdjust() {
+        return adjust;
+    }
+
+    public void setAdjust(AdjustEntity adjust) {
+        this.adjust = adjust;
+    }
+
+    private AdjustEntity adjust;
+
     //三评三考总体成绩
     private float sanPingScore; //三评总成绩
     private float sanKaoScore; //三考总成绩

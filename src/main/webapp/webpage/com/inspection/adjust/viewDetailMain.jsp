@@ -35,10 +35,8 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item active">干部配备调整</li>
-         <c:if test="${isView}">
-        <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('adjustController.do?viewDetailMain&id=${adjustPage.adjust.id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
-        </c:if>
-      </ol>
+		  <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('adjustController.do?viewDetailMain&id=${adjustPage.adjust.id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
+	  </ol>
       <div class="row">
         <div class="col-lg-6">
           <div class="card mb-3">
@@ -97,7 +95,7 @@
         <div class="col-lg-6">
           <div class="card mb-3">
             <div class="card-header">
-              <i class="fa fa-file-text"></i> 三评三考总体成绩</div>
+              <i class="fa fa-hourglass-start"></i> 三评三考总体成绩</div>
             <div class="card-body">
 			<table class="table table-bordered" width="100%" style="font-size: 12px;" cellspacing="0">
 				<tr>
@@ -106,9 +104,9 @@
 					<th>排名</th>
 				</tr>
 				<tr>
-					<td>${commentExam.commentScore}</td>
-					<td>${commentExam.examScore}</td>
-					<td>${commentExam.rank}</td>
+					<td>${adjustPage.sanPingScore}</td>
+					<td>${adjustPage.sanKaoScore}</td>
+					<td>${adjustPage.totalRank}</td>
 				</tr>
 			</table>
             </div>
@@ -134,21 +132,14 @@
 								  <th>赞成票</th>
 								  <th>得票率</th>
 							  </tr>
-							  <c:if test="${fn:length(adjustPage.recommends) > 0 }">
-								  <c:forEach items="${adjustPage.recommends}" var="recommend" varStatus="stuts">
-									  <tr>
-										  <td style="width:50px;">${recommend.shouldNumber}</td>
-										  <td style="width:50px;">${recommend.hierarchyNumber}</td>
-										  <td style="width:50px;">${recommend.effective}</td>
-										  <td style="width:50px;">${recommend.attendance}</td>
-										  <td style="width:50px;">${recommend.favour}</td>
-										  <td style="width:50px;">${recommend.vote}</td>
-									  </tr>
-								  </c:forEach>
-							  </c:if>
-							  <c:if test="${fn:length(adjustPage.recommends) == 0 }">
-								  <tr><td colspan="6">暂无表格数据</td></tr>
-							  </c:if>
+							  <tr>
+								  <td style="width:50px;">${adjustPage.yingDao}</td>
+								  <td style="width:50px;">${adjustPage.shiDao}</td>
+								  <td style="width:50px;">${adjustPage.youXiao}</td>
+								  <td style="width:50px;">${adjustPage.chuQin}</td>
+								  <td style="width:50px;">${adjustPage.zanCheng}</td>
+								  <td style="width:50px;">${adjustPage.testRate}</td>
+							  </tr>
 						  </table>
 					  </div>
 				  </div>
@@ -165,9 +156,9 @@
 							  <th>得票率</th>
 						  </tr>
 						  <tr>
-							  <td style="width:50px;">1000</td>
-							  <td style="width:50px;">888</td>
-							  <td style="width:50px;">98%</td>
+							  <td style="width:50px;">${adjustPage.totalTicket}</td>
+							  <td style="width:50px;">${adjustPage.recommandTicket}</td>
+							  <td style="width:50px;">${adjustPage.recommandTicket/adjustPage.totalTicket}</td>
 						  </tr>
 					  </table>
 					  </div>
@@ -209,8 +200,8 @@
 								  <th>得分</th>
 							  </tr>
 							  <tr>
-								  <td style="width:50px;">通过</td>
-								  <td style="width:50px;">97</td>
+								  <td style="width:50px;">${adjustPage.pingShen}</td>
+								  <td style="width:50px;">${adjustPage.pingShenScore}</td>
 							  </tr>
 						  </table>
 					  </div>
@@ -239,11 +230,11 @@
 							</tr>
 							<tr>
 								<td>成绩</td>
-								<td>70</td>
-								<td>90</td>
-								<td>56</td>
-								<td>88</td>
-								<td>97</td>
+								<td>${adjustPage.sanQian}</td>
+								<td>${adjustPage.yingTi}</td>
+								<td>${adjustPage.tiNeng}</td>
+								<td>${adjustPage.junShi}</td>
+								<td>${adjustPage.tuShang}</td>
 							</tr>
 							<tr>
 								<th>科目</th>
@@ -252,15 +243,15 @@
 								<th>作战计算</th>
 								<th>射击</th>
 								<th>军事科目得分</th>
-								<td rowspan="2" >666</td>
+								<td rowspan="2">${adjustPage.junShiChengJi}</td>
 							</tr>
 							<tr>
 								<td>成绩</td>
-								<td>70</td>
-								<td>90</td>
-								<td>56</td>
-								<td>88</td>
-								<td>97</td>
+								<td>${adjustPage.zhiHuiXinXi}</td>
+								<td>${adjustPage.zuoZhanBiaoTu}</td>
+								<td>${adjustPage.zuoZhanJiSuan}</td>
+								<td>${adjustPage.sheJi}</td>
+								<td>${adjustPage.junSHiKeMu}</td>
 							</tr>
 						</table>
 					</div>
@@ -281,8 +272,8 @@
 							</tr>
 							<tr>
 								<td style="width:50px;">得分</td>
-								<td style="width:50px;">97</td>
-								<td style="width:50px;">97</td>
+								<td style="width:50px;">${adjustPage.yingZhiYingHui}</td>
+								<td style="width:50px;">${adjustPage.zhuanYeLiLun}</td>
 							</tr>
 						</table>
 					</div>
@@ -298,7 +289,7 @@
 								<th>工作思路方法</th>
 							</tr>
 							<tr>
-								<td>工作思路方法工作思路方法工作思路方法工作思路方法工作思路方法</td>
+								<td>${adjustPage.gongZuoSiLu}</td>
 							</tr>
 						</table>
 					</div>
