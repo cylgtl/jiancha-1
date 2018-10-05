@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.inspection.pojo.AdjustMain;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -519,7 +520,7 @@ public class AdjustController extends BaseController {
 		return new ModelAndView("com/inspection/adjust/mainDetial");
 	}
 
-	@RequestMapping(params = "viewDetailMain")
+/*	@RequestMapping(params = "viewDetailMain")
 	public ModelAndView viewDetailMain(AdjustEntity adjust, HttpServletRequest req) {
 		String id = req.getParameter("id");
 		AdjustMainPage result = new AdjustMainPage();
@@ -543,12 +544,19 @@ public class AdjustController extends BaseController {
 		String isView = req.getParameter("isView");
 		req.setAttribute("isView", isView);
 		req.setAttribute("id", id);
-		/*
-		 * TSTypegroup typegroup=systemService.findUniqueByProperty(TSTypegroup.class,
-		 * "typegroupcode","grbx"); req.setAttribute("typeList",
-		 * typegroup.getTSTypes());
-		 */
+		return new ModelAndView("com/inspection/adjust/viewDetailMain");
+	}*/
 
+	@RequestMapping(params = "viewDetailMain")
+	public ModelAndView viewDetailMain(AdjustEntity adjust, HttpServletRequest req) {
+		String id = req.getParameter("id");
+		AdjustMain result = new AdjustMain();
+		if (StringUtils.isNotEmpty(id)) {
+			ArrayList<String> jiaJianXiang = new ArrayList<String>();
+			jiaJianXiang.add("加分项1");
+			result.setJiaJianXiang(jiaJianXiang);
+			req.setAttribute("adjustPage", result);
+		}
 		return new ModelAndView("com/inspection/adjust/viewDetailMain");
 	}
 }
