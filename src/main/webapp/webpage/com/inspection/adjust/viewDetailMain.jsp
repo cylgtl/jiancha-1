@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>战士请假</title>
+  <title>干部配备调整</title>
   <!-- Bootstrap core CSS-->
   <link href="plug-in/startbootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -15,7 +15,7 @@
   <link href="plug-in/startbootstrap/css/sb-admin.css" rel="stylesheet">
   <style type="text/css">
     td{
-     text-align: right;
+     text-align: center;
      font-size: 12px;
     }
     
@@ -23,6 +23,9 @@
      text-align: center;
      font-size: 14px;
     }
+	.card-header {
+		font-size: 14px;
+	}
   </style>
 </head>
 <body id="page-top">
@@ -31,300 +34,278 @@
     <div class="container-fluid">
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
-        <li class="breadcrumb-item active">干部调整</li>
-         <c:if test="${empty isView}">
+        <li class="breadcrumb-item active">干部配备调整</li>
+         <c:if test="${isView}">
         <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('adjustController.do?viewDetailMain&id=${adjustPage.adjust.id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
         </c:if>
       </ol>
-      <!-- Area Chart Example-->
-     <!--  <div class="card mb-3">
-        <div class="card-header">
-          <i class="fa fa-area-chart"></i> Area Chart Example</div>
-        <div class="card-body">
-          <canvas id="myAreaChart" width="100%" height="30"></canvas>
-        </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-      </div> -->
       <div class="row">
         <div class="col-lg-6">
-          <!-- Example Bar Chart Card-->
           <div class="card mb-3">
             <div class="card-header">
-              <i class="fa fa-bar-chart"></i> 基本资料</div>
+              <i class="fa fa-user-circle"></i> 个人基本信息</div>
             <div class="card-body">
-            <table class="table table-bordered" id="dataTable" width="100%" style="font-size: 12px;" cellspacing="0">
+            <table class="table table-bordered" width="100%" style="font-size: 12px;" cellspacing="0">
 				<tr>
-					<td style="text-align: center;">
-					姓名：
-					</td>
-					<td style="text-align: center;">
-					${adjustPage.adjust.name}
-					</td>
-					<td style="text-align: center;">
-					性别：
-					</td>
-					<td style="text-align: center;">
-					${adjustPage.adjust.sex}
-					</td>
+					<td>姓名：</td>
+					<td>${adjustPage.adjust.name}</td>
+					<td>性别：</td>
+					<td>${adjustPage.adjust.sex}</td>
 				</tr>
 				
 				<tr>
-					<td style="text-align: center;">
-					出生时间：
-					</td>
-					<td style="text-align: center;">
-					<fmt:formatDate value='${adjustPage.adjust.birthDay}' type="date" pattern="yyyy-MM-dd"/>
-					
-					
-					</td>
-					
-					<td style="text-align: center;">
-					政治面貌：
-					</td>
-					<td style="text-align: center;">
-					${adjustPage.adjust.politicalLandscape}
-					</td>
-	
-				</tr>
-				
-				<tr>
-					<td style="text-align: center;">
-					籍贯：
-					</td>
-					<td style="text-align: center;">
-					${adjustPage.adjust.nativePlace}
-					</td>
-					<td style="text-align: center;">
-					民族：
-					</td>
-					<td style="text-align: center;">
-					${adjustPage.adjust.nationalName}
-					</td>
-				</tr>
-				
-				<tr>
-				<td style="text-align: center;">
-					部职别：
-					</td>
-					<td style="text-align: center;">
-					${adjustPage.adjust.jobTitle}
-					</td>
-					<td style="text-align: center;">
-					现军衔：
-					</td>
-					<td style="text-align: center;">
-					${adjustPage.adjust.nowRank}
-					</td>
-					
-				</tr>
-				
-				
-				<tr>
-					<td style="text-align: center;">
-					现军衔时间：
-					</td>
-					<td style="text-align: center;">
-					<fmt:formatDate value='${adjustPage.adjust.rankTime}' type="date" pattern="yyyy-MM-dd"/>
-					
-				
-					</td>
-					<td style="text-align: center;">
-					学历：
-					</td>
-					<td style="text-align: center;">
-					${adjustPage.adjust.education}
-					</td>
-					
-				</tr>
-				<tr>
-				<td style="text-align: center;">
-					入伍时间：
-					</td>
-					<td style="text-align: center;">
-					<fmt:formatDate value='${adjustPage.adjust.militaryTime}' type="date" pattern="yyyy-MM-dd"/>
-					
-					
-					</td>
-				</tr>
-                </table>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <!-- Example Pie Chart Card-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-pie-chart"></i>个人平时表现</div>
-            <div class="card-body">
-                <table class="table table-bordered" id="dataTable" width="100%" style="font-size: 12px;" cellspacing="0">
-				<tbody>
-		<c:if test="${fn:length(adjustPage.performances)  > 0 }">
-			<c:forEach items="${adjustPage.performances}" var="performance" varStatus="stuts">
-				<tr>
-				<td align="left">
-				 
-				 <c:forEach items="${typeList}" var="type">
-                   <c:if test="${type.typecode==performance.bxType }">${type.typename}</c:if>
-                </c:forEach>
-				</td>
-				<td><a target="_blank" href="${performance.fileId} ">下载附件</a></td>
-				</tr>
-			</c:forEach>
-		</c:if>
-	</tbody>
-                </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      
-      
-      
-      
-      
-      
-      <div class="row">
-        <div class="col-lg-12">
-          <!-- Example Bar Chart Card-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-pie-chart"></i> 民主评议/推荐</div>
-            <div class="card-body">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            
-                <tr>
-                  <th>评议方</th>
-                  <th>开始时间</th>
-                  <th>结束时间</th>
-                <!--   <th>评议意见</th> -->
-                  <th>应到人数</th>
-                  <th>实到人数</th>
-                   <th>有效票</th>
-                   <th>出勤率</th>
-                  <th>赞成票</th>
-                  <th>得票率</th>
-                </tr>
-              
-           
-                <tbody>
-		<c:if test="${fn:length(adjustPage.recommends)  > 0 }">
-			<c:forEach items="${adjustPage.recommends}" var="recommend" varStatus="stuts">
-				<tr>
-				<td align="left"  style="width:50px;text-align:center;"  class="value" >
-				${recommend.recommendPerson}
-				</td>
-				<td align="left"  style="width:150px;text-align:center;" >
-				<fmt:formatDate value='${recommend.beginTime}' type="date" pattern="yyyy-MM-dd"/>
-					
-				</td>
-				<td align="left"  style="width:150px;text-align:center;" >
-				<fmt:formatDate value='${recommend.endTime}' type="date" pattern="yyyy-MM-dd"/>
-				
-				
-				</td>
-				<%-- <td align="left"  style="width:200px;text-align:center;" >
-				${recommend.suggestion}
-				</td> --%>
-				<td align="left"  style="width:50px;text-align:center;" >
-				${recommend.shouldNumber}
-				</td>
-				<td align="left"  style="width:50px;text-align:center;" >
-				${recommend.hierarchyNumber}
-				</td>
-				<td align="left"  style="width:50px;text-align:center;" >
-				${recommend.effective}
-				</td>
-					<td align="left"  style="width:50px;text-align:center;" >
-				${recommend.attendance}
-				</td>
-				<td align="left"  style="width:50px;text-align:center;" >
-				${recommend.favour}
-				</td>
-				
-				
-				<td align="left"  style="width:50px;text-align:center;" >
-				${recommend.vote}
-				</td>
-			
-				</tr>
-			</c:forEach>
-		</c:if>
-	</tbody>
-                </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-           <div class="row">
-        <div class="col-lg-12">
-          <!-- Example Bar Chart Card-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-pie-chart"></i> 各级研究意见和结果</div>
-            <div class="card-body">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            
-                <tr>
-                  <th>开始时间</th>
-                  <th>结束时间</th>
-                  <th>单位</th>
-                  <th>意见</th>
-                  <th>附件</th>
-                </tr>
-              
-           
-                <tbody>
-		<c:if test="${fn:length(adjustPage.results)  > 0 }">
-			<c:forEach items="${adjustPage.results}" var="auditing" varStatus="stuts">
-				<tr>
-				<td align="left"><fmt:formatDate value='${auditing.beginTime}' type="date" pattern="yyyy-MM-dd"/></td>
-				<td align="left"><fmt:formatDate value='${auditing.endTime}' type="date" pattern="yyyy-MM-dd"/></td>
-				<td align="left">${auditing.unit}</td>
-				<td align="left">${auditing.suggestion}</td>
-				<td><a target="_blank" href="${auditing.fileId}">下载附件</a></td>
-				</tr>
-			</c:forEach>
-		</c:if>
-	</tbody>
-                
-                </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="col-lg-6">
-          <!-- Example Bar Chart Card-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-bar-chart"></i> 考核结果</div>
-            <div class="card-body">
-            <table class="table table-bordered" id="dataTable" width="100%" style="font-size: 12px;" cellspacing="0">
-				<c:if test="${fn:length(adjustPage.assessments)  > 0 }">
-			<c:forEach items="${adjustPage.assessments}" var="assessment" varStatus="stuts">
-				<tr>
-					<td align="left">
-				 
-				 <c:forEach items="${pxList}" var="type">
-                   <c:if test="${type.typecode==assessment.pxType }">${type.typename}</c:if>
-                </c:forEach>
-				</td>
+					<td>出生时间：</td>
 					<td>
-					
-					<a  target="_blank" href="${assessment.fileId}">下载附件</a>
+						<fmt:formatDate value='${adjustPage.adjust.birthDay}' type="date" pattern="yyyy-MM-dd"/>
+					</td>
+					<td>政治面貌：</td>
+					<td>${adjustPage.adjust.politicalLandscape}</td>
+				</tr>
+				
+				<tr>
+					<td>籍贯：</td>
+					<td>${adjustPage.adjust.nativePlace}</td>
+					<td>民族：</td>
+					<td>${adjustPage.adjust.nationalName}</td>
+				</tr>
+				
+				<tr>
+					<td>部职别：</td>
+					<td>${adjustPage.adjust.jobTitle}</td>
+					<td>现军衔：</td>
+					<td>${adjustPage.adjust.nowRank}</td>
+				</tr>
+
+				<tr>
+					<td>现军衔时间：</td>
+					<td>
+						<fmt:formatDate value='${adjustPage.adjust.rankTime}' type="date" pattern="yyyy-MM-dd"/>
+					</td>
+					<td>学历：</td>
+					<td>${adjustPage.adjust.education}</td>
+				</tr>
+				<tr>
+					<td>入伍时间：</td>
+					<td>
+						<fmt:formatDate value='${adjustPage.adjust.militaryTime}' type="date" pattern="yyyy-MM-dd"/>
 					</td>
 				</tr>
-				</c:forEach>
-				</c:if>
                 </table>
             </div>
           </div>
         </div>
+        <div class="col-lg-6">
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fa fa-file-text"></i> 三评三考总体成绩</div>
+            <div class="card-body">
+			<table class="table table-bordered" width="100%" style="font-size: 12px;" cellspacing="0">
+				<tr>
+					<th>三评总体成绩</th>
+					<th>三考总体成绩</th>
+					<th>排名</th>
+				</tr>
+				<tr>
+					<td>${commentExam.commentScore}</td>
+					<td>${commentExam.examScore}</td>
+					<td>${commentExam.rank}</td>
+				</tr>
+			</table>
+            </div>
+          </div>
+        </div>
       </div>
-      
+
+	  <div>
+		  <span class="breadcrumb" style="text-align: center;font-size: 20px; width: 100%; display: block">三评</span>
+		  <div class="row">
+			  <div style="text-align: center;font-size: 16px; width: 100%;">评群众公论</div>
+			  <div class="col-lg-9">
+				  <div class="card mb-3">
+					  <div class="card-header">
+						  <i class="fa fa-heart"></i> 民主测评优秀率</div>
+					  <div class="card-body">
+						  <table class="table table-bordered" width="100%" cellspacing="0">
+							  <tr>
+								  <th>应到人数</th>
+								  <th>实到人数</th>
+								  <th>有效票数</th>
+								  <th>出勤率</th>
+								  <th>赞成票</th>
+								  <th>得票率</th>
+							  </tr>
+							  <c:if test="${fn:length(adjustPage.recommends) > 0 }">
+								  <c:forEach items="${adjustPage.recommends}" var="recommend" varStatus="stuts">
+									  <tr>
+										  <td style="width:50px;">${recommend.shouldNumber}</td>
+										  <td style="width:50px;">${recommend.hierarchyNumber}</td>
+										  <td style="width:50px;">${recommend.effective}</td>
+										  <td style="width:50px;">${recommend.attendance}</td>
+										  <td style="width:50px;">${recommend.favour}</td>
+										  <td style="width:50px;">${recommend.vote}</td>
+									  </tr>
+								  </c:forEach>
+							  </c:if>
+							  <c:if test="${fn:length(adjustPage.recommends) == 0 }">
+								  <tr><td colspan="6">暂无表格数据</td></tr>
+							  </c:if>
+						  </table>
+					  </div>
+				  </div>
+			  </div>
+			  <div class="col-lg-3">
+				  <div class="card mb-3">
+					  <div class="card-header">
+						  <i class="fa fa-hand-stop-o"></i> 民主推荐情况</div>
+					  <div class="card-body">
+						  <table class="table table-bordered" width="100%" cellspacing="0">
+						  <tr>
+							  <th>总票数</th>
+							  <th>推荐票数</th>
+							  <th>得票率</th>
+						  </tr>
+						  <tr>
+							  <td style="width:50px;">1000</td>
+							  <td style="width:50px;">888</td>
+							  <td style="width:50px;">98%</td>
+						  </tr>
+					  </table>
+					  </div>
+				  </div>
+			  </div>
+		  </div>
+		  <div class="row">
+			  <div class="col-lg-6">
+				  <div class="card mb-3">
+					  <div class="card-header">
+						  <i class="fa fa-tasks"></i> 评岗位历练</div>
+					  <div class="card-body">
+						  <table class="table table-bordered" width="100%" cellspacing="0">
+							  <tr>
+								  <td rowspan="4" style="width: 100px;font-size: 14px;font-weight: bold">现职级期间加减项目</td>
+								  <td></td>
+							  </tr>
+							  <tr>
+								  <td></td>
+							  </tr>
+							  <tr>
+								  <td></td>
+							  </tr>
+							  <tr>
+								  <td></td>
+							  </tr>
+						  </table>
+					  </div>
+				  </div>
+			  </div>
+			  <div class="col-lg-6">
+				  <div class="card mb-3">
+					  <div class="card-header">
+						  <i class="fa fa-check-square-o"></i> 评工作实绩</div>
+					  <div class="card-body">
+						  <table class="table table-bordered" width="100%" cellspacing="0">
+							  <tr>
+								  <th>组织评审结果</th>
+								  <th>得分</th>
+							  </tr>
+							  <tr>
+								  <td style="width:50px;">通过</td>
+								  <td style="width:50px;">97</td>
+							  </tr>
+						  </table>
+					  </div>
+				  </div>
+			  </div>
+		  </div>
+	  </div>
+
+	  <div>
+		<span class="breadcrumb" style="text-align: center;font-size: 20px; width: 100%; display: block">三考</span>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fa fa-file-text"></i> 军事科目考试</div>
+					<div class="card-body">
+						<table class="table table-bordered" width="100%" cellspacing="0">
+							<tr>
+								<th>科目</th>
+								<th>3000米</th>
+								<th>引体向上</th>
+								<th>体能总评</th>
+								<th>军事理论</th>
+								<th>图上作业</th>
+								<th rowspan="2" >军事成绩评定</th>
+							</tr>
+							<tr>
+								<td>成绩</td>
+								<td>70</td>
+								<td>90</td>
+								<td>56</td>
+								<td>88</td>
+								<td>97</td>
+							</tr>
+							<tr>
+								<th>科目</th>
+								<th>指挥信息系统使用</th>
+								<th>作战指标</th>
+								<th>作战计算</th>
+								<th>射击</th>
+								<th>军事科目得分</th>
+								<td rowspan="2" >666</td>
+							</tr>
+							<tr>
+								<td>成绩</td>
+								<td>70</td>
+								<td>90</td>
+								<td>56</td>
+								<td>88</td>
+								<td>97</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fa fa-file-text-o"></i> 综合理论考试</div>
+					<div class="card-body">
+						<table class="table table-bordered" width="100%" cellspacing="0">
+							<tr>
+								<th>科目</th>
+								<th>应知应会</th>
+								<th>专业理论</th>
+							</tr>
+							<tr>
+								<td style="width:50px;">得分</td>
+								<td style="width:50px;">97</td>
+								<td style="width:50px;">97</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fa fa-user"></i> 面试考察</div>
+					<div class="card-body">
+						<table class="table table-bordered" width="100%" cellspacing="0">
+							<tr>
+								<th>工作思路方法</th>
+							</tr>
+							<tr>
+								<td>工作思路方法工作思路方法工作思路方法工作思路方法工作思路方法</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	  </div>
     </div>
   
     <!-- Bootstrap core JavaScript-->
@@ -342,8 +323,6 @@
     
     <script type="text/javascript">
 	 function goToReport(url) {
-		//iframe层-父子操作
-		//createwindow('信息举报',"reportController.do?addorupdate&url=" + url,900, 450);
 		add('录入',"reportController.do?addorupdate&url=" + url,'reportList',null,400);
 	  }
     </script>

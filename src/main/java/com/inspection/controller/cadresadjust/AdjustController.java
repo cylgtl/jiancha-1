@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.inspection.entity.cadresadjust.*;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -32,11 +33,6 @@ import org.jeecgframework.web.system.entity.TSUser;
 import org.jeecgframework.web.system.service.SystemService;
 
 import com.inspection.entity.backbone.BackboneEntity;
-import com.inspection.entity.cadresadjust.AdjustAssessmentEntity;
-import com.inspection.entity.cadresadjust.AdjustAuditingEntity;
-import com.inspection.entity.cadresadjust.AdjustEntity;
-import com.inspection.entity.cadresadjust.AdjustPerformanceEntity;
-import com.inspection.entity.cadresadjust.AdjustRecommendEntity;
 import com.inspection.entity.leave.SoldierLeaveEntity;
 import com.inspection.entity.officerleave.OfficerLeaveEntity;
 import com.inspection.pojo.AdjustMainPage;
@@ -288,7 +284,6 @@ public class AdjustController extends BaseController {
 	 * 
 	 * @Title: addorupdateOperate
 	 * @Description: 保存平时表现和审批结果
-	 * @param officerLeave
 	 * @param req
 	 * @return AjaxJson
 	 * @author yxd
@@ -499,26 +494,6 @@ public class AdjustController extends BaseController {
 
 	}
 
-	/**
-	 * 表彰奖励处理详情
-	 * 
-	 * @param soldierLeave
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewMainDetial")
-	public ModelAndView viewMainDetial(AdjustEntity adjust, HttpServletRequest req) {
-		String id = StringUtils.isNotEmpty(req.getParameter("id")) ? req.getParameter("id") : adjust.getId();
-
-		/*
-		 * if (StringUtils.isNotEmpty(id)) { officerLeave =
-		 * officerLeaveService.findEntity(OfficerLeaveEntity.class, id);
-		 * req.setAttribute("officerLeavePage", officerLeave); }
-		 */
-		req.setAttribute("residualId", id);
-		return new ModelAndView("com/inspection/adjust/mainDetial");
-	}
-
 	@RequestMapping(params = "viewDetailMain")
 	public ModelAndView viewDetailMain(AdjustEntity adjust, HttpServletRequest req) {
 		String id = req.getParameter("id");
@@ -543,12 +518,12 @@ public class AdjustController extends BaseController {
 		String isView = req.getParameter("isView");
 		req.setAttribute("isView", isView);
 		req.setAttribute("id", id);
-		/*
-		 * TSTypegroup typegroup=systemService.findUniqueByProperty(TSTypegroup.class,
-		 * "typegroupcode","grbx"); req.setAttribute("typeList",
-		 * typegroup.getTSTypes());
-		 */
 
-		return new ModelAndView("com/inspection/adjust/viewDetailMain");
+		System.out.println("isView:"+isView);
+		if(isView.equals("true")){
+			return new ModelAndView("com/inspection/adjust/viewDetailMain");
+		} else {
+			return new ModelAndView("com/inspection/adjust/processAdjust");
+		}
 	}
 }

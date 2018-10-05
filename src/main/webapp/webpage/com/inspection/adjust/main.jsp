@@ -52,8 +52,8 @@
 		<!--关联信息-->
 		<t:tabs id="tt" iframe="false" tabPosition="top" fit="false">
 			<t:tab href="adjustController.do?viewMyselfInfo&id=${residuald}" icon="icon-search" title="基本资料" id="1"></t:tab>
-			<t:tab href="adjustController.do?viewResidualRecommend&id=${residuald}" icon="icon-search" title="民主评议/推荐" id="2"></t:tab>
-			<t:tab href="adjustController.do?viewAuditing&id=${residuald}" icon="icon-search" title="各级研究意见和结果" id="3"></t:tab>
+			<t:tab href="adjustController.do?viewResidualRecommend&id=${residuald}" icon="icon-search" title="民主评议/推荐df" id="2"></t:tab>
+			<t:tab href="adjustController.do?viewAuditing&id=${residuald}" icon="icon-search" title="各级研究意见和结果df" id="3"></t:tab>
 			<t:tab href="adjustController.do?viewPerformance&id=${residuald}" icon="icon-search" title="个人平时表现" id="4"></t:tab>
 			<t:tab href="adjustController.do?viewAssessment&id=${residuald}" icon="icon-search" title="培训与考核结果" id="5"></t:tab>
 		</t:tabs>
@@ -75,7 +75,7 @@
 				<td align="left"><input  name="results[${index}].suggestion"  maxlength="500" type="text" value=""
 					style="width: 250px;"></td>
 				<td align="left">
-				<t:upload dialog="false"   buttonText="上传附件" onUploadSuccess="uploadSuccess"
+				<t:upload dialog="false"   buttonText="上传附件test" onUploadSuccess="uploadSuccess"
 				 name="results[${index }].files" view="false" auto="true" uploader="fileController.do?saveFiles&sessionKey=${index}" 
 				 extend=".jpg;*,jpeg;*.png;*.gif;*.bmp;*.ico;*.tif;*.xls;*.doc;*.rar;*.txt;*.zip" id="${index }_files" formData="id"></t:upload>
 					</td>
@@ -84,10 +84,7 @@
 			</tr>
 			</c:forEach>
 	</tbody>
-	
-	
-	
-	
+
 	<tbody id="add_performances_one_table_template">
 		 	<!--先循环出10条信息-->
  	<c:forEach  begin="1" end="10" varStatus="status" var="index">
@@ -175,12 +172,7 @@
 			</tr>
 			</c:forEach>
 			</tbody>
-			
-
-	
 </table>
-
-<!--个人平时表现-->
 
 </body>
 </html>

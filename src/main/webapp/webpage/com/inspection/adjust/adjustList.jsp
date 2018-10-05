@@ -5,7 +5,7 @@
   <div region="center" style="padding:1px;">
   
    <c:if test="${isOtherRole eq 1 || not empty vistor}">
-  <t:datagrid name="adjustList" autoLoadData="true"  title="干部调整" actionUrl="adjustController.do?datagrid" idField="id" fit="true">
+  <t:datagrid name="adjustList" autoLoadData="true"  title="干部配备调整" actionUrl="adjustController.do?datagrid" idField="id" fit="true">
    <t:dgCol title="编号" field="id" hidden="true"></t:dgCol>
    <t:dgCol title="姓名" field="name" width="150"  align="center"></t:dgCol>
    <t:dgCol title="部职别" field="jobTitle" width="350" align="center"></t:dgCol>
@@ -16,7 +16,7 @@
   
   
    <c:if test="${not empty manager || not empty admin}">
-  <t:datagrid name="adjustList"  autoLoadData="true"  title="干部调整" actionUrl="adjustController.do?datagrid" idField="id" fit="true">
+  <t:datagrid name="adjustList"  autoLoadData="true"  title="干部配备调整" actionUrl="adjustController.do?datagrid" idField="id" fit="true">
    <t:dgCol title="编号" field="id" hidden="true"></t:dgCol>
    <t:dgCol title="姓名" field="name" width="150" align="center"></t:dgCol>
    <t:dgCol title="部门" field="departId" hidden="true" ></t:dgCol>
@@ -89,13 +89,13 @@
 	   
 	}
 	
-	
-	
 	function operateDetail(id,departId) {
 		if(admin || sessionDepartsCode.indexOf(departId) > -1){
-			createwindow('干部调整配备',
-					"adjustController.do?viewMain&id=" + id,
-					1024, 380);
+            location.href = "adjustController.do?viewDetailMain&id=" + id + "&isView=false";
+			// createwindow('干部调整配备',
+			// 		"adjustController.do?viewMain&id=" + id,
+			// 		1024, 380);
+
 		}else{
 			alert("您没有权限处理其他连部的数据");
 		}
@@ -110,7 +110,7 @@
 		
 	}
 	function lookDetail(id) {
-		location.href = "adjustController.do?viewDetailMain&id=" + id;
+		location.href = "adjustController.do?viewDetailMain&id=" + id+ "&isView=true";
     }
  
  

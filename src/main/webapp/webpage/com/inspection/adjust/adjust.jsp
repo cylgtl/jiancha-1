@@ -159,29 +159,6 @@
 					</td>
 					
 				</tr>
-				<%-- <tr>
-				<td align="right">
-						<label class="Validform_label">
-							现专业:
-						</label>
-					</td>
-					<td class="value">
-						<input class="inputxt" id="nowProfessional" name="nowProfessional" ignore="ignore"
-							   value="${adjustPage.nowProfessional}">
-						<span class="Validform_checktip"></span>
-					</td>
-					<td align="right">
-						<label class="Validform_label">
-							毕业时间:
-						</label>
-					</td>
-					<td class="value" colspan="3">
-						<input class="Wdate" onClick="WdatePicker()"  style="width: 150px" id="graduateTime" name="graduateTime" ignore="ignore"
-							   value="<fmt:formatDate value='${adjustPage.graduateTime}' type="date" pattern="yyyy-MM-dd"/>">
-						<span class="Validform_checktip"></span>
-					</td>
-				</tr> --%>
-				
 			</table>
 		</t:formvalid>
  </body>
