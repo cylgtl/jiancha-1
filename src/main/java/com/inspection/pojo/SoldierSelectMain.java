@@ -5,16 +5,15 @@ import com.inspection.entity.soldierselect.SoldierSelectEntity;
 import java.util.Date;
 
 public class SoldierSelectMain {
+    private SoldierSelectEntity entity;
 
-    public SoldierSelectEntity getSoldier() {
-        return soldier;
+    public SoldierSelectEntity getEntity() {
+        return entity;
     }
 
-    public void setSoldier(SoldierSelectEntity soldier) {
-        this.soldier = soldier;
+    public void setEntity(SoldierSelectEntity entity) {
+        this.entity = entity;
     }
-
-    private SoldierSelectEntity soldier;
 
     private String selectType; //选取类型
     private String selectMajor; //选取专业

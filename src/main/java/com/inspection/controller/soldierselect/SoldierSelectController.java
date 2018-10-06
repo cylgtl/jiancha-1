@@ -339,7 +339,7 @@ public class SoldierSelectController extends BaseController {
 		result.setMsg("保存成功");
 		return result;
 	}
-	
+
 	/**
 	 * 查看或处理页面
 	 * @param req
