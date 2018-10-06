@@ -1,8 +1,20 @@
 package com.inspection.pojo;
 
+import com.inspection.entity.soldierselect.SoldierSelectEntity;
+
 import java.util.Date;
 
 public class SoldierSelectMain {
+    private SoldierSelectEntity entity;
+
+    public SoldierSelectEntity getEntity() {
+        return entity;
+    }
+
+    public void setEntity(SoldierSelectEntity entity) {
+        this.entity = entity;
+    }
+
     private String selectType; //选取类型
     private String selectMajor; //选取专业
 
