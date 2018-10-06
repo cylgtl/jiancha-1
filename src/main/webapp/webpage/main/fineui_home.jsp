@@ -37,13 +37,7 @@
 			<img style="display: inline-block;width: 120px; height: 120px;display: inline-block"  src="plug-in/image/2.png">
 				<a style="display: inline-block; text-align: center;width: 100% ;" href="${webRoot }/soldierSelectController.do?soldierselect">士官选取</a>
 			</div>
-			
-			
-			
-			
-			
-			
-			
+
 			<div class="item" style="display: inline-block;width: 20%;margin-left: 12px; margin-top:12px ;text-align: center"  >
 				<img style="display: inline-block;width: 120px; height: 120px;display: inline-block"  src="plug-in/image/12.png">
 				<a style="display: inline-block; text-align: center;width: 100% ; "  href="${webRoot }/partyMemberController.do?partyMember">党员发展</a>
@@ -64,9 +58,7 @@
 				<img style="display: inline-block;width: 120px; height: 120px;display: inline-block"  src="plug-in/image/11.png">
 				<a style="display: inline-block; text-align: center;width: 100% ; " href="${webRoot }/soldierStudentController.do?soldierStudent">大学毕业生士兵提干</a>
 			</div>
-			
-			
-			
+
 			<div class="item" style="display: inline-block;width: 20%;margin-left: 12px; margin-top:12px ;text-align: center" gid="89" >
 				<img style="display: inline-block;width: 120px; height: 120px;display: inline-block"  src="plug-in/image/8.png">
 				<a style="display: inline-block; text-align: center;width: 100% ;" href="${webRoot }/soldiersApplyController.do?soldiersApply">士兵考学</a>

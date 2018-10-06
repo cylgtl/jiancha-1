@@ -6,7 +6,7 @@
   <div region="center" style="padding:1px;">
   
   <c:if test="${isOtherRole eq 1 || not empty vistor}">
-  <t:datagrid name="soldierSelectList" autoLoadData="true"  title="士兵选取" actionUrl="soldierSelectController.do?datagrid" idField="id" fit="true">
+  <t:datagrid name="soldierSelectList" autoLoadData="true"  title="士官选取" actionUrl="soldierSelectController.do?datagrid" idField="id" fit="true">
    <t:dgCol title="编号" field="id" hidden="true"></t:dgCol>
    <t:dgCol title="姓名" field="name" width="150"></t:dgCol>
    <t:dgCol title="基本信息" field="jobTitle" width="350"></t:dgCol>
@@ -14,12 +14,9 @@
 	<t:dgFunOpt funname="lookDetail(id)" title="查看" />
   </t:datagrid>
   </c:if>
-  
- 
-  
- 
+
     <c:if test="${not empty manager || not empty admin}">
-  <t:datagrid name="soldierSelectList" autoLoadData="true"  title="士兵选取" actionUrl="soldierSelectController.do?datagrid" idField="id" fit="true">
+  <t:datagrid name="soldierSelectList" autoLoadData="true"  title="士官选取" actionUrl="soldierSelectController.do?datagrid" idField="id" fit="true">
    <t:dgCol title="编号" field="id" hidden="true"></t:dgCol>
     <t:dgCol title="部门" field="departId" hidden="true"></t:dgCol>
    <t:dgCol title="姓名" field="name" width="150"></t:dgCol>
@@ -91,14 +88,10 @@
 	    }
 	   
 	}
-	
-	
-	
+
 	function operateDetail(id,departId) {
 		if(admin || sessionDepartsCode.indexOf(departId) > -1){
-			createwindow('士兵选取处理',
-					"soldierSelectController.do?viewMainDetial&id=" + id,
-					1024, 380);
+            location.href = "soldierSelectController.do?viewMainDetial&id=" + id + "&isView=false";
 		}else{
 			alert("您没有权限处理其他连部的数据");
 		}
@@ -114,7 +107,7 @@
 	}
 	
 	function lookDetail(id) {
-         location.href = "soldierSelectController.do?viewMainDetial&id=" + id;
+         location.href = "soldierSelectController.do?viewMainDetial&id=" + id + "&isView=true";
     }
 	
 	function findDepartByParentId(departId){

@@ -23,9 +23,9 @@ public class SoldierSelectMain {
     private int yingDao; //应到人数
     private int shiDao; //实到人数
     private int youXiao; //有效人数
-    private float chuQin; //出勤率
+    private String chuQin; //出勤率
     private int zanCheng; //赞成票
-    private float recommandRate; //得票率
+    private String recommandRate; //得票率
 
     //总体成绩
     private float shenTi; //身体和心理素质
@@ -54,6 +54,12 @@ public class SoldierSelectMain {
     private ZuZhiShenPi zhiBu; //支部研究
     private ZuZhiShenPi yingDangWei; //营党委
     private ZuZhiShenPi lvDangWei; //旅党委
+    private Date zhiBuTime;
+    private String zhiBuJueDing;
+    private Date yingDangWeiTime;
+    private String yingDangWeiJueDing;
+    private Date lvDangWeiTime;
+    private String lvDangWeiJueDing;
 
     public String getSelectType() {
         return selectType;
@@ -95,11 +101,11 @@ public class SoldierSelectMain {
         this.youXiao = youXiao;
     }
 
-    public float getChuQin() {
+    public String getChuQin() {
         return chuQin;
     }
 
-    public void setChuQin(float chuQin) {
+    public void setChuQin(String chuQin) {
         this.chuQin = chuQin;
     }
 
@@ -111,11 +117,11 @@ public class SoldierSelectMain {
         this.zanCheng = zanCheng;
     }
 
-    public float getRecommandRate() {
+    public String getRecommandRate() {
         return recommandRate;
     }
 
-    public void setRecommandRate(float recommandRate) {
+    public void setRecommandRate(String recommandRate) {
         this.recommandRate = recommandRate;
     }
 
@@ -261,6 +267,53 @@ public class SoldierSelectMain {
 
     public void setLvDangWei(ZuZhiShenPi lvDangWei) {
         this.lvDangWei = lvDangWei;
+    }
+    public Date getZhiBuTime() {
+        return zhiBuTime;
+    }
+
+    public void setZhiBuTime(Date zhiBuTime) {
+        this.zhiBuTime = zhiBuTime;
+    }
+
+    public String getZhiBuJueDing() {
+        return zhiBuJueDing;
+    }
+
+    public void setZhiBuJueDing(String zhiBuJueDing) {
+        this.zhiBuJueDing = zhiBuJueDing;
+    }
+
+    public Date getYingDangWeiTime() {
+        return yingDangWeiTime;
+    }
+
+    public void setYingDangWeiTime(Date yingDangWeiTime) {
+        this.yingDangWeiTime = yingDangWeiTime;
+    }
+
+    public String getYingDangWeiJueDing() {
+        return yingDangWeiJueDing;
+    }
+
+    public void setYingDangWeiJueDing(String yingDangWeiJueDing) {
+        this.yingDangWeiJueDing = yingDangWeiJueDing;
+    }
+
+    public Date getLvDangWeiTime() {
+        return lvDangWeiTime;
+    }
+
+    public void setLvDangWeiTime(Date lvDangWeiTime) {
+        this.lvDangWeiTime = lvDangWeiTime;
+    }
+
+    public String getLvDangWeiJueDing() {
+        return lvDangWeiJueDing;
+    }
+
+    public void setLvDangWeiJueDing(String lvDangWeiJueDing) {
+        this.lvDangWeiJueDing = lvDangWeiJueDing;
     }
 }
 

@@ -421,7 +421,6 @@
             });
             arry = arry +"&"+"jiaJianXiang=" + jia;
             var id = "${adjustPage.adjust.id}";
-            console.log("arry"+arry);
             $.ajax({
                 url : "adjustController.do?modifyProcess&id="+id,
                 type : "POST",

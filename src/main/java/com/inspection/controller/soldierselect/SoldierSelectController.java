@@ -356,9 +356,22 @@ public class SoldierSelectController extends BaseController {
 			req.setAttribute("soldierSelectPage", soldierSelect);
 		}
 
-		String isView =  req.getParameter("isView");
-		req.setAttribute("isView", isView);
-		req.setAttribute("id", id);
-		return new ModelAndView("com/inspection/soldierselect/mainDetial");
+		String isView = req.getParameter("isView");
+		if(isView.equals("true")){
+			return new ModelAndView("com/inspection/soldierselect/mainDetial");
+		} else {
+			return new ModelAndView("com/inspection/soldierselect/processSoldierSelect");
+		}
+	}
+
+	// 干部配备调整-处理页面
+	@RequestMapping(params = "modifyProcess")
+	@ResponseBody
+	public AjaxJson modifyProcess(SoldierSelectMain soldierSelectMain, HttpServletRequest req) {
+		AjaxJson result = new AjaxJson();
+		String id = req.getParameter("id");
+
+		result.setMsg("保存成功");
+		return result;
 	}
 }

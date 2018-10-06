@@ -31,13 +31,7 @@
 			<img style="display: inline-block;width: 200px; height: 200px;display: inline-block"  src="plug-in/image/4.png">
 				<a style="display: inline-block; text-align: center;width: 100% ;font-size: 16px;" href="#">士官选取</a>
 			</div>
-			
-			
-			
-			
-			
-			
-			
+
 			<div class="item" style="display: inline-block;width: 20%;margin-left: 10px; margin-top:15px ;border:solid 1px green ;text-align: center"  >
 				<img style="display: inline-block;width: 200px; height: 200px;display: inline-block"  src="plug-in/image/5.png">
 				<a style="display: inline-block; text-align: center;width: 100% ; font-size: 16px;"  href="#">党员发展</a>
