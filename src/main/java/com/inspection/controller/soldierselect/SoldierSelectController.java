@@ -342,7 +342,6 @@ public class SoldierSelectController extends BaseController {
 
 	/**
 	 * 表彰奖励处理详情
-	 * @param soldierLeave
 	 * @param req
 	 * @return
 	 */
@@ -371,11 +370,8 @@ public class SoldierSelectController extends BaseController {
 		return new ModelAndView("com/inspection/soldierselect/main");
 	}
 
-
-	
 	/**
 	 * 表彰奖励个人基本信息详情
-	 * @param soldierLeave
 	 * @param req
 	 * @return
 	 */
@@ -502,52 +498,21 @@ public class SoldierSelectController extends BaseController {
 	}
 	
 	/**
-	 * 表彰奖励处理详情
-	 * @param soldierLeave
+	 * 查看或处理页面
 	 * @param req
 	 * @return
 	 */
 	@RequestMapping(params = "viewMainDetial")
-	public ModelAndView viewMainDetial(SoldierSelectEntity SoldierSelect, HttpServletRequest req) {
-		String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):SoldierSelect.getId();
-		
-		/*if (StringUtils.isNotEmpty(id)) {
-			officerLeave = officerLeaveService.findEntity(OfficerLeaveEntity.class, id);
-			req.setAttribute("officerLeavePage", officerLeave);
-		}*/
+	public ModelAndView viewMainDetial(SoldierSelectEntity soldier, HttpServletRequest req) {
+		String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):soldier.getId();
+
 		if (StringUtils.isNotEmpty(id)) {
-			SoldierSelect = soldierselectService.findEntity(SoldierSelectEntity.class, id);
-			req.setAttribute("soldierSelectPage", SoldierSelect);
+			soldier = soldierselectService.findEntity(SoldierSelectEntity.class, id);
+			SoldierSelectMain soldierSelect = new SoldierSelectMain();
+			soldierSelect.setSoldier(soldier);
+			req.setAttribute("soldierSelectPage", soldierSelect);
 		}
-		
-		if (StringUtils.isNotEmpty(id)) {
-			List<SoldierSelectPerformanceEntity> lists= soldierselectService.findAllPerformances (id);
-			req.setAttribute("performanceLists", lists);
-		}
-		
-		TSTypegroup typegroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","bx_type");
-		if(typegroup!=null){
-			req.setAttribute("typeList", typegroup.getTSTypes());
-		}
-		TSTypegroup pxgroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","px_type");
-		if(pxgroup!=null){
-			req.setAttribute("pxList", pxgroup.getTSTypes());
-		}
-		
-		if (StringUtils.isNotEmpty(id)) {
-			List<SoldierSelectAuditingEntity> lists= soldierselectService.findAllAudits (id);
-			req.setAttribute("auditingLists", lists);
-		}
-		if (StringUtils.isNotEmpty(id)) {
-			List<SoldierSelectRecommendEntity> lists= soldierselectService.findAllRecommends(id);
-			req.setAttribute("recommendLists", lists);
-			
-		}
-		if (StringUtils.isNotEmpty(id)) {
-			List<SoldierSelectAssessmentEntity> lists= soldierselectService.findAlltAssessments(id);
-			req.setAttribute("assessmentLists", lists);
-		
-		}
+
 		String isView =  req.getParameter("isView");
 		req.setAttribute("isView", isView);
 		req.setAttribute("id", id);

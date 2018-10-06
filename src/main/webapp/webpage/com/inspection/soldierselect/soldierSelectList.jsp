@@ -97,7 +97,7 @@
 	function operateDetail(id,departId) {
 		if(admin || sessionDepartsCode.indexOf(departId) > -1){
 			createwindow('士兵选取处理',
-					"soldierSelectController.do?viewMain&id=" + id,
+					"soldierSelectController.do?viewMainDetial&id=" + id,
 					1024, 380);
 		}else{
 			alert("您没有权限处理其他连部的数据");
@@ -114,9 +114,7 @@
 	}
 	
 	function lookDetail(id) {
-         
          location.href = "soldierSelectController.do?viewMainDetial&id=" + id;
-		
     }
 	
 	function findDepartByParentId(departId){
