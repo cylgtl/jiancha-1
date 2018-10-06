@@ -19,6 +19,16 @@ public class AdjustMain extends BasicInfo {
     //民主推荐情况
     private int totalTicket; //总票数
     private int recommandTicket; //推荐票数
+    private float ticketRate; //得票率
+
+    public float getTicketRate() {
+        if (totalTicket != 0) {
+            return (float)recommandTicket/totalTicket;
+        }
+        return ticketRate;
+    }
+
+
 
     //评岗位历练
     private List<String> jiaJianXiang; //加减分项

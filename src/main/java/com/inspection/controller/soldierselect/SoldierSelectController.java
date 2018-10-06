@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.inspection.pojo.SoldierSelectMain;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -345,13 +346,9 @@ public class SoldierSelectController extends BaseController {
 	 * @param req
 	 * @return
 	 */
-	@RequestMapping(params = "viewMain")
+/*	@RequestMapping(params = "viewMain")
 	public ModelAndView viewMain(SoldierSelectEntity SoldierSelectEntity, HttpServletRequest req) {
 		String id = req.getParameter("id");
-		/*if (StringUtils.isNotEmpty(id)) {
-			officerLeave = officerLeaveService.findEntity(OfficerLeaveEntity.class, id);
-			req.setAttribute("officerLeavePage", officerLeave);
-		}*/
 		TSTypegroup typegroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","bx_type");
 		if(typegroup!=null){
 			req.setAttribute("typeList", typegroup.getTSTypes());
@@ -362,7 +359,19 @@ public class SoldierSelectController extends BaseController {
 		}
 		req.setAttribute("residuald", id);
 		return new ModelAndView("com/inspection/soldierselect/main");
+	}*/
+
+	@RequestMapping(params = "viewMain")
+	public ModelAndView viewMain(SoldierSelectEntity SoldierSelectEntity, HttpServletRequest req) {
+		String id = req.getParameter("id");
+		if (StringUtils.isNotEmpty(id)) {
+			SoldierSelectMain soldierSelect = new SoldierSelectMain();
+			req.setAttribute("officerLeavePage", soldierSelect);
+		}
+		return new ModelAndView("com/inspection/soldierselect/main");
 	}
+
+
 	
 	/**
 	 * 表彰奖励个人基本信息详情
