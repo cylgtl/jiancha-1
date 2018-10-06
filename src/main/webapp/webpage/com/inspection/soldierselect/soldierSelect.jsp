@@ -233,42 +233,6 @@
 							   value="<fmt:formatDate value='${soldierselectPage.entryTime}' type="date" pattern="yyyy-MM-dd"/>">
 						<span class="Validform_checktip"></span>
 					</td>
-			<%--		<td align="right">
-						<label class="Validform_label">
-							毕业时间:
-						</label>
-					</td>
-					<td class="value">
-						<input class="Wdate" onClick="WdatePicker()"  style="width: 150px" id="graduateTime" name="graduateTime" ignore="ignore"
-							   value="<fmt:formatDate value='${soldierselectPage.graduateTime}' type="date" pattern="yyyy-MM-dd"/>">
-						<span class="Validform_checktip"></span>
-					</td>
-				</tr>
-			
-				 <tr>
-					<td align="right">
-						<label class="Validform_label">
-							职务:
-						</label>
-					</td>
-					<td class="value">
-						<input class="inputxt" id="position" name="position" ignore="ignore"
-							   value="${soldierselectPage.position}">
-						<span class="Validform_checktip"></span>
-					</td>
-				</tr>
-				<tr>
-					<td align="right">
-						<label class="Validform_label">
-							班级:
-						</label>
-					</td>
-					<td class="value">
-						<input class="inputxt" id="theClass" name="theClass" ignore="ignore"
-							   value="${soldierselectPage.theClass}">
-						<span class="Validform_checktip"></span>
-					</td>
-				</tr> --%>
 			</table>
 			</div>
 		</t:formvalid>
