@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.inspection.pojo.PartyMemberMain;
 import org.apache.log4j.Logger;
 import org.jeecgframework.core.common.hibernate.qbc.CriteriaQuery;
 import org.jeecgframework.core.common.model.json.AjaxJson;
@@ -302,16 +303,13 @@ public class PartyMemberController extends BaseController {
 	@RequestMapping(params = "viewMainDetial")
 	public ModelAndView viewMainDetial(PartyMemberEntity partyMember, HttpServletRequest req) {
 		String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):partyMember.getId();
-		
-		/*if (StringUtils.isNotEmpty(id)) {
-			officerLeave = officerLeaveService.findEntity(OfficerLeaveEntity.class, id);
-			req.setAttribute("officerLeavePage", officerLeave);
-		}*/
-		TSTypegroup sexgroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","sex");
-		if(sexgroup!=null){
-			req.setAttribute("sexList", sexgroup.getTSTypes());
+
+		if (StringUtils.isNotEmpty(id)) {
+			PartyMemberMain result = new PartyMemberMain();
+			partyMember = partyMemberService.findEntity(PartyMemberEntity.class, id);
+			result.setEntity(partyMember);
+			req.setAttribute("partyMember", result);
 		}
-		req.setAttribute("residualId", id);
 		return new ModelAndView("com/inspection/partyMember/mainDetial");
 	}
 	
