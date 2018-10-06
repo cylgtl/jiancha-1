@@ -49,44 +49,44 @@
                             <table class="table table-bordered" width="100%" style="font-size: 12px;" cellspacing="0">
                                 <tr>
                                     <td>姓名：</td>
-                                    <td>${soldierSelectPage.soldier.name}</td>
+                                    <td>${soldierSelectPage.entity.name}</td>
                                     <td>性别：</td>
-                                    <td>${soldierSelectPage.soldier.sex}</td>
+                                    <td>${soldierSelectPage.entity.sex}</td>
                                 </tr>
 
                                 <tr>
                                     <td>出生时间：</td>
                                     <td>
-                                        <fmt:formatDate value='${soldierSelectPage.soldier.birthDay}' type="date" pattern="yyyy-MM-dd"/>
+                                        <fmt:formatDate value='${soldierSelectPage.entity.birthDay}' type="date" pattern="yyyy-MM-dd"/>
                                     </td>
                                     <td>政治面貌：</td>
-                                    <td>${soldierSelectPage.soldier.politicalLandscape}</td>
+                                    <td>${soldierSelectPage.entity.politicalLandscape}</td>
                                 </tr>
 
                                 <tr>
                                     <td>籍贯：</td>
-                                    <td>${soldierSelectPage.soldier.nativePlace}</td>
+                                    <td>${soldierSelectPage.entity.nativePlace}</td>
                                     <td>民族：</td>
-                                    <td>${soldierSelectPage.soldier.nationalName}</td>
+                                    <td>${soldierSelectPage.entity.nationalName}</td>
                                 </tr>
                                 <tr>
                                     <td>部职别：</td>
-                                    <td>${soldierSelectPage.soldier.jobTitle}</td>
+                                    <td>${soldierSelectPage.entity.jobTitle}</td>
                                     <td>现军衔：</td>
-                                    <td>${soldierSelectPage.soldier.nowRank}</td>
+                                    <td>${soldierSelectPage.entity.nowRank}</td>
                                 </tr>
                                 <tr>
                                     <td>现军衔时间：</td>
                                     <td>
-                                        <fmt:formatDate value='${soldierSelectPage.soldier.rankTime}' type="date" pattern="yyyy-MM-dd"/>
+                                        <fmt:formatDate value='${soldierSelectPage.entity.rankTime}' type="date" pattern="yyyy-MM-dd"/>
                                     </td>
                                     <td>学历：</td>
-                                    <td>${soldierSelectPage.soldier.education}</td>
+                                    <td>${soldierSelectPage.entity.education}</td>
                                 </tr>
                                 <tr>
                                     <td>入伍时间：</td>
                                     <td>
-                                        <fmt:formatDate value='${soldierSelectPage.soldier.militaryTime}' type="date" pattern="yyyy-MM-dd"/>
+                                        <fmt:formatDate value='${soldierSelectPage.entity.militaryTime}' type="date" pattern="yyyy-MM-dd"/>
                                     </td>
                                 </tr>
                             </table>
