@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.inspection.pojo.SoldierStudentMain;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -492,38 +493,19 @@ public class SoldierStudentController extends BaseController {
 	 * @param req
 	 * @return
 	 */
-	@RequestMapping(params = "viewMainDetial")
-	public ModelAndView viewMainDetial(SoldierStudentEntity soldierstudent, HttpServletRequest req) {
-		String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):soldierstudent.getId();
-		
-		/*if (StringUtils.isNotEmpty(id)) {
-			officerLeave = officerLeaveService.findEntity(OfficerLeaveEntity.class, id);
-			req.setAttribute("officerLeavePage", officerLeave);
-		}*/
-		soldierstudent = soldierStudentService.findEntity(SoldierStudentEntity.class, id);
-		req.setAttribute("soldierStudentPage", soldierstudent);
-		if (StringUtils.isNotEmpty(id)) {
-			List<SoldierStudentPerformanceEntity> performanceLists= soldierStudentService.findAllPerformances (id);
-			req.setAttribute("performanceLists", performanceLists);
-			;
-		}
-		TSTypegroup typegroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","bx_type");
-		if(typegroup!=null){
-			req.setAttribute("typeList", typegroup.getTSTypes());
-		}
-		TSTypegroup pxgroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","px_type");
-		if(pxgroup!=null){
-			req.setAttribute("pxList", pxgroup.getTSTypes());
-		}
-		List<SoldierStudentAuditingEntity> auditingLists= soldierStudentService.findAllAudits (id);
-		req.setAttribute("auditingLists", auditingLists);
-		List<SoldierStudentRecommendEntity> recommendLists= soldierStudentService.findAllRecommends(id);
-		req.setAttribute("recommendLists", recommendLists);
-		List<SoldierStudentAssessmentEntity> assessmentLists= soldierStudentService.findAlltAssessments(id);
-		req.setAttribute("assessmentLists", assessmentLists);
-		String isView =  req.getParameter("isView");
-		req.setAttribute("isView", isView);
-		req.setAttribute("id", id);
-		return new ModelAndView("com/inspection/soldierstudent/mainDetial");
-	}
+    @RequestMapping(params = "viewMainDetial")
+    public ModelAndView viewMainDetial(SoldierStudentEntity soldierstudent, HttpServletRequest req) {
+        String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):soldierstudent.getId();
+
+        if (StringUtils.isNotEmpty(id)) {
+            SoldierStudentMain result = new SoldierStudentMain();
+            soldierstudent = soldierStudentService.findEntity(SoldierStudentEntity.class, id);
+            result.setEntity(soldierstudent);
+            req.setAttribute("soldierStudentPage", result);
+        }
+        String isView =  req.getParameter("isView");
+        req.setAttribute("isView", isView);
+        req.setAttribute("id", id);
+        return new ModelAndView("com/inspection/soldierstudent/mainDetial");
+    }
 }
