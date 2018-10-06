@@ -89,13 +89,11 @@
 	   
 	}
 	
-	
-	
 	function operateDetail(id,departId) {
 		if(admin || sessionDepartsCode.indexOf(departId) > -1){
-			createwindow('大学毕业生士兵提干处理',
-					"soldierStudentController.do?viewMain&id=" + id,
-					1024, 380);
+			// createwindow('大学毕业生士兵提干处理',
+			// 		"soldierStudentController.do?viewMain&id=" + id,
+			// 		1024, 380);
 		}else{
 			alert("您没有权限处理其他连部的数据");
 		}
