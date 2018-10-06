@@ -345,7 +345,7 @@
                 <a onclick="submitPerformances()" class="l-btn">
                     <span class="l-btn-left" style="background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#33bbee), to(#2288cc)); color: #fff;">提交</span>
                 </a>
-                <a onclick="returnPerformances()" class="l-btn">
+                <a href="${webRoot }/adjustController.do?adjust" class="l-btn">
                     <span class="l-btn-left">返回</span>
                 </a>
             </div>
@@ -431,13 +431,10 @@
                 error : function() {
                     alert("修改失败!!!");
                 },
-                success : function(data) {
-
+                success : function() {
+                    alert("保存成功");
                 }
             });
-        }
-        function returnPerformances() {
-            console.log("submit");
         }
     </script>
 </div>
