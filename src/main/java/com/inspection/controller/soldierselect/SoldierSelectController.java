@@ -346,13 +346,13 @@ public class SoldierSelectController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(params = "viewMainDetial")
-	public ModelAndView viewMainDetial(SoldierSelectEntity soldier, HttpServletRequest req) {
-		String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):soldier.getId();
+	public ModelAndView viewMainDetial(SoldierSelectEntity entity, HttpServletRequest req) {
+		String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):entity.getId();
 
 		if (StringUtils.isNotEmpty(id)) {
-			soldier = soldierselectService.findEntity(SoldierSelectEntity.class, id);
+            entity = soldierselectService.findEntity(SoldierSelectEntity.class, id);
 			SoldierSelectMain soldierSelect = new SoldierSelectMain();
-			soldierSelect.setSoldier(soldier);
+			soldierSelect.setEntity(entity);
 			req.setAttribute("soldierSelectPage", soldierSelect);
 		}
 
