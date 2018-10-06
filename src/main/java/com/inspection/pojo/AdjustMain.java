@@ -24,13 +24,14 @@ public class AdjustMain extends BasicInfo {
     private int yingDao; //应到人数
     private int shiDao; //实到人数
     private int youXiao; //有效人数
-    private float chuQin; //出勤率
+    private String chuQin; //出勤率
     private int zanCheng; //赞成票
-    private float testRate; //得票率
+    private String testRate; //得票率
 
     //民主推荐情况
     private int totalTicket; //总票数
     private int recommandTicket; //推荐票数
+    private String voteRate; //得票率
 
     //评岗位历练
     private List<String> jiaJianXiang; //加减分项
@@ -107,11 +108,11 @@ public class AdjustMain extends BasicInfo {
         this.youXiao = youXiao;
     }
 
-    public float getChuQin() {
+    public String getChuQin() {
         return chuQin;
     }
 
-    public void setChuQin(float chuQin) {
+    public void setChuQin(String chuQin) {
         this.chuQin = chuQin;
     }
 
@@ -123,13 +124,11 @@ public class AdjustMain extends BasicInfo {
         this.zanCheng = zanCheng;
     }
 
-    public float getTestRate() {
+    public String getTestRate() {
         return testRate;
     }
 
-    public void setTestRate(float testRate) {
-        this.testRate = testRate;
-    }
+    public void setTestRate(String testRate) { this.testRate = testRate; }
 
     public int getTotalTicket() {
         return totalTicket;
@@ -146,6 +145,10 @@ public class AdjustMain extends BasicInfo {
     public void setRecommandTicket(int recommandTicket) {
         this.recommandTicket = recommandTicket;
     }
+
+    public String getVoteRate() {return voteRate; }
+
+    public void setVoteRate(String voteRate) { this.voteRate = voteRate; }
 
     public List<String> getJiaJianXiang() {
         return jiaJianXiang;

@@ -289,7 +289,6 @@ public class AdjustController extends BaseController {
 	 * 
 	 * @Title: addorupdateOperate
 	 * @Description: 保存平时表现和审批结果
-	 * @param officerLeave
 	 * @param req
 	 * @return AjaxJson
 	 * @author yxd
@@ -343,8 +342,7 @@ public class AdjustController extends BaseController {
 
 	/**
 	 * 表彰奖励处理详情
-	 * 
-	 * @param soldierLeave
+	 *
 	 * @param req
 	 * @return
 	 */
@@ -370,8 +368,7 @@ public class AdjustController extends BaseController {
 
 	/**
 	 * 表彰奖励个人基本信息详情
-	 * 
-	 * @param soldierLeave
+	 *
 	 * @param req
 	 * @return
 	 */
@@ -398,8 +395,7 @@ public class AdjustController extends BaseController {
 
 	/**
 	 * 表彰奖励个人平时表现详情
-	 * 
-	 * @param soldierLeave
+	 *
 	 * @param req
 	 * @return
 	 */
@@ -428,8 +424,6 @@ public class AdjustController extends BaseController {
 
 	/**
 	 * 表彰奖励上级意见结果详情
-	 * 
-	 * @param soldierLeave
 	 * @param req
 	 * @return
 	 */
@@ -546,6 +540,15 @@ public class AdjustController extends BaseController {
         } else {
             return new ModelAndView("com/inspection/adjust/processAdjust");
         }
-//		return new ModelAndView("com/inspection/adjust/viewDetailMain");
 	}
+
+	// 干部配备调整-处理页面
+    @RequestMapping(params = "modifyProcess")
+    @ResponseBody
+    public AjaxJson modifyProcess(AdjustMain adjustMain, HttpServletRequest req) {
+        AjaxJson result = new AjaxJson();
+        String id = req.getParameter("id");
+        result.setMsg("保存成功");
+        return result;
+    }
 }

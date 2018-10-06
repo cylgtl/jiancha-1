@@ -153,12 +153,12 @@
 						  <tr>
 							  <th>总票数</th>
 							  <th>推荐票数</th>
-							  <th>得票率</th>
+							  <th>得票率(%)</th>
 						  </tr>
 						  <tr>
 							  <td style="width:50px;">${adjustPage.totalTicket}</td>
 							  <td style="width:50px;">${adjustPage.recommandTicket}</td>
-							  <td style="width:50px;">${adjustPage.recommandTicket/adjustPage.totalTicket}</td>
+							  <td style="width:50px;">${adjustPage.voteRate}</td>
 						  </tr>
 					  </table>
 					  </div>
