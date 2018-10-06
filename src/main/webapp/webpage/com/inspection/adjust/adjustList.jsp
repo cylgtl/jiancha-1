@@ -92,9 +92,6 @@
 	function operateDetail(id,departId) {
 		if(admin || sessionDepartsCode.indexOf(departId) > -1){
             location.href = "adjustController.do?viewDetailMain&id=" + id + "&isView=false";
-			// createwindow('干部调整配备',
-			// 		"adjustController.do?viewMain&id=" + id,
-			// 		1024, 380);
 
 		}else{
 			alert("您没有权限处理其他连部的数据");
