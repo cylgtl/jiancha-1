@@ -31,7 +31,7 @@ public class AdjustMain extends BasicInfo {
     //民主推荐情况
     private int totalTicket; //总票数
     private int recommandTicket; //推荐票数
-    private String voteRate; //得票率
+    private String ticketRate; //得票率
 
     //评岗位历练
     private List<String> jiaJianXiang; //加减分项
@@ -146,9 +146,13 @@ public class AdjustMain extends BasicInfo {
         this.recommandTicket = recommandTicket;
     }
 
-    public String getVoteRate() {return voteRate; }
+    public String getTicketRate() {
+        return ticketRate;
+    }
 
-    public void setVoteRate(String voteRate) { this.voteRate = voteRate; }
+    public void setTicketRate(String ticketRate) {
+        this.ticketRate = ticketRate;
+    }
 
     public List<String> getJiaJianXiang() {
         return jiaJianXiang;

@@ -158,7 +158,7 @@
 						  <tr>
 							  <td style="width:50px;">${adjustPage.totalTicket}</td>
 							  <td style="width:50px;">${adjustPage.recommandTicket}</td>
-							  <td style="width:50px;">${adjustPage.voteRate}</td>
+							  <td style="width:50px;">${adjustPage.ticketRate}</td>
 						  </tr>
 					  </table>
 					  </div>

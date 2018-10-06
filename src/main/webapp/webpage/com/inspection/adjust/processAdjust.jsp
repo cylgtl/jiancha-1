@@ -190,7 +190,7 @@
                                             <input type="text" name="recommandTicket" value="${adjustPage.recommandTicket}" onkeyup="voteRateChange()">
                                         </td>
                                         <td>
-                                            <input type="text" name="voteRate" value="${adjustPage.voteRate}" readonly="readonly">
+                                            <input type="text" name="ticketRate" value="${adjustPage.ticketRate}" readonly="readonly">
                                         </td>
                                     </tr>
                                 </table>
@@ -388,8 +388,8 @@
             var totalTicket = $("input[name='totalTicket']").val();
             var recommandTicket = $("input[name='recommandTicket']").val();
             if(recommandTicket && totalTicket){
-                var voteRate = (recommandTicket/totalTicket).toFixed(2)*100+"%";
-                $("input[name='voteRate']").attr("value",voteRate);
+                var ticketRate = (recommandTicket/totalTicket).toFixed(2)*100+"%";
+                $("input[name='ticketRate']").attr("value",ticketRate);
             }
         }
 
