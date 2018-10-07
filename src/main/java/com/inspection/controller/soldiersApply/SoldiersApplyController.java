@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.inspection.pojo.SoldiersApplyMain;
 import org.apache.log4j.Logger;
 import org.jeecgframework.core.common.hibernate.qbc.CriteriaQuery;
 import org.jeecgframework.core.common.model.json.AjaxJson;
@@ -378,27 +379,14 @@ public class SoldiersApplyController extends BaseController {
 	@RequestMapping(params = "viewDetailMain")
 	public ModelAndView viewDetailMain(SoldiersApplyEntity soldiersApply, HttpServletRequest req) {
 		String id = req.getParameter("id");
-		SoldiersApplyMainPage result = new SoldiersApplyMainPage();
+
+
 		if (StringUtils.isNotEmpty(id)) {
+			SoldiersApplyMain result = new SoldiersApplyMain();
 			soldiersApply = soldiersApplyService.findEntity(SoldiersApplyEntity.class, id);
-			result.setSoldiersApply(soldiersApply);
-			result.setPerformances(soldiersApplyService.findAllPerformances (id));
-			result.setResults(soldiersApplyService.findAllAudits (id));
-			result.setRecommends(soldiersApplyService.findAllRecommends(id));
-			result.setAssessments(soldiersApplyService.findAllAssessments(id));
+			result.setEntity(soldiersApply);
 			req.setAttribute("soldiersApplyPage", result);
 		}
-		TSTypegroup typegroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","bx_type");
-		if(typegroup!=null){
-			req.setAttribute("typeList", typegroup.getTSTypes());
-		}
-		TSTypegroup pxgroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","px_type");
-		if(pxgroup!=null){
-			req.setAttribute("pxList", pxgroup.getTSTypes());
-		}
-		TSTypegroup sexgroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","sex");
-		req.setAttribute("sexList", sexgroup.getTSTypes());
-		
 		return new ModelAndView("com/inspection/soldiersApply/viewDetailMain");
 	}
 	
