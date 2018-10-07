@@ -385,8 +385,8 @@ public class SoldierSchoolController extends BaseController {
 			result.setShouJiangQingKuang(shouJiangQingKuang);
 			result.setSchoolEntity(schoolEntity);
 			req.setAttribute("soldierSchoolPage", result);
-			req.setAttribute("id", id);
 		}
+		req.setAttribute("id", id);
 		String isView =  req.getParameter("isView");
 		if(isView.equals("true")){
 			return new ModelAndView("com/inspection/soldierschool/mainDetial");

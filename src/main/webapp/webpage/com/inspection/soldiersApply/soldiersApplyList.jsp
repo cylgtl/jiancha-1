@@ -91,9 +91,7 @@
  
 	function operateDetail(id,departId) {
 		if(admin || sessionDepartsCode.indexOf(departId) > -1){
-			createwindow('士兵考学处理',
-					"soldiersApplyController.do?viewMain&id=" + id,
-					900, 400);
+            location.href = "soldiersApplyController.do?viewDetailMain&id=" + id + "&isView=false";
 		}else{
 			alert("您没有权限处理其他连部的数据");
 		}
@@ -109,10 +107,7 @@
 	}
 	
 	function lookDetail(id) {
-        /* createwindow('士兵考学详情',
-        		"soldiersApplyController.do?viewMainDetial&id=" + id,
-        		900, 400); */
-		location.href = "soldiersApplyController.do?viewDetailMain&id=" + id;
+		location.href = "soldiersApplyController.do?viewDetailMain&id=" + id + "&isView=true";
     }
 	
 	function findDepartByParentId(departId){

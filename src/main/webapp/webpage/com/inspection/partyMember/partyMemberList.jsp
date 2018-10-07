@@ -112,9 +112,6 @@
 	}
 
 	function lookDetail(id) {
-        /* createwindow('党员发展详情',
-        		"soldiersApplyController.do?viewMainDetial&id=" + id,
-        		900, 400); */
 		location.href = "partyMemberController.do?viewDetailMain&id=" + id;
     }
 	

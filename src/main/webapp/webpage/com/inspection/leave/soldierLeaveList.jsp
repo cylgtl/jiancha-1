@@ -92,11 +92,8 @@
 	}
 
 	function operateDetail(id,departId) {
-		 //alert("处理："+sessionDepartsCode+","+departId +","+admin);
 		if(admin || sessionDepartsCode.indexOf(departId) > -1){
-			// createwindow('战士请假处理',
-			// 		"soldierLeaveController.do?viewMain&id=" + id,
-			// 		900, 450);
+            location.href = "soldierLeaveController.do?viewDetailMain&id=" + id + "&isView=false";
 		}else{
 			alert("您没有权限处理其他连部的数据");
 		}
@@ -110,7 +107,7 @@
 		}
 	}
 	function lookDetail(id) {
-		location.href = "soldierLeaveController.do?viewDetailMain&id=" + id;
+		location.href = "soldierLeaveController.do?viewDetailMain&id=" + id + "&isView=true";
     }
 	
 	

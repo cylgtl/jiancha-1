@@ -15,7 +15,7 @@
   <link href="plug-in/startbootstrap/css/sb-admin.css" rel="stylesheet">
   <style type="text/css">
     td{
-     text-align: right;
+     text-align: center;
      font-size: 12px;
     }
     
@@ -23,323 +23,252 @@
      text-align: center;
      font-size: 14px;
     }
+	.card-header {
+		font-size: 14px;
+	}
   </style>
 </head>
 <body id="page-top">
   <!-- Navigation-->
   <div class="content-wrapper">
     <div class="container-fluid">
-      <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item active">士兵考学</li>
-        <c:if test="${empty isView}">
-        <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('partyMemberController.do?viewDetailMain&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
-        </c:if>
+        <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('soldierLeaveController.do?viewDetailMain&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
       </ol>
-      <!-- Area Chart Example-->
-     <!--  <div class="card mb-3">
-        <div class="card-header">
-          <i class="fa fa-area-chart"></i> Area Chart Example</div>
-        <div class="card-body">
-          <canvas id="myAreaChart" width="100%" height="30"></canvas>
-        </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-      </div> -->
       <div class="row">
         <div class="col-lg-6">
-          <!-- Example Bar Chart Card-->
           <div class="card mb-3">
             <div class="card-header">
-              <i class="fa fa-bar-chart"></i> 基本资料</div>
+				<i class="fa fa-user-circle"></i> 个人基本信息</div>
             <div class="card-body">
-            <table class="table table-bordered" id="dataTable" width="100%" style="font-size: 12px;" cellspacing="0">
+            <table class="table table-bordered" width="100%" style="font-size: 12px;" cellspacing="0">
 				<tr>
-					<td>
-					姓名：
-					</td>
-					<td>
-					${soldiersApplyPage.soldiersApply.name}
-					</td>
-					<td>
-					性别：
-					</td>
-					<td>
-					${soldiersApplyPage.soldiersApply.sex}
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-					出生时间：
-					</td>
-					<td>
-					<fmt:formatDate value='${soldiersApplyPage.soldiersApply.birthday}' type="date" pattern="yyyy-MM-dd"/>
-					
-					
-					</td>
-					
-					<td>
-					政治面貌：
-					</td>
-					<td>
-					${soldiersApplyPage.soldiersApply.politicalStatus}
-					</td>
-	
-				</tr>
-				
-				<tr>
-					<td>
-					籍贯：
-					</td>
-					<td>
-					${soldiersApplyPage.soldiersApply.nativePlace}
-					</td>
-					<td>
-					民族：
-					</td>
-					<td>
-					${soldiersApplyPage.soldiersApply.nation}
-					</td>
-				</tr>
-				
-				<tr>
-				<td>
-					部职别：
-					</td>
-					<td>
-					${soldiersApplyPage.soldiersApply.jobTitle}
-					</td>
-					<td>
-					现军衔：
-					</td>
-					<td>
-					${soldiersApplyPage.soldiersApply.nowRank}
-					</td>
-					
-				</tr>
-				
-				
-				<tr>
-					<td>
-					现军衔时间：
-					</td>
-					<td>
-					${soldiersApplyPage.soldiersApply.rankTime}
-					
-				
-					</td>
-					<td>
-					学历：
-					</td>
-					<td>
-					${soldiersApplyPage.soldiersApply.educational}
-					</td>
-					
+					<td>姓名：</td>
+					<td>${soldiersApplyPage.entity.name}</td>
+					<td>性别：</td>
+					<td>${soldiersApplyPage.entity.sex}</td>
 				</tr>
 				<tr>
+					<td>出生时间：</td>
 					<td>
-					入伍时间：
+						<fmt:formatDate value='${soldiersApplyPage.entity.birthday}' type="date" pattern="yyyy-MM-dd"/>
 					</td>
-					<td>
-					<fmt:formatDate value='${soldiersApplyPage.soldiersApply.militaryTime}' type="date" pattern="yyyy-MM-dd"/>
-					</td>
-					<td>
-					身份证号：
-					</td>
-					<td>
-					${soldiersApplyPage.soldiersApply.idcard}
-					</td>
+					<td>政治面貌：</td>
+					<td>${soldiersApplyPage.entity.politicalStatus}</td>
 				</tr>
 				<tr>
+					<td>籍贯：</td>
+					<td>${soldiersApplyPage.entity.nativePlace}</td>
+					<td>民族：</td>
+					<td>${soldiersApplyPage.entity.nation}</td>
+				</tr>
+				<tr>
+					<td>部职别：</td>
+					<td>${soldiersApplyPage.entity.jobTitle}</td>
+					<td>现军衔：</td>
+					<td>${soldiersApplyPage.entity.nowRank}</td>
+				</tr>
+				<tr>
+					<td>现军衔时间：</td>
+					<td>${soldiersApplyPage.entity.rankTime}</td>
+					<td>学历：</td>
+					<td>${soldiersApplyPage.entity.educational}</td>
+				</tr>
+				<tr>
+					<td>入伍时间：</td>
 					<td>
-					报考学校：
+						<fmt:formatDate value='${soldiersApplyPage.entity.militaryTime}' type="date" pattern="yyyy-MM-dd"/>
 					</td>
-					<td>
-					${soldiersApplyPage.soldiersApply.targetSchool}
-					</td>
-					<td>
-					报考专业：
-					</td>
-					<td>
-					${soldiersApplyPage.soldiersApply.applyingMajor}
-					</td>
+					<td>身份证号：</td>
+					<td>${soldiersApplyPage.entity.idcard}</td>
+				</tr>
+				<tr>
+					<td>报考学校：</td>
+					<td>${soldiersApplyPage.entity.targetSchool}</td>
+					<td>报考专业：</td>
+					<td>${soldiersApplyPage.entity.applyingMajor}</td>
 				</tr>
                 </table>
             </div>
           </div>
         </div>
         <div class="col-lg-6">
-          <!-- Example Pie Chart Card-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-pie-chart"></i>个人平时表现</div>
-            <div class="card-body">
-                <table class="table table-bordered" id="dataTable" width="100%" style="font-size: 12px;" cellspacing="0">
-				<tbody>
-		<c:if test="${fn:length(soldiersApplyPage.performances)  > 0 }">
-			<c:forEach items="${soldiersApplyPage.performances}" var="performance" varStatus="stuts">
-				<tr>
-				<td align="left">
-				
-				 <c:forEach items="${typeList}" var="type">
-                    <c:if test="${type.typecode==performance.bxType }">${type.typename}</c:if>
-                </c:forEach>
-				</td>
-				<td><a target="_blank" href="${performance.fileId} ">下载附件</a></td>
-				</tr>
-			</c:forEach>
-		</c:if>
-	</tbody>
-                </table>
-            </div>
-          </div>
+			<div class="card mb-3">
+				<div class="card-header">
+					<i class="fa fa-hourglass-start"></i> 总体成绩</div>
+				<div class="card-body">
+					<table class="table table-bordered" width="100%" style="font-size: 12px;" cellspacing="0">
+						<tr>
+							<th>预选考核成绩</th>
+							<th>直前考核成绩</th>
+							<th>加分</th>
+							<th>总成绩</th>
+							<th>排名</th>
+						</tr>
+						<tr>
+							<td>${soldiersApplyPage.yuXuanKaoHe}</td>
+							<td>${soldiersApplyPage.zhiQianKaoHe}</td>
+							<td>${soldiersApplyPage.jiaFen}</td>
+							<td>${soldiersApplyPage.zongChengJi}</td>
+							<td>${soldiersApplyPage.rank}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
         </div>
       </div>
-      
-      
-      
-      
-      
-      
-      
-      <div class="row">
-        <div class="col-lg-12">
-          <!-- Example Bar Chart Card-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-pie-chart"></i> 民主评议/推荐</div>
-            <div class="card-body">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            
-                <tr>
-                  <th>评议方</th>
-                  <th>开始时间</th>
-                  <th>结束时间</th>
-                  <th>评议意见</th>
-                  <th>应到人数</th>
-                  <th>赞成票</th>
-                  <th>有效票</th>
-                  <th>实到人数</th>
-                  <th>得票率</th>
-                  <th>出勤率</th>
-                </tr>
-              
-           
-                <tbody>
-		<c:if test="${fn:length(soldiersApplyPage.recommends)  > 0 }">
-			<c:forEach items="${soldiersApplyPage.recommends}" var="recommend" varStatus="stuts">
-				<tr>
-				<td align="left"  style="width:50px;text-align:center;"  class="value" >
-				${recommend.recommendPerson}
-				</td>
-				<td align="left"  style="width:100px;text-align:center;" >
-				<fmt:formatDate value='${recommend.beginTime}' type="date" pattern="yyyy-MM-dd"/>
-					
-				</td>
-				<td align="left"  style="width:100px;text-align:center;" >
-				<fmt:formatDate value='${recommend.endTime}' type="date" pattern="yyyy-MM-dd"/>
-				
-				
-				</td>
-				<td align="left"  style="width:200px;text-align:center;" >
-				${recommend.suggestion}
-				</td>
-				<td align="left"  style="width:50px;text-align:center;" >
-				${recommend.shouldNumber}
-				</td>
-				<td align="left"  style="width:50px;text-align:center;" >
-				${recommend.favour}
-				</td>
-				<td align="left"  style="width:50px;text-align:center;" >
-				${recommend.effective}
-				</td>
-				<td align="left"  style="width:50px;text-align:center;" >
-				${recommend.hierarchyNumber}
-				</td>
-				<td align="left"  style="width:50px;text-align:center;" >
-				${recommend.vote}
-				</td>
-				<td align="left"  style="width:50px;text-align:center;" >
-				${recommend.attendance}
-				</td>
-				</tr>
-			</c:forEach>
-		</c:if>
-	</tbody>
-                </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-           <div class="row">
-        <div class="col-lg-12">
-          <!-- Example Bar Chart Card-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-pie-chart"></i> 各级研究意见和结果</div>
-            <div class="card-body">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            
-                <tr>
-                  <th>开始时间</th>
-                  <th>结束时间</th>
-                  <th>单位</th>
-                  <th>意见</th>
-                </tr>
-              
-           
-                <tbody>
-		<c:if test="${fn:length(soldiersApplyPage.results)  > 0 }">
-			<c:forEach items="${soldiersApplyPage.results}" var="auditing" varStatus="stuts">
-				<tr>
-				<td align="left"><fmt:formatDate value='${auditing.beginTime}' type="date" pattern="yyyy-MM-dd"/></td>
-				<td align="left"><fmt:formatDate value='${auditing.endTime}' type="date" pattern="yyyy-MM-dd"/></td>
-				<td align="left">${auditing.unit}</td>
-				<td align="left">${auditing.suggestion}</td>
-				</tr>
-			</c:forEach>
-		</c:if>
-	</tbody>
-                
-                </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="col-lg-6">
-          <!-- Example Bar Chart Card-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-bar-chart"></i> 考核结果</div>
-            <div class="card-body">
-            <table class="table table-bordered" id="dataTable" width="100%" style="font-size: 12px;" cellspacing="0">
-				<c:if test="${fn:length(soldiersApplyPage.assessments)  > 0 }">
-			<c:forEach items="${soldiersApplyPage.assessments}" var="assessment" varStatus="stuts">
-				<tr>
-			
-					<td align="left">
-				 
-				 <c:forEach items="${pxList}" var="type">
-                   <c:if test="${type.typecode==assessment.pxType }">${type.typename}</c:if>
-                </c:forEach>
-				</td>
-				
-					<td>
-					
-					<a  target="_blank" href="${assessment.fileId}">下载附件</a>
-					</td>
-				</tr>
-				</c:forEach>
-				</c:if>
-                </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      
+
+	  <div class="row">
+			<div class="col-lg-12">
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fa fa-hand-stop-o"></i> 民主推荐</div>
+					<div class="card-body">
+						<table class="table table-bordered" width="100%" cellspacing="0">
+							<tr>
+								<th>应到人数</th>
+								<th>实到人数</th>
+								<th>有效票数</th>
+								<th>出勤率</th>
+								<th>赞成票</th>
+								<th>得票率</th>
+							</tr>
+							<tr>
+								<td>${soldiersApplyPage.yingDao}</td>
+								<td>${soldiersApplyPage.shiDao}</td>
+								<td>${soldiersApplyPage.youXiao}</td>
+								<td>${soldiersApplyPage.chuQin}</td>
+								<td>${soldiersApplyPage.zanCheng}</td>
+								<td>${soldiersApplyPage.recommandRate}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	  <div class="row">
+			<div class="col-lg-6">
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fa fa-file-text"></i> 文化考核</div>
+					<div class="card-body">
+						<table class="table table-bordered" width="100%" style="font-size: 12px;" cellspacing="0">
+							<tr>
+								<th>语文</th>
+								<th>数学</th>
+								<th>英语</th>
+								<th>综合</th>
+							</tr>
+							<tr>
+								<td>${soldiersApplyPage.yuWen}</td>
+								<td>${soldiersApplyPage.shuXue}</td>
+								<td>${soldiersApplyPage.yingYu}</td>
+								<td>${soldiersApplyPage.zongHe}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fa fa-file-text"></i> 体检情况</div>
+					<div class="card-body">
+						<table class="table table-bordered" width="100%" style="font-size: 12px;" cellspacing="0">
+							<tr>
+								<th>体检结果</th>
+								<th>情况说明</th>
+							</tr>
+							<tr>
+								<td>${soldiersApplyPage.tiJianJieGuo}</td>
+								<td>${soldiersApplyPage.shuoMing}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	  <div class="row">
+			<div class="col-lg-12">
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fa fa-file-text"></i> 军事共同考核</div>
+					<div class="card-body">
+						<table class="table table-bordered" width="100%" cellspacing="0">
+							<tr>
+								<th>科目</th>
+								<th>停止间转法</th>
+								<th>前进</th>
+								<th>仰卧起坐</th>
+								<th>实弹射击</th>
+								<th>30*2蛇形跑</th>
+								<th>3000米</th>
+							</tr>
+							<tr>
+								<td>成绩</td>
+								<td>${soldiersApplyPage.tiZhi}</td>
+								<td>${soldiersApplyPage.qianJing}</td>
+								<td>${soldiersApplyPage.yangWo}</td>
+								<td>${soldiersApplyPage.shiDan}</td>
+								<td>${soldiersApplyPage.sheXing}</td>
+								<td>${soldiersApplyPage.sanQian}</td>
+							</tr>
+						</table>
+						<div style="font-size: 14px; text-align: center">加分明细</div>
+						<table class="table table-bordered mt5" width="100%" cellspacing="0">
+							<tr>
+								<th>时间</th>
+								<th>明细</th>
+							</tr>
+							<c:if test="${fn:length(soldiersApplyPage.junShiJiaFen) > 0 }">
+								<c:forEach items="${soldiersApplyPage.junShiJiaFen}" var="junShiJiaFen" varStatus="stuts">
+									<tr>
+										<td>${junShiJiaFen.time}</td>
+										<td>${junShiJiaFen.detail}</td>
+									</tr>
+								</c:forEach>
+							</c:if>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	  <div class="row">
+			<div class="col-lg-12">
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fa fa-pencil"></i> 组织审批</div>
+					<div class="card-body">
+						<table class="table table-bordered" width="100%" cellspacing="0">
+							<tr>
+								<th>条目</th>
+								<th>时间</th>
+								<th>研究决定</th>
+							</tr>
+							<tr>
+								<td>支部研究确定选取对象</td>
+								<td>${soldiersApplyPage.zhiBuTime}</td>
+								<td>${soldiersApplyPage.zhiBuJueDing}</td>
+							</tr>
+							<tr>
+								<td>营党委研究确定选取对象</td>
+								<td>${soldiersApplyPage.yingDangWeiTime}</td>
+								<td>${soldiersApplyPage.yingDangWeiJueDing}</td>
+							</tr>
+							<tr>
+								<td>旅党委研究确定选取对象</td>
+								<td>${soldiersApplyPage.lvDangWeiTime}</td>
+								<td>${soldiersApplyPage.lvDangWeiJueDing}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
     </div>
   
     <!-- Bootstrap core JavaScript-->
@@ -357,8 +286,6 @@
     
     <script type="text/javascript">
 	 function goToReport(url) {
-		//iframe层-父子操作
-		//createwindow('信息举报',"reportController.do?addorupdate&url=" + url,900, 450);
 		add('录入',"reportController.do?addorupdate&url=" + url,'reportList',null,400);
 	  }
     </script>
