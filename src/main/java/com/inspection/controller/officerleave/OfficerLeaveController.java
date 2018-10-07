@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.inspection.pojo.OfficerLeaveMain;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -390,30 +391,13 @@ public class OfficerLeaveController extends BaseController {
 	public ModelAndView viewMainDetial(OfficerLeaveEntity officerLeave, HttpServletRequest req) {
 		String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):officerLeave.getId();
 		String isView =  req.getParameter("isView");
-		/*if (StringUtils.isNotEmpty(id)) {
+		if (StringUtils.isNotEmpty(id)) {
+			OfficerLeaveMain result = new OfficerLeaveMain();
 			officerLeave = officerLeaveService.findEntity(OfficerLeaveEntity.class, id);
-			req.setAttribute("officerLeavePage", officerLeave);
-		}*/
-		if (StringUtils.isNotEmpty(id)) {
-			officerLeave = officerLeaveService.findEntity(OfficerLeaveEntity.class, id);
-			req.setAttribute("officerLeavePage", officerLeave);
+			result.setEntity(officerLeave);
+			req.setAttribute("officerLeavePage", result);
 		}
-		if (StringUtils.isNotEmpty(id)) {
-			List<OfficerPerformanceEntity> lists= officerLeaveService.findAllPerformances (id);
-			req.setAttribute("performanceLists", lists);
-			
-		}
-		
-		TSTypegroup typegroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","bx_type");
-		if(typegroup!=null){
-			req.setAttribute("typeList", typegroup.getTSTypes());
-		}
-		if (StringUtils.isNotEmpty(id)) {
-			List<OfficerAuditingEntity> lists= officerLeaveService.findAllAudits (id);
-			req.setAttribute("auditingLists", lists);
-	
-		}
-		
+
 		req.setAttribute("isView", isView);
 		req.setAttribute("officerLeaveId", id);
 		return new ModelAndView("com/inspection/officerleave/mainDetial");

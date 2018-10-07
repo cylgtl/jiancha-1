@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.inspection.pojo.OfficerLeaveMain;
 import org.apache.log4j.Logger;
 import org.jeecgframework.core.common.hibernate.qbc.CriteriaQuery;
 import org.jeecgframework.core.common.model.json.AjaxJson;
@@ -272,24 +273,12 @@ public class SoldierLeaveController extends BaseController {
 		String isView =  req.getParameter("isView");
 		
 		if (StringUtils.isNotEmpty(id)) {
+			OfficerLeaveMain result = new OfficerLeaveMain();
 			soldierLeave = soldierLeaveService.findEntity(SoldierLeaveEntity.class, id);
-			req.setAttribute("soldierLeavePage", soldierLeave);
+			result.setSoldierEntity(soldierLeave);
+			req.setAttribute("soldierLeavePage", result);
 		}
-		TSType tsType = systemService.findUniqueByProperty(TSType.class, "id", soldierLeave.getLeaveType());
-		if(null != tsType){
-			soldierLeave.setLeaveType(tsType.getTypename());
-		}
-		
-		TSTypegroup typegroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","bx_type");
-		if(typegroup != null){
-			req.setAttribute("typeList", typegroup.getTSTypes());
-		}
-		
-		List<SoldierPerformanceEntity> perFormancelist = systemService.findByHql("from SoldierPerformanceEntity where leaveId=?", new Object[]{id});
-		List<SoldierAuditingEntity>  auditList = systemService.findByHql("from SoldierAuditingEntity where leaveId=?", new Object[]{id});
-		
-		req.setAttribute("perFormancelist", perFormancelist);
-		req.setAttribute("auditList", auditList);
+
 		req.setAttribute("id", id);
 		return new ModelAndView("com/inspection/leave/viewDetailMain");
 	}
