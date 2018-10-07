@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.inspection.pojo.EvaluationResidualMain;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -435,35 +436,14 @@ public class EvaluationResidualController extends BaseController {
 	public ModelAndView viewMainDetial(EvaluationResidualEntity evaluationResidual, HttpServletRequest req) {
 		String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):evaluationResidual.getId();
 		
-		/*if (StringUtils.isNotEmpty(id)) {
-			officerLeave = officerLeaveService.findEntity(OfficerLeaveEntity.class, id);
-			req.setAttribute("officerLeavePage", officerLeave);
-		}*/
+
 		if (StringUtils.isNotEmpty(id)) {
+			EvaluationResidualMain result = new EvaluationResidualMain();
 			evaluationResidual = evaluationResidualService.findEntity(EvaluationResidualEntity.class, id);
-			req.setAttribute("evaluationResidualPage", evaluationResidual);
-		}
-		if (StringUtils.isNotEmpty(id)) {
-			List<EvaluationResidualPerformanceEntity> lists= evaluationResidualService.findAllPerformances (id);
-			req.setAttribute("performanceLists", lists);
-			
+			result.setEntity(evaluationResidual);
+			req.setAttribute("evaluationResidualPage", result);
 		}
 		
-		TSTypegroup typegroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","bx_type");
-		if(typegroup!=null){
-			req.setAttribute("typeList", typegroup.getTSTypes());
-		}
-		
-		if (StringUtils.isNotEmpty(id)) {
-			List<EvaluationResidualAuditingEntity> lists= evaluationResidualService.findAllAudits (id);
-			req.setAttribute("auditingLists", lists);
-			
-		}
-		if (StringUtils.isNotEmpty(id)) {
-			List<EvaluationResidualProveEntity> lists= evaluationResidualService.findAllProves (id);
-			req.setAttribute("proveLists", lists);
-			
-		}
 		String isView =  req.getParameter("isView");
 		req.setAttribute("isView", isView);
 		req.setAttribute("id", id);
