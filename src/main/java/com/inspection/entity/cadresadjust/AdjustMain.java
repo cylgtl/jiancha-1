@@ -1,10 +1,21 @@
-package com.inspection.pojo;
+package com.inspection.entity.cadresadjust;
 
+import com.google.gson.annotations.SerializedName;
 import com.inspection.entity.cadresadjust.AdjustEntity;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
-public class AdjustMain {
+@Entity
+@Table(name = "t_adjust", schema = "")
+@DynamicUpdate(true)
+@DynamicInsert(true)
+public class AdjustMain implements Serializable {
+    @Transient
     public AdjustEntity getAdjust() {
         return adjust;
     }
@@ -14,6 +25,20 @@ public class AdjustMain {
     }
 
     private AdjustEntity adjust;
+
+    private String id;
+
+    @Id
+    //@GeneratedValue(generator = "paymentableGenerator")
+    //@GenericGenerator(name = "paymentableGenerator", strategy = "uuid")
+    //@Column(name ="id",nullable=false,length=40)
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     //三评三考总体成绩
     private float sanPingScore; //三评总成绩
@@ -60,6 +85,7 @@ public class AdjustMain {
     //面试考察
     private String gongZuoSiLu; //工作思路方法
 
+    @Column(name ="sanpingscore",nullable=true,columnDefinition="float(10,2) default '0.00'")
     public float getSanPingScore() {
         return sanPingScore;
     }
@@ -68,6 +94,8 @@ public class AdjustMain {
         this.sanPingScore = sanPingScore;
     }
 
+    //@Column(name ="sankaoscore",nullable=true,columnDefinition="float(10,2) default '0.00'")
+    @Column(name ="sankaoscore",nullable=true,precision=10,scale=0)
     public float getSanKaoScore() {
         return sanKaoScore;
     }
@@ -76,6 +104,7 @@ public class AdjustMain {
         this.sanKaoScore = sanKaoScore;
     }
 
+    @Column(name ="totalrank",nullable=true,precision=10,scale=0)
     public int getTotalRank() {
         return totalRank;
     }
@@ -154,6 +183,7 @@ public class AdjustMain {
         this.ticketRate = ticketRate;
     }
 
+    @Transient
     public List<String> getJiaJianXiang() {
         return jiaJianXiang;
     }

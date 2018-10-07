@@ -7,7 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.inspection.pojo.AdjustMain;
+import com.inspection.entity.cadresadjust.AdjustMain;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -28,18 +28,14 @@ import org.jeecgframework.platform.constant.Globals;
 import org.jeecgframework.web.common.hqlsearch.HqlGenerateUtil;
 import org.jeecgframework.web.system.controller.BaseController;
 import org.jeecgframework.web.system.entity.TSDepart;
-import org.jeecgframework.web.system.entity.TSTypegroup;
 import org.jeecgframework.web.system.entity.TSUser;
 import org.jeecgframework.web.system.service.SystemService;
 
-import com.inspection.entity.backbone.BackboneEntity;
 import com.inspection.entity.cadresadjust.AdjustAssessmentEntity;
 import com.inspection.entity.cadresadjust.AdjustAuditingEntity;
 import com.inspection.entity.cadresadjust.AdjustEntity;
 import com.inspection.entity.cadresadjust.AdjustPerformanceEntity;
 import com.inspection.entity.cadresadjust.AdjustRecommendEntity;
-import com.inspection.entity.leave.SoldierLeaveEntity;
-import com.inspection.entity.officerleave.OfficerLeaveEntity;
 import com.inspection.pojo.AdjustMainPage;
 import com.inspection.service.cadresadjust.AdjustServiceI;
 
@@ -394,6 +390,8 @@ public class AdjustController extends BaseController {
     public AjaxJson modifyProcess(AdjustMain adjustMain, HttpServletRequest req) {
         AjaxJson result = new AjaxJson();
         String id = req.getParameter("id");
+        adjustMain.setId(id);
+        adjustService.saveOrUpdate(adjustMain);
         result.setMsg("保存成功");
         return result;
     }
