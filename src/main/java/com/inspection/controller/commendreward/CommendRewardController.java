@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.inspection.pojo.CommendRewardMain;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -446,43 +447,17 @@ public class CommendRewardController extends BaseController {
 	 * @param req
 	 * @return
 	 */
-	@RequestMapping(params = "viewMainDetial")
-	public ModelAndView viewMainDetial(CommendRewardEntity commendReward, HttpServletRequest req) {
+	@RequestMapping(params = "viewMainDetail")
+	public ModelAndView viewMainDetail(CommendRewardEntity commendReward, HttpServletRequest req) {
 		String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):commendReward.getId();
-		
-		/*if (StringUtils.isNotEmpty(id)) {
-			officerLeave = officerLeaveService.findEntity(OfficerLeaveEntity.class, id);
-			req.setAttribute("officerLeavePage", officerLeave);
-		}*/
+
 		if (StringUtils.isNotEmpty(id)) {
+			CommendRewardMain result = new CommendRewardMain();
 			commendReward = commendRewardService.findEntity(CommendRewardEntity.class, id);
-			req.setAttribute("commendrewardPage", commendReward);
-		}
-		//表彰奖励-提名类型
-		TSTypegroup norTypeList=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","nor_type");
-		if(norTypeList!=null){
-			req.setAttribute("norTypeList", norTypeList.getTSTypes());
-		}
-		if (StringUtils.isNotEmpty(id)) {
-			List<CommendRewardPerformanceEntity> lists= commendRewardService.findAllPerformances (id);
-			req.setAttribute("performanceLists", lists);
-			
+			result.setEntity(commendReward);
+			req.setAttribute("commendrewardPage", result);
 		}
 		
-		TSTypegroup typegroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","bx_type");
-		if(typegroup!=null){
-			req.setAttribute("typeList", typegroup.getTSTypes());
-		}
-		if (StringUtils.isNotEmpty(id)) {
-			List<CommendRewardAuditEntity> lists= commendRewardService.findAllAudits (id);
-			req.setAttribute("auditingLists", lists);
-		;
-		}
-		if (StringUtils.isNotEmpty(id)) {
-			List<CommendRewardRecommendEntity> lists= commendRewardService.findAllRecommends(id);
-			req.setAttribute("recommendLists", lists);
-			
-		}
 		String isView =  req.getParameter("isView");
 		req.setAttribute("isView", isView);
 		req.setAttribute("id", id);
