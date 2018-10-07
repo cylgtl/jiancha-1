@@ -2,6 +2,8 @@ package com.inspection.pojo;
 
 import com.inspection.entity.personnelSelection.PersonnelSelectionEntity;
 
+import java.util.Date;
+
 public class PersonnelSelectionMain {
     private PersonnelSelectionEntity entity;
 
@@ -36,9 +38,12 @@ public class PersonnelSelectionMain {
     private int rank; //同专业排名
 
     //组织审批
-    private ZuZhiShenPi zhiBu; //支部研究
-    private ZuZhiShenPi yingDangWei; //营党委
-    private ZuZhiShenPi lvDangWei; //旅党委
+    private Date zhiBuTime;
+    private String zhiBuJueDing;
+    private Date yingDangWeiTime;
+    private String yingDangWeiJueDing;
+    private Date lvDangWeiTime;
+    private String lvDangWeiJueDing;
 
     public String getPeiXunLeiXing() {
         return peiXunLeiXing;
@@ -176,27 +181,51 @@ public class PersonnelSelectionMain {
         this.rank = rank;
     }
 
-    public ZuZhiShenPi getZhiBu() {
-        return zhiBu;
+    public Date getZhiBuTime() {
+        return zhiBuTime;
     }
 
-    public void setZhiBu(ZuZhiShenPi zhiBu) {
-        this.zhiBu = zhiBu;
+    public void setZhiBuTime(Date zhiBuTime) {
+        this.zhiBuTime = zhiBuTime;
     }
 
-    public ZuZhiShenPi getYingDangWei() {
-        return yingDangWei;
+    public String getZhiBuJueDing() {
+        return zhiBuJueDing;
     }
 
-    public void setYingDangWei(ZuZhiShenPi yingDangWei) {
-        this.yingDangWei = yingDangWei;
+    public void setZhiBuJueDing(String zhiBuJueDing) {
+        this.zhiBuJueDing = zhiBuJueDing;
     }
 
-    public ZuZhiShenPi getLvDangWei() {
-        return lvDangWei;
+    public Date getYingDangWeiTime() {
+        return yingDangWeiTime;
     }
 
-    public void setLvDangWei(ZuZhiShenPi lvDangWei) {
-        this.lvDangWei = lvDangWei;
+    public void setYingDangWeiTime(Date yingDangWeiTime) {
+        this.yingDangWeiTime = yingDangWeiTime;
+    }
+
+    public String getYingDangWeiJueDing() {
+        return yingDangWeiJueDing;
+    }
+
+    public void setYingDangWeiJueDing(String yingDangWeiJueDing) {
+        this.yingDangWeiJueDing = yingDangWeiJueDing;
+    }
+
+    public Date getLvDangWeiTime() {
+        return lvDangWeiTime;
+    }
+
+    public void setLvDangWeiTime(Date lvDangWeiTime) {
+        this.lvDangWeiTime = lvDangWeiTime;
+    }
+
+    public String getLvDangWeiJueDing() {
+        return lvDangWeiJueDing;
+    }
+
+    public void setLvDangWeiJueDing(String lvDangWeiJueDing) {
+        this.lvDangWeiJueDing = lvDangWeiJueDing;
     }
 }

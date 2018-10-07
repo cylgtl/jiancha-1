@@ -282,9 +282,6 @@ public class SoldierStudentMain {
         this.junShiJiaFen = junShiJiaFen;
     }
     //组织审批
-    private ZuZhiShenPi zhiBu; //支部研究
-    private ZuZhiShenPi yingDangWei; //营党委
-    private ZuZhiShenPi lvDangWei; //旅党委
     private Date zhiBuTime;
     private String zhiBuJueDing;
     private Date yingDangWeiTime;
@@ -338,30 +335,6 @@ public class SoldierStudentMain {
 
     public void setLvDangWeiJueDing(String lvDangWeiJueDing) {
         this.lvDangWeiJueDing = lvDangWeiJueDing;
-    }
-
-    public ZuZhiShenPi getZhiBu() {
-        return zhiBu;
-    }
-
-    public void setZhiBu(ZuZhiShenPi zhiBu) {
-        this.zhiBu = zhiBu;
-    }
-
-    public ZuZhiShenPi getYingDangWei() {
-        return yingDangWei;
-    }
-
-    public void setYingDangWei(ZuZhiShenPi yingDangWei) {
-        this.yingDangWei = yingDangWei;
-    }
-
-    public ZuZhiShenPi getLvDangWei() {
-        return lvDangWei;
-    }
-
-    public void setLvDangWei(ZuZhiShenPi lvDangWei) {
-        this.lvDangWei = lvDangWei;
     }
 }
 class JunShiJiaFen{
