@@ -17,7 +17,7 @@ public class BackboneMain {
     }
 
     //班排推荐
-    private byte[] banPaiTuiJian;
+    private String banPaiTuiJian;
 
     //民主推荐
     private int yingDao; //应到人数
@@ -39,11 +39,11 @@ public class BackboneMain {
     //表彰与获奖情况
     private List<String> biaoZhang;
 
-    public byte[] getBanPaiTuiJian() {
+    public String getBanPaiTuiJian() {
         return banPaiTuiJian;
     }
 
-    public void setBanPaiTuiJian(byte[] banPaiTuiJian) {
+    public void setBanPaiTuiJian(String banPaiTuiJian) {
         this.banPaiTuiJian = banPaiTuiJian;
     }
 
