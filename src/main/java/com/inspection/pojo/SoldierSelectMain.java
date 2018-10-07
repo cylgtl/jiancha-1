@@ -50,9 +50,6 @@ public class SoldierSelectMain {
     private String xinLiSuZhi; //心理素质
 
     //组织审批
-    private ZuZhiShenPi zhiBu; //支部研究
-    private ZuZhiShenPi yingDangWei; //营党委
-    private ZuZhiShenPi lvDangWei; //旅党委
     private Date zhiBuTime;
     private String zhiBuJueDing;
     private Date yingDangWeiTime;
@@ -244,29 +241,6 @@ public class SoldierSelectMain {
         this.xinLiSuZhi = xinLiSuZhi;
     }
 
-    public ZuZhiShenPi getZhiBu() {
-        return zhiBu;
-    }
-
-    public void setZhiBu(ZuZhiShenPi zhiBu) {
-        this.zhiBu = zhiBu;
-    }
-
-    public ZuZhiShenPi getYingDangWei() {
-        return yingDangWei;
-    }
-
-    public void setYingDangWei(ZuZhiShenPi yingDangWei) {
-        this.yingDangWei = yingDangWei;
-    }
-
-    public ZuZhiShenPi getLvDangWei() {
-        return lvDangWei;
-    }
-
-    public void setLvDangWei(ZuZhiShenPi lvDangWei) {
-        this.lvDangWei = lvDangWei;
-    }
     public Date getZhiBuTime() {
         return zhiBuTime;
     }
@@ -316,28 +290,3 @@ public class SoldierSelectMain {
     }
 }
 
-class ZuZhiShenPi {
-    private Date time; //时间
-    private String yanJiuJueDing; //研究决定
-
-    public ZuZhiShenPi(Date time, String yanJiuJueDing) {
-        this.time = time;
-        this.yanJiuJueDing = yanJiuJueDing;
-    }
-
-    public Date getTime() {
-        return time;
-    }
-
-    public void setTime(Date time) {
-        this.time = time;
-    }
-
-    public String getYanJiuJueDing() {
-        return yanJiuJueDing;
-    }
-
-    public void setYanJiuJueDing(String yanJiuJueDing) {
-        this.yanJiuJueDing = yanJiuJueDing;
-    }
-}
