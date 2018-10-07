@@ -15,7 +15,7 @@
   <link href="plug-in/startbootstrap/css/sb-admin.css" rel="stylesheet">
   <style type="text/css">
     td{
-     text-align: right;
+     text-align: center;
      font-size: 12px;
     }
     
@@ -23,150 +23,123 @@
      text-align: center;
      font-size: 14px;
     }
+	.card-header {
+		font-size: 14px;
+	}
   </style>
 </head>
 <body id="page-top">
-  <!-- Navigation-->
   <div class="content-wrapper">
     <div class="container-fluid">
-      <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item active">战士请假</li>
-        <c:if test="${empty isView}">
         <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('soldierLeaveController.do?viewDetailMain&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
-        </c:if>
       </ol>
       <div class="row">
         <div class="col-lg-6">
-          <!-- Example Bar Chart Card-->
           <div class="card mb-3">
             <div class="card-header">
-              <i class="fa fa-bar-chart"></i> 基本资料</div>
+				<i class="fa fa-user-circle"></i> 个人基本信息</div>
             <div class="card-body">
             <table class="table table-bordered" id="dataTable" width="100%" style="font-size: 12px;" cellspacing="0">
 				<tr>
-					<td>
-					姓名：
-					</td>
-					<td>
-					${soldierLeavePage.name}
-					</td>
-					<td>
-					性别：
-					</td>
-					<td>
-					${soldierLeavePage.sex}
-					</td>
+					<td>姓名：</td>
+					<td>${soldierLeavePage.soldierEntity.name}</td>
+					<td>性别：</td>
+					<td>${soldierLeavePage.soldierEntity.sex}</td>
 				</tr>
-				
 				<tr>
-					<td>
-					部职别：
-					</td>
-					<td colspan="3">
-					${soldierLeavePage.jobTitle}
-					</td>
+					<td>部职别：</td>
+					<td colspan="3">${soldierLeavePage.soldierEntity.jobTitle}</td>
 				</tr>
-				
 				<tr>
-					<td>
-					籍贯：
-					</td>
-					<td>
-					${soldierLeavePage.nativePlace}
-					</td>
-					<td>
-					民族：
-					</td>
-					<td>
-					${soldierLeavePage.national}
-					</td>
+					<td>籍贯：</td>
+					<td>${soldierLeavePage.soldierEntity.nativePlace}</td>
+					<td>民族：</td>
+					<td>${soldierLeavePage.soldierEntity.national}</td>
 				</tr>
-				
 				<tr>
-					<td>
-					政治面貌：
-					</td>
-					<td>
-					${soldierLeavePage.political}
-					</td>
-					<td>
-					现军衔：
-					</td>
-					<td>
-					${soldierLeavePage.rank}
-					</td>
+					<td>政治面貌：</td>
+					<td>${soldierLeavePage.soldierEntity.political}</td>
+					<td>现军衔：</td>
+					<td>${soldierLeavePage.soldierEntity.rank}</td>
 				</tr>
-				
-				
 				<tr>
-					<td>
-					现军衔时间：
-					</td>
-					<td>
-					${soldierLeavePage.rankTime}
-					</td>
-					<td>
-					学历：
-					</td>
-					<td>
-					${soldierLeavePage.educational}
-					</td>
+					<td>现军衔时间：</td>
+					<td>${soldierLeavePage.soldierEntity.rankTime}</td>
+					<td>学历：</td>
+					<td>${soldierLeavePage.soldierEntity.educational}</td>
 				</tr>
-				
 				<tr>
-					<td>
-					入伍时间：
-					</td>
-					<td colspan="3">
-					${soldierLeavePage.militaryTime}
-					</td>
-					
+					<td>入伍时间：</td>
+					<td colspan="3">${soldierLeavePage.soldierEntity.militaryTime}</td>
 				</tr>
-				
-				<tr>
-					<td>
-					请假时长：
-					</td>
-					<td>
-					${soldierLeavePage.days}(天)
-					</td>
-					<td>
-					请假类型：
-					</td>
-					<td>
-					${soldierLeavePage.leaveType}
-					</td>
-				</tr>
-				
-					<tr>
-					<td>
-					请假开始时间：
-					</td>
-					<td>
-					${soldierLeavePage.beginTime}
-					</td>
-					<td>
-					请假结束时间：
-					</td>
-					<td>
-					${soldierLeavePage.endTime}
-					</td>
-				</tr>
-			
-                </table>
+			</table>
             </div>
           </div>
         </div>
-        <div class="col-lg-6">
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-pie-chart"></i>个人平时表现</div>
-            <div class="card-body">
-            </div>
-          </div>
-        </div>
+	    <div class="col-lg-6">
+			  <div class="card mb-3">
+				  <div class="card-header">
+					  <i class="fa fa-street-view"></i> 个人休假计划</div>
+				  <div class="card-body">
+					  <table class="table table-bordered" width="100%" style="font-size: 12px;" cellspacing="0">
+						  <tr>
+							  <th>计划休假时间</th>
+						  </tr>
+						  <tr>
+							  <td>${soldierLeavePage.jiHuaXiuJia1}(月份)</td>
+						  </tr>
+					  </table>
+				  </div>
+			  </div>
+		  </div>
       </div>
+
+	  <div class="row">
+			<div class="col-lg-12">
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fa fa-hand-stop-o"></i> 休假情况</div>
+					<div class="card-body">
+						<table class="table table-bordered" width="100%" cellspacing="0">
+							<tr>
+								<th>总天数</th>
+								<th>已休天数</th>
+								<th>未休天数</th>
+								<th>休假类型</th>
+								<th>本次休假天数</th>
+							</tr>
+							<tr>
+								<td>${soldierLeavePage.zongTianShu}</td>
+								<td>${soldierLeavePage.yiXiuTianShu}</td>
+								<td>${soldierLeavePage.weiXiuTianShu}</td>
+								<td>${soldierLeavePage.xiuJiaLeiXing}</td>
+								<td>${soldierLeavePage.benCiXiuJia}</td>
+							</tr>
+							<tr>
+								<th>剩余天数</th>
+								<th>起止时间</th>
+								<th>离队时间</th>
+								<th>销假时间</th>
+								<th>在位率</th>
+							</tr>
+							<tr>
+								<td>${soldierLeavePage.shengYuTianShu}</td>
+								<td>
+									<fmt:formatDate value='${soldierLeavePage.startTime}' type="date" pattern="yyyy-MM-dd"/>
+									—
+									<fmt:formatDate value='${soldierLeavePage.endTime}' type="date" pattern="yyyy-MM-dd"/>
+								</td>
+								<td>${soldierLeavePage.liDuiShiJian}</td>
+								<td>${soldierLeavePage.xiaoJiaShiJian}</td>
+								<td>${soldierLeavePage.zaiWeiLv}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
     </div>
   
     <!-- Bootstrap core JavaScript-->

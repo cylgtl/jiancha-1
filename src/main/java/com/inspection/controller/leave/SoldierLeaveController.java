@@ -268,18 +268,35 @@ public class SoldierLeaveController extends BaseController {
 	}
 
 	@RequestMapping(params = "viewDetailMain")
-	public ModelAndView viewDetailMain(SoldierLeaveEntity soldierLeave, HttpServletRequest req) {
-		String id = req.getParameter("id");
+	public ModelAndView viewDetailMain(SoldierLeaveEntity soldierEntity, HttpServletRequest req) {
+		String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):soldierEntity.getId();
 		String isView =  req.getParameter("isView");
-		
 		if (StringUtils.isNotEmpty(id)) {
 			OfficerLeaveMain result = new OfficerLeaveMain();
-			soldierLeave = soldierLeaveService.findEntity(SoldierLeaveEntity.class, id);
-			result.setSoldierEntity(soldierLeave);
+			soldierEntity = soldierLeaveService.findEntity(SoldierLeaveEntity.class, id);
+			result.setSoldierEntity(soldierEntity);
 			req.setAttribute("soldierLeavePage", result);
 		}
-
 		req.setAttribute("id", id);
-		return new ModelAndView("com/inspection/leave/viewDetailMain");
+		if(isView.equals("true")){
+			return new ModelAndView("com/inspection/leave/viewDetailMain");
+		} else {
+			return new ModelAndView("com/inspection/leave/processSoldierLeave");
+		}
+	}
+
+	/**
+	 * 处理页面
+	 * @param req
+	 * @return
+	 */
+	@RequestMapping(params = "modifyProcess")
+	@ResponseBody
+	public AjaxJson modifyProcess(OfficerLeaveMain officerLeaveMain, HttpServletRequest req) {
+		AjaxJson result = new AjaxJson();
+		String id = req.getParameter("id");
+
+		result.setMsg("保存成功");
+		return result;
 	}
 }

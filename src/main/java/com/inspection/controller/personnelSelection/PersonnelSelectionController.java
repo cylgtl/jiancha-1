@@ -361,8 +361,8 @@ public class PersonnelSelectionController extends BaseController {
 
 	@RequestMapping(params = "viewDetailMain")
 	public ModelAndView viewDetailMain(PersonnelSelectionEntity entity, HttpServletRequest req) {
-		String id = req.getParameter("id");
-		PersonnelSelectionMain result = new PersonnelSelectionMain();
+        String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):entity.getId();
+        PersonnelSelectionMain result = new PersonnelSelectionMain();
 		if (StringUtils.isNotEmpty(id)) {
 			entity = personnelSelectionService.findEntity(PersonnelSelectionEntity.class, id);
 			result.setEntity(entity);
