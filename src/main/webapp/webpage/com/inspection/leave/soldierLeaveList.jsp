@@ -54,9 +54,6 @@
   </div>
  </div>
  
- 
- 
- 
  <script type="text/javascript">
  var sessionDepartsCode = "${sessionDepartsCode}";
  var admin = "${admin}";
@@ -93,15 +90,13 @@
 	    }
 	   
 	}
-	
-	
-	
+
 	function operateDetail(id,departId) {
 		 //alert("处理："+sessionDepartsCode+","+departId +","+admin);
 		if(admin || sessionDepartsCode.indexOf(departId) > -1){
-			createwindow('战士请假处理',
-					"soldierLeaveController.do?viewMain&id=" + id,
-					900, 450);
+			// createwindow('战士请假处理',
+			// 		"soldierLeaveController.do?viewMain&id=" + id,
+			// 		900, 450);
 		}else{
 			alert("您没有权限处理其他连部的数据");
 		}
@@ -113,7 +108,6 @@
 		}else{
 			alert("您没有权限处理其他连部的数据");
 		}
-		
 	}
 	function lookDetail(id) {
 		location.href = "soldierLeaveController.do?viewDetailMain&id=" + id;
