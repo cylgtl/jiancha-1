@@ -15,7 +15,7 @@
   <link href="plug-in/startbootstrap/css/sb-admin.css" rel="stylesheet">
   <style type="text/css">
     td{
-     text-align: right;
+     text-align: center;
      font-size: 12px;
     }
     
@@ -23,123 +23,63 @@
      text-align: center;
      font-size: 14px;
     }
+	.card-header {
+		font-size: 14px;
+	}
   </style>
 </head>
 <body id="page-top">
-  <!-- Navigation-->
   <div class="content-wrapper">
     <div class="container-fluid">
-      <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item active">技术学兵选调</li>
-        <c:if test="${empty isView}">
-        <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('partyMemberController.do?viewDetailMain&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
-        </c:if>
+        <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('personnelSelectionController.do?viewDetailMain&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
       </ol>
-      <!-- Area Chart Example-->
-     <!--  <div class="card mb-3">
-        <div class="card-header">
-          <i class="fa fa-area-chart"></i> Area Chart Example</div>
-        <div class="card-body">
-          <canvas id="myAreaChart" width="100%" height="30"></canvas>
-        </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-      </div> -->
       <div class="row">
         <div class="col-lg-6">
-          <!-- Example Bar Chart Card-->
           <div class="card mb-3">
             <div class="card-header">
-              <i class="fa fa-bar-chart"></i> 基本资料</div>
+				<i class="fa fa-user-circle"></i> 个人基本信息</div>
             <div class="card-body">
-            <table class="table table-bordered" id="dataTable" width="100%" style="font-size: 12px;" cellspacing="0">
+            <table class="table table-bordered" width="100%" style="font-size: 12px;" cellspacing="0">
 				<tr>
-					<td>
-					姓名：
-					</td>
-					<td>
-					${personnelSelectionPage.personnelSelection.name}
-					</td>
-					<td>
-					性别：
-					</td>
-					<td>
-					${personnelSelectionPage.personnelSelection.sex}
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-					出生时间：
-					</td>
-					<td>
-					<fmt:formatDate value='${personnelSelectionPage.personnelSelection.birthday}' type="date" pattern="yyyy-MM-dd"/>
-					
-					
-					</td>
-					
-					<td>
-					政治面貌：
-					</td>
-					<td>
-					${personnelSelectionPage.personnelSelection.politicalStatus}
-					</td>
-	
-				</tr>
-				
-				<tr>
-					<td>
-					籍贯：
-					</td>
-					<td>
-					${personnelSelectionPage.personnelSelection.nativePlace}
-					</td>
-					<td>
-					民族：
-					</td>
-					<td>
-					${personnelSelectionPage.personnelSelection.nation}
-					</td>
-				</tr>
-				
-				<tr>
-				<td>
-					部职别：
-					</td>
-					<td>
-					${personnelSelectionPage.personnelSelection.jobTitle}
-					</td>
-					<td>
-					现军衔：
-					</td>
-					<td>
-					${personnelSelectionPage.personnelSelection.nowRank}
-					</td>
-					
-				</tr>
-				
-				
-				<tr>
-					<td>
-					现军衔时间：
-					</td>
-					<td>
-					<fmt:formatDate value='${personnelSelectionPage.personnelSelection.rankTime}' type="date" pattern="yyyy-MM-dd"/>
-					</td>
-					<td>
-					学历：
-					</td>
-					<td>
-					${personnelSelectionPage.personnelSelection.educational}
-					</td>
-					
+					<td>姓名：</td>
+					<td>${personnelSelectionPage.entity.name}</td>
+					<td>性别：</td>
+					<td>${personnelSelectionPage.entity.sex}</td>
 				</tr>
 				<tr>
+					<td>出生时间：</td>
 					<td>
-					入伍时间：
+						<fmt:formatDate value='${personnelSelectionPage.entity.birthday}' type="date" pattern="yyyy-MM-dd"/>
 					</td>
+					<td>政治面貌：</td>
+					<td>${personnelSelectionPage.entity.politicalStatus}</td>
+				</tr>
+				<tr>
+					<td>籍贯：</td>
+					<td>${personnelSelectionPage.entity.nativePlace}</td>
+					<td>民族：</td>
+					<td>${personnelSelectionPage.entity.nation}</td>
+				</tr>
+				<tr>
+					<td>部职别：</td>
+					<td>${personnelSelectionPage.entity.jobTitle}</td>
+					<td>现军衔：</td>
+					<td>${personnelSelectionPage.entity.nowRank}</td>
+				</tr>
+				<tr>
+					<td>现军衔时间：</td>
 					<td>
-					<fmt:formatDate value='${personnelSelectionPage.personnelSelection.militaryTime}' type="date" pattern="yyyy-MM-dd"/>
+						<fmt:formatDate value='${personnelSelectionPage.entity.rankTime}' type="date" pattern="yyyy-MM-dd"/>
+					</td>
+					<td>学历：</td>
+					<td>${personnelSelectionPage.entity.educational}</td>
+				</tr>
+				<tr>
+					<td>入伍时间：</td>
+					<td>
+						<fmt:formatDate value='${personnelSelectionPage.entity.militaryTime}' type="date" pattern="yyyy-MM-dd"/>
 					</td>
 				</tr>
                 </table>
@@ -147,183 +87,132 @@
           </div>
         </div>
         <div class="col-lg-6">
-          <!-- Example Pie Chart Card-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-pie-chart"></i>个人平时表现</div>
-            <div class="card-body">
-                <table class="table table-bordered" id="dataTable" width="100%" style="font-size: 12px;" cellspacing="0">
-				<tbody>
-		<c:if test="${fn:length(personnelSelectionPage.performances)  > 0 }">
-			<c:forEach items="${personnelSelectionPage.performances}" var="performance" varStatus="stuts">
-				<tr>
-				<td align="left">
-				<select name="performances[${stuts.index }].bxType" disabled="disabled">
-				 
-				 <c:forEach items="${typeList}" var="type">
-                    <option value="${type.typecode}" <c:if test="${type.typecode==performance.bxType }">selected="selected"</c:if>>${type.typename}</option>
-                </c:forEach>
-				</select></td>
-				<td><a target="_blank" href="${performance.fileId} ">下载附件</a></td>
-				</tr>
-			</c:forEach>
-		</c:if>
-	</tbody>
-                </table>
-            </div>
-          </div>
+			<div class="card mb-3">
+				<div class="card-header">
+					<i class="fa fa-hourglass-start"></i> 学兵培训</div>
+				<div class="card-body">
+					<table class="table table-bordered" width="100%" style="font-size: 12px;" cellspacing="0">
+						<tr>
+							<th>培训类型</th>
+							<th>培训专业</th>
+						</tr>
+						<tr>
+							<td>${personnelSelectionPage.peiXunLeiXing}</td>
+							<td>${personnelSelectionPage.peiXunZhuanYe}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
         </div>
       </div>
-      
-      
-      
-      
-      
-      
-      
-      <div class="row">
-        <div class="col-lg-12">
-          <!-- Example Bar Chart Card-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-pie-chart"></i> 民主评议/推荐</div>
-            <div class="card-body">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            
-                <tr>
-                  <th>评议方</th>
-                  <th>开始时间</th>
-                  <th>结束时间</th>
-                  <th>评议意见</th>
-                  <th>应到人数</th>
-                  <th>赞成票</th>
-                  <th>有效票</th>
-                  <th>实到人数</th>
-                  <th>得票率</th>
-                  <th>出勤率</th>
-                  <th>结论</th>
-                </tr>
-              
-           
-                <tbody>
-		<c:if test="${fn:length(personnelSelectionPage.recommends)  > 0 }">
-			<c:forEach items="${personnelSelectionPage.recommends}" var="recommend" varStatus="stuts">
-				<tr>
-				<td align="left"  style="width:50px;text-align:center;"  class="value" >
-				${recommend.recommendPerson}
-				</td>
-				<td align="left"  style="width:100px;text-align:center;" >
-				<fmt:formatDate value='${recommend.beginTime}' type="date" pattern="yyyy-MM-dd"/>
-					
-				</td>
-				<td align="left"  style="width:100px;text-align:center;" >
-				<fmt:formatDate value='${recommend.endTime}' type="date" pattern="yyyy-MM-dd"/>
-				
-				
-				</td>
-				<td align="left"  style="width:200px;text-align:center;" >
-				${recommend.suggestion}
-				</td>
-				<td align="left"  style="width:50px;text-align:center;" >
-				${recommend.shouldNumber}
-				</td>
-				<td align="left"  style="width:50px;text-align:center;" >
-				${recommend.favour}
-				</td>
-				<td align="left"  style="width:50px;text-align:center;" >
-				${recommend.effective}
-				</td>
-				<td align="left"  style="width:50px;text-align:center;" >
-				${recommend.hierarchyNumber}
-				</td>
-				<td align="left"  style="width:50px;text-align:center;" >
-				${recommend.vote}
-				</td>
-				<td align="left"  style="width:50px;text-align:center;" >
-				${recommend.attendance}
-				</td>
-				<td align="left"  style="width:50px;text-align:center;" >
-				${recommend.conclusion}
-				</td>
-				</tr>
-			</c:forEach>
-		</c:if>
-	</tbody>
-                </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-           <div class="row">
-        <div class="col-lg-12">
-          <!-- Example Bar Chart Card-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-pie-chart"></i> 各级研究意见和结果</div>
-            <div class="card-body">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            
-                <tr>
-                  <th>开始时间</th>
-                  <th>结束时间</th>
-                  <th>单位</th>
-                  <th>意见</th>
-                  <th>结论</th>
-                </tr>
-              
-           
-                <tbody>
-		<c:if test="${fn:length(personnelSelectionPage.results)  > 0 }">
-			<c:forEach items="${personnelSelectionPage.results}" var="auditing" varStatus="stuts">
-				<tr>
-				<td align="left"><fmt:formatDate value='${auditing.beginTime}' type="date" pattern="yyyy-MM-dd"/></td>
-				<td align="left"><fmt:formatDate value='${auditing.endTime}' type="date" pattern="yyyy-MM-dd"/></td>
-				<td align="left">${auditing.unit}</td>
-				<td align="left">${auditing.suggestion}</td>
-				<td align="left">${auditing.conclusion}</td>
-				</tr>
-			</c:forEach>
-		</c:if>
-	</tbody>
-                
-                </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="col-lg-6">
-          <!-- Example Bar Chart Card-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-bar-chart"></i> 考核结果</div>
-            <div class="card-body">
-            <table class="table table-bordered" id="dataTable" width="100%" style="font-size: 12px;" cellspacing="0">
-				<c:if test="${fn:length(personnelSelectionPage.assessments)  > 0 }">
-			<c:forEach items="${personnelSelectionPage.assessments}" var="assessment" varStatus="stuts">
-				<tr>
-					<td>
-					附件：
-					</td>
-					<td>
-					
-					<a  target="_blank" href="${assessment.fileId}">下载附件</a>
-					</td>
-					<td>
-					结论:
-					</td>
-					<td align="left">${assessment.conclusion}</td>
-				</tr>
-				</c:forEach>
-				</c:if>
-                </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      
+
+	  <div class="row">
+			<div class="col-lg-12">
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fa fa-hand-stop-o"></i> 民主推荐</div>
+					<div class="card-body">
+						<table class="table table-bordered" width="100%" cellspacing="0">
+							<tr>
+								<th>应到人数</th>
+								<th>实到人数</th>
+								<th>有效票数</th>
+								<th>出勤率</th>
+								<th>赞成票</th>
+								<th>得票率</th>
+							</tr>
+							<tr>
+								<td>${personnelSelectionPage.yingDao}</td>
+								<td>${personnelSelectionPage.shiDao}</td>
+								<td>${personnelSelectionPage.youXiao}</td>
+								<td>${personnelSelectionPage.chuQin}</td>
+								<td>${personnelSelectionPage.zanCheng}</td>
+								<td>${personnelSelectionPage.recommandRate}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	  <div class="row">
+			<div class="col-lg-12">
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fa fa-file-text"></i> 考核成绩</div>
+					<div class="card-body">
+						<table class="table table-bordered" width="100%" cellspacing="0">
+							<tr>
+								<th rowspan="2">科目</th>
+								<th rowspan="2">军事考察</th>
+								<th colspan="4">文化考核</th>
+								<th rowspan="2">专业摸底</th>
+								<th rowspan="2">体检</th>
+								<th rowspan="2">总成绩</th>
+								<th rowspan="2">同专业排名</th>
+							</tr>
+							<tr>
+								<td>语文</td>
+								<td>数学</td>
+								<td>政治</td>
+								<td>物理</td>
+							</tr>
+							<tr>
+								<td>成绩</td>
+								<td>${personnelSelectionPage.junShiKaoHe}</td>
+								<td>${personnelSelectionPage.yuWen}</td>
+								<td>${personnelSelectionPage.shuXue}</td>
+								<td>${personnelSelectionPage.zhengZhi}</td>
+								<td>${personnelSelectionPage.wuLi}</td>
+								<td>${personnelSelectionPage.zhuanYeMoDi}</td>
+								<td>${personnelSelectionPage.tiJian}</td>
+								<td>${personnelSelectionPage.zongChengJi}</td>
+								<td>${personnelSelectionPage.rank}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	  <div class="row">
+			<div class="col-lg-12">
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fa fa-pencil"></i> 组织审批</div>
+					<div class="card-body">
+						<table class="table table-bordered" width="100%" cellspacing="0">
+							<tr>
+								<th>条目</th>
+								<th>时间</th>
+								<th>研究决定</th>
+							</tr>
+							<tr>
+								<td>支部研究确定选取对象</td>
+								<td>
+									<fmt:formatDate value='${personnelSelectionPage.zhiBuTime}' type="date" pattern="yyyy-MM-dd"/>
+								</td>
+								<td>${personnelSelectionPage.zhiBuJueDing}</td>
+							</tr>
+							<tr>
+								<td>营党委研究确定选取对象</td>
+								<td>
+									<fmt:formatDate value='${personnelSelectionPage.yingDangWeiTime}' type="date" pattern="yyyy-MM-dd"/>
+								</td>
+								<td>${personnelSelectionPage.yingDangWeiJueDing}</td>
+							</tr>
+							<tr>
+								<td>旅党委研究确定选取对象</td>
+								<td>
+									<fmt:formatDate value='${personnelSelectionPage.lvDangWeiTime}' type="date" pattern="yyyy-MM-dd"/>
+								</td>
+								<td>${personnelSelectionPage.lvDangWeiJueDing}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
     </div>
   
     <!-- Bootstrap core JavaScript-->
@@ -342,8 +231,6 @@
     
     <script type="text/javascript">
 	 function goToReport(url) {
-		//iframe层-父子操作
-		//createwindow('信息举报',"reportController.do?addorupdate&url=" + url,900, 450);
 		add('录入',"reportController.do?addorupdate&url=" + url,'reportList',null,400);
 	  }
     </script>

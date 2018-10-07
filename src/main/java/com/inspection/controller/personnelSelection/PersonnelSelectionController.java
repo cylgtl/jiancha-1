@@ -216,227 +216,6 @@ public class PersonnelSelectionController extends BaseController {
 	}
 	
 	/**
-	 * 处理详情
-	 * @param soldierLeave
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewMain")
-	public ModelAndView viewMain(PersonnelSelectionEntity personnelSelection, HttpServletRequest req) {
-		String id = req.getParameter("id");
-		/*if (StringUtils.isNotEmpty(id)) {
-			officerLeave = officerLeaveService.findEntity(OfficerLeaveEntity.class, id);
-			req.setAttribute("officerLeavePage", officerLeave);
-		}*/
-		TSTypegroup typegroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","bx_type");
-		if(typegroup!=null){
-			req.setAttribute("typeList", typegroup.getTSTypes());
-		}
-		TSTypegroup sexgroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","sex");
-		if(sexgroup!=null){
-			req.setAttribute("sexList", sexgroup.getTSTypes());
-		}
-		TSTypegroup selectiongroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","selection");
-		if(selectiongroup!=null){
-			req.setAttribute("selectionList", selectiongroup.getTSTypes());
-		}
-		req.setAttribute("residuald", id);
-		return new ModelAndView("com/inspection/personnelSelection/main");
-	}
-	
-	/**
-	 * 处理详情  查看
-	 * @param soldierLeave
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewMainDetial")
-	public ModelAndView viewMainDetial(PersonnelSelectionEntity personnelSelection, HttpServletRequest req) {
-		String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):personnelSelection.getId();
-		
-		/*if (StringUtils.isNotEmpty(id)) {
-			officerLeave = officerLeaveService.findEntity(OfficerLeaveEntity.class, id);
-			req.setAttribute("officerLeavePage", officerLeave);
-		}*/
-		TSTypegroup typegroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","bx_type");
-		if(typegroup!=null){
-			req.setAttribute("typeList", typegroup.getTSTypes());
-		}
-		TSTypegroup sexgroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","sex");
-		if(sexgroup!=null){
-			req.setAttribute("sexList", sexgroup);
-		}
-		TSTypegroup selectiongroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","selection");
-		if(selectiongroup!=null){
-			req.setAttribute("selectionList", selectiongroup.getTSTypes());
-		}
-		req.setAttribute("residualId", id);
-		return new ModelAndView("com/inspection/personnelSelection/mainDetial");
-	}
-	
-	/**
-	 * 个人基本信息详情
-	 * @param soldierLeave
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewMyselfInfo")
-	public ModelAndView viewMyselfInfo(PersonnelSelectionEntity personnelSelection, HttpServletRequest req) {
-		String id = req.getParameter("id");
-		String funname = req.getParameter("funname");
-		if (StringUtils.isNotEmpty(id)) {
-			personnelSelection = personnelSelectionService.findEntity(PersonnelSelectionEntity.class, id);
-			req.setAttribute("personnelSelectionPage", personnelSelection);
-		}
-		TSTypegroup sexgroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","sex");
-		if(sexgroup!=null){
-			req.setAttribute("sexList", sexgroup);
-		}
-		if(StringUtils.isEmpty(funname)){
-			return new ModelAndView("com/inspection/personnelSelection/myselfInfo");
-		}else{
-			return new ModelAndView("com/inspection/personnelSelection/myselfInfoDetial");
-			
-		}
-	}
-	
-	/**
-	 * 各级研究意见和结果详情
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewAuditing")
-	public ModelAndView viewAuditing(HttpServletRequest req) {
-		String id = req.getParameter("id");
-		String funname = req.getParameter("funname");
-		if (StringUtils.isNotEmpty(id)) {
-			List<PersonnelSelectionAuditEntity> lists= personnelSelectionService.findAllAudits (id);
-			req.setAttribute("lists", lists);
-			req.setAttribute("officerId", id);
-		}
-		TSTypegroup conclusion=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","conclusion");
-		if(conclusion!=null){
-			req.setAttribute("conclusionList", conclusion.getTSTypes());
-		}
-		if(StringUtils.isEmpty(funname)){
-			return new ModelAndView("com/inspection/personnelSelection/auditing");
-		}else{
-			return new ModelAndView("com/inspection/personnelSelection/auditingDetial");
-		}
-	}
-	
-	/**
-	 * 个人平时表现详情
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewPerformance")
-	public ModelAndView viewPerformance(HttpServletRequest req) {
-		String id = req.getParameter("id");
-		String funname = req.getParameter("funname");
-		if (StringUtils.isNotEmpty(id)) {
-			List<PersonnelSelectionPerformanceEntity> lists= personnelSelectionService.findAllPerformances (id);
-			req.setAttribute("lists", lists);
-			req.setAttribute("residualId", id);
-		}
-		
-		TSTypegroup typegroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","bx_type");
-		if(typegroup!=null){
-			req.setAttribute("typeList", typegroup.getTSTypes());
-		}
-		if(StringUtils.isEmpty(funname)){
-			return new ModelAndView("com/inspection/personnelSelection/performance");
-		}else{
-			return new ModelAndView("com/inspection/personnelSelection/performanceDetial");
-			
-		}
-	}
-	
-	/**
-	 * 民族评议/推荐
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewResidualRecommend")
-	public ModelAndView viewResidualRecommend(HttpServletRequest req) {
-		String id = req.getParameter("id");
-		String funname = req.getParameter("funname");
-		if (StringUtils.isNotEmpty(id)) {
-			List<PersonnelSelectionRecommendEntity> lists= personnelSelectionService.findAllRecommends(id);
-			req.setAttribute("lists", lists);
-			req.setAttribute("officerId", id);
-		}
-		TSTypegroup conclusion=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","conclusion");
-		if(conclusion!=null){
-			req.setAttribute("conclusionList", conclusion.getTSTypes());
-		}
-		if(StringUtils.isEmpty(funname)){
-			return new ModelAndView("com/inspection/personnelSelection/residualRecommend");
-		}else{
-			return new ModelAndView("com/inspection/personnelSelection/residualRecommendDetial");
-		}
-	}
-	
-	/**
-	 * 考核结果
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewAssessment")
-	public ModelAndView viewAssessment(HttpServletRequest req) {
-		String id = req.getParameter("id");
-		String funname = req.getParameter("funname");
-		if (StringUtils.isNotEmpty(id)) {
-			List<PersonnelSelectionAssessmentEntity> lists= personnelSelectionService.findAllAssessments(id);
-			req.setAttribute("lists", lists);
-			req.setAttribute("officerId", id);
-		}
-		TSTypegroup conclusion=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","conclusion");
-		if(conclusion!=null){
-			req.setAttribute("conclusionList", conclusion.getTSTypes());
-		}
-		if(StringUtils.isEmpty(funname)){
-			return new ModelAndView("com/inspection/personnelSelection/assessment");
-		}else{
-			return new ModelAndView("com/inspection/personnelSelection/assessmentDetial");
-		}
-	}
-	
-	/**
-	 * 举报
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewReport")
-	public ModelAndView viewReport(HttpServletRequest req) {
-		String id = req.getParameter("id");
-		String funname = req.getParameter("funname");
-		if (StringUtils.isNotEmpty(id)) {
-			List<PersonnelSelectionReportEntity> lists= personnelSelectionService.findAllReports(id);
-			req.setAttribute("lists", lists);
-			req.setAttribute("officerId", id);
-		}
-		if(StringUtils.isEmpty(funname)){
-			return new ModelAndView("com/inspection/personnelSelection/report");
-		}else{
-			return new ModelAndView("com/inspection/personnelSelection/reportDetial");
-		}
-	}
-	
-	@RequestMapping(params = "viewDetailMain")
-	public ModelAndView viewDetailMain(PersonnelSelectionEntity personnelSelection, HttpServletRequest req) {
-		String id = req.getParameter("id");
-		PersonnelSelectionMain result = new PersonnelSelectionMain();
-		if (StringUtils.isNotEmpty(id)) {
-			personnelSelection = personnelSelectionService.findEntity(PersonnelSelectionEntity.class, id);
-			result.setEntity(personnelSelection);
-			req.setAttribute("personnelSelectionPage", result);
-		}
-		
-		return new ModelAndView("com/inspection/personnelSelection/viewDetailMain");
-	}
-	
-	/**
 	 * 删除各级研究意见和结果信息
 	 * 
 	 * @return
@@ -540,7 +319,6 @@ public class PersonnelSelectionController extends BaseController {
 	 * 
 	 * @Title: addorupdateOperate
 	 * @Description: 保存平时表现和审批结果
-	 * @param soldiersApplyMainPage
 	 * @param req
 	 * @return AjaxJson
 	 * @author  ly
@@ -577,6 +355,39 @@ public class PersonnelSelectionController extends BaseController {
 			personnelSelectionService.saveOrUpdate(recommend);
 		}
 		}
+		result.setMsg("保存成功");
+		return result;
+	}
+
+	@RequestMapping(params = "viewDetailMain")
+	public ModelAndView viewDetailMain(PersonnelSelectionEntity entity, HttpServletRequest req) {
+		String id = req.getParameter("id");
+		PersonnelSelectionMain result = new PersonnelSelectionMain();
+		if (StringUtils.isNotEmpty(id)) {
+			entity = personnelSelectionService.findEntity(PersonnelSelectionEntity.class, id);
+			result.setEntity(entity);
+			req.setAttribute("personnelSelectionPage", result);
+		}
+		req.setAttribute("id", id);
+		String isView =  req.getParameter("isView");
+		if(isView.equals("true")){
+			return new ModelAndView("com/inspection/personnelSelection/viewDetailMain");
+		} else {
+			return new ModelAndView("com/inspection/personnelSelection/processPersonnelSelection");
+		}
+	}
+
+	/**
+	 * 处理页面
+	 * @param req
+	 * @return
+	 */
+	@RequestMapping(params = "modifyProcess")
+	@ResponseBody
+	public AjaxJson modifyProcess(PersonnelSelectionMain personnelSelectionMain, HttpServletRequest req) {
+		AjaxJson result = new AjaxJson();
+		String id = req.getParameter("id");
+
 		result.setMsg("保存成功");
 		return result;
 	}

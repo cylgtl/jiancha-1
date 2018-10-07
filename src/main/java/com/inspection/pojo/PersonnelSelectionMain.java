@@ -30,8 +30,8 @@ public class PersonnelSelectionMain {
     private float junShiKaoHe;
     private float yuWen;
     private float shuXue;
-    private float yingYu;
-    private float zongHe; //综合
+    private float zhengZhi;
+    private float wuLi; //综合
     private float zhuanYeMoDi; //专业摸底
     private String tiJian; //体检
     private float zongChengJi; //总成绩
@@ -133,20 +133,20 @@ public class PersonnelSelectionMain {
         this.shuXue = shuXue;
     }
 
-    public float getYingYu() {
-        return yingYu;
+    public float getZhengZhi() {
+        return zhengZhi;
     }
 
-    public void setYingYu(float yingYu) {
-        this.yingYu = yingYu;
+    public void setZhengZhi(float zhengZhi) {
+        this.zhengZhi = zhengZhi;
     }
 
-    public float getZongHe() {
-        return zongHe;
+    public float getWuLi() {
+        return wuLi;
     }
 
-    public void setZongHe(float zongHe) {
-        this.zongHe = zongHe;
+    public void setWuLi(float wuLi) {
+        this.wuLi = wuLi;
     }
 
     public float getZhuanYeMoDi() {

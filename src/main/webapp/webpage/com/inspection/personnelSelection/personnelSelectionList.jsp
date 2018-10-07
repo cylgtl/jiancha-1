@@ -89,13 +89,11 @@
 	}
  
 	function operateDetail(id,departId) {
-		if(admin || sessionDepartsCode.indexOf(departId) > -1){
-			createwindow('技术学兵选调处理',
-					"personnelSelectionController.do?viewMain&id=" + id,
-					900, 400);
-		}else{
-			tip("您没有权限处理其他连部的数据");
-		}
+		// if(admin || sessionDepartsCode.indexOf(departId) > -1){
+            location.href = "personnelSelectionController.do?viewDetailMain&id=" + id + "&isView=false";
+		// }else{
+		// 	tip("您没有权限处理其他连部的数据");
+		// }
 	}
 	
 	function deleteConfirm(id,departId){
@@ -108,10 +106,7 @@
 	}
 	
 	function lookDetail(id) {
-        /* createwindow('技术学兵选调详情',
-        		"personnelSelectionController.do?viewMainDetial&id=" + id,
-        		1024, 400); */
-		location.href = "personnelSelectionController.do?viewDetailMain&id=" + id;
+		location.href = "personnelSelectionController.do?viewDetailMain&id=" + id + "&isView=true";
     }
 	
 	function findDepartByParentId(departId){
