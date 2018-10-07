@@ -274,17 +274,23 @@
 							</tr>
 							<tr>
 								<td>支部研究确定选取对象</td>
-								<td>${soldierStudentPage.zhiBu.time}</td>
+								<td>
+									<fmt:formatDate value='${soldierStudentPage.zhiBu.time}' type="date" pattern="yyyy-MM-dd"/>
+								</td>
 								<td>${soldierStudentPage.zhiBu.yanJiuJueDing}</td>
 							</tr>
 							<tr>
 								<td>营党委研究确定选取对象</td>
-								<td>${soldierStudentPage.yingDangWei.time}</td>
+								<td>
+									<fmt:formatDate value='${soldierStudentPage.yingDangWei.time}' type="date" pattern="yyyy-MM-dd"/>
+								</td>
 								<td>${soldierStudentPage.yingDangWei.yanJiuJueDing}</td>
 							</tr>
 							<tr>
 								<td>旅党委研究确定选取对象</td>
-								<td>${soldierStudentPage.lvDangWei.time}</td>
+								<td>
+									<fmt:formatDate value='${soldierStudentPage.lvDangWei.time}' type="date" pattern="yyyy-MM-dd"/>
+								</td>
 								<td>${soldierStudentPage.lvDangWei.yanJiuJueDing}</td>
 							</tr>
 						</table>

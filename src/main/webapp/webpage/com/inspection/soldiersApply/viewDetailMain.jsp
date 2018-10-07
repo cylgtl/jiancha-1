@@ -34,7 +34,7 @@
     <div class="container-fluid">
       <ol class="breadcrumb">
         <li class="breadcrumb-item active">士兵考学</li>
-        <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('soldierLeaveController.do?viewDetailMain&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
+        <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('soldiersApplyController.do?viewDetailMain&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
       </ol>
       <div class="row">
         <div class="col-lg-6">
@@ -251,17 +251,23 @@
 							</tr>
 							<tr>
 								<td>支部研究确定选取对象</td>
-								<td>${soldiersApplyPage.zhiBuTime}</td>
+								<td>
+									<fmt:formatDate value='${soldiersApplyPage.zhiBuTime}' type="date" pattern="yyyy-MM-dd"/>
+								</td>
 								<td>${soldiersApplyPage.zhiBuJueDing}</td>
 							</tr>
 							<tr>
 								<td>营党委研究确定选取对象</td>
-								<td>${soldiersApplyPage.yingDangWeiTime}</td>
+								<td>
+									<fmt:formatDate value='${soldiersApplyPage.yingDangWeiTime}' type="date" pattern="yyyy-MM-dd"/>
+								</td>
 								<td>${soldiersApplyPage.yingDangWeiJueDing}</td>
 							</tr>
 							<tr>
 								<td>旅党委研究确定选取对象</td>
-								<td>${soldiersApplyPage.lvDangWeiTime}</td>
+								<td>
+									<fmt:formatDate value='${soldiersApplyPage.lvDangWeiTime}' type="date" pattern="yyyy-MM-dd"/>
+								</td>
 								<td>${soldiersApplyPage.lvDangWeiJueDing}</td>
 							</tr>
 						</table>

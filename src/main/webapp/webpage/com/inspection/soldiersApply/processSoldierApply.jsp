@@ -38,7 +38,7 @@
         <form id="processSoldierApply" method="post">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active">士兵考学</li>
-                <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('soldierLeaveController.do?viewDetailMain&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
+                <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('soldiersApplyController.do?viewDetailMain&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
             </ol>
             <div class="row">
                 <div class="col-lg-6">
@@ -422,7 +422,7 @@
             var id = "${soldiersApplyPage.entity.id}";
             console.log("sdsd:"+arry);
             $.ajax({
-                url : "soldierStudentController.do?modifyProcess&id="+id,
+                url : "soldiersApplyController.do?modifyProcess&id="+id,
                 type : "POST",
                 data : arry,
                 async : false,
