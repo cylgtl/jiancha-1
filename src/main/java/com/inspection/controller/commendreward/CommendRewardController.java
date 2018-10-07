@@ -457,7 +457,7 @@ public class CommendRewardController extends BaseController {
 			result.setEntity(commendReward);
 			req.setAttribute("commendrewardPage", result);
 		}
-		
+
 		String isView =  req.getParameter("isView");
 		req.setAttribute("isView", isView);
 		req.setAttribute("id", id);

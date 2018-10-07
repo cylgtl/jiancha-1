@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.inspection.pojo.BackboneMain;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -447,30 +448,18 @@ public class BackboneController extends BaseController {
 	 * @param req
 	 * @return
 	 */
-	@RequestMapping(params = "viewMainDetial")
-	public ModelAndView viewMainDetial(BackboneEntity backbone, HttpServletRequest req) {
-String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):backbone.getId();
-String isView =  req.getParameter("isView");
-		/*if (StringUtils.isNotEmpty(id)) {
-			officerLeave = officerLeaveService.findEntity(OfficerLeaveEntity.class, id);
-			req.setAttribute("officerLeavePage", officerLeave);
-		}*/
-		backbone = backboneService.findEntity(BackboneEntity.class, id);
-		req.setAttribute("backbonePage", backbone);
+	@RequestMapping(params = "viewMainDetail")
+	public ModelAndView viewMainDetail(BackboneEntity backbone, HttpServletRequest req) {
+		String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):backbone.getId();
+
 		if (StringUtils.isNotEmpty(id)) {
-			List<BackbonePerformanceEntity> performanceLists= backboneService.findAllPerformances (id);
-			req.setAttribute("performanceLists", performanceLists);
+			BackboneMain result = new BackboneMain();
+			backbone = backboneService.findEntity(BackboneEntity.class, id);
+			result.setEntity(backbone);
+			req.setAttribute("backbonePage", result);
 			
 		}
-		TSTypegroup typegroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","bx_type");
-		if(typegroup!=null){
-			req.setAttribute("typeList", typegroup.getTSTypes());
-		}
-		
-		List<BackboneAuditingEntity> auditingLists= backboneService.findAllAudits (id);
-		req.setAttribute("auditingLists", auditingLists);
-		List<BackboneRecommendEntity> recommendLists= backboneService.findAllRecommends(id);
-		req.setAttribute("recommendLists", recommendLists);
+		String isView =  req.getParameter("isView");
 		req.setAttribute("isView", isView);
 		req.setAttribute("id", id);
 		return new ModelAndView("com/inspection/backbone/mainDetial");

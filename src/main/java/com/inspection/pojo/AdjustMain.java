@@ -4,7 +4,7 @@ import com.inspection.entity.cadresadjust.AdjustEntity;
 
 import java.util.List;
 
-public class AdjustMain extends BasicInfo {
+public class AdjustMain {
     public AdjustEntity getAdjust() {
         return adjust;
     }
