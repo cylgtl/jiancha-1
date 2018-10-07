@@ -394,19 +394,17 @@
         }
 
         function addItem(){
-            console.log("add...");
             var count = $("#jiaJian tr").length - 1;
             var value = "";
-            var tr = "<tr id=\"${stuts.index}_recommends\">\n" +
+            var tr = "<tr id="+ count +"_recommends\">\n" +
                 " <td><input type=\"text\" name="+ count +"_recommends\" value="+ value +"></td>\n" +
                 " <td><a href=\"#\" onclick=\"deleteItem()\">删除</a></td>\n" +
-                " </tr>"
+                " </tr>";
 
             $("#jiaJian").append(tr);
         }
 
         function deleteItem(index){
-            console.log("delete...");
             $("tr[id='"+index+"']").remove();
         }
 

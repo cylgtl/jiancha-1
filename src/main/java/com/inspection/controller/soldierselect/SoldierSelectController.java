@@ -364,7 +364,7 @@ public class SoldierSelectController extends BaseController {
 		}
 	}
 
-	// 干部配备调整-处理页面
+	// 士官选取调整-处理页面
 	@RequestMapping(params = "modifyProcess")
 	@ResponseBody
 	public AjaxJson modifyProcess(SoldierSelectMain soldierSelectMain, HttpServletRequest req) {

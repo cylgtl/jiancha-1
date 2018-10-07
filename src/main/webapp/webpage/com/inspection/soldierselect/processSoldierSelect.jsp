@@ -381,7 +381,7 @@
 
         function submitPerformances() {
             var arry = $("#processSoldierSelect").serialize();
-            var id = "${adjustPage.adjust.id}";
+            var id = "${soldierSelectPage.entity.id}";
             $.ajax({
                 url : "soldierSelectController.do?modifyProcess&id="+id,
                 type : "POST",

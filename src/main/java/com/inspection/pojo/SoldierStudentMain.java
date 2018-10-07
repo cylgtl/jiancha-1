@@ -43,6 +43,25 @@ public class SoldierStudentMain {
     private float junShiJiaFeng; //军事加分
     //军事加分细则
     private List<JunShiJiaFen> junShiJiaFen;
+    private List<Date> times;
+
+    public List<Date> getTimes() {
+        return times;
+    }
+
+    public void setTimes(List<Date> times) {
+        this.times = times;
+    }
+
+    public List<String> getDetails() {
+        return details;
+    }
+
+    public void setDetails(List<String> details) {
+        this.details = details;
+    }
+
+    private List<String> details;
 
     public Date getStartTime() {
         return startTime;
@@ -255,6 +274,60 @@ public class SoldierStudentMain {
     private ZuZhiShenPi zhiBu; //支部研究
     private ZuZhiShenPi yingDangWei; //营党委
     private ZuZhiShenPi lvDangWei; //旅党委
+    private Date zhiBuTime;
+    private String zhiBuJueDing;
+    private Date yingDangWeiTime;
+    private String yingDangWeiJueDing;
+    private Date lvDangWeiTime;
+    private String lvDangWeiJueDing;
+
+    public Date getZhiBuTime() {
+        return zhiBuTime;
+    }
+
+    public void setZhiBuTime(Date zhiBuTime) {
+        this.zhiBuTime = zhiBuTime;
+    }
+
+    public String getZhiBuJueDing() {
+        return zhiBuJueDing;
+    }
+
+    public void setZhiBuJueDing(String zhiBuJueDing) {
+        this.zhiBuJueDing = zhiBuJueDing;
+    }
+
+    public Date getYingDangWeiTime() {
+        return yingDangWeiTime;
+    }
+
+    public void setYingDangWeiTime(Date yingDangWeiTime) {
+        this.yingDangWeiTime = yingDangWeiTime;
+    }
+
+    public String getYingDangWeiJueDing() {
+        return yingDangWeiJueDing;
+    }
+
+    public void setYingDangWeiJueDing(String yingDangWeiJueDing) {
+        this.yingDangWeiJueDing = yingDangWeiJueDing;
+    }
+
+    public Date getLvDangWeiTime() {
+        return lvDangWeiTime;
+    }
+
+    public void setLvDangWeiTime(Date lvDangWeiTime) {
+        this.lvDangWeiTime = lvDangWeiTime;
+    }
+
+    public String getLvDangWeiJueDing() {
+        return lvDangWeiJueDing;
+    }
+
+    public void setLvDangWeiJueDing(String lvDangWeiJueDing) {
+        this.lvDangWeiJueDing = lvDangWeiJueDing;
+    }
 
     public ZuZhiShenPi getZhiBu() {
         return zhiBu;

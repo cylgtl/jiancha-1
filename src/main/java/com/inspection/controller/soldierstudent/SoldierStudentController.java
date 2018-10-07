@@ -296,7 +296,6 @@ public class SoldierStudentController extends BaseController {
 	 * 
 	 * @Title: addorupdateOperate
 	 * @Description: 保存平时表现和审批结果
-	 * @param officerLeave
 	 * @param req
 	 * @return AjaxJson
 	 * @author  yxd
@@ -349,7 +348,7 @@ public class SoldierStudentController extends BaseController {
 	}
 
 	/**
-	 * 查看
+	 * 查看或处理
 	 * @param req
 	 * @return
 	 */
@@ -365,10 +364,29 @@ public class SoldierStudentController extends BaseController {
 			result.setShouJiangQingKuang(shouJiangQingKuang);
 			result.setEntity(entity);
 			req.setAttribute("soldierStudentPage", result);
+            req.setAttribute("junShiJiaFenEntity", result.getJunShiJiaFen());
 		}
 		String isView =  req.getParameter("isView");
-		req.setAttribute("isView", isView);
-		req.setAttribute("id", id);
-		return new ModelAndView("com/inspection/soldierstudent/mainDetial");
+        if(isView.equals("true")){
+            return new ModelAndView("com/inspection/soldierstudent/mainDetial");
+        } else {
+            return new ModelAndView("com/inspection/soldierstudent/processSoldierStudent");
+        }
 	}
+
+    // 大学生士兵提干调整-处理页面
+    @RequestMapping(params = "modifyProcess")
+    @ResponseBody
+    public AjaxJson modifyProcess(SoldierStudentMain soldierStudentMain, HttpServletRequest req) {
+        AjaxJson result = new AjaxJson();
+        String id = req.getParameter("id");
+        List<Date> times = soldierStudentMain.getTimes();
+        List<String> details = soldierStudentMain.getDetails();
+        for( int i = 0 ; i < times.size() ; i++) {
+            System.out.println(times.get(i).toString());
+        }
+
+        result.setMsg("保存成功");
+        return result;
+    }
 }

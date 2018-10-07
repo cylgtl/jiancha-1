@@ -98,8 +98,12 @@
 							  <th>担任职务</th>
 						  </tr>
 						  <tr>
-							  <td>${soldierSelectPage.startTime}—${soldierSelectPage.endTime}</td>
-							  <td>${soldierSelectPage.zhiWu}</td>
+							  <td>
+                                  <fmt:formatDate value='${soldierStudentPage.startTime}' type="date" pattern="yyyy-MM-dd"/>
+                                  —
+                                  <fmt:formatDate value='${soldierStudentPage.endTime}' type="date" pattern="yyyy-MM-dd"/>
+                              </td>
+							  <td>${soldierStudentPage.zhiWu}</td>
 						  </tr>
 					  </table>
 				  </div>
