@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>大学生士兵提干</title>
+    <title>优秀士兵保送入学</title>
     <!-- Bootstrap core CSS-->
     <link href="plug-in/startbootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
@@ -34,10 +34,10 @@
 <!-- Navigation-->
 <div class="content-wrapper">
     <div class="container-fluid">
-        <form id="processSoldierStudent" method="post">
+        <form id="processSoldierSchool" method="post">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active">大学毕业生士兵提干</li>
-                <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('soldierStudentController.do?viewMainDetial&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
+                <li class="breadcrumb-item active">优秀士兵保送入学</li>
+                <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('soldierSchoolController.do?viewMainDetial&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
             </ol>
             <div class="row">
                 <div class="col-lg-6">
@@ -48,43 +48,43 @@
                             <table class="table table-bordered" width="100%" style="font-size: 12px;" cellspacing="0">
                                 <tr>
                                     <td>姓名：</td>
-                                    <td>${soldierStudentPage.entity.name}</td>
+                                    <td>${soldierSchoolPage.schoolEntity.name}</td>
                                     <td>性别：</td>
-                                    <td>${soldierStudentPage.entity.sex}</td>
+                                    <td>${soldierSchoolPage.schoolEntity.sex}</td>
                                 </tr>
                                 <tr>
                                     <td>部职别：</td>
-                                    <td>${soldierStudentPage.entity.jobTitle}</td>
+                                    <td>${soldierSchoolPage.schoolEntity.jobTitle}</td>
                                     <td>政治面貌:</td>
-                                    <td>${soldierStudentPage.entity.politicalLandscape}</td>
+                                    <td>${soldierSchoolPage.schoolEntity.politicalLandscape}</td>
                                 </tr>
                                 <tr>
                                     <td>籍贯：</td>
-                                    <td>${soldierStudentPage.entity.nativePlace}</td>
+                                    <td>${soldierSchoolPage.schoolEntity.nativePlace}</td>
                                     <td>民族：</td>
-                                    <td>${soldierStudentPage.entity.nationalName}</td>
+                                    <td>${soldierSchoolPage.schoolEntity.nationalName}</td>
                                 </tr>
                                 <tr>
                                     <td>出生日期:</td>
                                     <td>
-                                        <fmt:formatDate value='${soldierStudentPage.entity.birthDay}' type="date" pattern="yyyy-MM-dd"/>
+                                        <fmt:formatDate value='${soldierSchoolPage.schoolEntity.birthDay}' type="date" pattern="yyyy-MM-dd"/>
                                     </td>
                                     <td>入伍时间:</td>
                                     <td>
-                                        <fmt:formatDate value='${soldierStudentPage.entity.militaryTime}' type="date" pattern="yyyy-MM-dd"/>
+                                        <fmt:formatDate value='${soldierSchoolPage.schoolEntity.militaryTime}' type="date" pattern="yyyy-MM-dd"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>现军衔:</td>
-                                    <td>${soldierStudentPage.entity.nowRank}</td>
+                                    <td>${soldierSchoolPage.schoolEntity.nowRank}</td>
                                     <td>军衔时间:</td>
                                     <td>
-                                        <fmt:formatDate value='${soldierStudentPage.entity.rankTime}' type="date" pattern="yyyy-MM-dd"/>
+                                        <fmt:formatDate value='${soldierSchoolPage.schoolEntity.rankTime}' type="date" pattern="yyyy-MM-dd"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>学历:</td>
-                                    <td colspan="3">${soldierStudentPage.entity.education}</td>
+                                    <td colspan="3">${soldierSchoolPage.schoolEntity.education}</td>
                                 </tr>
                             </table>
                         </div>
@@ -103,13 +103,13 @@
                                 <tr>
                                     <td>
                                         <input class="Wdate" onClick="WdatePicker()" name="startTime"
-                                               value="<fmt:formatDate value='${soldierStudentPage.startTime}' type="date" pattern="yyyy-MM-dd"/>">
+                                               value="<fmt:formatDate value='${soldierSchoolPage.startTime}' type="date" pattern="yyyy-MM-dd"/>">
                                         -
                                         <input class="Wdate" onClick="WdatePicker()" name="endTime"
-                                               value="<fmt:formatDate value='${soldierStudentPage.endTime}' type="date" pattern="yyyy-MM-dd"/>">
+                                               value="<fmt:formatDate value='${soldierSchoolPage.endTime}' type="date" pattern="yyyy-MM-dd"/>">
                                     </td>
                                     <td>
-                                        <input type="text" name="zhiWu" value="${soldierStudentPage.zhiWu}">
+                                        <input type="text" name="zhiWu" value="${soldierSchoolPage.zhiWu}">
                                     </td>
                                 </tr>
                             </table>
@@ -134,8 +134,8 @@
                                     <th>条目</th>
                                     <th>操作</th>
                                 </tr>
-                                <c:if test="${fn:length(soldierStudentPage.shouJiangQingKuang) > 0 }">
-                                    <c:forEach items="${soldierStudentPage.shouJiangQingKuang}" var="shouJiang" varStatus="stuts">
+                                <c:if test="${fn:length(soldierSchoolPage.shouJiangQingKuang) > 0 }">
+                                    <c:forEach items="${soldierSchoolPage.shouJiangQingKuang}" var="shouJiang" varStatus="stuts">
                                         <tr id="${stuts.index}_shouJiangs">
                                             <td><input type="text" name="${stuts.index}_shouJiangs" value="${shouJiang}"></td>
                                             <td><a href="#" onclick="deleteItem('${stuts.index}_shouJiangs')">删除</a></td>
@@ -165,22 +165,22 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input type="text" name="yingDao" value="${soldierStudentPage.yingDao}" onkeyup="demoEvalChange()">
+                                        <input type="text" name="yingDao" value="${soldierSchoolPage.yingDao}" onkeyup="demoEvalChange()">
                                     </td>
                                     <td>
-                                        <input type="text" name="shiDao" value="${soldierStudentPage.shiDao}" onkeyup="demoEvalChange()">
+                                        <input type="text" name="shiDao" value="${soldierSchoolPage.shiDao}" onkeyup="demoEvalChange()">
                                     </td>
                                     <td>
-                                        <input type="text" name="youXiao" value="${soldierStudentPage.youXiao}">
+                                        <input type="text" name="youXiao" value="${soldierSchoolPage.youXiao}">
                                     </td>
                                     <td>
-                                        <input type="text" name="chuQin" value="${soldierStudentPage.chuQin}" readonly="readonly">
+                                        <input type="text" name="chuQin" value="${soldierSchoolPage.chuQin}" readonly="readonly">
                                     </td>
                                     <td>
-                                        <input type="text" name="zanCheng" value="${soldierStudentPage.zanCheng}" onkeyup="demoEvalChange()">
+                                        <input type="text" name="zanCheng" value="${soldierSchoolPage.zanCheng}" onkeyup="demoEvalChange()">
                                     </td>
                                     <td>
-                                        <input type="text" name="recommandRate" value="${soldierStudentPage.recommandRate}" readonly="readonly">
+                                        <input type="text" name="recommandRate" value="${soldierSchoolPage.recommandRate}" readonly="readonly">
                                     </td>
                                 </tr>
                             </table>
@@ -205,19 +205,19 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input type="text" name="junShiKeMu" value="${soldierStudentPage.junShiKeMu}">
+                                        <input type="text" name="junShiKeMu" value="${soldierSchoolPage.junShiKeMu}">
                                     </td>
                                     <td>
-                                        <input type="text" name="wenHuaKeMu" value="${soldierStudentPage.wenHuaKeMu}">
+                                        <input type="text" name="wenHuaKeMu" value="${soldierSchoolPage.wenHuaKeMu}">
                                     </td>
                                     <td>
-                                        <input type="text" name="mainShi" value="${soldierStudentPage.mainShi}">
+                                        <input type="text" name="mainShi" value="${soldierSchoolPage.mainShi}">
                                     </td>
                                     <td>
-                                        <input type="text" name="totalScore" value="${soldierStudentPage.totalScore}">
+                                        <input type="text" name="totalScore" value="${soldierSchoolPage.totalScore}">
                                     </td>
                                     <td>
-                                        <input type="text" name="totalRank" value="${soldierStudentPage.totalRank}">
+                                        <input type="text" name="totalRank" value="${soldierSchoolPage.totalRank}">
                                     </td>
                                 </tr>
                             </table>
@@ -236,10 +236,10 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input type="text" name="tiJianJieGuo" value="${soldierStudentPage.tiJianJieGuo}">
+                                        <input type="text" name="tiJianJieGuo" value="${soldierSchoolPage.tiJianJieGuo}">
                                     </td>
                                     <td>
-                                        <input type="text" name="shuoMing" value="${soldierStudentPage.shuoMing}">
+                                        <input type="text" name="shuoMing" value="${soldierSchoolPage.shuoMing}">
                                     </td>
                                 </tr>
                             </table>
@@ -269,28 +269,28 @@
                                 <tr>
                                     <td>成绩</td>
                                     <td>
-                                        <input type="text" name="tiZhi" value="${soldierStudentPage.tiZhi}">
+                                        <input type="text" name="tiZhi" value="${soldierSchoolPage.tiZhi}">
                                     </td>
                                     <td>
-                                        <input type="text" name="shiDan" value="${soldierStudentPage.shiDan}">
+                                        <input type="text" name="shiDan" value="${soldierSchoolPage.shiDan}">
                                     </td>
                                     <td>
-                                        <input type="text" name="qianJing" value="${soldierStudentPage.qianJing}">
+                                        <input type="text" name="qianJing" value="${soldierSchoolPage.qianJing}">
                                     </td>
                                     <td>
-                                        <input type="text" name="yangWo" value="${soldierStudentPage.yangWo}">
+                                        <input type="text" name="yangWo" value="${soldierSchoolPage.yangWo}">
                                     </td>
                                     <td>
-                                        <input type="text" name="sheXing" value="${soldierStudentPage.sheXing}">
+                                        <input type="text" name="sheXing" value="${soldierSchoolPage.sheXing}">
                                     </td>
                                     <td>
-                                        <input type="text" name="sanQian" value="${soldierStudentPage.sanQian}">
+                                        <input type="text" name="sanQian" value="${soldierSchoolPage.sanQian}">
                                     </td>
                                     <td>
-                                        <input type="text" name="junShiChengJi" value="${soldierStudentPage.junShiChengJi}">
+                                        <input type="text" name="junShiChengJi" value="${soldierSchoolPage.junShiChengJi}">
                                     </td>
                                     <td>
-                                        <input type="text" name="junShiJiaFeng" value="${soldierStudentPage.junShiJiaFeng}">
+                                        <input type="text" name="junShiJiaFeng" value="${soldierSchoolPage.junShiJiaFeng}">
                                     </td>
                                 </tr>
                             </table>
@@ -306,8 +306,8 @@
                                     <th>明细</th>
                                     <th>操作</th>
                                 </tr>
-                                <c:if test="${fn:length(soldierStudentPage.junShiJiaFen) > 0 }">
-                                    <c:forEach items="${soldierStudentPage.junShiJiaFen}" var="junShi" varStatus="stuts">
+                                <c:if test="${fn:length(soldierSchoolPage.junShiJiaFen) > 0 }">
+                                    <c:forEach items="${soldierSchoolPage.junShiJiaFen}" var="junShi" varStatus="stuts">
                                         <tr id="${stuts.index}_junShiJiaFens">
                                             <td>
                                                 <input class="Wdate" onClick="WdatePicker()" name="${stuts.index}_time"
@@ -340,30 +340,30 @@
                                     <td>支部研究确定选取对象</td>
                                     <td>
                                         <input class="Wdate" onClick="WdatePicker()" name="zhiBuTime"
-                                               value="<fmt:formatDate value='${soldierStudentPage.zhiBu.time}' type="date" pattern="yyyy-MM-dd"/>">
+                                               value="<fmt:formatDate value='${soldierSchoolPage.zhiBu.time}' type="date" pattern="yyyy-MM-dd"/>">
                                     </td>
                                     <td>
-                                        <input type="text" name="zhiBuJueDing" value="${soldierStudentPage.zhiBu.yanJiuJueDing}">
+                                        <input type="text" name="zhiBuJueDing" value="${soldierSchoolPage.zhiBu.yanJiuJueDing}">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>营党委研究确定选取对象</td>
                                     <td>
                                         <input class="Wdate" onClick="WdatePicker()" name="yingDangWeiTime"
-                                               value="<fmt:formatDate value='${soldierStudentPage.yingDangWei.time}' type="date" pattern="yyyy-MM-dd"/>">
+                                               value="<fmt:formatDate value='${soldierSchoolPage.yingDangWei.time}' type="date" pattern="yyyy-MM-dd"/>">
                                     </td>
                                     <td>
-                                        <input type="text" name="yingDangWeiJueDing" value="${soldierStudentPage.yingDangWei.yanJiuJueDing}">
+                                        <input type="text" name="yingDangWeiJueDing" value="${soldierSchoolPage.yingDangWei.yanJiuJueDing}">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>旅党委研究确定选取对象</td>
                                     <td>
                                         <input class="Wdate" onClick="WdatePicker()" name="lvDangWeiTime"
-                                               value="<fmt:formatDate value='${soldierStudentPage.lvDangWei.time}' type="date" pattern="yyyy-MM-dd"/>">
+                                               value="<fmt:formatDate value='${soldierSchoolPage.lvDangWei.time}' type="date" pattern="yyyy-MM-dd"/>">
                                     </td>
                                     <td>
-                                        <input type="text" name="lvDangWeiJueDing" value="${soldierStudentPage.lvDangWei.yanJiuJueDing}">
+                                        <input type="text" name="lvDangWeiJueDing" value="${soldierSchoolPage.lvDangWei.yanJiuJueDing}">
                                     </td>
                                 </tr>
                             </table>
@@ -376,7 +376,7 @@
                 <a onclick="submitPerformances()" class="l-btn">
                     <span class="l-btn-left" style="background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#33bbee), to(#2288cc)); color: #fff;">提交</span>
                 </a>
-                <a href="${webRoot }/soldierStudentController.do?soldierStudent" class="l-btn">
+                <a href="${webRoot }/soldierSchoolController.do?soldierSchool" class="l-btn">
                     <span class="l-btn-left">返回</span>
                 </a>
             </div>
@@ -446,8 +446,8 @@
         }
 
         function submitPerformances() {
-            var arry = $("#processSoldierStudent").serialize();
-            var temp = $("#processSoldierStudent").serializeArray();
+            var arry = $("#processSoldierSchool").serialize();
+            var temp = $("#processSoldierSchool").serializeArray();
             var shouJiang = [], times = [], details = [];
             $.each(temp,function(i,v){
                 if(v.name.indexOf("_shouJiangs")>-1){
@@ -461,7 +461,7 @@
             arry = arry +"&"+"shouJiangQingKuang=" + shouJiang+
                 "&"+"times=" + times +
                 "&"+"details=" + details;
-            var id = "${soldierStudentPage.entity.id}";
+            var id = "${soldierSchoolPage.schoolEntity.id}";
             console.log("sdsd:"+arry);
             $.ajax({
                 url : "soldierStudentController.do?modifyProcess&id="+id,

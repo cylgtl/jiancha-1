@@ -4,326 +4,315 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>战士请假</title>
-  <!-- Bootstrap core CSS-->
-  <link href="plug-in/startbootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom fonts for this template-->
-  <link href="plug-in/startbootstrap/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <!-- Custom styles for this template-->
-  <link href="plug-in/startbootstrap/css/sb-admin.css" rel="stylesheet">
-  <style type="text/css">
-    td{
-     text-align: right;
-     font-size: 12px;
-    }
-    
-    th{
-     text-align: center;
-     font-size: 14px;
-    }
-  </style>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<titl>优秀士兵保送入学</titl>
+	<!-- Bootstrap core CSS-->
+	<link href="plug-in/startbootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Custom fonts for this template-->
+	<link href="plug-in/startbootstrap/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<!-- Custom styles for this template-->
+	<link href="plug-in/startbootstrap/css/sb-admin.css" rel="stylesheet">
+	<style type="text/css">
+		td{
+			text-align: center;
+			font-size: 12px;
+		}
+		th{
+			text-align: center;
+			font-size: 14px;
+		}
+		.card-header {
+			font-size: 14px;
+		}
+	</style>
 </head>
 <body id="page-top">
-  <!-- Navigation-->
-  <div class="content-wrapper">
-    <div class="container-fluid">
-      <!-- Breadcrumbs-->
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item active">优秀士兵保送入学</li>
-          <c:if test="${empty isView}">
-        <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('soldierSchoolController.do?viewMainDetial&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
-        </c:if>
-      </ol>
-      <!-- Area Chart Example-->
-     <!--  <div class="card mb-3">
-        <div class="card-header">
-          <i class="fa fa-area-chart"></i> Area Chart Example</div>
-        <div class="card-body">
-          <canvas id="myAreaChart" width="100%" height="30"></canvas>
-        </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-      </div> -->
-      <div class="row">
-        <div class="col-lg-6">
-          <!-- Example Bar Chart Card-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-bar-chart"></i> 基本资料</div>
-            <div class="card-body">
-            <table class="table table-bordered" id="dataTable" width="100%" style="font-size: 12px;" cellspacing="0">
-				<tr>
-					<td>
-					姓名：
-					</td>
-					<td>
-					${soldierSchoolPage.name}
-					</td>
-					<td>
-					性别：
-					</td>
-					<td>
-					${soldierSchoolPage.sex}
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-					部职别：
-					</td>
-					<td >
-					${soldierSchoolPage.jobTitle}
-					</td>
-					<td>
-					政治面貌:
-					</td>
-					<td >
-					${soldierSchoolPage.politicalLandscape}
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-					籍贯：
-					</td>
-					<td>
-					${soldierSchoolPage.nativePlace}
-					</td>
-					<td>
-					民族：
-					</td>
-					<td>
-					${soldierSchoolPage.nationalName}
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-					出生日期:
-					</td>
-					<td>
-					<fmt:formatDate value='${soldierSchoolPage.birthDay}' type="date" pattern="yyyy-MM-dd"/>
-					
-					</td>
-					<td>
-						入伍时间:
-					</td>
-					<td>
-					<fmt:formatDate value='${soldierSchoolPage.militaryTime}' type="date" pattern="yyyy-MM-dd"/>
-					
-					
-					</td>
-				</tr>
-				
-				
-				<tr>
-					<td>
-					现军衔:
-					</td>
-					<td>
-					${soldierSchoolPage.nowRank}
-					</td>
-					<td>
-					军衔时间:
-					</td>
-					<td>
-					<fmt:formatDate value='${soldierSchoolPage.rankTime}' type="date" pattern="yyyy-MM-dd"/>
-					
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-					学历:
-					</td>
-					<td colspan="3">
-					${soldierSchoolPage.education}
-					</td>
-					
-				</tr>
-                </table>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <!-- Example Pie Chart Card-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-pie-chart"></i>个人平时表现</div>
-            <div class="card-body">
-                <table class="table table-bordered" id="dataTable" width="100%" style="font-size: 12px;" cellspacing="0">
-                	<c:if test="${fn:length(performanceLists)  > 0 }">
-					<c:forEach items="${performanceLists}" var="performance" varStatus="stuts">
-				<tr>
-					<td>
-					类型：
-					</td>
-					<td>
-					<c:forEach items="${typeList}" var="type">
-                     <c:if test="${type.typecode==performance.bxType }">${type.typename}</c:if>
-                </c:forEach>
-					
-					</td>
-					<td>
-					附件：
-					</td>
-					<td>
-					  <a target="_blank" href="${performance.fileId}">下载</a>	
-					</td>
-				</tr>
-				</c:forEach>
-				</c:if>
-                </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      
-   <div class="row">
-        <div class="col-lg-12">
-          <!-- Example Bar Chart Card-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-pie-chart"></i> 各级研究意见和结果</div>
-            <div class="card-body">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            
-                <tr>
-                  <th>开始时间</th>
-                  <th>结束时间</th>
-                  <th>单位</th>
-                  <th>意见</th>
-                  <th>附件</th>
-                </tr>
-              <c:if test="${fn:length(auditingLists)  > 0 }">
-			<c:forEach items="${auditingLists}" var="auditing" varStatus="stuts">
-                <tr align="center">
-                <td align="center"><fmt:formatDate value='${auditing.beginTime}' type="date" pattern="yyyy-MM-dd"/></td>
-				<td align="center"><fmt:formatDate value='${auditing.endTime}' type="date" pattern="yyyy-MM-dd"/></td>
-				<td align="center">${auditing.unit}</td>
-				<td align="center">${auditing.suggestion}</td>
-					<td align="center">
-				
-   							  <a target="_blank" href="${auditing.fileId}">下载</a>		
-  					
-					</td>
-					</tr>
-                </c:forEach>
-                </c:if>
-                </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      
-       <div class="row">
-        <div class="col-lg-12">
-          <!-- Example Bar Chart Card-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-pie-chart"></i>民主评议/推荐</div>
-            <div class="card-body">
-             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            
-                <tr>
-                  	<th>评议方</th>
-		<th>开始时间</th>
-		<th>结束时间</th>
-		<!-- <th>评议意见</th> -->
-		<th>应到人数</th>
-		<th>赞成票</th>
-		<th>有效票</th>
-		<th>实到人数</th>
-		<th>得票率</th>
-		<th>出勤率</th>
-                </tr>
-         
-		<c:if test="${fn:length(recommendLists)  > 0 }">
-			<c:forEach items="${recommendLists}" var="recommend" varStatus="stuts">
-				<tr>
-				<td >${recommend.recommendPerson}
-				</td>
-				<td  ><fmt:formatDate value='${recommend.beginTime}' type="date" pattern="yyyy-MM-dd"/>
-				</td>
-				<td  ><fmt:formatDate value='${recommend.endTime}' type="date" pattern="yyyy-MM-dd"/>
-				</td>
-				<%-- <td  >${recommend.suggestion}
-				</td> --%>
-				<td >${recommend.shouldNumber}
-				</td>
-				<td  >${recommend.hierarchyNumber}
-				</td>
-				
-				<td >${recommend.effective}
-				</td>
-				<td  >${recommend.attendance}
-				</td>
-				<td >${recommend.favour}
-				</td>
-				<td >${recommend.vote}
-				</td>
-				
-				</tr>
-			</c:forEach>
-		</c:if>
-                </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      
-      
-       <div class="row">
-        <div class="col-lg-12">
-          <!-- Example Bar Chart Card-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-pie-chart"></i> 考核结果</div>
-             <div class="card-body">
-                <table class="table table-bordered" id="dataTable" width="100%" style="font-size: 12px;" cellspacing="0">
-                	<c:if test="${fn:length(assessmentLists)  > 0 }">
-					<c:forEach items="${assessmentLists}" var="assessment" varStatus="stuts">
-				<tr>
-					<td>
-					附件：
-					</td>
-					<td>
-					  <a target="_blank" href="${assessment.fileId}">下载</a>	
-					</td>
-				</tr>
-				</c:forEach>
-				</c:if>
-                </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    <!-- Bootstrap core JavaScript-->
-    <script src="plug-in/startbootstrap/vendor/jquery/jquery.min.js"></script>
-    <script src="plug-in/startbootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="plug-in/startbootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Page level plugin JavaScript-->
-    <script src="plug-in/startbootstrap/vendor/chart.js/Chart.min.js"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="plug-in/startbootstrap/js/sb-admin.min.js"></script>
-    <!-- Custom scripts for this page-->
-    <script src="plug-in/startbootstrap/js/sb-admin-charts.min.js"></script>
-    <script src="plug-in/lhgDialog/lhgdialog.min.js"></script>
-    
-    <script type="text/javascript">
-	 function goToReport(url) {
-		//iframe层-父子操作
-		//createwindow('信息举报',"reportController.do?addorupdate&url=" + url,900, 450);
-		add('录入',"reportController.do?addorupdate&url=" + url,'reportList',null,400);
-	  }
-    </script>
-  </div>
+<!-- Navigation-->
+<div class="content-wrapper">
+	<div class="container-fluid">
+		<!-- Breadcrumbs-->
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item active">优秀士兵保送入学</li>
+			<a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('soldierSchoolController.do?viewMainDetial&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
+		</ol>
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fa fa-user-circle"></i> 个人基本信息</div>
+					<div class="card-body">
+						<table class="table table-bordered" width="100%" style="font-size: 12px;" cellspacing="0">
+							<tr>
+								<td>姓名：</td>
+								<td>${soldierSchoolPage.schoolEntity.name}</td>
+								<td>性别：</td>
+								<td>${soldierSchoolPage.schoolEntity.sex}</td>
+							</tr>
+							<tr>
+								<td>部职别：</td>
+								<td>${soldierSchoolPage.schoolEntity.jobTitle}</td>
+								<td>政治面貌:</td>
+								<td>${soldierSchoolPage.schoolEntity.politicalLandscape}</td>
+							</tr>
+							<tr>
+								<td>籍贯：</td>
+								<td>${soldierSchoolPage.schoolEntity.nativePlace}</td>
+								<td>民族：</td>
+								<td>${soldierSchoolPage.schoolEntity.nationalName}</td>
+							</tr>
+							<tr>
+								<td>出生日期:</td>
+								<td>
+									<fmt:formatDate value='${soldierSchoolPage.schoolEntity.birthDay}' type="date" pattern="yyyy-MM-dd"/>
+								</td>
+								<td>入伍时间:</td>
+								<td>
+									<fmt:formatDate value='${soldierSchoolPage.schoolEntity.militaryTime}' type="date" pattern="yyyy-MM-dd"/>
+								</td>
+							</tr>
+							<tr>
+								<td>现军衔:</td>
+								<td>${soldierSchoolPage.schoolEntity.nowRank}</td>
+								<td>军衔时间:</td>
+								<td>
+									<fmt:formatDate value='${soldierSchoolPage.schoolEntity.rankTime}' type="date" pattern="yyyy-MM-dd"/>
+								</td>
+							</tr>
+							<tr>
+								<td>学历:</td>
+								<td colspan="3">${soldierSchoolPage.schoolEntity.education}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fa fa-map-o"></i> 任骨干情况</div>
+					<div class="card-body">
+						<table class="table table-bordered" width="100%" style="font-size: 12px;" cellspacing="0">
+							<tr>
+								<th>起止时间</th>
+								<th>担任职务</th>
+							</tr>
+							<tr>
+								<td>
+									<fmt:formatDate value='${soldierSchoolPage.startTime}' type="date" pattern="yyyy-MM-dd"/>
+									—
+									<fmt:formatDate value='${soldierSchoolPage.endTime}' type="date" pattern="yyyy-MM-dd"/>
+								</td>
+								<td>${soldierSchoolPage.zhiWu}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fa fa-tasks"></i> 立功受奖情况</div>
+					<div class="card-body">
+						<table class="table table-bordered" width="100%" cellspacing="0">
+							<tr>
+								<th>序号</th>
+								<th>条目</th>
+							</tr>
+							<c:if test="${fn:length(soldierSchoolPage.shouJiangQingKuang) > 0 }">
+								<c:forEach items="${soldierSchoolPage.shouJiangQingKuang}" var="shouJiang" varStatus="stuts">
+									<tr>
+										<td>${stuts.index}</td>
+										<td>${shouJiang}</td>
+									</tr>
+								</c:forEach>
+							</c:if>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fa fa-hand-stop-o"></i> 民主推荐</div>
+					<div class="card-body">
+						<table class="table table-bordered" width="100%" cellspacing="0">
+							<tr>
+								<th>应到人数</th>
+								<th>实到人数</th>
+								<th>有效票数</th>
+								<th>出勤率</th>
+								<th>赞成票</th>
+								<th>得票率</th>
+							</tr>
+							<tr>
+								<td>${soldierSchoolPage.yingDao}</td>
+								<td>${soldierSchoolPage.shiDao}</td>
+								<td>${soldierSchoolPage.youXiao}</td>
+								<td>${soldierSchoolPage.chuQin}</td>
+								<td>${soldierSchoolPage.zanCheng}</td>
+								<td>${soldierSchoolPage.recommandRate}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fa fa-hourglass-start"></i> 总体成绩</div>
+					<div class="card-body">
+						<table class="table table-bordered" width="100%" style="font-size: 12px;" cellspacing="0">
+							<tr>
+								<th>军事科目成绩</th>
+								<th>文化科目成绩</th>
+								<th>面试成绩</th>
+								<th>总成绩</th>
+								<th>排名</th>
+							</tr>
+							<tr>
+								<td>${soldierSchoolPage.junShiKeMu}</td>
+								<td>${soldierSchoolPage.wenHuaKeMu}</td>
+								<td>${soldierSchoolPage.mainShi}</td>
+								<td>${soldierSchoolPage.totalScore}</td>
+								<td>${soldierSchoolPage.totalRank}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fa fa-file-text"></i> 体检情况</div>
+					<div class="card-body">
+						<table class="table table-bordered" width="100%" style="font-size: 12px;" cellspacing="0">
+							<tr>
+								<th>体检结果</th>
+								<th>情况说明</th>
+							</tr>
+							<tr>
+								<td>${soldierSchoolPage.tiJianJieGuo}</td>
+								<td>${soldierSchoolPage.shuoMing}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fa fa-file-text"></i> 军事考核成绩</div>
+					<div class="card-body">
+						<table class="table table-bordered" width="100%" cellspacing="0">
+							<tr>
+								<th>科目</th>
+								<th>停止间转法</th>
+								<th>实弹射击</th>
+								<th>前进</th>
+								<th>仰卧起坐</th>
+								<th>蛇形跑</th>
+								<th>3000米</th>
+								<th>军事成绩</th>
+								<th>军事加分</th>
+							</tr>
+							<tr>
+								<td>成绩</td>
+								<td>${soldierSchoolPage.tiZhi}</td>
+								<td>${soldierSchoolPage.shiDan}</td>
+								<td>${soldierSchoolPage.qianJing}</td>
+								<td>${soldierSchoolPage.yangWo}</td>
+								<td>${soldierSchoolPage.sheXing}</td>
+								<td>${soldierSchoolPage.sanQian}</td>
+								<td>${soldierSchoolPage.junShiChengJi}</td>
+								<td>${soldierSchoolPage.junShiJiaFeng}</td>
+							</tr>
+						</table>
+						<div style="font-size: 14px; text-align: center">军事加分明细</div>
+						<table class="table table-bordered mt5" width="100%" cellspacing="0">
+							<tr>
+								<th>时间</th>
+								<th>明细</th>
+							</tr>
+							<c:if test="${fn:length(soldierSchoolPage.junShiJiaFen) > 0 }">
+								<c:forEach items="${soldierSchoolPage.junShiJiaFen}" var="junShiJiaFen" varStatus="stuts">
+									<tr>
+										<td>${junShiJiaFen.time}</td>
+										<td>${junShiJiaFen.detail}</td>
+									</tr>
+								</c:forEach>
+							</c:if>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fa fa-pencil"></i> 组织审批</div>
+					<div class="card-body">
+						<table class="table table-bordered" width="100%" cellspacing="0">
+							<tr>
+								<th>条目</th>
+								<th>时间</th>
+								<th>研究决定</th>
+							</tr>
+							<tr>
+								<td>支部研究确定选取对象</td>
+								<td>${soldierSchoolPage.zhiBu.time}</td>
+								<td>${soldierSchoolPage.zhiBu.yanJiuJueDing}</td>
+							</tr>
+							<tr>
+								<td>营党委研究确定选取对象</td>
+								<td>${soldierSchoolPage.yingDangWei.time}</td>
+								<td>${soldierSchoolPage.yingDangWei.yanJiuJueDing}</td>
+							</tr>
+							<tr>
+								<td>旅党委研究确定选取对象</td>
+								<td>${soldierSchoolPage.lvDangWei.time}</td>
+								<td>${soldierSchoolPage.lvDangWei.yanJiuJueDing}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Bootstrap core JavaScript-->
+	<script src="plug-in/startbootstrap/vendor/jquery/jquery.min.js"></script>
+	<script src="plug-in/startbootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Core plugin JavaScript-->
+	<script src="plug-in/startbootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<!-- Page level plugin JavaScript-->
+	<script src="plug-in/startbootstrap/vendor/chart.js/Chart.min.js"></script>
+	<!-- Custom scripts for all pages-->
+	<script src="plug-in/startbootstrap/js/sb-admin.min.js"></script>
+	<!-- Custom scripts for this page-->
+	<script src="plug-in/startbootstrap/js/sb-admin-charts.min.js"></script>
+	<script src="plug-in/layer/layer.js"></script>
+	<script src="plug-in/lhgDialog/lhgdialog.min.js"></script>
+
+	<script type="text/javascript">
+        function goToReport(url) {
+            add('录入',"reportController.do?addorupdate&url=" + url,'reportList',null,400);
+        }
+	</script>
+</div>
 </body>
 </html>

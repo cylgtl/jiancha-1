@@ -1,8 +1,19 @@
 package com.inspection.pojo;
+import com.inspection.entity.soldierschool.SoldierSchoolEntity;
 import com.inspection.entity.soldierstudent.SoldierStudentEntity;
 import java.util.Date;
 import java.util.List;
 public class SoldierStudentMain {
+    private SoldierSchoolEntity schoolEntity;
+
+    public SoldierSchoolEntity getSchoolEntity() {
+        return schoolEntity;
+    }
+
+    public void setSchoolEntity(SoldierSchoolEntity schoolEntity) {
+        this.schoolEntity = schoolEntity;
+    }
+
     private SoldierStudentEntity entity;
     public SoldierStudentEntity getEntity() {
         return entity;

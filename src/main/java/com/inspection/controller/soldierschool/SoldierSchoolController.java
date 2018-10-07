@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.inspection.pojo.SoldierStudentMain;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -14,14 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.inspection.entity.officerleave.OfficerLeaveEntity;
 import com.inspection.entity.soldierschool.SoldierSchoolAssessmentEntity;
 import com.inspection.entity.soldierschool.SoldierSchoolAuditingEntity;
 import com.inspection.entity.soldierschool.SoldierSchoolEntity;
 import com.inspection.entity.soldierschool.SoldierSchoolMeritEntity;
 import com.inspection.entity.soldierschool.SoldierSchoolPerformanceEntity;
 import com.inspection.entity.soldierschool.SoldierSchoolRecommendEntity;
-import com.inspection.entity.soldierselect.SoldierSelectEntity;
 import com.inspection.pojo.SoldierSchoolMainPage;
 import com.inspection.service.soldierschool.SoldierSchoolServiceI;
 
@@ -295,7 +294,6 @@ public class SoldierSchoolController extends BaseController {
 	 * 
 	 * @Title: addorupdateOperate
 	 * @Description: 保存平时表现和审批结果
-	 * @param officerLeave
 	 * @param req
 	 * @return AjaxJson
 	 * @author  yxd
@@ -346,35 +344,9 @@ public class SoldierSchoolController extends BaseController {
 		result.setMsg("保存成功");
 		return result;
 	}
-
-	/**
-	 * 表彰奖励处理详情
-	 * @param soldierLeave
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewMain")
-	public ModelAndView viewMain(SoldierSchoolEntity soldierSchool, HttpServletRequest req) {
-		String id = req.getParameter("id");
-		/*if (StringUtils.isNotEmpty(id)) {
-			officerLeave = officerLeaveService.findEntity(OfficerLeaveEntity.class, id);
-			req.setAttribute("officerLeavePage", officerLeave);
-		}*/
-		TSTypegroup typegroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","bx_type");
-		if(typegroup!=null){
-			req.setAttribute("typeList", typegroup.getTSTypes());
-		}
-		TSTypegroup pxgroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","px_type");
-		if(pxgroup!=null){
-			req.setAttribute("pxList", pxgroup.getTSTypes());
-		}
-		req.setAttribute("residuald", id);
-		return new ModelAndView("com/inspection/soldierschool/main");
-	}
 	
 	/**
 	 * 表彰奖励个人基本信息详情
-	 * @param soldierLeave
 	 * @param req
 	 * @return
 	 */
@@ -395,135 +367,46 @@ public class SoldierSchoolController extends BaseController {
 			return new ModelAndView("com/inspection/soldierschool/myselfInfo");
 		
 	}
-	
-	
-	/**
-	 * 表彰奖励个人平时表现详情
-	 * @param soldierLeave
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewPerformance")
-	public ModelAndView viewPerformance(HttpServletRequest req) {
-		String id = req.getParameter("id");
 
-		if (StringUtils.isNotEmpty(id)) {
-			List<SoldierSchoolPerformanceEntity> lists= soldierSchoolService.findAllPerformances (id);
-			req.setAttribute("lists", lists);
-			req.setAttribute("residualId", id);
-		}
-		
-		TSTypegroup typegroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","bx_type");
-		if(typegroup!=null){
-			req.setAttribute("typeList", typegroup.getTSTypes());
-		}
-	
-			return new ModelAndView("com/inspection/soldierschool/performance");
-		
-		
-	}
-	
-	
 	/**
-	 * 表彰奖励上级意见结果详情
-	 * @param soldierLeave
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewAuditing")
-	public ModelAndView viewAuditing(HttpServletRequest req) {
-		String id = req.getParameter("id");
-
-		if (StringUtils.isNotEmpty(id)) {
-			List<SoldierSchoolAuditingEntity> lists= soldierSchoolService.findAllAudits (id);
-			req.setAttribute("lists", lists);
-			req.setAttribute("officerId", id);
-		}
-		
-			return new ModelAndView("com/inspection/soldierschool/auditing");
-		
-		
-	}
-	/**
-	 * 民族评议/推荐
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewResidualRecommend")
-	public ModelAndView viewResidualRecommend(HttpServletRequest req) {
-		String id = req.getParameter("id");
-		
-		if (StringUtils.isNotEmpty(id)) {
-			List<SoldierSchoolRecommendEntity> lists= soldierSchoolService.findAllRecommends(id);
-			req.setAttribute("lists", lists);
-			req.setAttribute("officerId", id);
-		}
-		
-			return new ModelAndView("com/inspection/soldierschool/soldierSchoolRecommend");
-		
-		
-	}
-	
-	/**
-	 * 考核结果
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewAssessment")
-	public ModelAndView viewAssessment(HttpServletRequest req) {
-		String id = req.getParameter("id");
-		if (StringUtils.isNotEmpty(id)) {
-			List<SoldierSchoolAssessmentEntity> lists= soldierSchoolService.findAlltAssessments(id);
-			req.setAttribute("lists", lists);
-			req.setAttribute("officerId", id);
-		}
-		TSTypegroup pxgroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","px_type");
-		if(pxgroup!=null){
-			req.setAttribute("pxList", pxgroup.getTSTypes());
-		}
-		return new ModelAndView("com/inspection/soldierschool/assessment");
-		
-		
-	}
-	
-	/**
-	 * 表彰奖励处理详情
-	 * @param soldierLeave
+	 * 查看或处理
 	 * @param req
 	 * @return
 	 */
 	@RequestMapping(params = "viewMainDetial")
-	public ModelAndView viewMainDetial(SoldierSchoolEntity soldierSchool, HttpServletRequest req) {
-		String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):soldierSchool.getId();
-		
-		/*if (StringUtils.isNotEmpty(id)) {
-			officerLeave = officerLeaveService.findEntity(OfficerLeaveEntity.class, id);
-			req.setAttribute("officerLeavePage", officerLeave);
-		}*/
-		soldierSchool = soldierSchoolService.findEntity(SoldierSchoolEntity.class, id);
-		req.setAttribute("soldierSchoolPage", soldierSchool);
+	public ModelAndView viewMainDetial(SoldierSchoolEntity schoolEntity, HttpServletRequest req) {
+		String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):schoolEntity.getId();
 		if (StringUtils.isNotEmpty(id)) {
-			List<SoldierSchoolPerformanceEntity> performanceLists= soldierSchoolService.findAllPerformances (id);
-			req.setAttribute("performanceLists", performanceLists);
-			;
+			SoldierStudentMain result = new SoldierStudentMain();
+			schoolEntity = soldierSchoolService.findEntity(SoldierSchoolEntity.class, id);
+			ArrayList<String> shouJiangQingKuang = new ArrayList<String>();
+			shouJiangQingKuang.add("加分项1");
+			shouJiangQingKuang.add("加分项2");
+			result.setShouJiangQingKuang(shouJiangQingKuang);
+			result.setSchoolEntity(schoolEntity);
+			req.setAttribute("soldierSchoolPage", result);
+			req.setAttribute("id", id);
 		}
-		TSTypegroup typegroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","bx_type");
-		if(typegroup!=null){
-			req.setAttribute("typeList", typegroup.getTSTypes());
-		}
-		TSTypegroup pxgroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","px_type");
-		if(pxgroup!=null){
-			req.setAttribute("pxList", pxgroup.getTSTypes());
-		}
-		List<SoldierSchoolAuditingEntity> auditingLists= soldierSchoolService.findAllAudits (id);
-		req.setAttribute("auditingLists", auditingLists);
-		List<SoldierSchoolRecommendEntity> recommendLists= soldierSchoolService.findAllRecommends(id);
-		req.setAttribute("recommendLists", recommendLists);
-		List<SoldierSchoolAssessmentEntity> assessmentLists= soldierSchoolService.findAlltAssessments(id);
-		req.setAttribute("assessmentLists", assessmentLists);
 		String isView =  req.getParameter("isView");
-		req.setAttribute("isView", isView);
-		req.setAttribute("id", id);
-		return new ModelAndView("com/inspection/soldierschool/mainDetial");
+		if(isView.equals("true")){
+			return new ModelAndView("com/inspection/soldierschool/mainDetial");
+		} else {
+			return new ModelAndView("com/inspection/soldierschool/processSoldierSchool");
+		}
+	}
+
+	/**
+	 * 处理页面
+	 * @param req
+	 * @return
+	 */
+	@RequestMapping(params = "modifyProcess")
+	@ResponseBody
+	public AjaxJson modifyProcess(SoldierStudentMain soldierStudentMain, HttpServletRequest req) {
+		AjaxJson result = new AjaxJson();
+		String id = req.getParameter("id");
+
+		result.setMsg("保存成功");
+		return result;
 	}
 }

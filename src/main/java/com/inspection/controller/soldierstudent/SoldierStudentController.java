@@ -364,9 +364,9 @@ public class SoldierStudentController extends BaseController {
 			result.setShouJiangQingKuang(shouJiangQingKuang);
 			result.setEntity(entity);
 			req.setAttribute("soldierStudentPage", result);
-            req.setAttribute("junShiJiaFenEntity", result.getJunShiJiaFen());
 		}
 		String isView =  req.getParameter("isView");
+        req.setAttribute("id", id);
         if(isView.equals("true")){
             return new ModelAndView("com/inspection/soldierstudent/mainDetial");
         } else {

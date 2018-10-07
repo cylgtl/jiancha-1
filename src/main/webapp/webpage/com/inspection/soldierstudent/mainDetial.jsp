@@ -40,7 +40,7 @@
         <div class="col-lg-6">
           <div class="card mb-3">
             <div class="card-header">
-              <i class="fa fa-bar-chart"></i> 基本资料</div>
+				<i class="fa fa-user-circle"></i> 个人基本信息</div>
             <div class="card-body">
             <table class="table table-bordered" width="100%" style="font-size: 12px;" cellspacing="0">
 				<tr>

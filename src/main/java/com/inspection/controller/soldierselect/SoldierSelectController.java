@@ -357,6 +357,7 @@ public class SoldierSelectController extends BaseController {
 		}
 
 		String isView = req.getParameter("isView");
+		req.setAttribute("id", id);
 		if(isView.equals("true")){
 			return new ModelAndView("com/inspection/soldierselect/mainDetial");
 		} else {

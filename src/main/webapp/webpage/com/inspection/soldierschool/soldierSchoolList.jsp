@@ -90,9 +90,7 @@
 	
 	function operateDetail(id,departId) {
 		if(admin || sessionDepartsCode.indexOf(departId) > -1){
-			createwindow('优秀士兵保送入学处理',
-					"soldierSchoolController.do?viewMain&id=" + id,
-					1024, 380);
+            location.href = "soldierSchoolController.do?viewMainDetial&id=" + id + "&isView=false";
 		}else{
 			alert("您没有权限处理其他连部的数据");
 		}
@@ -108,10 +106,7 @@
 	}
 
 	function lookDetail(id) {
-        /* createwindow('优秀士兵保送入学详情',
-        		"soldierSchoolController.do?viewMainDetial&id=" + id,
-                1024, 500); */
-		 location.href = "soldierSchoolController.do?viewMainDetial&id=" + id;
+		 location.href = "soldierSchoolController.do?viewMainDetial&id=" + id + "&isView=true";
     }
 	
 	function findDepartByParentId(departId){
