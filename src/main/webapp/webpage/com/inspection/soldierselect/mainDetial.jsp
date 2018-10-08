@@ -254,23 +254,23 @@
 							<tr>
 								<td>支部研究确定选取对象</td>
 								<td>
-									<fmt:formatDate value='${soldierSelectPage.zhiBu.time}' type="date" pattern="yyyy-MM-dd"/>
+									<fmt:formatDate value='${soldierSelectPage.zhiBuTime}' type="date" pattern="yyyy-MM-dd"/>
 								</td>
-								<td>${soldierSelectPage.zhiBu.yanJiuJueDing}</td>
+								<td>${soldierSelectPage.zhiBuJueDing}</td>
 							</tr>
 							<tr>
 								<td>营党委研究确定选取对象</td>
 								<td>
-									<fmt:formatDate value='${soldierSelectPage.yingDangWei.time}' type="date" pattern="yyyy-MM-dd"/>
+									<fmt:formatDate value='${soldierSelectPage.yingDangWeiTime}' type="date" pattern="yyyy-MM-dd"/>
 								</td>
-								<td>${soldierSelectPage.yingDangWei.yanJiuJueDing}</td>
+								<td>${soldierSelectPage.yingDangWeiJueDing}</td>
 							</tr>
 							<tr>
 								<td>旅党委研究确定选取对象</td>
 								<td>
-									<fmt:formatDate value='${soldierSelectPage.lvDangWei.time}' type="date" pattern="yyyy-MM-dd"/>
+									<fmt:formatDate value='${soldierSelectPage.lvDangWeiTime}' type="date" pattern="yyyy-MM-dd"/>
 								</td>
-								<td>${soldierSelectPage.lvDangWei.yanJiuJueDing}</td>
+								<td>${soldierSelectPage.lvDangWeiJueDing}</td>
 							</tr>
 						</table>
 					</div>

@@ -6,7 +6,14 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.inspection.controller.lib.JsonDateValueProcessor;
+import com.inspection.entity.JunShiJiaFen;
 import com.inspection.entity.soldierstudent.SoldierStudentMain;
+import net.sf.ezmorph.object.DateMorpher;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
+import net.sf.json.util.JSONUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -354,12 +361,21 @@ public class SoldierStudentController extends BaseController {
 		String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):entity.getId();
 		if (StringUtils.isNotEmpty(id)) {
 			SoldierStudentMain result = new SoldierStudentMain();
+			result = soldierStudentService.findEntity(SoldierStudentMain.class, id);
+			if (result == null) {
+				result = new SoldierStudentMain();
+			}
 			entity = soldierStudentService.findEntity(SoldierStudentEntity.class, id);
-			ArrayList<String> shouJiangQingKuang = new ArrayList<String>();
-			shouJiangQingKuang.add("加分项1");
-			shouJiangQingKuang.add("加分项2");
-			result.setShouJiangQingKuang(shouJiangQingKuang);
 			result.setEntity(entity);
+
+			result.setShouJiangQingKuang(JSONArray.toList(JSONArray.fromObject(result.getShouJiangString())));
+
+			String[] formats={"yyyy-MM-dd HH:mm:ss","yyyy-MM-dd"};
+			JSONUtils.getMorpherRegistry().registerMorpher(new DateMorpher(formats));
+			result.setJunShiJiaFen(JSONArray.toList(JSONArray.fromObject(result.getJiaFenString()),JunShiJiaFen.class));
+			//System.out.println("sss"+((JunShiJiaFen)JSONObject.toBean(JSONObject.fromObject("{'detail':'加分1','time':'2018-10-01'}"),JunShiJiaFen.class)).getTime());
+
+
 			req.setAttribute("soldierStudentPage", result);
 		}
 		String isView =  req.getParameter("isView");
@@ -377,11 +393,26 @@ public class SoldierStudentController extends BaseController {
     public AjaxJson modifyProcess(SoldierStudentMain soldierStudentMain, HttpServletRequest req) {
         AjaxJson result = new AjaxJson();
         String id = req.getParameter("id");
+		soldierStudentMain.setId(id);
+
         List<Date> times = soldierStudentMain.getTimes();
         List<String> details = soldierStudentMain.getDetails();
+        List<JunShiJiaFen> jiaFen = new ArrayList<JunShiJiaFen>();
         for( int i = 0 ; i < times.size() ; i++) {
-            System.out.println(times.get(i).toString());
+            if (times.get(i) != null) {
+				jiaFen.add(new JunShiJiaFen(times.get(i),details.get(i)));
+			}
         }
+
+		if (jiaFen.size() > 0) {
+			JsonConfig jsonConfig = new JsonConfig();
+			jsonConfig.registerJsonValueProcessor(Date.class , new JsonDateValueProcessor());
+			soldierStudentMain.setJiaFenString(JSONArray.fromObject(jiaFen,jsonConfig).toString());
+		}
+
+		soldierStudentMain.setShouJiangString(JSONArray.fromObject(soldierStudentMain.getShouJiangQingKuang()).toString());
+
+		soldierStudentService.saveOrUpdate(soldierStudentMain);
 
         result.setMsg("保存成功");
         return result;

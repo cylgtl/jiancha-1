@@ -5,6 +5,7 @@ import java.util.Date;
 public class JunShiJiaFen{
     private Date time;
     private String detail;
+    public JunShiJiaFen(){}
     public JunShiJiaFen(Date time, String detail) {
         this.time = time;
         this.detail = detail;

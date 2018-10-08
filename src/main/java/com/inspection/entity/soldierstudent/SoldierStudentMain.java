@@ -1,12 +1,37 @@
 package com.inspection.entity.soldierstudent;
 import com.inspection.entity.JunShiJiaFen;
 import com.inspection.entity.soldierschool.SoldierSchoolEntity;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-public class SoldierStudentMain {
+
+
+@Entity
+@Table(name = "t_soldier_student", schema = "")
+@DynamicUpdate(true)
+@DynamicInsert(true)
+public class SoldierStudentMain implements Serializable {
+    private String id;
+
+    @Id
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     private SoldierSchoolEntity schoolEntity;
 
+    @Transient
     public SoldierSchoolEntity getSchoolEntity() {
         return schoolEntity;
     }
@@ -16,6 +41,7 @@ public class SoldierStudentMain {
     }
 
     private SoldierStudentEntity entity;
+    @Transient
     public SoldierStudentEntity getEntity() {
         return entity;
     }
@@ -28,6 +54,16 @@ public class SoldierStudentMain {
     private String zhiWu; //担任职务
     //立功受奖情况
     private List<String> shouJiangQingKuang;
+    private String shouJiangString;
+
+    public String getShouJiangString() {
+        return shouJiangString;
+    }
+
+    public void setShouJiangString(String shouJiangString) {
+        this.shouJiangString = shouJiangString;
+    }
+
     //民主推荐
     private int yingDao; //应到人数
     private int shiDao; //实到人数
@@ -55,8 +91,19 @@ public class SoldierStudentMain {
     private float junShiJiaFeng; //军事加分
     //军事加分细则
     private List<JunShiJiaFen> junShiJiaFen;
+    private String jiaFenString;
+
+    public String getJiaFenString() {
+        return jiaFenString;
+    }
+
+    public void setJiaFenString(String jiaFenString) {
+        this.jiaFenString = jiaFenString;
+    }
+
     private List<Date> times;
 
+    @Transient
     public List<Date> getTimes() {
         return times;
     }
@@ -65,6 +112,7 @@ public class SoldierStudentMain {
         this.times = times;
     }
 
+    @Transient
     public List<String> getDetails() {
         return details;
     }
@@ -99,6 +147,7 @@ public class SoldierStudentMain {
         this.zhiWu = zhiWu;
     }
 
+    @Transient
     public List<String> getShouJiangQingKuang() {
         return shouJiangQingKuang;
     }
@@ -275,6 +324,7 @@ public class SoldierStudentMain {
         this.junShiJiaFeng = junShiJiaFeng;
     }
 
+    @Transient
     public List<JunShiJiaFen> getJunShiJiaFen() {
         return junShiJiaFen;
     }
