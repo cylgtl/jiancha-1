@@ -1,12 +1,34 @@
-package com.inspection.pojo;
+package com.inspection.entity.personnelSelection;
 
-import com.inspection.entity.personnelSelection.PersonnelSelectionEntity;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import java.io.Serializable;
 import java.util.Date;
 
-public class PersonnelSelectionMain {
+@Entity
+@Table(name = "t_personnel_selection", schema = "")
+@DynamicUpdate(true)
+@DynamicInsert(true)
+public class PersonnelSelectionMain implements Serializable {
+    private String id;
+
+    @Id
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     private PersonnelSelectionEntity entity;
 
+    @Transient
     public PersonnelSelectionEntity getEntity() {
         return entity;
     }
