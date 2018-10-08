@@ -61,6 +61,16 @@ public class AdjustMain implements Serializable {
     //评岗位历练
     private List<String> jiaJianXiang; //加减分项
 
+    public String getJiaJianString() {
+        return jiaJianString;
+    }
+
+    public void setJiaJianString(String jiaJianString) {
+        this.jiaJianString = jiaJianString;
+    }
+
+    private String jiaJianString;
+
     //评工作实绩
     private String pingShen; //评审结果
     private float pingShenScore; //得分

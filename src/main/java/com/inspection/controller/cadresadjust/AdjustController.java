@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.inspection.entity.cadresadjust.AdjustMain;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -368,12 +370,10 @@ public class AdjustController extends BaseController {
 		String id = req.getParameter("id");
 		AdjustMain result = new AdjustMain();
 		if (StringUtils.isNotEmpty(id)) {
+			result = adjustService.findEntity(AdjustMain.class, id);
 			adjust = adjustService.findEntity(AdjustEntity.class, id);
 			result.setAdjust(adjust);
-			ArrayList<String> jiaJianXiang = new ArrayList<String>();
-			jiaJianXiang.add("加分项1");
-            jiaJianXiang.add("加分项2");
-			result.setJiaJianXiang(jiaJianXiang);
+			result.setJiaJianXiang(JSONArray.toList(JSONArray.fromObject(result.getJiaJianString())));
 			req.setAttribute("adjustPage", result);
 		}
         String isView = req.getParameter("isView");
@@ -391,6 +391,9 @@ public class AdjustController extends BaseController {
         AjaxJson result = new AjaxJson();
         String id = req.getParameter("id");
         adjustMain.setId(id);
+		//System.out.println("tttt   "+adjustMain.getJiaJianXiang().size());
+		adjustMain.setJiaJianString(JSONArray.fromObject(adjustMain.getJiaJianXiang()).toString());
+		//System.out.println("ttt   "+JSONArray.fromObject(adjustMain.getJiaJianXiang()).toString());
         adjustService.saveOrUpdate(adjustMain);
         result.setMsg("保存成功");
         return result;
