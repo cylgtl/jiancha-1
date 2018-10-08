@@ -347,10 +347,14 @@ public class SoldierSelectController extends BaseController {
 		String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):entity.getId();
 
 		if (StringUtils.isNotEmpty(id)) {
-            entity = soldierselectService.findEntity(SoldierSelectEntity.class, id);
-			SoldierSelectMain soldierSelect = new SoldierSelectMain();
-			soldierSelect.setEntity(entity);
-			req.setAttribute("soldierSelectPage", soldierSelect);
+			SoldierSelectMain result = soldierselectService.findEntity(SoldierSelectMain.class, id);
+			if (result == null){
+				result = new SoldierSelectMain();
+			}
+
+			entity = soldierselectService.findEntity(SoldierSelectEntity.class, id);
+			result.setEntity(entity);
+			req.setAttribute("soldierSelectPage", result);
 		}
 
 		String isView = req.getParameter("isView");
@@ -368,7 +372,9 @@ public class SoldierSelectController extends BaseController {
 	public AjaxJson modifyProcess(SoldierSelectMain soldierSelectMain, HttpServletRequest req) {
 		AjaxJson result = new AjaxJson();
 		String id = req.getParameter("id");
+		soldierSelectMain.setId(id);
 
+		soldierselectService.saveOrUpdate(soldierSelectMain);
 		result.setMsg("保存成功");
 		return result;
 	}

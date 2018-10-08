@@ -1,12 +1,34 @@
 package com.inspection.entity.soldierselect;
 
-import com.inspection.entity.soldierselect.SoldierSelectEntity;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import java.io.Serializable;
 import java.util.Date;
 
-public class SoldierSelectMain {
+@Entity
+@Table(name = "t_soldier_select", schema = "")
+@DynamicUpdate(true)
+@DynamicInsert(true)
+public class SoldierSelectMain implements Serializable {
+    private String id;
+
+    @Id
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     private SoldierSelectEntity entity;
 
+    @Transient
     public SoldierSelectEntity getEntity() {
         return entity;
     }
