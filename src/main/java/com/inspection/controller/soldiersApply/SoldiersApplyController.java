@@ -6,7 +6,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.inspection.pojo.SoldiersApplyMain;
+import com.inspection.entity.soldiersApply.SoldiersApplyMain;
+import net.sf.json.JSONArray;
 import org.apache.log4j.Logger;
 import org.jeecgframework.core.common.hibernate.qbc.CriteriaQuery;
 import org.jeecgframework.core.common.model.json.AjaxJson;
@@ -349,6 +350,11 @@ public class SoldiersApplyController extends BaseController {
 		String id = req.getParameter("id");
 		if (StringUtils.isNotEmpty(id)) {
 			SoldiersApplyMain result = new SoldiersApplyMain();
+			result = soldiersApplyService.findEntity(SoldiersApplyMain.class, id);
+			if (result == null) {
+				result = new SoldiersApplyMain();
+			}
+			result.setJunShiJiaFen(JSONArray.toList(JSONArray.fromObject(result.getJunShiString())));
 			entity = soldiersApplyService.findEntity(SoldiersApplyEntity.class, id);
 			result.setEntity(entity);
 			req.setAttribute("soldiersApplyPage", result);
@@ -372,7 +378,9 @@ public class SoldiersApplyController extends BaseController {
 	public AjaxJson modifyProcess(SoldiersApplyMain soldiersApplyMain, HttpServletRequest req) {
 		AjaxJson result = new AjaxJson();
 		String id = req.getParameter("id");
-
+		soldiersApplyMain.setId(id);
+		soldiersApplyMain.setJunShiString(JSONArray.fromObject(soldiersApplyMain.getJunShiJiaFen()).toString());
+		soldiersApplyService.saveOrUpdate(soldiersApplyMain);
 		result.setMsg("保存成功");
 		return result;
 	}

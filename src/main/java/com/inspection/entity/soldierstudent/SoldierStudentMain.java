@@ -1,6 +1,7 @@
-package com.inspection.pojo;
+package com.inspection.entity.soldierstudent;
+import com.inspection.entity.JunShiJiaFen;
 import com.inspection.entity.soldierschool.SoldierSchoolEntity;
-import com.inspection.entity.soldierstudent.SoldierStudentEntity;
+
 import java.util.Date;
 import java.util.List;
 public class SoldierStudentMain {
@@ -335,25 +336,5 @@ public class SoldierStudentMain {
 
     public void setLvDangWeiJueDing(String lvDangWeiJueDing) {
         this.lvDangWeiJueDing = lvDangWeiJueDing;
-    }
-}
-class JunShiJiaFen{
-    private Date time;
-    private String detail;
-    public JunShiJiaFen(Date time, String detail) {
-        this.time = time;
-        this.detail = detail;
-    }
-    public Date getTime() {
-        return time;
-    }
-    public void setTime(Date time) {
-        this.time = time;
-    }
-    public String getDetail() {
-        return detail;
-    }
-    public void setDetail(String detail) {
-        this.detail = detail;
     }
 }

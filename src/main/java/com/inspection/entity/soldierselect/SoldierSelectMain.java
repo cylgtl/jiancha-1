@@ -1,4 +1,4 @@
-package com.inspection.pojo;
+package com.inspection.entity.soldierselect;
 
 import com.inspection.entity.soldierselect.SoldierSelectEntity;
 

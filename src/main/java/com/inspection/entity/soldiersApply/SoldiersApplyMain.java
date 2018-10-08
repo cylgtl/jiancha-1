@@ -1,13 +1,27 @@
-package com.inspection.pojo;
+package com.inspection.entity.soldiersApply;
 
-import com.inspection.entity.soldiersApply.SoldiersApplyEntity;
+import com.inspection.entity.JunShiJiaFen;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class SoldiersApplyMain {
+@Entity
+@Table(name = "t_soliders_apply", schema = "")
+@DynamicUpdate(true)
+@DynamicInsert(true)
+public class SoldiersApplyMain implements Serializable {
+    private String id;
+
     private SoldiersApplyEntity entity;
 
+    @Transient
     public SoldiersApplyEntity getEntity() {
         return entity;
     }
@@ -51,6 +65,15 @@ public class SoldiersApplyMain {
 
     //军事加分细则
     private List<JunShiJiaFen> junShiJiaFen;
+    private String junShiString;
+
+    public String getJunShiString() {
+        return junShiString;
+    }
+
+    public void setJunShiString(String junShiString) {
+        this.junShiString = junShiString;
+    }
 
     //组织审批
     private Date zhiBuTime;
@@ -244,6 +267,7 @@ public class SoldiersApplyMain {
         this.sanQian = sanQian;
     }
 
+    @Transient
     public List<JunShiJiaFen> getJunShiJiaFen() {
         return junShiJiaFen;
     }
@@ -298,5 +322,14 @@ public class SoldiersApplyMain {
 
     public void setLvDangWeiJueDing(String lvDangWeiJueDing) {
         this.lvDangWeiJueDing = lvDangWeiJueDing;
+    }
+
+    @Id
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

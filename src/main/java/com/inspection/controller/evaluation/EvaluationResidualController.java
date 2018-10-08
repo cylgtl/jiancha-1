@@ -6,7 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.inspection.pojo.EvaluationResidualMain;
+import com.inspection.entity.evaluation.EvaluationResidualMain;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -34,9 +34,6 @@ import com.inspection.entity.evaluation.EvaluationResidualAuditingEntity;
 import com.inspection.entity.evaluation.EvaluationResidualEntity;
 import com.inspection.entity.evaluation.EvaluationResidualPerformanceEntity;
 import com.inspection.entity.evaluation.EvaluationResidualProveEntity;
-import com.inspection.entity.officerleave.OfficerAuditingEntity;
-import com.inspection.entity.officerleave.OfficerLeaveEntity;
-import com.inspection.entity.soldierschool.SoldierSchoolEntity;
 import com.inspection.pojo.EvaluationResidualLeaveMainPage;
 import com.inspection.service.evaluation.EvaluationResidualServiceI;
 

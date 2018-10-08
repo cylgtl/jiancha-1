@@ -6,7 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.inspection.pojo.CommendRewardMain;
+import com.inspection.entity.commendreward.CommendRewardMain;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -27,7 +27,6 @@ import org.jeecgframework.platform.constant.Globals;
 import org.jeecgframework.web.common.hqlsearch.HqlGenerateUtil;
 import org.jeecgframework.web.system.controller.BaseController;
 import org.jeecgframework.web.system.entity.TSDepart;
-import org.jeecgframework.web.system.entity.TSType;
 import org.jeecgframework.web.system.entity.TSTypegroup;
 import org.jeecgframework.web.system.entity.TSUser;
 import org.jeecgframework.web.system.service.SystemService;
@@ -36,7 +35,6 @@ import com.inspection.entity.commendreward.CommendRewardAuditEntity;
 import com.inspection.entity.commendreward.CommendRewardEntity;
 import com.inspection.entity.commendreward.CommendRewardPerformanceEntity;
 import com.inspection.entity.commendreward.CommendRewardRecommendEntity;
-import com.inspection.entity.evaluation.EvaluationResidualEntity;
 import com.inspection.pojo.CommendRewardMainPage;
 import com.inspection.service.commendreward.CommendRewardServiceI;
 

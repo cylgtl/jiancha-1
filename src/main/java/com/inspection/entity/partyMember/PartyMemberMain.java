@@ -1,5 +1,6 @@
-package com.inspection.pojo;
-import com.inspection.entity.partyMember.PartyMemberEntity;
+package com.inspection.entity.partyMember;
+
+import com.inspection.entity.JunShiXunLian;
 
 import java.util.Date;
 import java.util.List;
@@ -213,25 +214,5 @@ public class PartyMemberMain {
 
     public void setRuDangShenQing(byte[] ruDangShenQing) {
         this.ruDangShenQing = ruDangShenQing;
-    }
-}
-class JunShiXunLian {
-    private String name;
-    private String score;
-    public JunShiXunLian(String name, String score) {
-        this.name = name;
-        this.score = score;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getScore() {
-        return score;
-    }
-    public void setScore(String score) {
-        this.score = score;
     }
 }

@@ -392,7 +392,7 @@ public class PersonnelSelectionController extends BaseController {
 		AjaxJson result = new AjaxJson();
 		String id = req.getParameter("id");
 		personnelSelectionMain.setId(id);
-		System.out.println("ttt "+id +"fff  "+personnelSelectionMain.getChuQin());
+		//System.out.println("ttt "+id +"fff  "+personnelSelectionMain.getChuQin());
 		personnelSelectionService.saveOrUpdate(personnelSelectionMain);
 		result.setMsg("保存成功");
 		return result;

@@ -6,7 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.inspection.pojo.SoldierStudentMain;
+import com.inspection.entity.soldierstudent.SoldierStudentMain;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -27,12 +27,9 @@ import org.jeecgframework.platform.constant.Globals;
 import org.jeecgframework.web.common.hqlsearch.HqlGenerateUtil;
 import org.jeecgframework.web.system.controller.BaseController;
 import org.jeecgframework.web.system.entity.TSDepart;
-import org.jeecgframework.web.system.entity.TSTypegroup;
 import org.jeecgframework.web.system.entity.TSUser;
 import org.jeecgframework.web.system.service.SystemService;
 
-import com.inspection.entity.officerleave.OfficerLeaveEntity;
-import com.inspection.entity.soldierselect.SoldierSelectEntity;
 import com.inspection.entity.soldierstudent.SoldierStudentAssessmentEntity;
 import com.inspection.entity.soldierstudent.SoldierStudentAuditingEntity;
 import com.inspection.entity.soldierstudent.SoldierStudentEntity;

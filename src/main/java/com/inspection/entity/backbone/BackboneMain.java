@@ -1,28 +1,25 @@
-package com.inspection.pojo;
+package com.inspection.entity.backbone;
 
-import com.inspection.entity.commendreward.CommendRewardEntity;
+import com.inspection.entity.JunShiXunLian;
 
 import java.util.Date;
 import java.util.List;
 
-public class CommendRewardMain {
-    private CommendRewardEntity entity;
+public class BackboneMain {
+    private BackboneEntity entity;
 
-    public CommendRewardEntity getEntity() {
+    public BackboneEntity getEntity() {
         return entity;
     }
 
-    public void setEntity(CommendRewardEntity entity) {
+    public void setEntity(BackboneEntity entity) {
         this.entity = entity;
     }
 
-    private String jiangLiLeiXing;
-    private String tiMingLeiXing;
+    //班排推荐
+    private String banPaiTuiJian;
 
-    //事迹材料
-    private byte[] shiJiCaiLiao;
-
-    //群众评议
+    //民主推荐
     private int yingDao; //应到人数
     private int shiDao; //实到人数
     private int youXiao; //有效人数
@@ -33,37 +30,21 @@ public class CommendRewardMain {
     //组织审批
     private Date zhiBuTime;
     private String zhiBuJueDing;
-    private Date dangWeiTime;
-    private String dangWeiJueDing;
+    private Date yingDangWeiTime;
+    private String yingDangWeiJueDing;
 
     //军事训练成绩
     private List<JunShiXunLian> junShiXunLian;
 
-    //今年取得成绩
+    //表彰与获奖情况
     private List<String> biaoZhang;
 
-    public String getJiangLiLeiXing() {
-        return jiangLiLeiXing;
+    public String getBanPaiTuiJian() {
+        return banPaiTuiJian;
     }
 
-    public void setJiangLiLeiXing(String jiangLiLeiXing) {
-        this.jiangLiLeiXing = jiangLiLeiXing;
-    }
-
-    public String getTiMingLeiXing() {
-        return tiMingLeiXing;
-    }
-
-    public void setTiMingLeiXing(String tiMingLeiXing) {
-        this.tiMingLeiXing = tiMingLeiXing;
-    }
-
-    public byte[] getShiJiCaiLiao() {
-        return shiJiCaiLiao;
-    }
-
-    public void setShiJiCaiLiao(byte[] shiJiCaiLiao) {
-        this.shiJiCaiLiao = shiJiCaiLiao;
+    public void setBanPaiTuiJian(String banPaiTuiJian) {
+        this.banPaiTuiJian = banPaiTuiJian;
     }
 
     public int getYingDao() {
@@ -130,20 +111,20 @@ public class CommendRewardMain {
         this.zhiBuJueDing = zhiBuJueDing;
     }
 
-    public Date getDangWeiTime() {
-        return dangWeiTime;
+    public Date getYingDangWeiTime() {
+        return yingDangWeiTime;
     }
 
-    public void setDangWeiTime(Date dangWeiTime) {
-        this.dangWeiTime = dangWeiTime;
+    public void setYingDangWeiTime(Date yingDangWeiTime) {
+        this.yingDangWeiTime = yingDangWeiTime;
     }
 
-    public String getDangWeiJueDing() {
-        return dangWeiJueDing;
+    public String getYingDangWeiJueDing() {
+        return yingDangWeiJueDing;
     }
 
-    public void setDangWeiJueDing(String dangWeiJueDing) {
-        this.dangWeiJueDing = dangWeiJueDing;
+    public void setYingDangWeiJueDing(String yingDangWeiJueDing) {
+        this.yingDangWeiJueDing = yingDangWeiJueDing;
     }
 
     public List<JunShiXunLian> getJunShiXunLian() {
