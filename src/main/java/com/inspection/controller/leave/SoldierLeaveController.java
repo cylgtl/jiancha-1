@@ -6,7 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.inspection.pojo.OfficerLeaveMain;
+import com.inspection.entity.officerleave.OfficerLeaveMain;
 import org.apache.log4j.Logger;
 import org.jeecgframework.core.common.hibernate.qbc.CriteriaQuery;
 import org.jeecgframework.core.common.model.json.AjaxJson;
@@ -17,7 +17,6 @@ import org.jeecgframework.platform.constant.Globals;
 import org.jeecgframework.web.common.hqlsearch.HqlGenerateUtil;
 import org.jeecgframework.web.system.controller.BaseController;
 import org.jeecgframework.web.system.entity.TSDepart;
-import org.jeecgframework.web.system.entity.TSType;
 import org.jeecgframework.web.system.entity.TSTypegroup;
 import org.jeecgframework.web.system.entity.TSUser;
 import org.jeecgframework.web.system.service.DepartService;
@@ -272,7 +271,10 @@ public class SoldierLeaveController extends BaseController {
 		String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):soldierEntity.getId();
 		String isView =  req.getParameter("isView");
 		if (StringUtils.isNotEmpty(id)) {
-			OfficerLeaveMain result = new OfficerLeaveMain();
+			OfficerLeaveMain result = soldierLeaveService.findEntity(OfficerLeaveMain.class, id);
+			if(result == null){
+				result = new OfficerLeaveMain();
+			}
 			soldierEntity = soldierLeaveService.findEntity(SoldierLeaveEntity.class, id);
 			result.setSoldierEntity(soldierEntity);
 			req.setAttribute("soldierLeavePage", result);
@@ -295,7 +297,8 @@ public class SoldierLeaveController extends BaseController {
 	public AjaxJson modifyProcess(OfficerLeaveMain officerLeaveMain, HttpServletRequest req) {
 		AjaxJson result = new AjaxJson();
 		String id = req.getParameter("id");
-
+		officerLeaveMain.setId(id);
+		soldierLeaveService.saveOrUpdate(officerLeaveMain);
 		result.setMsg("保存成功");
 		return result;
 	}

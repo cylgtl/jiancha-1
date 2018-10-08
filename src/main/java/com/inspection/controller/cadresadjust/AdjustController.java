@@ -372,6 +372,9 @@ public class AdjustController extends BaseController {
 		if (StringUtils.isNotEmpty(id)) {
 			result = adjustService.findEntity(AdjustMain.class, id);
 			adjust = adjustService.findEntity(AdjustEntity.class, id);
+			if(result == null){
+				result = new AdjustMain();
+			}
 			result.setAdjust(adjust);
 			result.setJiaJianXiang(JSONArray.toList(JSONArray.fromObject(result.getJiaJianString())));
 			req.setAttribute("adjustPage", result);

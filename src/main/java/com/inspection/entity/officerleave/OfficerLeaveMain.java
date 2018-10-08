@@ -1,13 +1,36 @@
-package com.inspection.pojo;
+package com.inspection.entity.officerleave;
 
 import com.inspection.entity.leave.SoldierLeaveEntity;
-import com.inspection.entity.officerleave.OfficerLeaveEntity;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import java.io.Serializable;
 import java.util.Date;
 
-public class OfficerLeaveMain {
+@Entity
+@Table(name = "t_leave", schema = "")
+@DynamicUpdate(true)
+@DynamicInsert(true)
+public class OfficerLeaveMain implements Serializable {
+   @Id
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    private String id;
+
+
     private OfficerLeaveEntity entity;
 
+    @Transient
     public OfficerLeaveEntity getEntity() {
         return entity;
     }
@@ -18,6 +41,7 @@ public class OfficerLeaveMain {
 
     private SoldierLeaveEntity soldierEntity;
 
+    @Transient
     public SoldierLeaveEntity getSoldierEntity() {
         return soldierEntity;
     }
