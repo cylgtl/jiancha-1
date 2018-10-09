@@ -37,7 +37,7 @@
     <div class="container-fluid">
         <form id="processSoldierSelect" method="post">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active">士官选取</li>
+                <a class="breadcrumb-item active" href="${webRoot }/soldierSelectController.do?soldierselect">士官选取</a>
                 <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('soldierSelectController.do?viewMainDetial&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
             </ol>
             <div class="row">
@@ -304,30 +304,30 @@
                                     <td>支部研究确定选取对象</td>
                                     <td>
                                         <input class="Wdate" onClick="WdatePicker()" name="zhiBuTime"
-                                        value="<fmt:formatDate value='${soldierSelectPage.zhiBu.time}' type="date" pattern="yyyy-MM-dd"/>">
+                                        value="<fmt:formatDate value='${soldierSelectPage.zhiBuTime}' type="date" pattern="yyyy-MM-dd"/>">
                                     </td>
                                     <td>
-                                        <input type="text" name="zhiBuJueDing" value="${soldierSelectPage.zhiBu.yanJiuJueDing}">
+                                        <input type="text" name="zhiBuJueDing" value="${soldierSelectPage.zhiBuJueDing}">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>营党委研究确定选取对象</td>
                                     <td>
                                         <input class="Wdate" onClick="WdatePicker()" name="yingDangWeiTime"
-                                               value="<fmt:formatDate value='${soldierSelectPage.yingDangWei.time}' type="date" pattern="yyyy-MM-dd"/>">
+                                               value="<fmt:formatDate value='${soldierSelectPage.yingDangWeiTime}' type="date" pattern="yyyy-MM-dd"/>">
                                     </td>
                                     <td>
-                                        <input type="text" name="yingDangWeiJueDing" value="${soldierSelectPage.yingDangWei.yanJiuJueDing}">
+                                        <input type="text" name="yingDangWeiJueDing" value="${soldierSelectPage.yingDangWeiJueDing}">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>旅党委研究确定选取对象</td>
                                     <td>
                                         <input class="Wdate" onClick="WdatePicker()" name="lvDangWeiTime"
-                                               value="<fmt:formatDate value='${soldierSelectPage.lvDangWei.time}' type="date" pattern="yyyy-MM-dd"/>">
+                                               value="<fmt:formatDate value='${soldierSelectPage.lvDangWeiTime}' type="date" pattern="yyyy-MM-dd"/>">
                                     </td>
                                     <td>
-                                        <input type="text" name="lvDangWeiJueDing" value="${soldierSelectPage.lvDangWei.yanJiuJueDing}">
+                                        <input type="text" name="lvDangWeiJueDing" value="${soldierSelectPage.lvDangWeiJueDing}">
                                     </td>
                                 </tr>
                             </table>
@@ -393,6 +393,7 @@
                 },
                 success : function() {
                     alert("保存成功");
+                    location.href = "soldierSelectController.do?viewMainDetial&id=" + id + "&isView=true";
                 }
             });
         }

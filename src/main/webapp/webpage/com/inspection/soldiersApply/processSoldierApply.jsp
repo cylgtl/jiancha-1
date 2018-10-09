@@ -37,7 +37,7 @@
     <div class="container-fluid">
         <form id="processSoldierApply" method="post">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active">士兵考学</li>
+                <a class="breadcrumb-item active" href="${webRoot }/soldiersApplyController.do?soldiersApply">士兵考学</a>
                 <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('soldiersApplyController.do?viewDetailMain&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
             </ol>
             <div class="row">
@@ -403,28 +403,35 @@
         }
 
         function deleteItem(index){
+            console.log(index);
             $("tr[id='"+index+"']").remove();
         }
 
         function submitPerformances() {
-            var arry = $("#processSoldierApply").serialize();
             var temp = $("#processSoldierApply").serializeArray();
-            var times = [], details = [];
+            var data = {}, times = [], details = [], obj=[];
             $.each(temp,function(i,v){
                 if(v.name.indexOf("_time")>-1){
                     times.push(v.value);
                 }else if(v.name.indexOf("_detail")>-1){
                     details.push(v.value||"");
+                } else {
+                    data[v.name] = v.value;
                 }
             });
-            arry = arry + "&"+"times=" + times +
-                "&"+"details=" + details;
+            for(var i = 0; i<times.length; i++){
+                obj.push({
+                    time: times[i],
+                    detail: details[i]
+                })
+            }
+            data.junShiJiaFen = obj;
+            console.log("data"+JSON.stringify(data));
             var id = "${soldiersApplyPage.entity.id}";
-            console.log("sdsd:"+arry);
             $.ajax({
                 url : "soldiersApplyController.do?modifyProcess&id="+id,
                 type : "POST",
-                data : arry,
+                data : data,
                 async : false,
                 cache : false,
                 error : function() {
@@ -432,6 +439,7 @@
                 },
                 success : function() {
                     alert("保存成功");
+                    location.href = "soldiersApplyController.do?viewDetailMain&id=" + id + "&isView=true";
                 }
             });
         }

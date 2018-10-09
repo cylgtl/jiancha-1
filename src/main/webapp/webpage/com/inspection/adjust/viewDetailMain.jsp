@@ -34,7 +34,7 @@
     <div class="container-fluid">
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
-        <li class="breadcrumb-item active">干部配备调整</li>
+		  <a class="breadcrumb-item active" href="${webRoot }/adjustController.do?adjust">干部配备调整</a>
 		  <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('adjustController.do?viewDetailMain&id=${adjustPage.adjust.id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
 	  </ol>
       <div class="row">

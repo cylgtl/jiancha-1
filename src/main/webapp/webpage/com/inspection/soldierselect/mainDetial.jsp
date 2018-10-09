@@ -34,8 +34,8 @@
     <div class="container-fluid">
       <!-- Breadcrumbs-->
 	  <ol class="breadcrumb">
-		<li class="breadcrumb-item active">士官选取</li>
-		<a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('soldierSelectController.do?viewMainDetial&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
+		  <a class="breadcrumb-item active" href="${webRoot }/soldierSelectController.do?soldierselect">士官选取</a>
+		  <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('soldierSelectController.do?viewMainDetial&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
 	  </ol>
       <div class="row">
         <div class="col-lg-6">
@@ -254,23 +254,23 @@
 							<tr>
 								<td>支部研究确定选取对象</td>
 								<td>
-									<fmt:formatDate value='${soldierSelectPage.zhiBu.time}' type="date" pattern="yyyy-MM-dd"/>
+									<fmt:formatDate value='${soldierSelectPage.zhiBuTime}' type="date" pattern="yyyy-MM-dd"/>
 								</td>
-								<td>${soldierSelectPage.zhiBu.yanJiuJueDing}</td>
+								<td>${soldierSelectPage.zhiBuJueDing}</td>
 							</tr>
 							<tr>
 								<td>营党委研究确定选取对象</td>
 								<td>
-									<fmt:formatDate value='${soldierSelectPage.yingDangWei.time}' type="date" pattern="yyyy-MM-dd"/>
+									<fmt:formatDate value='${soldierSelectPage.yingDangWeiTime}' type="date" pattern="yyyy-MM-dd"/>
 								</td>
-								<td>${soldierSelectPage.yingDangWei.yanJiuJueDing}</td>
+								<td>${soldierSelectPage.yingDangWeiJueDing}</td>
 							</tr>
 							<tr>
 								<td>旅党委研究确定选取对象</td>
 								<td>
-									<fmt:formatDate value='${soldierSelectPage.lvDangWei.time}' type="date" pattern="yyyy-MM-dd"/>
+									<fmt:formatDate value='${soldierSelectPage.lvDangWeiTime}' type="date" pattern="yyyy-MM-dd"/>
 								</td>
-								<td>${soldierSelectPage.lvDangWei.yanJiuJueDing}</td>
+								<td>${soldierSelectPage.lvDangWeiJueDing}</td>
 							</tr>
 						</table>
 					</div>

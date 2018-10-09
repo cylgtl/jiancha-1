@@ -33,7 +33,7 @@
   <div class="content-wrapper">
     <div class="container-fluid">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item active">士兵考学</li>
+        <a class="breadcrumb-item active" href="${webRoot }/soldiersApplyController.do?soldiersApply">士兵考学</a>
         <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('soldiersApplyController.do?viewDetailMain&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
       </ol>
       <div class="row">
