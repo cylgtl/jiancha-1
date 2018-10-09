@@ -1,32 +1,42 @@
-package com.inspection.pojo;
-import com.inspection.entity.soldierschool.SoldierSchoolEntity;
-import com.inspection.entity.soldierstudent.SoldierStudentEntity;
+package com.inspection.entity.soldiersApply;
+
+import com.inspection.entity.JunShiJiaFen;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-public class SoldierStudentMain {
-    private SoldierSchoolEntity schoolEntity;
 
-    public SoldierSchoolEntity getSchoolEntity() {
-        return schoolEntity;
-    }
+@Entity
+@Table(name = "t_soliders_apply", schema = "")
+@DynamicUpdate(true)
+@DynamicInsert(true)
+public class SoldiersApplyMain implements Serializable {
+    private String id;
 
-    public void setSchoolEntity(SoldierSchoolEntity schoolEntity) {
-        this.schoolEntity = schoolEntity;
-    }
+    private SoldiersApplyEntity entity;
 
-    private SoldierStudentEntity entity;
-    public SoldierStudentEntity getEntity() {
+    @Transient
+    public SoldiersApplyEntity getEntity() {
         return entity;
     }
-    public void setEntity(SoldierStudentEntity entity) {
+
+    public void setEntity(SoldiersApplyEntity entity) {
         this.entity = entity;
     }
-    //任骨干情况
-    private Date startTime;
-    private Date endTime;
-    private String zhiWu; //担任职务
-    //立功受奖情况
-    private List<String> shouJiangQingKuang;
+
+    //总体成绩
+    private float yuXuanKaoHe;
+    private float zhiQianKaoHe;
+    private float jiaFen; //加分
+    private float zongChengJi;
+    private int rank;
+
     //民主推荐
     private int yingDao; //应到人数
     private int shiDao; //实到人数
@@ -34,76 +44,83 @@ public class SoldierStudentMain {
     private String chuQin; //出勤率
     private int zanCheng; //赞成票
     private String recommandRate; //得票率
-    //总体情况
-    private float junShiKeMu; //军事科目
-    private float wenHuaKeMu; //文化科目
-    private float mainShi; //面试成绩
-    private float totalScore; //总成绩
-    private int totalRank; //排名
+
+    //文化考核
+    private float yuWen;
+    private float shuXue;
+    private float yingYu;
+    private float zongHe; //综合
+
     //体检情况
     private String tiJianJieGuo;
     private String  shuoMing;
+
     //军事考核成绩
     private float tiZhi; //停止间转法
-    private float shiDan; //实弹射击
     private float qianJing; //前进
     private float yangWo; //仰卧起坐
+    private float shiDan; //实弹射击
     private float sheXing; //蛇形跑
     private float sanQian; //三千米
-    private float junShiChengJi; //军事成绩
-    private float junShiJiaFeng; //军事加分
+
     //军事加分细则
     private List<JunShiJiaFen> junShiJiaFen;
-    private List<Date> times;
+    private String junShiString;
 
-    public List<Date> getTimes() {
-        return times;
+    public String getJunShiString() {
+        return junShiString;
     }
 
-    public void setTimes(List<Date> times) {
-        this.times = times;
+    public void setJunShiString(String junShiString) {
+        this.junShiString = junShiString;
     }
 
-    public List<String> getDetails() {
-        return details;
+    //组织审批
+    private Date zhiBuTime;
+    private String zhiBuJueDing;
+    private Date yingDangWeiTime;
+    private String yingDangWeiJueDing;
+    private Date lvDangWeiTime;
+    private String lvDangWeiJueDing;
+
+    public float getYuXuanKaoHe() {
+        return yuXuanKaoHe;
     }
 
-    public void setDetails(List<String> details) {
-        this.details = details;
+    public void setYuXuanKaoHe(float yuXuanKaoHe) {
+        this.yuXuanKaoHe = yuXuanKaoHe;
     }
 
-    private List<String> details;
-
-    public Date getStartTime() {
-        return startTime;
+    public float getZhiQianKaoHe() {
+        return zhiQianKaoHe;
     }
 
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
+    public void setZhiQianKaoHe(float zhiQianKaoHe) {
+        this.zhiQianKaoHe = zhiQianKaoHe;
     }
 
-    public Date getEndTime() {
-        return endTime;
+    public float getJiaFen() {
+        return jiaFen;
     }
 
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
+    public void setJiaFen(float jiaFen) {
+        this.jiaFen = jiaFen;
     }
 
-    public String getZhiWu() {
-        return zhiWu;
+    public float getZongChengJi() {
+        return zongChengJi;
     }
 
-    public void setZhiWu(String zhiWu) {
-        this.zhiWu = zhiWu;
+    public void setZongChengJi(float zongChengJi) {
+        this.zongChengJi = zongChengJi;
     }
 
-    public List<String> getShouJiangQingKuang() {
-        return shouJiangQingKuang;
+    public int getRank() {
+        return rank;
     }
 
-    public void setShouJiangQingKuang(List<String> shouJiangQingKuang) {
-        this.shouJiangQingKuang = shouJiangQingKuang;
+    public void setRank(int rank) {
+        this.rank = rank;
     }
 
     public int getYingDao() {
@@ -154,44 +171,36 @@ public class SoldierStudentMain {
         this.recommandRate = recommandRate;
     }
 
-    public float getJunShiKeMu() {
-        return junShiKeMu;
+    public float getYuWen() {
+        return yuWen;
     }
 
-    public void setJunShiKeMu(float junShiKeMu) {
-        this.junShiKeMu = junShiKeMu;
+    public void setYuWen(float yuWen) {
+        this.yuWen = yuWen;
     }
 
-    public float getWenHuaKeMu() {
-        return wenHuaKeMu;
+    public float getShuXue() {
+        return shuXue;
     }
 
-    public void setWenHuaKeMu(float wenHuaKeMu) {
-        this.wenHuaKeMu = wenHuaKeMu;
+    public void setShuXue(float shuXue) {
+        this.shuXue = shuXue;
     }
 
-    public float getMainShi() {
-        return mainShi;
+    public float getYingYu() {
+        return yingYu;
     }
 
-    public void setMainShi(float mainShi) {
-        this.mainShi = mainShi;
+    public void setYingYu(float yingYu) {
+        this.yingYu = yingYu;
     }
 
-    public float getTotalScore() {
-        return totalScore;
+    public float getZongHe() {
+        return zongHe;
     }
 
-    public void setTotalScore(float totalScore) {
-        this.totalScore = totalScore;
-    }
-
-    public int getTotalRank() {
-        return totalRank;
-    }
-
-    public void setTotalRank(int totalRank) {
-        this.totalRank = totalRank;
+    public void setZongHe(float zongHe) {
+        this.zongHe = zongHe;
     }
 
     public String getTiJianJieGuo() {
@@ -218,14 +227,6 @@ public class SoldierStudentMain {
         this.tiZhi = tiZhi;
     }
 
-    public float getShiDan() {
-        return shiDan;
-    }
-
-    public void setShiDan(float shiDan) {
-        this.shiDan = shiDan;
-    }
-
     public float getQianJing() {
         return qianJing;
     }
@@ -240,6 +241,14 @@ public class SoldierStudentMain {
 
     public void setYangWo(float yangWo) {
         this.yangWo = yangWo;
+    }
+
+    public float getShiDan() {
+        return shiDan;
+    }
+
+    public void setShiDan(float shiDan) {
+        this.shiDan = shiDan;
     }
 
     public float getSheXing() {
@@ -258,22 +267,7 @@ public class SoldierStudentMain {
         this.sanQian = sanQian;
     }
 
-    public float getJunShiChengJi() {
-        return junShiChengJi;
-    }
-
-    public void setJunShiChengJi(float junShiChengJi) {
-        this.junShiChengJi = junShiChengJi;
-    }
-
-    public float getJunShiJiaFeng() {
-        return junShiJiaFeng;
-    }
-
-    public void setJunShiJiaFeng(float junShiJiaFeng) {
-        this.junShiJiaFeng = junShiJiaFeng;
-    }
-
+    @Transient
     public List<JunShiJiaFen> getJunShiJiaFen() {
         return junShiJiaFen;
     }
@@ -281,13 +275,6 @@ public class SoldierStudentMain {
     public void setJunShiJiaFen(List<JunShiJiaFen> junShiJiaFen) {
         this.junShiJiaFen = junShiJiaFen;
     }
-    //组织审批
-    private Date zhiBuTime;
-    private String zhiBuJueDing;
-    private Date yingDangWeiTime;
-    private String yingDangWeiJueDing;
-    private Date lvDangWeiTime;
-    private String lvDangWeiJueDing;
 
     public Date getZhiBuTime() {
         return zhiBuTime;
@@ -336,24 +323,13 @@ public class SoldierStudentMain {
     public void setLvDangWeiJueDing(String lvDangWeiJueDing) {
         this.lvDangWeiJueDing = lvDangWeiJueDing;
     }
-}
-class JunShiJiaFen{
-    private Date time;
-    private String detail;
-    public JunShiJiaFen(Date time, String detail) {
-        this.time = time;
-        this.detail = detail;
+
+    @Id
+    public String getId() {
+        return id;
     }
-    public Date getTime() {
-        return time;
-    }
-    public void setTime(Date time) {
-        this.time = time;
-    }
-    public String getDetail() {
-        return detail;
-    }
-    public void setDetail(String detail) {
-        this.detail = detail;
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

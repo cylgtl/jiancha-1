@@ -7,7 +7,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.inspection.pojo.AdjustMain;
+import com.inspection.entity.cadresadjust.AdjustMain;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -28,18 +30,14 @@ import org.jeecgframework.platform.constant.Globals;
 import org.jeecgframework.web.common.hqlsearch.HqlGenerateUtil;
 import org.jeecgframework.web.system.controller.BaseController;
 import org.jeecgframework.web.system.entity.TSDepart;
-import org.jeecgframework.web.system.entity.TSTypegroup;
 import org.jeecgframework.web.system.entity.TSUser;
 import org.jeecgframework.web.system.service.SystemService;
 
-import com.inspection.entity.backbone.BackboneEntity;
 import com.inspection.entity.cadresadjust.AdjustAssessmentEntity;
 import com.inspection.entity.cadresadjust.AdjustAuditingEntity;
 import com.inspection.entity.cadresadjust.AdjustEntity;
 import com.inspection.entity.cadresadjust.AdjustPerformanceEntity;
 import com.inspection.entity.cadresadjust.AdjustRecommendEntity;
-import com.inspection.entity.leave.SoldierLeaveEntity;
-import com.inspection.entity.officerleave.OfficerLeaveEntity;
 import com.inspection.pojo.AdjustMainPage;
 import com.inspection.service.cadresadjust.AdjustServiceI;
 
@@ -372,12 +370,13 @@ public class AdjustController extends BaseController {
 		String id = req.getParameter("id");
 		AdjustMain result = new AdjustMain();
 		if (StringUtils.isNotEmpty(id)) {
+			result = adjustService.findEntity(AdjustMain.class, id);
 			adjust = adjustService.findEntity(AdjustEntity.class, id);
+			if(result == null){
+				result = new AdjustMain();
+			}
 			result.setAdjust(adjust);
-			ArrayList<String> jiaJianXiang = new ArrayList<String>();
-			jiaJianXiang.add("加分项1");
-            jiaJianXiang.add("加分项2");
-			result.setJiaJianXiang(jiaJianXiang);
+			result.setJiaJianXiang(JSONArray.toList(JSONArray.fromObject(result.getJiaJianString())));
 			req.setAttribute("adjustPage", result);
 		}
         String isView = req.getParameter("isView");
@@ -394,6 +393,11 @@ public class AdjustController extends BaseController {
     public AjaxJson modifyProcess(AdjustMain adjustMain, HttpServletRequest req) {
         AjaxJson result = new AjaxJson();
         String id = req.getParameter("id");
+        adjustMain.setId(id);
+		//System.out.println("tttt   "+adjustMain.getJiaJianXiang().size());
+		adjustMain.setJiaJianString(JSONArray.fromObject(adjustMain.getJiaJianXiang()).toString());
+		//System.out.println("ttt   "+JSONArray.fromObject(adjustMain.getJiaJianXiang()).toString());
+        adjustService.saveOrUpdate(adjustMain);
         result.setMsg("保存成功");
         return result;
     }

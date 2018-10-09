@@ -1,4 +1,4 @@
-package com.inspection.pojo;
+package com.inspection.entity.evaluation;
 
 import com.inspection.entity.evaluation.EvaluationResidualEntity;
 

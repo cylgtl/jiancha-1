@@ -6,7 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.inspection.pojo.PartyMemberMain;
+import com.inspection.entity.partyMember.PartyMemberMain;
 import org.apache.log4j.Logger;
 import org.jeecgframework.core.common.hibernate.qbc.CriteriaQuery;
 import org.jeecgframework.core.common.model.json.AjaxJson;
@@ -35,7 +35,6 @@ import com.inspection.entity.partyMember.PartyMemberEntity;
 import com.inspection.entity.partyMember.PartyMemberPerformanceEntity;
 import com.inspection.entity.partyMember.PartyMemberRecommendEntity;
 import com.inspection.entity.partyMember.PartyMemberReportEntity;
-import com.inspection.entity.soldiersApply.SoldiersApplyEntity;
 import com.inspection.pojo.PartyMemberMainPage;
 import com.inspection.service.partyMember.PartyMemberServiceI;
 

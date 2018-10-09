@@ -6,7 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.inspection.pojo.OfficerLeaveMain;
+import com.inspection.entity.officerleave.OfficerLeaveMain;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -31,7 +31,6 @@ import org.jeecgframework.web.system.entity.TSTypegroup;
 import org.jeecgframework.web.system.entity.TSUser;
 import org.jeecgframework.web.system.service.SystemService;
 
-import com.inspection.entity.leave.SoldierLeaveEntity;
 import com.inspection.entity.officerleave.OfficerAuditingEntity;
 import com.inspection.entity.officerleave.OfficerLeaveEntity;
 import com.inspection.entity.officerleave.OfficerPerformanceEntity;
@@ -392,7 +391,10 @@ public class OfficerLeaveController extends BaseController {
 		String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):officerLeave.getId();
 		String isView =  req.getParameter("isView");
 		if (StringUtils.isNotEmpty(id)) {
-			OfficerLeaveMain result = new OfficerLeaveMain();
+			OfficerLeaveMain result = officerLeaveService.findEntity(OfficerLeaveMain.class, id);
+			if(result == null) {
+				result = new OfficerLeaveMain();
+			}
 			officerLeave = officerLeaveService.findEntity(OfficerLeaveEntity.class, id);
 			result.setEntity(officerLeave);
 			req.setAttribute("officerLeavePage", result);

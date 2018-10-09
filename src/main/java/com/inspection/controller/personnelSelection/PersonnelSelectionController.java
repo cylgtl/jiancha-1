@@ -6,7 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.inspection.pojo.PersonnelSelectionMain;
+import com.inspection.entity.personnelSelection.PersonnelSelectionMain;
 import org.apache.log4j.Logger;
 import org.jeecgframework.core.common.hibernate.qbc.CriteriaQuery;
 import org.jeecgframework.core.common.model.json.AjaxJson;
@@ -364,6 +364,10 @@ public class PersonnelSelectionController extends BaseController {
         String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):entity.getId();
         PersonnelSelectionMain result = new PersonnelSelectionMain();
 		if (StringUtils.isNotEmpty(id)) {
+			result = personnelSelectionService.findEntity(PersonnelSelectionMain.class, id);
+			if(result == null){
+				result = new PersonnelSelectionMain();
+			}
 			entity = personnelSelectionService.findEntity(PersonnelSelectionEntity.class, id);
 			result.setEntity(entity);
 			req.setAttribute("personnelSelectionPage", result);
@@ -387,7 +391,9 @@ public class PersonnelSelectionController extends BaseController {
 	public AjaxJson modifyProcess(PersonnelSelectionMain personnelSelectionMain, HttpServletRequest req) {
 		AjaxJson result = new AjaxJson();
 		String id = req.getParameter("id");
-
+		personnelSelectionMain.setId(id);
+		//System.out.println("ttt "+id +"fff  "+personnelSelectionMain.getChuQin());
+		personnelSelectionService.saveOrUpdate(personnelSelectionMain);
 		result.setMsg("保存成功");
 		return result;
 	}

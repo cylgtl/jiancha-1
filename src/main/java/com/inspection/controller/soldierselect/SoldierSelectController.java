@@ -6,7 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.inspection.pojo.SoldierSelectMain;
+import com.inspection.entity.soldierselect.SoldierSelectMain;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -27,12 +27,9 @@ import org.jeecgframework.platform.constant.Globals;
 import org.jeecgframework.web.common.hqlsearch.HqlGenerateUtil;
 import org.jeecgframework.web.system.controller.BaseController;
 import org.jeecgframework.web.system.entity.TSDepart;
-import org.jeecgframework.web.system.entity.TSTypegroup;
 import org.jeecgframework.web.system.entity.TSUser;
 import org.jeecgframework.web.system.service.SystemService;
 
-import com.inspection.entity.cadresadjust.AdjustEntity;
-import com.inspection.entity.officerleave.OfficerLeaveEntity;
 import com.inspection.entity.soldierselect.SoldierSelectAssessmentEntity;
 import com.inspection.entity.soldierselect.SoldierSelectAuditingEntity;
 import com.inspection.entity.soldierselect.SoldierSelectEntity;
@@ -350,10 +347,14 @@ public class SoldierSelectController extends BaseController {
 		String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):entity.getId();
 
 		if (StringUtils.isNotEmpty(id)) {
-            entity = soldierselectService.findEntity(SoldierSelectEntity.class, id);
-			SoldierSelectMain soldierSelect = new SoldierSelectMain();
-			soldierSelect.setEntity(entity);
-			req.setAttribute("soldierSelectPage", soldierSelect);
+			SoldierSelectMain result = soldierselectService.findEntity(SoldierSelectMain.class, id);
+			if (result == null){
+				result = new SoldierSelectMain();
+			}
+
+			entity = soldierselectService.findEntity(SoldierSelectEntity.class, id);
+			result.setEntity(entity);
+			req.setAttribute("soldierSelectPage", result);
 		}
 
 		String isView = req.getParameter("isView");
@@ -371,7 +372,9 @@ public class SoldierSelectController extends BaseController {
 	public AjaxJson modifyProcess(SoldierSelectMain soldierSelectMain, HttpServletRequest req) {
 		AjaxJson result = new AjaxJson();
 		String id = req.getParameter("id");
+		soldierSelectMain.setId(id);
 
+		soldierselectService.saveOrUpdate(soldierSelectMain);
 		result.setMsg("保存成功");
 		return result;
 	}

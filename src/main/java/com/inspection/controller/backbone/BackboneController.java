@@ -6,7 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.inspection.pojo.BackboneMain;
+import com.inspection.entity.backbone.BackboneMain;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -35,13 +35,6 @@ import com.inspection.entity.backbone.BackboneAuditingEntity;
 import com.inspection.entity.backbone.BackboneEntity;
 import com.inspection.entity.backbone.BackbonePerformanceEntity;
 import com.inspection.entity.backbone.BackboneRecommendEntity;
-import com.inspection.entity.cadresadjust.AdjustAssessmentEntity;
-import com.inspection.entity.cadresadjust.AdjustAuditingEntity;
-import com.inspection.entity.cadresadjust.AdjustEntity;
-import com.inspection.entity.cadresadjust.AdjustPerformanceEntity;
-import com.inspection.entity.cadresadjust.AdjustRecommendEntity;
-import com.inspection.entity.officerleave.OfficerLeaveEntity;
-import com.inspection.pojo.AdjustMainPage;
 import com.inspection.pojo.BackboneMainPage;
 import com.inspection.service.backbone.BackboneServiceI;
 

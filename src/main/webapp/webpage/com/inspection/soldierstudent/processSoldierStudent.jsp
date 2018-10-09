@@ -340,30 +340,30 @@
                                     <td>支部研究确定选取对象</td>
                                     <td>
                                         <input class="Wdate" onClick="WdatePicker()" name="zhiBuTime"
-                                               value="<fmt:formatDate value='${soldierStudentPage.zhiBu.time}' type="date" pattern="yyyy-MM-dd"/>">
+                                               value="<fmt:formatDate value='${soldierStudentPage.zhiBuTime}' type="date" pattern="yyyy-MM-dd"/>">
                                     </td>
                                     <td>
-                                        <input type="text" name="zhiBuJueDing" value="${soldierStudentPage.zhiBu.yanJiuJueDing}">
+                                        <input type="text" name="zhiBuJueDing" value="${soldierStudentPage.zhiBuJueDing}">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>营党委研究确定选取对象</td>
                                     <td>
                                         <input class="Wdate" onClick="WdatePicker()" name="yingDangWeiTime"
-                                               value="<fmt:formatDate value='${soldierStudentPage.yingDangWei.time}' type="date" pattern="yyyy-MM-dd"/>">
+                                               value="<fmt:formatDate value='${soldierStudentPage.yingDangWeiTime}' type="date" pattern="yyyy-MM-dd"/>">
                                     </td>
                                     <td>
-                                        <input type="text" name="yingDangWeiJueDing" value="${soldierStudentPage.yingDangWei.yanJiuJueDing}">
+                                        <input type="text" name="yingDangWeiJueDing" value="${soldierStudentPage.yingDangWeiJueDing}">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>旅党委研究确定选取对象</td>
                                     <td>
                                         <input class="Wdate" onClick="WdatePicker()" name="lvDangWeiTime"
-                                               value="<fmt:formatDate value='${soldierStudentPage.lvDangWei.time}' type="date" pattern="yyyy-MM-dd"/>">
+                                               value="<fmt:formatDate value='${soldierStudentPage.lvDangWeiTime}' type="date" pattern="yyyy-MM-dd"/>">
                                     </td>
                                     <td>
-                                        <input type="text" name="lvDangWeiJueDing" value="${soldierStudentPage.lvDangWei.yanJiuJueDing}">
+                                        <input type="text" name="lvDangWeiJueDing" value="${soldierStudentPage.lvDangWeiJueDing}">
                                     </td>
                                 </tr>
                             </table>
