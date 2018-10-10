@@ -6,8 +6,13 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.inspection.controller.lib.JsonDateValueProcessor;
+import com.inspection.entity.JunShiJiaFen;
 import com.inspection.entity.soldiersApply.SoldiersApplyMain;
+import net.sf.ezmorph.object.DateMorpher;
 import net.sf.json.JSONArray;
+import net.sf.json.JsonConfig;
+import net.sf.json.util.JSONUtils;
 import org.apache.log4j.Logger;
 import org.jeecgframework.core.common.hibernate.qbc.CriteriaQuery;
 import org.jeecgframework.core.common.model.json.AjaxJson;
@@ -354,7 +359,9 @@ public class SoldiersApplyController extends BaseController {
 			if (result == null) {
 				result = new SoldiersApplyMain();
 			}
-			result.setJunShiJiaFen(JSONArray.toList(JSONArray.fromObject(result.getJunShiString())));
+			String[] formats={"yyyy-MM-dd HH:mm:ss","yyyy-MM-dd"};
+			JSONUtils.getMorpherRegistry().registerMorpher(new DateMorpher(formats));
+			result.setJunShiJiaFen(JSONArray.toList(JSONArray.fromObject(result.getJiaFenString()),JunShiJiaFen.class));
 			entity = soldiersApplyService.findEntity(SoldiersApplyEntity.class, id);
 			result.setEntity(entity);
 			req.setAttribute("soldiersApplyPage", result);
@@ -379,7 +386,22 @@ public class SoldiersApplyController extends BaseController {
 		AjaxJson result = new AjaxJson();
 		String id = req.getParameter("id");
 		soldiersApplyMain.setId(id);
-		soldiersApplyMain.setJunShiString(JSONArray.fromObject(soldiersApplyMain.getJunShiJiaFen()).toString());
+
+		List<Date> times = soldiersApplyMain.getTimes();
+		List<String> details = soldiersApplyMain.getDetails();
+		List<JunShiJiaFen> jiaFen = new ArrayList<JunShiJiaFen>();
+		for( int i = 0 ; i < times.size() ; i++) {
+			if (times.get(i) != null) {
+				jiaFen.add(new JunShiJiaFen(times.get(i),details.get(i)));
+			}
+		}
+
+		if (jiaFen.size() > 0) {
+			JsonConfig jsonConfig = new JsonConfig();
+			jsonConfig.registerJsonValueProcessor(Date.class , new JsonDateValueProcessor());
+			soldiersApplyMain.setJiaFenString(JSONArray.fromObject(jiaFen,jsonConfig).toString());
+		}
+
 		soldiersApplyService.saveOrUpdate(soldiersApplyMain);
 		result.setMsg("保存成功");
 		return result;

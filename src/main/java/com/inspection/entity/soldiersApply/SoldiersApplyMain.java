@@ -65,15 +65,37 @@ public class SoldiersApplyMain implements Serializable {
 
     //军事加分细则
     private List<JunShiJiaFen> junShiJiaFen;
-    private String junShiString;
+    private String jiaFenString;
 
-    public String getJunShiString() {
-        return junShiString;
+    public String getJiaFenString() {
+        return jiaFenString;
     }
 
-    public void setJunShiString(String junShiString) {
-        this.junShiString = junShiString;
+    public void setJiaFenString(String jiaFenString) {
+        this.jiaFenString = jiaFenString;
     }
+
+    private List<Date> times;
+
+    @Transient
+    public List<Date> getTimes() {
+        return times;
+    }
+
+    public void setTimes(List<Date> times) {
+        this.times = times;
+    }
+
+    @Transient
+    public List<String> getDetails() {
+        return details;
+    }
+
+    public void setDetails(List<String> details) {
+        this.details = details;
+    }
+
+    private List<String> details;
 
     //组织审批
     private Date zhiBuTime;
