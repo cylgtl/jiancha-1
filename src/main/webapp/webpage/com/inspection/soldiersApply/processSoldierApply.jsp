@@ -409,7 +409,7 @@
 
         function submitPerformances() {
             var temp = $("#processSoldierApply").serializeArray();
-            var data = {}, times = [], details = [], obj=[];
+            var data = {}, times = [], details = [];
             $.each(temp,function(i,v){
                 if(v.name.indexOf("_time")>-1){
                     times.push(v.value);
@@ -419,14 +419,8 @@
                     data[v.name] = v.value;
                 }
             });
-            for(var i = 0; i<times.length; i++){
-                obj.push({
-                    time: times[i],
-                    detail: details[i]
-                })
-            }
-            data.junShiJiaFen = obj;
-            console.log("data"+JSON.stringify(data));
+            data.times = times;
+            data.details = details;
             var id = "${soldiersApplyPage.entity.id}";
             $.ajax({
                 url : "soldiersApplyController.do?modifyProcess&id="+id,

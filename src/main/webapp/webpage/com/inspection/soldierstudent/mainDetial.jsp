@@ -33,7 +33,7 @@
     <div class="container-fluid">
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
-        <li class="breadcrumb-item active">大学毕业生士兵提干</li>
+        <a class="breadcrumb-item active" href="${webRoot }/soldierStudentController.do?soldierStudent">大学毕业生士兵提干</a>
         <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('soldierStudentController.do?viewMainDetial&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
       </ol>
       <div class="row">
@@ -249,7 +249,9 @@
 							<c:if test="${fn:length(soldierStudentPage.junShiJiaFen) > 0 }">
 								<c:forEach items="${soldierStudentPage.junShiJiaFen}" var="junShiJiaFen" varStatus="stuts">
 									<tr>
-										<td>${junShiJiaFen.time}</td>
+										<td>
+											<fmt:formatDate value='${junShiJiaFen.time}' type="date" pattern="yyyy-MM-dd"/>
+										</td>
 										<td>${junShiJiaFen.detail}</td>
 									</tr>
 								</c:forEach>
