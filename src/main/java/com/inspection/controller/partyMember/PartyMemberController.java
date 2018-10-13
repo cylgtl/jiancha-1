@@ -263,217 +263,6 @@ public class PartyMemberController extends BaseController {
 		return new ModelAndView("com/inspection/partyMember/partyMember");
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/**
-	 * 处理详情
-	 * @param partyMember
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewMain")
-	public ModelAndView viewMain(PartyMemberEntity partyMember, HttpServletRequest req) {
-		String id = req.getParameter("id");
-		/*if (StringUtils.isNotEmpty(id)) {
-			officerLeave = officerLeaveService.findEntity(OfficerLeaveEntity.class, id);
-			req.setAttribute("officerLeavePage", officerLeave);
-		}*/
-		req.setAttribute("residuald", id);
-		return new ModelAndView("com/inspection/partyMember/main");
-	}
-	
-	/**
-	 * 处理详情  查看
-	 * @param soldierLeave
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewMainDetial")
-	public ModelAndView viewMainDetial(PartyMemberEntity partyMember, HttpServletRequest req) {
-		String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):partyMember.getId();
-
-		if (StringUtils.isNotEmpty(id)) {
-			PartyMemberMain result = new PartyMemberMain();
-			partyMember = partyMemberService.findEntity(PartyMemberEntity.class, id);
-			result.setEntity(partyMember);
-			req.setAttribute("partyMember", result);
-		}
-		return new ModelAndView("com/inspection/partyMember/mainDetial");
-	}
-	
-	/**
-	 * 个人基本信息详情
-	 * @param soldierLeave
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewMyselfInfo")
-	public ModelAndView viewMyselfInfo(PartyMemberEntity partyMember, HttpServletRequest req) {
-		String id = req.getParameter("id");
-		String funname = req.getParameter("funname");
-		if (StringUtils.isNotEmpty(id)) {
-			partyMember = partyMemberService.findEntity(PartyMemberEntity.class, id);
-			req.setAttribute("partyMemberPage", partyMember);
-		}
-		TSTypegroup sexgroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","sex");
-		if(sexgroup!=null){
-			req.setAttribute("sexList", sexgroup.getTSTypes());
-		}
-		if(StringUtils.isEmpty(funname)){
-			return new ModelAndView("com/inspection/partyMember/myselfInfo");
-		}else{
-			return new ModelAndView("com/inspection/partyMember/myselfInfoDetial");
-			
-		}
-	}
-	
-	/**
-	 * 各级研究意见和结果详情
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewAuditing")
-	public ModelAndView viewAuditing(HttpServletRequest req) {
-		String id = req.getParameter("id");
-		String funname = req.getParameter("funname");
-		if (StringUtils.isNotEmpty(id)) {
-			List<PartyMemberAuditEntity> lists= partyMemberService.findAllAudits (id);
-			req.setAttribute("lists", lists);
-			req.setAttribute("officerId", id);
-		}
-		if(StringUtils.isEmpty(funname)){
-			return new ModelAndView("com/inspection/partyMember/auditing");
-		}else{
-			return new ModelAndView("com/inspection/partyMember/auditingDetial");
-		}
-	}
-	
-	/**
-	 * 个人平时表现详情
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewPerformance")
-	public ModelAndView viewPerformance(HttpServletRequest req) {
-		String id = req.getParameter("id");
-		String funname = req.getParameter("funname");
-		if (StringUtils.isNotEmpty(id)) {
-			List<PartyMemberPerformanceEntity> lists= partyMemberService.findAllPerformances (id);
-			req.setAttribute("lists", lists);
-			req.setAttribute("residualId", id);
-		}
-		
-		TSTypegroup typegroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","bx_type");
-		if(typegroup!=null){
-			req.setAttribute("typeList", typegroup.getTSTypes());
-		}
-		if(StringUtils.isEmpty(funname)){
-			return new ModelAndView("com/inspection/partyMember/performance");
-		}else{
-			return new ModelAndView("com/inspection/partyMember/performanceDetial");
-			
-		}
-	}
-	
-	/**
-	 * 民族评议/推荐
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewResidualRecommend")
-	public ModelAndView viewResidualRecommend(HttpServletRequest req) {
-		String id = req.getParameter("id");
-		String funname = req.getParameter("funname");
-		if (StringUtils.isNotEmpty(id)) {
-			List<PartyMemberRecommendEntity> lists= partyMemberService.findAllRecommends(id);
-			req.setAttribute("lists", lists);
-			req.setAttribute("officerId", id);
-		}
-		if(StringUtils.isEmpty(funname)){
-			return new ModelAndView("com/inspection/partyMember/residualRecommend");
-		}else{
-			return new ModelAndView("com/inspection/partyMember/residualRecommendDetial");
-		}
-	}
-	
-	/**
-	 * 考核结果
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewAssessment")
-	public ModelAndView viewAssessment(HttpServletRequest req) {
-		String id = req.getParameter("id");
-		String funname = req.getParameter("funname");
-		if (StringUtils.isNotEmpty(id)) {
-			List<PartyMemberAssessmentEntity> lists= partyMemberService.findAllAssessments(id);
-			req.setAttribute("lists", lists);
-			req.setAttribute("officerId", id);
-		}
-		if(StringUtils.isEmpty(funname)){
-			return new ModelAndView("com/inspection/partyMember/assessment");
-		}else{
-			return new ModelAndView("com/inspection/partyMember/assessmentDetial");
-		}
-	}
-	
-	/**
-	 * 考核结果
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewReport")
-	public ModelAndView viewReport(HttpServletRequest req) {
-		String id = req.getParameter("id");
-		String funname = req.getParameter("funname");
-		if (StringUtils.isNotEmpty(id)) {
-			List<PartyMemberReportEntity> lists= partyMemberService.findAllReports(id);
-			req.setAttribute("lists", lists);
-			req.setAttribute("officerId", id);
-		}
-		if(StringUtils.isEmpty(funname)){
-			return new ModelAndView("com/inspection/partyMember/report");
-		}else{
-			return new ModelAndView("com/inspection/partyMember/reportDetial");
-		}
-	}
-	
-	
-	@RequestMapping(params = "viewDetailMain")
-	public ModelAndView viewDetailMain(PartyMemberEntity partyMember, HttpServletRequest req) {
-		String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):partyMember.getId();
-		String isView =  req.getParameter("isView");
-		PartyMemberMainPage result = new PartyMemberMainPage();
-		if (StringUtils.isNotEmpty(id)) {
-			partyMember = partyMemberService.findEntity(PartyMemberEntity.class, id);
-			result.setPartyMember(partyMember);
-			result.setPerformances(partyMemberService.findAllPerformances (id));
-			result.setAudit(partyMemberService.findAllAudits (id));
-			result.setRecommends(partyMemberService.findAllRecommends(id));
-			result.setAssessments(partyMemberService.findAllAssessments(id));
-			req.setAttribute("partyMemberPage", result);
-		}
-		TSTypegroup typegroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","bx_type");
-		if(typegroup!=null){
-			req.setAttribute("typeList", typegroup.getTSTypes());
-		}
-		TSTypegroup sexgroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","sex");
-		req.setAttribute("sexList", sexgroup.getTSTypes());
-		req.setAttribute("isView", isView);
-		return new ModelAndView("com/inspection/partyMember/viewDetailMain");
-	}
-	
 	/**
 	 * 删除各级研究意见和结果信息
 	 * 
@@ -538,7 +327,6 @@ public class PartyMemberController extends BaseController {
 	 * 
 	 * @Title: addorupdateOperate
 	 * @Description: 保存平时表现和审批结果
-	 * @param soldiersApplyMainPage
 	 * @param req
 	 * @return AjaxJson
 	 * @author  ly
@@ -593,4 +381,30 @@ public class PartyMemberController extends BaseController {
 		return result;
 	}
 
+	@RequestMapping(params = "viewDetailMain")
+	public ModelAndView viewDetailMain(PartyMemberEntity entity, HttpServletRequest req) {
+		String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):entity.getId();
+		String isView =  req.getParameter("isView");
+		PartyMemberMain result = new PartyMemberMain();
+		if (StringUtils.isNotEmpty(id)) {
+			entity = partyMemberService.findEntity(PartyMemberEntity.class, id);
+			result.setEntity(entity);
+			req.setAttribute("partyMemberPage", result);
+		}
+		if(isView.equals("true")){
+			return new ModelAndView("com/inspection/partyMember/viewDetailMain");
+		} else {
+			return new ModelAndView("com/inspection/partyMember/processPartyMember");
+		}
+	}
+
+	// 党员发展-处理页面
+	@RequestMapping(params = "modifyProcess")
+	@ResponseBody
+	public AjaxJson modifyProcess(PartyMemberMain partyMemberMain, HttpServletRequest req) {
+		AjaxJson result = new AjaxJson();
+		String id = req.getParameter("id");
+		result.setMsg("保存成功");
+		return result;
+	}
 }

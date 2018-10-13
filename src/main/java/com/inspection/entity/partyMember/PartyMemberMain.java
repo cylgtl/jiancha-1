@@ -40,6 +40,25 @@ public class PartyMemberMain {
     private String yuBeiZhuanZheng; //预备党员转正
     //军事训练成绩
     private List<JunShiXunLian> junShiXunLian;
+    private List<String> names;
+    private List<String> scores;
+
+    public List<String> getNames() {
+        return names;
+    }
+
+    public void setNames(List<String> names) {
+        this.names = names;
+    }
+
+    public List<String> getScores() {
+        return scores;
+    }
+
+    public void setScores(List<String> scores) {
+        this.scores = scores;
+    }
+
     //表彰和获奖情况
     private List<String> biaoZhang;
     public void setLianXiRen1(String lianXiRen1) {

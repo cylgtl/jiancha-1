@@ -109,8 +109,6 @@
 	function lookDetail(id) {
 		location.href = "adjustController.do?viewDetailMain&id=" + id+ "&isView=true";
     }
- 
- 
 	
 	function findDepartByParentId(departId){
 		if("" == departId){
