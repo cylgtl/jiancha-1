@@ -210,7 +210,6 @@
         function submitPerformances() {
             var arry = $("#processSoldierLeave").serialize();
             var id = "${soldierLeavePage.soldierEntity.id}";
-            console.log("sdsd:"+arry);
             $.ajax({
                 url : "soldierLeaveController.do?modifyProcess&id="+id,
                 type : "POST",

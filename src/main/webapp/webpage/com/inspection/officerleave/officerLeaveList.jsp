@@ -88,13 +88,9 @@
 	   
 	}
 	
-	
-	
 	function operateDetail(id,departId) {
 		if(admin || sessionDepartsCode.indexOf(departId) > -1){
-			createwindow('军官请假处理',
-					"officerLeaveController.do?viewMain&id=" + id,
-					1024, 380);
+            location.href = "officerLeaveController.do?viewMainDetial&id=" + id + "&isView=false";
 		}else{
 			alert("您没有权限处理其他连部的数据");
 		}
@@ -110,7 +106,7 @@
 	}
 
 	function lookDetail(id) {
-		 location.href = "officerLeaveController.do?viewMainDetial&id=" + id;
+		 location.href = "officerLeaveController.do?viewMainDetial&id=" + id + "&isView=true";
     }
 	
 	function findDepartByParentId(departId){
