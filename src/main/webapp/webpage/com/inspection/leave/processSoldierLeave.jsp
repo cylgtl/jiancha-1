@@ -33,7 +33,7 @@
     <div class="container-fluid">
         <form id="processSoldierLeave" method="post">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active">战士请假</li>
+                <a class="breadcrumb-item active" href="${webRoot }/soldierLeaveController.do?soldierLeave">战士请假</a>
                 <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('soldierLeaveController.do?viewDetailMain&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
             </ol>
             <div class="row">
@@ -162,10 +162,12 @@
                                                value="<fmt:formatDate value='${soldierLeavePage.endTime}' type="date" pattern="yyyy-MM-dd"/>">
                                     </td>
                                     <td>
-                                        <input type="text" name="liDuiShiJian" value="${soldierLeavePage.liDuiShiJian}">
+                                        <input class="Wdate" onClick="WdatePicker()" name="liDuiShiJian"
+                                               value="<fmt:formatDate value='${soldierLeavePage.liDuiShiJian}' type="date" pattern="yyyy-MM-dd"/>">
                                     </td>
                                     <td>
-                                        <input type="text" name="xiaoJiaShiJian" value="${soldierLeavePage.xiaoJiaShiJian}">
+                                        <input class="Wdate" onClick="WdatePicker()" name="xiaoJiaShiJian"
+                                               value="<fmt:formatDate value='${soldierLeavePage.xiaoJiaShiJian}' type="date" pattern="yyyy-MM-dd"/>">
                                     </td>
                                     <td>
                                         <input type="text" name="zaiWeiLv" value="${soldierLeavePage.zaiWeiLv}">
@@ -220,6 +222,7 @@
                 },
                 success : function() {
                     alert("保存成功");
+                    location.href = "soldierLeaveController.do?viewDetailMain&id=" + id + "&isView=true";
                 }
             });
         }

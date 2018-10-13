@@ -89,11 +89,11 @@
 	}
  
 	function operateDetail(id,departId) {
-		// if(admin || sessionDepartsCode.indexOf(departId) > -1){
+        if(admin || sessionDepartsCode.indexOf(departId) > -1){
             location.href = "personnelSelectionController.do?viewDetailMain&id=" + id + "&isView=false";
-		// }else{
-		// 	tip("您没有权限处理其他连部的数据");
-		// }
+        }else{
+            alert("您没有权限处理其他连部的数据");
+        }
 	}
 	
 	function deleteConfirm(id,departId){

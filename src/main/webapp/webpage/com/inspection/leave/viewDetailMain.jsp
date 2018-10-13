@@ -32,7 +32,7 @@
   <div class="content-wrapper">
     <div class="container-fluid">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item active">战士请假</li>
+        <a class="breadcrumb-item active" href="${webRoot }/soldierLeaveController.do?soldierLeave">战士请假</a>
         <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('soldierLeaveController.do?viewDetailMain&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
       </ol>
       <div class="row">
@@ -131,8 +131,12 @@
 									—
 									<fmt:formatDate value='${soldierLeavePage.endTime}' type="date" pattern="yyyy-MM-dd"/>
 								</td>
-								<td>${soldierLeavePage.liDuiShiJian}</td>
-								<td>${soldierLeavePage.xiaoJiaShiJian}</td>
+								<td>
+									<fmt:formatDate value='${soldierLeavePage.liDuiShiJian}' type="date" pattern="yyyy-MM-dd"/>
+								</td>
+								<td>
+									<fmt:formatDate value='${soldierLeavePage.xiaoJiaShiJian}' type="date" pattern="yyyy-MM-dd"/>
+								</td>
 								<td>${soldierLeavePage.zaiWeiLv}</td>
 							</tr>
 						</table>

@@ -32,7 +32,7 @@
   <div class="content-wrapper">
     <div class="container-fluid">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item active">技术学兵选调</li>
+        <a class="breadcrumb-item active" href="${webRoot }/personnelSelectionController.do?personnelSelection">技术学兵选调</a>
         <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('personnelSelectionController.do?viewDetailMain&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
       </ol>
       <div class="row">
