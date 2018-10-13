@@ -29,257 +29,72 @@
   <!-- Navigation-->
   <div class="content-wrapper">
     <div class="container-fluid">
-      <!-- Breadcrumbs-->
       <ol class="breadcrumb">
-        <li class="breadcrumb-item active">骨干配备</li>
-        <c:if test="${empty isView}">
+        <a class="breadcrumb-item active" href="${webRoot }/backboneController.do?backbone">骨干配备</a>
         <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('backboneController.do?viewMainDetial&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
-        </c:if>
       </ol>
-      <!-- Area Chart Example-->
-     <!--  <div class="card mb-3">
-        <div class="card-header">
-          <i class="fa fa-area-chart"></i> Area Chart Example</div>
-        <div class="card-body">
-          <canvas id="myAreaChart" width="100%" height="30"></canvas>
-        </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-      </div> -->
       <div class="row">
         <div class="col-lg-6">
-          <!-- Example Bar Chart Card-->
           <div class="card mb-3">
             <div class="card-header">
-              <i class="fa fa-bar-chart"></i> 基本资料</div>
+              <i class="fa fa-user-circle"></i> 基本资料</div>
             <div class="card-body">
-            <table class="table table-bordered" id="dataTable" width="100%" style="font-size: 12px;" cellspacing="0">
+            <table class="table table-bordered" width="100%" style="font-size: 12px;" cellspacing="0">
 				<tr>
+					<td>姓名：</td>
+					<td>${backbonePage.entity.name}</td>
+					<td>性别：</td>
+					<td>${backbonePage.entity.sex}</td>
+				</tr>
+				<tr>
+					<td>部职别：</td>
+					<td >${backbonePage.entity.jobTitle}</td>
+				    <td>政治面貌:</td>
+					<td >${backbonePage.entity.politicalLandscape}</td>
+				</tr>
+				<tr>
+					<td>籍贯：</td>
+					<td>${backbonePage.entity.nativePlace}</td>
+					<td>民族：</td>
+					<td>${backbonePage.entity.nationalName}</td>
+				</tr>
+				<tr>
+					<td>出生日期:</td>
 					<td>
-					姓名：
+						<fmt:formatDate value='${backbonePage.entity.birthDay}' type="date" pattern="yyyy-MM-dd"/>
 					</td>
+					<td>入伍时间:</td>
 					<td>
-					${backbonePage.name}
-					</td>
-					<td>
-					性别：
-					</td>
-					<td>
-					${backbonePage.sex}
+						<fmt:formatDate value='${backbonePage.entity.militaryTime}' type="date" pattern="yyyy-MM-dd"/>
 					</td>
 				</tr>
-				
 				<tr>
+					<td>现军衔:</td>
+					<td>${backbonePage.entity.nowRank}</td>
+					<td>军衔时间:</td>
 					<td>
-					部职别：
-					</td>
-					<td >
-					${backbonePage.jobTitle}
-					</td>
-					 <td>
-					政治面貌:
-					</td>
-					<td >
-					${backbonePage.politicalLandscape}
-					</td> 
-				</tr>
-				
-				<tr>
-					<td>
-					籍贯：
-					</td>
-					<td>
-					${backbonePage.nativePlace}
-					</td>
-					<td>
-					民族：
-					</td>
-					<td>
-					${backbonePage.nationalName}
+						<fmt:formatDate value='${backbonePage.entity.rankTime}' type="date" pattern="yyyy-MM-dd"/>
 					</td>
 				</tr>
-				
 				<tr>
-					<td>
-					出生日期:
-					</td>
-					<td>
-					<fmt:formatDate value='${backbonePage.birthDay}' type="date" pattern="yyyy-MM-dd"/>
-					
-					</td>
-					<td>
-						入伍时间:
-					</td>
-					<td>
-					<fmt:formatDate value='${backbonePage.militaryTime}' type="date" pattern="yyyy-MM-dd"/>
-					
-					</td>
-				</tr>
-				
-				
-				<tr>
-					<td>
-					现军衔:
-					</td>
-					<td>
-					${backbonePage.nowRank}
-					</td>
-					<td>
-					军衔时间:
-					</td>
-					<td>
-					<fmt:formatDate value='${backbonePage.rankTime}' type="date" pattern="yyyy-MM-dd"/>
-					
-					
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-					学历:
-					</td>
-					<td colspan="3">
-					${backbonePage.education}
-					</td>
-					
+					<td>学历:</td>
+					<td colspan="3">${backbonePage.entity.education}</td>
 				</tr>
                 </table>
             </div>
           </div>
         </div>
-        <div class="col-lg-6">
-          <!-- Example Pie Chart Card-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-pie-chart"></i>个人平时表现</div>
-            <div class="card-body">
-                <table class="table table-bordered" id="dataTable" width="100%" style="font-size: 12px;" cellspacing="0">
-                	<c:if test="${fn:length(performanceLists)  > 0 }">
-					<c:forEach items="${performanceLists}" var="performance" varStatus="stuts">
-				<tr>
-					<td>
-					类型：
-					</td>
-					<td>
-					<c:forEach items="${typeList}" var="type">
-                     <c:if test="${type.typecode==performance.bxType }">${type.typename}</c:if>
-                </c:forEach>
-					
-					</td>
-					<td>
-					附件：
-					</td>
-					<td>
-					  <a target="_blank" href="${performance.fileId}">下载</a>	
-					</td>
-				</tr>
-				</c:forEach>
-				</c:if>
-                </table>
-            </div>
-          </div>
-        </div>
+	    <div class="col-lg-6">
+			  <div class="card mb-3">
+				  <div class="card-header">
+					  <i class="fa fa-street-view"></i> 班级推荐</div>
+				  <div class="card-body">
+					  <textarea style="width: 100%; height: 100px;"></textarea>
+				  </div>
+			  </div>
+		  </div>
       </div>
-      
-      
-   <div class="row">
-        <div class="col-lg-12">
-          <!-- Example Bar Chart Card-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-pie-chart"></i> 各级研究意见和结果</div>
-            <div class="card-body">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            
-                <tr>
-                  <th>开始时间</th>
-                  <th>结束时间</th>
-                  <th>单位</th>
-                  <th>意见</th>
-                  <th>附件</th>
-                </tr>
-              <c:if test="${fn:length(auditingLists)  > 0 }">
-			<c:forEach items="${auditingLists}" var="auditing" varStatus="stuts">
-                <tr align="center">
-                <td align="center">	<fmt:formatDate value='${auditing.beginTime}' type="date" pattern="yyyy-MM-dd"/>
-				</td>
-				<td align="center">	<fmt:formatDate value='${auditing.endTime}' type="date" pattern="yyyy-MM-dd"/>
-				</td>
-				<td align="center">${auditing.unit}</td>
-				<td align="center">${auditing.suggestion}</td>
-					<td align="center">
-				
-   							  <a target="_blank" href="${auditing.fileId}">下载</a>		
-  					
-					</td>
-					</tr>
-                </c:forEach>
-                </c:if>
-                </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      
-       <div class="row">
-        <div class="col-lg-12">
-          <!-- Example Bar Chart Card-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-pie-chart"></i>民主评议/推荐</div>
-            <div class="card-body">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            
-                <tr>
-                  	<th>评议方</th>
-		<th>开始时间</th>
-		<th>结束时间</th>
-		<!-- <th>评议意见</th> -->
-		<th>应到人数</th>
-		<th>赞成票</th>
-		<th>有效票</th>
-		<th>实到人数</th>
-		<th>得票率</th>
-		<th>出勤率</th>
-                </tr>
-         
-		<c:if test="${fn:length(recommendLists)  > 0 }">
-			<c:forEach items="${recommendLists}" var="recommend" varStatus="stuts">
-				<tr>
-				<td >${recommend.recommendPerson}
-				</td>
-				<td  ><fmt:formatDate value='${recommend.beginTime}' type="date" pattern="yyyy-MM-dd"/>
-				</td>
-				<td  ><fmt:formatDate value='${recommend.endTime}' type="date" pattern="yyyy-MM-dd"/>
-				</td>
-				<%-- <td  >${recommend.suggestion}
-				</td> --%>
-				<td >${recommend.shouldNumber}
-				</td>
-				<td  >${recommend.hierarchyNumber}
-				</td>
-				
-				<td >${recommend.effective}
-				</td>
-				<td  >${recommend.attendance}
-				</td>
-				<td >${recommend.favour}
-				</td>
-				<td >${recommend.vote}
-				</td>
-				
-				</tr>
-			</c:forEach>
-		</c:if>
-                </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      
-      
-       
+
     </div>
   
     <!-- Bootstrap core JavaScript-->
@@ -297,8 +112,6 @@
     
     <script type="text/javascript">
 	 function goToReport(url) {
-		//iframe层-父子操作
-		//createwindow('信息举报',"reportController.do?addorupdate&url=" + url,900, 450);
 		add('录入',"reportController.do?addorupdate&url=" + url,'reportList',null,400);
 	  }
     </script>

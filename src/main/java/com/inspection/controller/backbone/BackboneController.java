@@ -266,7 +266,6 @@ public class BackboneController extends BaseController {
 	 * 
 	 * @Title: addorupdateOperate
 	 * @Description: 保存平时表现和审批结果
-	 * @param officerLeave
 	 * @param req
 	 * @return AjaxJson
 	 * @author  yxd
@@ -310,150 +309,22 @@ public class BackboneController extends BaseController {
 		result.setMsg("保存成功");
 		return result;
 	}
-
+	
 	/**
-	 * 表彰奖励处理详情
-	 * @param soldierLeave
+	 * 骨干配备
 	 * @param req
 	 * @return
 	 */
-	@RequestMapping(params = "viewMain")
-	public ModelAndView viewMain(BackboneEntity backboneEntity, HttpServletRequest req) {
-		String id = req.getParameter("id");
-		/*if (StringUtils.isNotEmpty(id)) {
-			officerLeave = officerLeaveService.findEntity(OfficerLeaveEntity.class, id);
-			req.setAttribute("officerLeavePage", officerLeave);
-		}*/
-		TSTypegroup typegroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","bx_type");
-		if(typegroup!=null){
-			req.setAttribute("typeList", typegroup.getTSTypes());
-		}
-		req.setAttribute("residuald", id);
-		return new ModelAndView("com/inspection/backbone/main");
-	}
-	
-	/**
-	 * 表彰奖励个人基本信息详情
-	 * @param soldierLeave
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewMyselfInfo")
-	public ModelAndView viewMyselfInfo(BackboneEntity backboneEntity, HttpServletRequest req) {
-		String id = req.getParameter("id");
-		String funname = req.getParameter("funname");
-		if (StringUtils.isNotEmpty(id)) {
-			backboneEntity = backboneService.findEntity(BackboneEntity.class, id);
-			req.setAttribute("backbonePage", backboneEntity);
-		}
-		//表彰奖励-提名类型
-		TSTypegroup typegroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","nor_type");
-		if(typegroup!=null){
-			req.setAttribute("typeList", typegroup.getTSTypes());
-		}
-		if(StringUtils.isEmpty(funname)){
-			return new ModelAndView("com/inspection/backbone/myselfInfo");
-		}else{
-			return new ModelAndView("com/inspection/backbone/myselfInfoDetial");
-			
-		}
-	}
-	
-	
-	/**
-	 * 表彰奖励个人平时表现详情
-	 * @param soldierLeave
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewPerformance")
-	public ModelAndView viewPerformance(HttpServletRequest req) {
-		String id = req.getParameter("id");
-		String funname = req.getParameter("funname");
-		if (StringUtils.isNotEmpty(id)) {
-			List<BackbonePerformanceEntity> lists= backboneService.findAllPerformances (id);
-			req.setAttribute("lists", lists);
-			req.setAttribute("residualId", id);
-		}
-		
-		TSTypegroup typegroup=systemService.findUniqueByProperty(TSTypegroup.class,"typegroupcode","bx_type");
-		if(typegroup!=null){
-			req.setAttribute("typeList", typegroup.getTSTypes());
-		}
-		if(StringUtils.isEmpty(funname)){
-			return new ModelAndView("com/inspection/backbone/performance");
-		}else{
-			return new ModelAndView("com/inspection/backbone/performanceDetial");
-			
-		}
-		
-	}
-	
-	
-	/**
-	 * 表彰奖励上级意见结果详情
-	 * @param soldierLeave
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewAuditing")
-	public ModelAndView viewAuditing(HttpServletRequest req) {
-		String id = req.getParameter("id");
-		String funname = req.getParameter("funname");
-		if (StringUtils.isNotEmpty(id)) {
-			List<BackboneAuditingEntity> lists= backboneService.findAllAudits (id);
-			req.setAttribute("lists", lists);
-			req.setAttribute("officerId", id);
-		}
-		if(StringUtils.isEmpty(funname)){
-			return new ModelAndView("com/inspection/backbone/auditing");
-		}else{
-			return new ModelAndView("com/inspection/backbone/auditingDetial");
-		}
-		
-	}
-	/**
-	 * 民族评议/推荐
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewResidualRecommend")
-	public ModelAndView viewResidualRecommend(HttpServletRequest req) {
-		String id = req.getParameter("id");
-		String funname = req.getParameter("funname");
-		if (StringUtils.isNotEmpty(id)) {
-			List<BackboneRecommendEntity> lists= backboneService.findAllRecommends(id);
-			req.setAttribute("lists", lists);
-			req.setAttribute("officerId", id);
-		}
-		if(StringUtils.isEmpty(funname)){
-			return new ModelAndView("com/inspection/backbone/backboneRecommend");
-		}else{
-			return new ModelAndView("com/inspection/backbone/backboneRcommendDetial");
-		}
-		
-	}
-	
-	
-	/**
-	 * 表彰奖励处理详情
-	 * @param soldierLeave
-	 * @param req
-	 * @return
-	 */
-	@RequestMapping(params = "viewMainDetail")
-	public ModelAndView viewMainDetail(BackboneEntity backbone, HttpServletRequest req) {
-		String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):backbone.getId();
-
+	@RequestMapping(params = "viewMainDetial")
+	public ModelAndView viewMainDetail(BackboneEntity entity, HttpServletRequest req) {
+		String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):entity.getId();
 		if (StringUtils.isNotEmpty(id)) {
 			BackboneMain result = new BackboneMain();
-			backbone = backboneService.findEntity(BackboneEntity.class, id);
-			result.setEntity(backbone);
+			entity = backboneService.findEntity(BackboneEntity.class, id);
+			result.setEntity(entity);
 			req.setAttribute("backbonePage", result);
 			
 		}
-		String isView =  req.getParameter("isView");
-		req.setAttribute("isView", isView);
 		req.setAttribute("id", id);
 		return new ModelAndView("com/inspection/backbone/mainDetial");
 	}

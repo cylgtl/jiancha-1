@@ -92,9 +92,7 @@
 	
 	function operateDetail(id,departId) {
 		if(admin || sessionDepartsCode.indexOf(departId) > -1){
-			createwindow('骨干配备处理',
-					"backboneController.do?viewMain&id=" + id,
-					1024, 380);
+
 		}else{
 			alert("您没有权限处理其他连部的数据");
 		}
