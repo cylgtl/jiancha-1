@@ -6,7 +6,6 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<titl>优秀士兵保送入学</titl>
 	<!-- Bootstrap core CSS-->
 	<link href="plug-in/startbootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Custom fonts for this template-->
@@ -31,9 +30,8 @@
 <!-- Navigation-->
 <div class="content-wrapper">
 	<div class="container-fluid">
-		<!-- Breadcrumbs-->
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item active">优秀士兵保送入学</li>
+			<a class="breadcrumb-item active" href="${webRoot }/soldierSchoolController.do?soldierSchool">优秀士兵保送入学</a>
 			<a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('soldierSchoolController.do?viewMainDetial&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
 		</ol>
 		<div class="row">

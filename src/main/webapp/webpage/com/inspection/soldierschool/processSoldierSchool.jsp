@@ -36,7 +36,7 @@
     <div class="container-fluid">
         <form id="processSoldierSchool" method="post">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active">优秀士兵保送入学</li>
+                <a class="breadcrumb-item active" href="${webRoot }/soldierSchoolController.do?soldierSchool">优秀士兵保送入学</a>
                 <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('soldierSchoolController.do?viewMainDetial&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
             </ol>
             <div class="row">
@@ -446,9 +446,8 @@
         }
 
         function submitPerformances() {
-            var arry = $("#processSoldierSchool").serialize();
             var temp = $("#processSoldierSchool").serializeArray();
-            var shouJiang = [], times = [], details = [];
+            var shouJiang = [], times = [], details = [], data = {};
             $.each(temp,function(i,v){
                 if(v.name.indexOf("_shouJiangs")>-1){
                     shouJiang.push(v.value);
@@ -456,17 +455,18 @@
                     times.push(v.value);
                 }else if(v.name.indexOf("_detail")>-1){
                     details.push(v.value||"");
+                }else {
+                    data[v.name] = v.value;
                 }
             });
-            arry = arry +"&"+"shouJiangQingKuang=" + shouJiang+
-                "&"+"times=" + times +
-                "&"+"details=" + details;
+            data.shouJiangQingKuang = shouJiang;
+            data.times = times;
+            data.details = details;
             var id = "${soldierSchoolPage.schoolEntity.id}";
-            console.log("sdsd:"+arry);
             $.ajax({
                 url : "soldierStudentController.do?modifyProcess&id="+id,
                 type : "POST",
-                data : arry,
+                data : data,
                 async : false,
                 cache : false,
                 error : function() {
@@ -474,6 +474,7 @@
                 },
                 success : function() {
                     alert("保存成功");
+                    location.href = "soldierSchoolController.do?viewMainDetial&id=" + id + "&isView=true";
                 }
             });
         }

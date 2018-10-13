@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
  <head>
-  <title>大声毕业生提干</title>
+  <title>大学生毕业生提干</title>
   <t:base type="jquery,easyui,tools,DatePicker"></t:base>
  </head>
  <!--<script type="text/javascript">

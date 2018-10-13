@@ -447,7 +447,6 @@
 
         function submitPerformances() {
             var temp = $("#processSoldierStudent").serializeArray();
-            console.log("sdstempd:"+JSON.stringify(temp));
             var shouJiang = [], times = [], details = [], data = {};
             $.each(temp,function(i,v){
                 if(v.name.indexOf("_shouJiangs")>-1){
@@ -464,7 +463,6 @@
             data.times = times;
             data.details = details;
             var id = "${soldierStudentPage.entity.id}";
-            console.log("sdsd:"+JSON.stringify(data));
             $.ajax({
                 url : "soldierStudentController.do?modifyProcess&id="+id,
                 type : "POST",
