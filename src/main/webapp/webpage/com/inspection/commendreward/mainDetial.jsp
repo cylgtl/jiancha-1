@@ -28,8 +28,8 @@
 	.shijicailiao {
 		text-align: center;
 	}
-	.shijicailiao a:hover, .shijicailiao div:hover{
-		color: #007bff;
+	.shijicailiao:hover{
+		color: #007bff !important;
 		cursor: pointer;
 	}
   </style>

@@ -87,13 +87,9 @@
 	   
 	}
 	
-	
-	
 	function operateDetail(id,departId) {
 		if(admin || sessionDepartsCode.indexOf(departId) > -1){
-			createwindow('官兵评残处理',
-					"evaluationResidualController.do?viewMain&id=" + id,
-					1024, 380);
+            location.href = "evaluationResidualController.do?viewMainDetial&id=" + id + "&isView=false";
 		}else{
 			alert("您没有权限处理其他连部的数据");
 		}
@@ -109,7 +105,7 @@
 	}
 
 	function lookDetail(id) {
-        location.href = "evaluationResidualController.do?viewMainDetial&id=" + id;
+        location.href = "evaluationResidualController.do?viewMainDetial&id=" + id + "&isView=true";
     }
 	
 	function findDepartByParentId(departId){

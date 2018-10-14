@@ -14,15 +14,21 @@
   <!-- Custom styles for this template-->
   <link href="plug-in/startbootstrap/css/sb-admin.css" rel="stylesheet">
   <style type="text/css">
-    td{
-     text-align: right;
-     font-size: 12px;
-    }
-    
-    th{
-     text-align: center;
-     font-size: 14px;
-    }
+	  td{
+		  text-align: center;
+		  font-size: 12px;
+	  }
+	  th{
+		  text-align: center;
+		  font-size: 14px;
+	  }
+	  .card-header {
+		  font-size: 14px;
+	  }
+	  .file-space:hover{
+		  cursor: pointer;
+		  color: #007bff !important;
+	  }
   </style>
 </head>
 <body id="page-top">
@@ -32,234 +38,154 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item active">官兵评残</li>
-        <c:if test="${empty isView}">
-        <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('evaluationResidualController.do?viewMainDetial&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
-        </c:if>
+        <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('evaluationResidualController.do?viewMainDetial&id=${evaluationResidualPage.entity.id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
       </ol>
-      <!-- Area Chart Example-->
-     <!--  <div class="card mb-3">
-        <div class="card-header">
-          <i class="fa fa-area-chart"></i> Area Chart Example</div>
-        <div class="card-body">
-          <canvas id="myAreaChart" width="100%" height="30"></canvas>
-        </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-      </div> -->
       <div class="row">
         <div class="col-lg-6">
-          <!-- Example Bar Chart Card-->
           <div class="card mb-3">
             <div class="card-header">
-              <i class="fa fa-bar-chart"></i> 基本资料</div>
+              <i class="fa fa-user-circle"></i> 基本资料</div>
             <div class="card-body">
-            <table class="table table-bordered" id="dataTable" width="100%" style="font-size: 12px;" cellspacing="0">
+            <table class="table table-bordered" width="100%" style="font-size: 12px;" cellspacing="0">
 				<tr>
-					<td>
-					姓名：
-					</td>
-					<td>
-					${evaluationResidualPage.name}
-					</td>
-					<td>
-					性别：
-					</td>
-					<td>
-					${evaluationResidualPage.sex}
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-					出生时间：
-					</td>
-					<td>
-					<fmt:formatDate value='${evaluationResidualPage.birthDay}' type="date" pattern="yyyy-MM-dd"/>
-					
-					
-					</td>
-					
-					<td>
-					政治面貌：
-					</td>
-					<td>
-					${evaluationResidualPage.political}
-					</td>
-	
-				</tr>
-				
-				<tr>
-					<td>
-					籍贯：
-					</td>
-					<td>
-					${evaluationResidualPage.nativePlace}
-					</td>
-					<td>
-					民族：
-					</td>
-					<td>
-					${evaluationResidualPage.nationalName}
-					</td>
-				</tr>
-				
-				<tr>
-				<td>
-					部职别：
-					</td>
-					<td>
-					${evaluationResidualPage.jobTitle}
-					</td>
-					<td>
-					现军衔：
-					</td>
-					<td>
-					${evaluationResidualPage.nowRank}
-					</td>
-					
-				</tr>
-				
-				
-				<tr>
-					<td>
-					现军衔时间：
-					</td>
-					<td>
-					<fmt:formatDate value='${evaluationResidualPage.rankTime}' type="date" pattern="yyyy-MM-dd"/>
-					
-				
-					</td>
-					<td>
-					学历：
-					</td>
-					<td>
-					${evaluationResidualPage.education}
-					</td>
-					
+					<td>姓名：</td>
+					<td>${evaluationResidualPage.entity.name}</td>
+					<td>性别：</td>
+					<td>${evaluationResidualPage.entity.sex}</td>
 				</tr>
 				<tr>
-				<td>
-					入伍时间：
-					</td>
+					<td>出生时间：</td>
 					<td>
-					<fmt:formatDate value='${evaluationResidualPage.militaryTime}' type="date" pattern="yyyy-MM-dd"/>
-					
-					
+						<fmt:formatDate value='${evaluationResidualPage.entity.birthDay}' type="date" pattern="yyyy-MM-dd"/>
+					</td>
+					<td>政治面貌：</td>
+					<td>${evaluationResidualPage.entity.political}</td>
+				</tr>
+				<tr>
+					<td>籍贯：</td>
+					<td>${evaluationResidualPage.entity.nativePlace}</td>
+					<td>民族：</td>
+					<td>${evaluationResidualPage.entity.nationalName}</td>
+				</tr>
+				<tr>
+					<td>部职别：</td>
+					<td>${evaluationResidualPage.entity.jobTitle}</td>
+					<td>现军衔：</td>
+					<td>${evaluationResidualPage.entity.nowRank}</td>
+				</tr>
+				<tr>
+					<td>现军衔时间：</td>
+					<td>
+						<fmt:formatDate value='${evaluationResidualPage.entity.rankTime}' type="date" pattern="yyyy-MM-dd"/>
+					</td>
+					<td>学历：</td>
+					<td>${evaluationResidualPage.entity.education}</td>
+				</tr>
+				<tr>
+				    <td>入伍时间：</td>
+					<td>
+					    <fmt:formatDate value='${evaluationResidualPage.entity.militaryTime}' type="date" pattern="yyyy-MM-dd"/>
 					</td>
 				</tr>
                 </table>
             </div>
           </div>
         </div>
-        <div class="col-lg-6">
-          <!-- Example Pie Chart Card-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-pie-chart"></i>个人平时表现</div>
-            <div class="card-body">
-                <table class="table table-bordered" id="dataTable" width="100%" style="font-size: 12px;" cellspacing="0">
-				<tbody>
-		<c:if test="${fn:length(performanceLists)  > 0 }">
-			<c:forEach items="${performanceLists}" var="performance" varStatus="stuts">
-				<tr>
-				<td align="left">
-				<select name="performances[${stuts.index }].bxType" disabled="disabled">
-				 
-				 <c:forEach items="${typeList}" var="type">
-                    <option value="${type.typecode}" <c:if test="${type.typecode==performance.bxType }">selected="selected"</c:if>>${type.typename}</option>
-                </c:forEach>
-				</select></td>
-				<td><a href="${performance.fileId} ">下载附件</a></td>
-				</tr>
-			</c:forEach>
-		</c:if>
-	</tbody>
-                </table>
-            </div>
-          </div>
-        </div>
+	    <div class="col-lg-6">
+			  <div class="card mb-3">
+				  <div class="card-header">
+					  <i class="fa fa-pencil"></i> 证明人</div>
+				  <div class="card-body">
+					  <table class="table table-bordered" width="100%" cellspacing="0">
+						  <tr>
+							  <th>证明人一</th>
+							  <th>证明人二</th>
+						  </tr>
+						  <tr>
+							  <td>${evaluationResidualPage.zhengMingRen1}</td>
+							  <td>${evaluationResidualPage.zhengMingRen2}</td>
+						  </tr>
+					  </table>
+				  </div>
+			  </div>
+		  </div>
       </div>
-      
-      
-      
-      
-      
-      
-     
-      
-           <div class="row">
-        <div class="col-lg-12">
-          <!-- Example Bar Chart Card-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-pie-chart"></i> 各级研究意见和结果</div>
-            <div class="card-body">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            
-                <tr>
-                  <th>开始时间</th>
-                  <th>结束时间</th>
-                  <th>单位</th>
-                  <th>意见</th>
-                  <th>附件</th>
-                </tr>
-              
-           
-                <tbody>
-		<c:if test="${fn:length(auditingLists)  > 0 }">
-			<c:forEach items="${auditingLists}" var="auditing" varStatus="stuts">
-				<tr>
-				<td align="left"><fmt:formatDate value='${auditing.beginTime}' type="date" pattern="yyyy-MM-dd"/></td>
-				<td align="left"><fmt:formatDate value='${auditing.endTime}' type="date" pattern="yyyy-MM-dd"/></td>
-				<td align="left">${auditing.unit}</td>
-				<td align="left">${auditing.suggestion}</td>
-				<td><a href="${auditing.fileId}">下载附件</a></td>
-				</tr>
-			</c:forEach>
-		</c:if>
-	</tbody>
-                
-                </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-     <div class="row">
-        <div class="col-lg-12">
-          <!-- Example Bar Chart Card-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-pie-chart"></i> 证明材料</div>
-            <div class="card-body">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            
-                <tr>
-                  <th>证明人</th>
-                  <th>部职别</th>
-                  <th>证明结果</th>
-                 
-                </tr>
-              
-           
-                <tbody>
-		<c:if test="${fn:length(proveLists)  > 0 }">
-			<c:forEach items="${proveLists}" var="prove" varStatus="stuts">
-				<tr>
-				<td align="left">${prove.proveName }</td>
-				<td align="left">${prove.jobTitle }</td>
-				<td align="left">${prove.result }</td>
-				
-				</tr>
-			</c:forEach>
-		</c:if>
-	</tbody>
-                
-                </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      
+
+	  <div class="row">
+			<div class="col-lg-12">
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fa fa-hand-stop-o"></i> 评残审查</div>
+					<div class="card-body">
+						<table class="table table-bordered" width="100%" cellspacing="0">
+							<tr>
+								<th rowspan="2" style="vertical-align: middle">个人自述</th>
+								<th rowspan="2" style="vertical-align: middle">致残性质</th>
+								<th colspan="3">旁证人</th>
+							</tr>
+							<tr>
+								<td>旁证人一</td>
+								<td>旁证人二</td>
+								<td>旁证人三</td>
+							</tr>
+							<tr>
+								<td class="file-space">
+									<a class="fa fa-file-word-o" style="font-size: 50px;" onclick="viewGeren()"></a>
+									<div onclick="viewGeren()">在线预览</div>
+								</td>
+								<td>${evaluationResidualPage.zhiCanXingZhi}</td>
+								<td>${evaluationResidualPage.oanZhengRen1}</td>
+								<td>${evaluationResidualPage.oanZhengRen2}</td>
+								<td>${evaluationResidualPage.oanZhengRen3}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	  <div class="row">
+			<div class="col-lg-12">
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fa fa-hand-stop-o"></i> 残疾评定</div>
+					<div class="card-body">
+						<table class="table table-bordered" width="100%" cellspacing="0">
+							<tr>
+								<th>病情与致残标准符合性</th>
+								<th>党委会决议</th>
+								<th colspan="2">身份信息</th>
+							</tr>
+							<tr>
+								<td class="file-space" rowspan="2" style="vertical-align: middle">
+									<a class="fa fa-file-word-o" style="font-size: 50px;" onclick="viewGeren()"></a>
+									<div onclick="viewGeren()">在线预览</div>
+								</td>
+								<td rowspan="2">${evaluationResidualPage.jueYi}</td>
+								<td class="file-space">
+									<a class="fa fa-file-word-o" style="font-size: 50px;" onclick="viewGeren()"></a>
+									<div onclick="viewGeren()">身份证</div>
+								</td>
+								<td class="file-space">
+									<a class="fa fa-file-word-o" style="font-size: 50px;" onclick="viewGeren()"></a>
+									<div onclick="viewGeren()">军官证</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="file-space">
+									<a class="fa fa-file-word-o" style="font-size: 50px;" onclick="viewGeren()"></a>
+									<div onclick="viewGeren()">保障卡</div>
+								</td>
+								<td class="file-space">
+									<a class="fa fa-file-word-o" style="font-size: 50px;" onclick="viewGeren()"></a>
+									<div onclick="viewGeren()">病历复印证</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
     </div>
   
     <!-- Bootstrap core JavaScript-->
@@ -277,9 +203,11 @@
     
     <script type="text/javascript">
 	 function goToReport(url) {
-		//iframe层-父子操作
-		//createwindow('信息举报',"reportController.do?addorupdate&url=" + url,900, 450);
 		add('录入',"reportController.do?addorupdate&url=" + url,'reportList',null,400);
+	  }
+
+	  function viewGeren(){
+	     console.log("view gerenzishu...");
 	  }
     </script>
   </div>

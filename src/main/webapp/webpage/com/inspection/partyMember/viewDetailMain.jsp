@@ -29,8 +29,8 @@
 	.shen-qing-shu {
 		text-align: center;
 	}
-	.shen-qing-shu a:hover, .shen-qing-shu div:hover{
-		color: #007bff;
+	.shen-qing-shu:hover{
+		color: #007bff !important;
 		cursor: pointer;
 	}
   </style>
