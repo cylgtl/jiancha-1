@@ -325,7 +325,21 @@ public class BackboneController extends BaseController {
 			req.setAttribute("backbonePage", result);
 			
 		}
-		req.setAttribute("id", id);
-		return new ModelAndView("com/inspection/backbone/mainDetial");
+		String isView =  req.getParameter("isView");
+		if(isView.equals("true")){
+			return new ModelAndView("com/inspection/backbone/mainDetial");
+		} else {
+			return new ModelAndView("com/inspection/backbone/processBackbone");
+		}
+	}
+
+	// 处理页面
+	@RequestMapping(params = "modifyProcess")
+	@ResponseBody
+	public AjaxJson modifyProcess(BackboneMain backboneMain, HttpServletRequest req) {
+		AjaxJson result = new AjaxJson();
+		String id = req.getParameter("id");
+		result.setMsg("保存成功");
+		return result;
 	}
 }

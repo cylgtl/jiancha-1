@@ -14,15 +14,17 @@
   <!-- Custom styles for this template-->
   <link href="plug-in/startbootstrap/css/sb-admin.css" rel="stylesheet">
   <style type="text/css">
-    td{
-     text-align: right;
-     font-size: 12px;
-    }
-    
-    th{
-     text-align: center;
-     font-size: 14px;
-    }
+	  td{
+		  text-align: center;
+		  font-size: 12px;
+	  }
+	  th{
+		  text-align: center;
+		  font-size: 14px;
+	  }
+	  .card-header {
+		  font-size: 14px;
+	  }
   </style>
 </head>
 <body id="page-top">
@@ -31,7 +33,7 @@
     <div class="container-fluid">
       <ol class="breadcrumb">
         <a class="breadcrumb-item active" href="${webRoot }/backboneController.do?backbone">骨干配备</a>
-        <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('backboneController.do?viewMainDetial&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
+        <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('backboneController.do?viewMainDetial&id=${backbonePage.entity.id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
       </ol>
       <div class="row">
         <div class="col-lg-6">
@@ -87,14 +89,126 @@
 	    <div class="col-lg-6">
 			  <div class="card mb-3">
 				  <div class="card-header">
-					  <i class="fa fa-street-view"></i> 班级推荐</div>
+					  <i class="fa fa-street-view"></i> 班排推荐</div>
 				  <div class="card-body">
-					  <textarea style="width: 100%; height: 100px;"></textarea>
+					  <textarea style="width: 100%; height: 200px; overflow: auto" readonly>${backbonePage.banPaiTuiJian}</textarea>
 				  </div>
 			  </div>
 		  </div>
       </div>
 
+	  <div class="row">
+			<div class="col-lg-12">
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fa fa-hand-stop-o"></i> 民主推荐</div>
+					<div class="card-body">
+						<table class="table table-bordered" width="100%" cellspacing="0">
+							<tr>
+								<th>应到人数</th>
+								<th>实到人数</th>
+								<th>有效票数</th>
+								<th>出勤率</th>
+								<th>赞成票</th>
+								<th>得票率</th>
+							</tr>
+							<tr>
+								<td>${backbonePage.yingDao}</td>
+								<td>${backbonePage.shiDao}</td>
+								<td>${backbonePage.youXiao}</td>
+								<td>${backbonePage.chuQin}</td>
+								<td>${backbonePage.zanCheng}</td>
+								<td>${backbonePage.testRate}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	  <div class="row">
+			<div class="col-lg-12">
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fa fa-pencil"></i> 组织审批</div>
+					<div class="card-body">
+						<table class="table table-bordered" width="100%" cellspacing="0">
+							<tr>
+								<th>条目</th>
+								<th>时间</th>
+								<th>研究决定</th>
+							</tr>
+							<tr>
+								<td>支部研究确定预选对象</td>
+								<td>
+									<fmt:formatDate value='${backbonePage.zhiBuTime}' type="date" pattern="yyyy-MM-dd"/>
+								</td>
+								<td>${backbonePage.zhiBuJueDing}</td>
+							</tr>
+							<tr>
+								<td>营党委研究确定对象</td>
+								<td>
+									<fmt:formatDate value='${backbonePage.yingDangWeiTime}' type="date" pattern="yyyy-MM-dd"/>
+								</td>
+								<td>${backbonePage.yingDangWeiJueDing}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	  <div>
+			<span class="breadcrumb" style="text-align: center;font-size: 20px; width: 100%; display: block">个人平时表现</span>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card mb-3">
+						<div class="card-header">
+							<i class="fa fa-tasks"></i> 军事训练成绩</div>
+						<div class="card-body">
+							<table class="table table-bordered" width="100%" cellspacing="0">
+								<tr>
+									<th>科目</th>
+									<th>成绩</th>
+								</tr>
+								<c:if test="${fn:length(backbonePage.junShiXunLian)  > 0 }">
+									<c:forEach items="${backbonePage.junShiXunLian}" var="junshi" varStatus="stuts">
+										<tr>
+											<td>${junshi.name}</td>
+											<td>${junshi.score}</td>
+										</tr>
+									</c:forEach>
+								</c:if>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card mb-3">
+						<div class="card-header">
+							<i class="fa fa-tasks"></i> 表彰及获奖情况</div>
+						<div class="card-body">
+							<table class="table table-bordered" width="100%" cellspacing="0">
+								<tr>
+									<th>序号</th>
+									<th>条目</th>
+								</tr>
+								<c:if test="${fn:length(backbonePage.biaoZhang) > 0 }">
+									<c:forEach items="${backbonePage.biaoZhang}" var="shouJiang" varStatus="stuts">
+										<tr>
+											<td>${stuts.index}</td>
+											<td>${shouJiang}</td>
+										</tr>
+									</c:forEach>
+								</c:if>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
     </div>
   
     <!-- Bootstrap core JavaScript-->

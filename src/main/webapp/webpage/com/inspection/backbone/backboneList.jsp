@@ -88,11 +88,9 @@
 	   
 	}
 	
-	
-	
 	function operateDetail(id,departId) {
 		if(admin || sessionDepartsCode.indexOf(departId) > -1){
-
+            location.href = "backboneController.do?viewMainDetial&id=" + id + "&isView=false";
 		}else{
 			alert("您没有权限处理其他连部的数据");
 		}
@@ -108,7 +106,7 @@
 	}
 	
 	function lookDetail(id) {
-		 location.href = "backboneController.do?viewMainDetial&id=" + id;
+		 location.href = "backboneController.do?viewMainDetial&id=" + id + "&isView=true";
     }
 	
 	function findDepartByParentId(departId){

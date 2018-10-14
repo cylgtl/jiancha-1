@@ -36,6 +36,25 @@ public class BackboneMain {
     //军事训练成绩
     private List<JunShiXunLian> junShiXunLian;
 
+    private List<String> names;
+    private List<String> scores;
+
+    public List<String> getNames() {
+        return names;
+    }
+
+    public void setNames(List<String> names) {
+        this.names = names;
+    }
+
+    public List<String> getScores() {
+        return scores;
+    }
+
+    public void setScores(List<String> scores) {
+        this.scores = scores;
+    }
+
     //表彰与获奖情况
     private List<String> biaoZhang;
 
