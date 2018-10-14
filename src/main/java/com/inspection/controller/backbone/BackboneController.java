@@ -6,7 +6,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.inspection.entity.JunShiXunLian;
 import com.inspection.entity.backbone.BackboneMain;
+import net.sf.json.JSONArray;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -319,11 +321,15 @@ public class BackboneController extends BaseController {
 	public ModelAndView viewMainDetail(BackboneEntity entity, HttpServletRequest req) {
 		String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):entity.getId();
 		if (StringUtils.isNotEmpty(id)) {
-			BackboneMain result = new BackboneMain();
+			BackboneMain result = backboneService.findEntity(BackboneMain.class, id);
+			if (result==null){
+				result = new BackboneMain();
+			}
 			entity = backboneService.findEntity(BackboneEntity.class, id);
 			result.setEntity(entity);
+			result.setJunShiXunLian(JSONArray.toList(JSONArray.fromObject(result.getXunLianString()),JunShiXunLian.class));
+			result.setBiaoZhang(JSONArray.toList(JSONArray.fromObject(result.getBiaoZhangString())));
 			req.setAttribute("backbonePage", result);
-			
 		}
 		String isView =  req.getParameter("isView");
 		if(isView.equals("true")){
@@ -339,6 +345,20 @@ public class BackboneController extends BaseController {
 	public AjaxJson modifyProcess(BackboneMain backboneMain, HttpServletRequest req) {
 		AjaxJson result = new AjaxJson();
 		String id = req.getParameter("id");
+
+		backboneMain.setId(id);
+		List<String> names = backboneMain.getNames();
+		List<String> scores = backboneMain.getScores();
+		List<JunShiXunLian> xunLian = new ArrayList<JunShiXunLian>();
+		for( int i = 0 ; i < names.size() ; i++) {
+			if (names.get(i) != null) {
+				xunLian.add(new JunShiXunLian(names.get(i),scores.get(i)));
+			}
+		}
+		backboneMain.setXunLianString(JSONArray.fromObject(xunLian).toString());
+		backboneMain.setBiaoZhangString(JSONArray.fromObject(backboneMain.getBiaoZhang()).toString());
+
+		backboneService.saveOrUpdate(backboneMain);
 		result.setMsg("保存成功");
 		return result;
 	}

@@ -1,13 +1,34 @@
 package com.inspection.entity.backbone;
 
 import com.inspection.entity.JunShiXunLian;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.util.Date;
 import java.util.List;
 
+@Entity
+@Table(name = "t_backbone", schema = "")
+@DynamicUpdate(true)
+@DynamicInsert(true)
 public class BackboneMain {
+    private String id;
+
+    @Id
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
     private BackboneEntity entity;
 
+    @Transient
     public BackboneEntity getEntity() {
         return entity;
     }
@@ -35,10 +56,19 @@ public class BackboneMain {
 
     //军事训练成绩
     private List<JunShiXunLian> junShiXunLian;
+    private String xunLianString;
 
+    public String getXunLianString() {
+        return xunLianString;
+    }
+
+    public void setXunLianString(String xunLianString) {
+        this.xunLianString = xunLianString;
+    }
     private List<String> names;
     private List<String> scores;
 
+    @Transient
     public List<String> getNames() {
         return names;
     }
@@ -47,6 +77,7 @@ public class BackboneMain {
         this.names = names;
     }
 
+    @Transient
     public List<String> getScores() {
         return scores;
     }
@@ -57,7 +88,15 @@ public class BackboneMain {
 
     //表彰与获奖情况
     private List<String> biaoZhang;
+    private String biaoZhangString;
 
+    public String getBiaoZhangString() {
+        return biaoZhangString;
+    }
+
+    public void setBiaoZhangString(String biaoZhangString) {
+        this.biaoZhangString = biaoZhangString;
+    }
     public String getBanPaiTuiJian() {
         return banPaiTuiJian;
     }
@@ -146,6 +185,7 @@ public class BackboneMain {
         this.yingDangWeiJueDing = yingDangWeiJueDing;
     }
 
+    @Transient
     public List<JunShiXunLian> getJunShiXunLian() {
         return junShiXunLian;
     }
@@ -154,6 +194,7 @@ public class BackboneMain {
         this.junShiXunLian = junShiXunLian;
     }
 
+    @Transient
     public List<String> getBiaoZhang() {
         return biaoZhang;
     }
