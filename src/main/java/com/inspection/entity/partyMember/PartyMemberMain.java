@@ -1,11 +1,32 @@
 package com.inspection.entity.partyMember;
 
 import com.inspection.entity.JunShiXunLian;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.util.Date;
 import java.util.List;
+@Entity
+@Table(name = "t_party_member", schema = "")
+@DynamicUpdate(true)
+@DynamicInsert(true)
 public class PartyMemberMain {
+    private String id;
+
+    @Id
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
     private PartyMemberEntity entity;
+    @Transient
     public PartyMemberEntity getEntity() {
         return entity;
     }
@@ -40,9 +61,19 @@ public class PartyMemberMain {
     private String yuBeiZhuanZheng; //预备党员转正
     //军事训练成绩
     private List<JunShiXunLian> junShiXunLian;
+    private String xunLianString;
+
+    public String getXunLianString() {
+        return xunLianString;
+    }
+
+    public void setXunLianString(String xunLianString) {
+        this.xunLianString = xunLianString;
+    }
     private List<String> names;
     private List<String> scores;
 
+    @Transient
     public List<String> getNames() {
         return names;
     }
@@ -51,6 +82,7 @@ public class PartyMemberMain {
         this.names = names;
     }
 
+    @Transient
     public List<String> getScores() {
         return scores;
     }
@@ -61,6 +93,15 @@ public class PartyMemberMain {
 
     //表彰和获奖情况
     private List<String> biaoZhang;
+    private String biaoZhangString;
+
+    public String getBiaoZhangString() {
+        return biaoZhangString;
+    }
+
+    public void setBiaoZhangString(String biaoZhangString) {
+        this.biaoZhangString = biaoZhangString;
+    }
     public void setLianXiRen1(String lianXiRen1) {
         this.lianXiRen1 = lianXiRen1;
     }
@@ -219,10 +260,12 @@ public class PartyMemberMain {
         this.yuBeiZhuanZheng = yuBeiZhuanZheng;
     }
 
+    @Transient
     public List<JunShiXunLian> getJunShiXunLian() {
         return junShiXunLian;
     }
 
+    @Transient
     public List<String> getBiaoZhang() {
         return biaoZhang;
     }

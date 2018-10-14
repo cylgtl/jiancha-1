@@ -6,7 +6,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.inspection.entity.JunShiJiaFen;
+import com.inspection.entity.JunShiXunLian;
 import com.inspection.entity.partyMember.PartyMemberMain;
+import net.sf.json.JSONArray;
 import org.apache.log4j.Logger;
 import org.jeecgframework.core.common.hibernate.qbc.CriteriaQuery;
 import org.jeecgframework.core.common.model.json.AjaxJson;
@@ -385,10 +388,15 @@ public class PartyMemberController extends BaseController {
 	public ModelAndView viewDetailMain(PartyMemberEntity entity, HttpServletRequest req) {
 		String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):entity.getId();
 		String isView =  req.getParameter("isView");
-		PartyMemberMain result = new PartyMemberMain();
 		if (StringUtils.isNotEmpty(id)) {
+			PartyMemberMain result = partyMemberService.findEntity(PartyMemberMain.class, id);
+			if (result==null){
+				result = new PartyMemberMain();
+			}
 			entity = partyMemberService.findEntity(PartyMemberEntity.class, id);
 			result.setEntity(entity);
+			result.setJunShiXunLian(JSONArray.toList(JSONArray.fromObject(result.getXunLianString()),JunShiXunLian.class));
+			result.setBiaoZhang(JSONArray.toList(JSONArray.fromObject(result.getBiaoZhangString())));
 			req.setAttribute("partyMemberPage", result);
 		}
 		if(isView.equals("true")){
@@ -404,6 +412,19 @@ public class PartyMemberController extends BaseController {
 	public AjaxJson modifyProcess(PartyMemberMain partyMemberMain, HttpServletRequest req) {
 		AjaxJson result = new AjaxJson();
 		String id = req.getParameter("id");
+		partyMemberMain.setId(id);
+		List<String> names = partyMemberMain.getNames();
+		List<String> scores = partyMemberMain.getScores();
+		List<JunShiXunLian> xunLian = new ArrayList<JunShiXunLian>();
+		for( int i = 0 ; i < names.size() ; i++) {
+			if (names.get(i) != null) {
+				xunLian.add(new JunShiXunLian(names.get(i),scores.get(i)));
+			}
+		}
+		partyMemberMain.setXunLianString(JSONArray.fromObject(xunLian).toString());
+		partyMemberMain.setBiaoZhangString(JSONArray.fromObject(partyMemberMain.getBiaoZhang()).toString());
+
+		partyMemberService.saveOrUpdate(partyMemberMain);
 		result.setMsg("保存成功");
 		return result;
 	}
