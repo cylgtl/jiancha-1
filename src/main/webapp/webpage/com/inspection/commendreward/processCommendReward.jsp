@@ -348,7 +348,7 @@
             data.biaoZhang = shouJiang;
             data.names = names;
             data.scores = scores;
-            var id = "${partyMemberPage.entity.id}";
+            var id = "${commendrewardPage.entity.id}";
             $.ajax({
                 url : "commendRewardController.do?modifyProcess&id="+id,
                 type : "POST",

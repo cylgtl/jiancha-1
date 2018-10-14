@@ -37,7 +37,7 @@
     <div class="container-fluid">
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
-        <li class="breadcrumb-item active">官兵评残</li>
+        <a class="breadcrumb-item active" href="${webRoot }/evaluationResidualController.do?evaluationResidual">官兵评残</a>
         <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('evaluationResidualController.do?viewMainDetial&id=${evaluationResidualPage.entity.id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
       </ol>
       <div class="row">

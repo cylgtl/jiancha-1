@@ -321,9 +321,20 @@ public class EvaluationResidualController extends BaseController {
 		}
 		
 		String isView =  req.getParameter("isView");
-		req.setAttribute("isView", isView);
-		req.setAttribute("id", id);
-		return new ModelAndView("com/inspection/evaluation/mainDetial");
+		if(isView.equals("true")){
+			return new ModelAndView("com/inspection/evaluation/mainDetial");
+		} else {
+			return new ModelAndView("com/inspection/evaluation/processEvaluation");
+		}
 	}
-	
+
+	// 处理页面
+	@RequestMapping(params = "modifyProcess")
+	@ResponseBody
+	public AjaxJson modifyProcess(EvaluationResidualMain evaluationResidualMain, HttpServletRequest req) {
+		AjaxJson result = new AjaxJson();
+		String id = req.getParameter("id");
+		result.setMsg("保存成功");
+		return result;
+	}
 }

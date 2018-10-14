@@ -335,7 +335,7 @@
             data.biaoZhang = shouJiang;
             data.names = names;
             data.scores = scores;
-            var id = "${partyMemberPage.entity.id}";
+            var id = "${backbonePage.entity.id}";
             $.ajax({
                 url : "backboneController.do?modifyProcess&id="+id,
                 type : "POST",
