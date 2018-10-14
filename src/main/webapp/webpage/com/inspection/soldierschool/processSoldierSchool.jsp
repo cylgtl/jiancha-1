@@ -419,7 +419,7 @@
         function addItem(){
             var count = $("#shouJiang tr").length - 1;
             var value = "";
-            var tr = "<tr id="+ count +"_shouJiangs\">\n" +
+            var tr = "<tr id="+ count +"_shouJiangs"+">\n" +
                 " <td><input type=\"text\" name="+ count +"_shouJiangs\" value="+value+"></td>\n" +
                 " <td><a href=\"#\" onclick=\"deleteItem('"+ count +"shouJiangs')\">删除</a></td>\n" +
                 " </tr>";
@@ -430,7 +430,7 @@
         function addJunItem(){
             var count = $("#junShiJiaFen tr").length - 1;
             var values = "";
-            var tr = "<tr id="+ count +"_junShiJiaFens\">\n" +
+            var tr = "<tr id="+ count +"_junShiJiaFens"+">\n" +
                 " <td>\n" +
                 " <input class=\"Wdate\" onClick=\"WdatePicker()\" name="+ count +"_time\"\n" +
                 " value=\"<fmt:formatDate value='${junShi.time}' type='date' pattern='yyyy-MM-dd'/>\">\n" +

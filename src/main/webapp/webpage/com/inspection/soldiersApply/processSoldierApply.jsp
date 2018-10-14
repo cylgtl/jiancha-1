@@ -391,7 +391,7 @@
         function addJunItem(){
             var count = $("#junShiJiaFen tr").length - 1;
             var values = "";
-            var tr = "<tr id="+ count +"_junShiJiaFens\">\n" +
+            var tr = "<tr id="+ count +"_junShiJiaFens"+">\n" +
                 " <td>\n" +
                 " <input class=\"Wdate\" onClick=\"WdatePicker()\" name="+ count +"_time\"\n" +
                 " value=\"<fmt:formatDate value='${junShi.time}' type='date' pattern='yyyy-MM-dd'/>\">\n" +
@@ -403,7 +403,6 @@
         }
 
         function deleteItem(index){
-            console.log(index);
             $("tr[id='"+index+"']").remove();
         }
 

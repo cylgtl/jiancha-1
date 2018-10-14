@@ -226,7 +226,9 @@
 							<c:if test="${fn:length(soldiersApplyPage.junShiJiaFen) > 0 }">
 								<c:forEach items="${soldiersApplyPage.junShiJiaFen}" var="junShiJiaFen" varStatus="stuts">
 									<tr>
-										<td>${junShiJiaFen.time}</td>
+										<td>
+                                            <fmt:formatDate value='${junShiJiaFen.time}' type="date" pattern="yyyy-MM-dd"/>
+                                        </td>
 										<td>${junShiJiaFen.detail}</td>
 									</tr>
 								</c:forEach>

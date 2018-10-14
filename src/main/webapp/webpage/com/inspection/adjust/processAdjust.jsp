@@ -396,9 +396,9 @@
         function addItem(){
             var count = $("#jiaJian tr").length - 1;
             var value = "";
-            var tr = "<tr id="+ count +"_recommends\">\n" +
+            var tr = "<tr id="+ count +"_recommends"+">\n" +
                 " <td><input type=\"text\" name="+ count +"_recommends\" value="+ value +"></td>\n" +
-                " <td><a href=\"#\" onclick=\"deleteItem()\">删除</a></td>\n" +
+                " <td><a href=\"#\" onclick=\"deleteItem('"+count+"_recommends')\">删除</a></td>\n" +
                 " </tr>";
 
             $("#jiaJian").append(tr);

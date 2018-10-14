@@ -410,7 +410,6 @@
             data.names = names;
             data.scores = scores;
             var id = "${partyMemberPage.entity.id}";
-            console.log("data:"+JSON.stringify(data));
             $.ajax({
                 url : "partyMemberController.do?modifyProcess&id="+id,
                 type : "POST",
