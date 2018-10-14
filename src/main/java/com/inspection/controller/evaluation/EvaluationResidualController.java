@@ -6,7 +6,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.inspection.entity.JunShiXunLian;
 import com.inspection.entity.evaluation.EvaluationResidualMain;
+import net.sf.json.JSONArray;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -314,7 +316,10 @@ public class EvaluationResidualController extends BaseController {
 		String id = StringUtils.isNotEmpty(req.getParameter("id"))?req.getParameter("id"):evaluationResidual.getId();
 
 		if (StringUtils.isNotEmpty(id)) {
-			EvaluationResidualMain result = new EvaluationResidualMain();
+			EvaluationResidualMain result = evaluationResidualService.findEntity(EvaluationResidualMain.class, id);
+			if ( result == null ){
+				result = new EvaluationResidualMain();
+			}
 			evaluationResidual = evaluationResidualService.findEntity(EvaluationResidualEntity.class, id);
 			result.setEntity(evaluationResidual);
 			req.setAttribute("evaluationResidualPage", result);
@@ -334,6 +339,9 @@ public class EvaluationResidualController extends BaseController {
 	public AjaxJson modifyProcess(EvaluationResidualMain evaluationResidualMain, HttpServletRequest req) {
 		AjaxJson result = new AjaxJson();
 		String id = req.getParameter("id");
+		evaluationResidualMain.setId(id);
+
+		evaluationResidualService.saveOrUpdate(evaluationResidualMain);
 		result.setMsg("保存成功");
 		return result;
 	}

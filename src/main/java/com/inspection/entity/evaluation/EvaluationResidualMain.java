@@ -1,10 +1,32 @@
 package com.inspection.entity.evaluation;
 
-import com.inspection.entity.evaluation.EvaluationResidualEntity;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+@Entity
+@Table(name = "t_evaluation", schema = "")
+@DynamicUpdate(true)
+@DynamicInsert(true)
 public class EvaluationResidualMain {
+    private String id;
+
+    @Id
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     private EvaluationResidualEntity entity;
 
+    @Transient
     public EvaluationResidualEntity getEntity() {
         return entity;
     }

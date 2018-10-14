@@ -10,6 +10,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import java.util.Date;
 import java.util.List;
+
 @Entity
 @Table(name = "t_party_member", schema = "")
 @DynamicUpdate(true)
