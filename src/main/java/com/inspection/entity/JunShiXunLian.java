@@ -3,6 +3,7 @@ package com.inspection.entity;
 public class JunShiXunLian {
     private String name;
     private String score;
+    public JunShiXunLian (){}
     public JunShiXunLian(String name, String score) {
         this.name = name;
         this.score = score;

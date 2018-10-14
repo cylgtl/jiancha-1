@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.inspection.entity.JunShiXunLian;
 import com.inspection.entity.commendreward.CommendRewardMain;
 import net.sf.json.JSONArray;
 import org.apache.log4j.Logger;
@@ -333,7 +334,7 @@ public class CommendRewardController extends BaseController {
 			}
 			commendReward = commendRewardService.findEntity(CommendRewardEntity.class, id);
 			result.setEntity(commendReward);
-			result.setJunShiXunLian(JSONArray.toList(JSONArray.fromObject(result.getXunLianString())));
+			result.setJunShiXunLian(JSONArray.toList(JSONArray.fromObject(result.getXunLianString()), JunShiXunLian.class));
 			result.setBiaoZhang(JSONArray.toList(JSONArray.fromObject(result.getBiaoZhangString())));
 			req.setAttribute("commendrewardPage", result);
 		}
@@ -353,7 +354,17 @@ public class CommendRewardController extends BaseController {
 		AjaxJson result = new AjaxJson();
 		String id = req.getParameter("id");
 		commendRewardMain.setId(id);
-		commendRewardMain.setXunLianString(JSONArray.fromObject(commendRewardMain.getJunShiXunLian()).toString());
+
+		List<String> names = commendRewardMain.getNames();
+		List<String> scores = commendRewardMain.getScores();
+		List<JunShiXunLian> xunLian = new ArrayList<JunShiXunLian>();
+		for( int i = 0 ; i < names.size() ; i++) {
+			if (names.get(i) != null) {
+				xunLian.add(new JunShiXunLian(names.get(i),scores.get(i)));
+			}
+		}
+
+		commendRewardMain.setXunLianString(JSONArray.fromObject(xunLian).toString());
 		commendRewardMain.setBiaoZhangString(JSONArray.fromObject(commendRewardMain.getBiaoZhang()).toString());
 
 		commendRewardService.saveOrUpdate(commendRewardMain);
