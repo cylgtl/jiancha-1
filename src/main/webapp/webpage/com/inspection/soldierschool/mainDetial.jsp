@@ -247,7 +247,9 @@
 							<c:if test="${fn:length(soldierSchoolPage.junShiJiaFen) > 0 }">
 								<c:forEach items="${soldierSchoolPage.junShiJiaFen}" var="junShiJiaFen" varStatus="stuts">
 									<tr>
-										<td>${junShiJiaFen.time}</td>
+										<td>
+                                            <fmt:formatDate value='${junShiJiaFen.time}' type="date" pattern="yyyy-MM-dd"/>
+                                        </td>
 										<td>${junShiJiaFen.detail}</td>
 									</tr>
 								</c:forEach>
