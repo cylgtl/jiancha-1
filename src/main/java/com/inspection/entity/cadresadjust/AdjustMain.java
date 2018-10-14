@@ -29,9 +29,6 @@ public class AdjustMain implements Serializable {
     private String id;
 
     @Id
-    //@GeneratedValue(generator = "paymentableGenerator")
-    //@GenericGenerator(name = "paymentableGenerator", strategy = "uuid")
-    //@Column(name ="id",nullable=false,length=40)
     public String getId() {
         return id;
     }
