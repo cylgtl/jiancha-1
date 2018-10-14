@@ -29,7 +29,7 @@
         input[type="text"] {
             width: 100%;
         }
-        #shoujiang td {
+        #shoujiang td, #junShi td {
             vertical-align: middle;
         }
     </style>
