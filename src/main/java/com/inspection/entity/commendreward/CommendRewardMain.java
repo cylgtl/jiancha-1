@@ -1,13 +1,36 @@
 package com.inspection.entity.commendreward;
 
 import com.inspection.entity.JunShiXunLian;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.util.Date;
 import java.util.List;
 
+@Entity
+@Table(name = "t_commend_reward", schema = "")
+@DynamicUpdate(true)
+@DynamicInsert(true)
 public class CommendRewardMain {
+
+    private String id;
+
+    @Id
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     private CommendRewardEntity entity;
 
+    @Transient
     public CommendRewardEntity getEntity() {
         return entity;
     }
@@ -38,9 +61,20 @@ public class CommendRewardMain {
 
     //军事训练成绩
     private List<JunShiXunLian> junShiXunLian;
+    private String xunLianString;
+
+    public String getXunLianString() {
+        return xunLianString;
+    }
+
+    public void setXunLianString(String xunLianString) {
+        this.xunLianString = xunLianString;
+    }
+
     private List<String> names;
     private List<String> scores;
 
+    @Transient
     public List<String> getNames() {
         return names;
     }
@@ -49,6 +83,7 @@ public class CommendRewardMain {
         this.names = names;
     }
 
+    @Transient
     public List<String> getScores() {
         return scores;
     }
@@ -59,6 +94,15 @@ public class CommendRewardMain {
 
     //今年取得成绩
     private List<String> biaoZhang;
+    private String biaoZhangString;
+
+    public String getBiaoZhangString() {
+        return biaoZhangString;
+    }
+
+    public void setBiaoZhangString(String biaoZhangString) {
+        this.biaoZhangString = biaoZhangString;
+    }
 
     public String getJiangLiLeiXing() {
         return jiangLiLeiXing;
@@ -164,6 +208,7 @@ public class CommendRewardMain {
         this.dangWeiJueDing = dangWeiJueDing;
     }
 
+    @Transient
     public List<JunShiXunLian> getJunShiXunLian() {
         return junShiXunLian;
     }
@@ -172,6 +217,7 @@ public class CommendRewardMain {
         this.junShiXunLian = junShiXunLian;
     }
 
+    @Transient
     public List<String> getBiaoZhang() {
         return biaoZhang;
     }
