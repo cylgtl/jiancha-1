@@ -104,7 +104,7 @@
 			<div class="col-lg-6">
 				<div class="card mb-3">
 					<div class="card-header">
-						<i class="fa fa-hourglass-start"></i> 培训联系人</div>
+						<i class="fa fa-user-o"></i> 培训联系人</div>
 					<div class="card-body">
 						<table class="table table-bordered" width="100%" style="font-size: 12px;" cellspacing="0">
 							<tr>
