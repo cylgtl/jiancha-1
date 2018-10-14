@@ -428,6 +428,7 @@
                 data : data,
                 async : false,
                 cache : false,
+                traditional:true,
                 error : function() {
                     alert("修改失败!!!");
                 },
