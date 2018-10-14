@@ -314,12 +314,12 @@ public class OfficerLeaveController extends BaseController {
 	 * @param req
 	 * @return
 	 */
-	@RequestMapping(params = "modifyProcess")
+/*	@RequestMapping(params = "modifyProcess")
 	@ResponseBody
 	public AjaxJson modifyProcess(OfficerLeaveMain officerLeaveMain, HttpServletRequest req) {
 		AjaxJson result = new AjaxJson();
 		String id = req.getParameter("id");
 		result.setMsg("保存成功");
 		return result;
-	}
+	}*/
 }

@@ -252,7 +252,7 @@
             var arry = $("#processOfficerLeave").serialize();
             var id = "${officerLeavePage.entity.id}";
             $.ajax({
-                url : "officerLeaveController.do?modifyProcess&id="+id,
+                url : "soldierLeaveController.do?modifyProcess&id="+id,
                 type : "POST",
                 data : arry,
                 async : false,
