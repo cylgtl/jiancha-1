@@ -30,6 +30,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.inspection.entity.partyMember.PartyMemberAssessmentEntity;
@@ -412,6 +414,15 @@ public class PartyMemberController extends BaseController {
 	public AjaxJson modifyProcess(PartyMemberMain partyMemberMain, HttpServletRequest req) {
 		AjaxJson result = new AjaxJson();
 		String id = req.getParameter("id");
+
+		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) req;
+		MultipartFile file = multipartRequest.getFile("ruDangFile");
+		if (file != null) {
+			String fileName = file.getOriginalFilename();
+			int size = (int) file.getSize();
+			System.out.println("ddd "+fileName + "-->" + size);
+		}
+
 		partyMemberMain.setId(id);
 		List<String> names = partyMemberMain.getNames();
 		List<String> scores = partyMemberMain.getScores();
@@ -425,6 +436,8 @@ public class PartyMemberController extends BaseController {
 		partyMemberMain.setBiaoZhangString(JSONArray.fromObject(partyMemberMain.getBiaoZhang()).toString());
 
 		partyMemberService.saveOrUpdate(partyMemberMain);
+
+
 		result.setMsg("保存成功");
 		return result;
 	}
