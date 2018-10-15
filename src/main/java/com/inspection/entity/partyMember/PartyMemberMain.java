@@ -4,10 +4,7 @@ import com.inspection.entity.JunShiXunLian;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -16,6 +13,16 @@ import java.util.List;
 @DynamicUpdate(true)
 @DynamicInsert(true)
 public class PartyMemberMain {
+    private String ruDangFilename;
+
+    public String getRuDangFilename() {
+        return ruDangFilename;
+    }
+
+    public void setRuDangFilename(String ruDangFilename) {
+        this.ruDangFilename = ruDangFilename;
+    }
+
     private String id;
 
     @Id
@@ -271,6 +278,8 @@ public class PartyMemberMain {
         return biaoZhang;
     }
 
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
     public byte[] getRuDangShenQing() {
         return ruDangShenQing;
     }

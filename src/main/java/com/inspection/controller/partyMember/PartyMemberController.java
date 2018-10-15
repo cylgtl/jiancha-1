@@ -1,4 +1,6 @@
 package com.inspection.controller.partyMember;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -6,10 +8,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.inspection.entity.JunShiJiaFen;
 import com.inspection.entity.JunShiXunLian;
 import com.inspection.entity.partyMember.PartyMemberMain;
 import net.sf.json.JSONArray;
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.jeecgframework.core.common.hibernate.qbc.CriteriaQuery;
 import org.jeecgframework.core.common.model.json.AjaxJson;
@@ -395,6 +397,17 @@ public class PartyMemberController extends BaseController {
 			if (result==null){
 				result = new PartyMemberMain();
 			}
+			File dest = new File(req.getSession().getServletContext().getRealPath("/partyMember")
+					+"/"+result.getId()+"/"+result.getRuDangFilename());
+			System.out.println("fff "+ result.getRuDangShenQing().length);
+			if (!dest.getParentFile().exists()) { // 判断文件父目录是否存在
+				dest.getParentFile().mkdir();
+			}
+			try {
+				FileUtils.writeByteArrayToFile(dest, result.getRuDangShenQing());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			entity = partyMemberService.findEntity(PartyMemberEntity.class, id);
 			result.setEntity(entity);
 			result.setJunShiXunLian(JSONArray.toList(JSONArray.fromObject(result.getXunLianString()),JunShiXunLian.class));
@@ -417,10 +430,16 @@ public class PartyMemberController extends BaseController {
 
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) req;
 		MultipartFile file = multipartRequest.getFile("ruDangFile");
-		if (file != null) {
+		if (file != null && !file.isEmpty()) {
 			String fileName = file.getOriginalFilename();
-			int size = (int) file.getSize();
-			System.out.println("ddd "+fileName + "-->" + size);
+			try {
+				partyMemberMain.setRuDangFilename(fileName);
+				partyMemberMain.setRuDangShenQing(file.getBytes());
+			} catch (Exception e) {
+				e.printStackTrace();
+				result.setMsg("文件保存失败，请重试");
+				return result;
+			}
 		}
 
 		partyMemberMain.setId(id);

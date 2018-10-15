@@ -93,8 +93,7 @@
 				  <div class="card-header">
 					  <i class="fa fa-address-book-o"></i> 入党申请书</div>
 				  <div class="card-body shen-qing-shu">
-					  <a class="fa fa-file-word-o" style="font-size: 50px;" onclick="viewShenqingShu()"></a>
-					  <div onclick="viewShenqingShu()">在线预览</div>
+					  <a class="fa fa-file-word-o" style="font-size: 50px;" href="./partyMember/${partyMemberPage.id}/${partyMemberPage.ruDangFilename}"></a>
 				  </div>
 			  </div>
 		  </div>
