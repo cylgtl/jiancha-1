@@ -15,6 +15,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import org.jeecgframework.core.util.BeanPropertyUtils;
@@ -354,6 +356,9 @@ public class CommendRewardController extends BaseController {
 		AjaxJson result = new AjaxJson();
 		String id = req.getParameter("id");
 		commendRewardMain.setId(id);
+
+		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) req;
+		MultipartFile file = multipartRequest.getFile("shiJiFile");
 
 		List<String> names = commendRewardMain.getNames();
 		List<String> scores = commendRewardMain.getScores();

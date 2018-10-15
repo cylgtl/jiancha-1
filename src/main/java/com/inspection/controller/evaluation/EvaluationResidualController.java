@@ -15,6 +15,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import org.jeecgframework.core.util.BeanPropertyUtils;
@@ -337,9 +339,18 @@ public class EvaluationResidualController extends BaseController {
 	@RequestMapping(params = "modifyProcess")
 	@ResponseBody
 	public AjaxJson modifyProcess(EvaluationResidualMain evaluationResidualMain, HttpServletRequest req) {
+
 		AjaxJson result = new AjaxJson();
 		String id = req.getParameter("id");
 		evaluationResidualMain.setId(id);
+
+		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) req;
+		MultipartFile file1 = multipartRequest.getFile("ziShuFile");
+		MultipartFile file2 = multipartRequest.getFile("fuHeFile");
+		MultipartFile file3 = multipartRequest.getFile("shenFenFile");
+		MultipartFile file4 = multipartRequest.getFile("junGuanFile");
+		MultipartFile file5 = multipartRequest.getFile("baoZhangFile");
+		MultipartFile file6 = multipartRequest.getFile("bingLiFile");
 
 		evaluationResidualService.saveOrUpdate(evaluationResidualMain);
 		result.setMsg("保存成功");

@@ -130,7 +130,7 @@
                                 </tr>
                                 <tr>
                                     <td class="file-space">
-                                        <input name="geRenZiShu" type="file"
+                                        <input id="ziShuFile" name="geRenZiShu" type="file" multiple="multiple"
                                                accept="application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
                                         <div class='file-type-tip' style="color:#999999">注：请上传word格式文档</div>
                                     </td>
@@ -167,7 +167,7 @@
                                 </tr>
                                 <tr>
                                     <td class="file-space" rowspan="2" style="vertical-align: middle">
-                                        <input name="fuHeXing" type="file"
+                                        <input id="fuHeFile" name="fuHeXing" type="file" multiple="multiple"
                                                accept="application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
                                         <div class='file-type-tip' style="color:#999999">注：请上传word格式文档</div>
                                     </td>
@@ -175,21 +175,21 @@
                                         <input type="text" name="jueYi" value="${evaluationResidualPage.jueYi}">
                                     </td>
                                     <td class="file-space">
-                                        <input name="shenFenZheng" type="file" accept="image/*"/>
+                                        <input id="shenFenFile" name="shenFenZheng" type="file" accept="image/*"/>
                                         <div class='file-type-tip' style="color:#999999">注：请上传身份证(图片格式)</div>
                                     </td>
                                     <td class="file-space">
-                                        <input name="junGuangZheng" type="file" accept="image/*"/>
+                                        <input id="junGuanFile" name="junGuangZheng" type="file" accept="image/*"/>
                                         <div class='file-type-tip' style="color:#999999">注：请上传军官证(图片格式)</div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="file-space">
-                                        <input name="baoZhangKa" type="file" accept="image/*"/>
+                                        <input id="baoZhangFile" name="baoZhangKa" type="file" accept="image/*"/>
                                         <div class='file-type-tip' style="color:#999999">注：请上传保障卡(图片格式)</div>
                                     </td>
                                     <td class="file-space">
-                                        <input name="bingLibingLi" type="file" accept="image/*"/>
+                                        <input id="bingLiFile" name="bingLibingLi" type="file" accept="image/*"/>
                                         <div class='file-type-tip' style="color:#999999">注：请上传病历复印证(图片格式)</div>
                                     </td>
                                 </tr>
@@ -229,14 +229,24 @@
         }
 
         function submitPerformances() {
-            var arry = $("#processEvaluation").serialize();
+            var array = $("#processEvaluation").serialize();
             var id = "${evaluationResidualPage.entity.id}";
+
+            var formData = new FormData();
+            formData.append("ziShuFile", $('#ziShuFile')[0].files[0]);
+            formData.append("fuHeFile", $('#fuHeFile')[0].files[0]);
+            formData.append("shenFenFile", $('#shenFenFile')[0].files[0]);
+            formData.append("junGuanFile", $('#junGuanFile')[0].files[0]);
+            formData.append("baoZhangFile", $('#baoZhangFile')[0].files[0]);
+            formData.append("bingLiFile", $('#bingLiFile')[0].files[0]);
             $.ajax({
-                url : "evaluationResidualController.do?modifyProcess&id="+id,
+                url : "evaluationResidualController.do?modifyProcess&id="+id+"&"+array,
                 type : "POST",
-                data : arry,
+                data : formData,
                 async : false,
                 cache : false,
+                processData: false,
+                contentType: false,
                 error : function() {
                     alert("修改失败!!!");
                 },

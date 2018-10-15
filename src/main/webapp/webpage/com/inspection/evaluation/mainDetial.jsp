@@ -148,7 +148,7 @@
 			<div class="col-lg-12">
 				<div class="card mb-3">
 					<div class="card-header">
-						<i class="fa fa-hand-stop-o"></i> 残疾评定</div>
+						<i class="fa fa-file-word-o"></i> 残疾评定</div>
 					<div class="card-body">
 						<table class="table table-bordered" width="100%" cellspacing="0">
 							<tr>
@@ -158,26 +158,26 @@
 							</tr>
 							<tr>
 								<td class="file-space" rowspan="2" style="vertical-align: middle">
-									<a class="fa fa-file-word-o" style="font-size: 50px;" onclick="viewGeren()"></a>
+									<a class="fa fa-file-photo-o" style="font-size: 50px;" onclick="viewGeren()"></a>
 									<div onclick="viewGeren()">在线预览</div>
 								</td>
 								<td rowspan="2">${evaluationResidualPage.jueYi}</td>
 								<td class="file-space">
-									<a class="fa fa-file-word-o" style="font-size: 50px;" onclick="viewGeren()"></a>
+									<a class="fa fa-file-photo-o" style="font-size: 50px;" onclick="viewGeren()"></a>
 									<div onclick="viewGeren()">身份证</div>
 								</td>
 								<td class="file-space">
-									<a class="fa fa-file-word-o" style="font-size: 50px;" onclick="viewGeren()"></a>
+									<a class="fa fa-file-photo-o" style="font-size: 50px;" onclick="viewGeren()"></a>
 									<div onclick="viewGeren()">军官证</div>
 								</td>
 							</tr>
 							<tr>
 								<td class="file-space">
-									<a class="fa fa-file-word-o" style="font-size: 50px;" onclick="viewGeren()"></a>
+									<a class="fa fa-file-photo-o" style="font-size: 50px;" onclick="viewGeren()"></a>
 									<div onclick="viewGeren()">保障卡</div>
 								</td>
 								<td class="file-space">
-									<a class="fa fa-file-word-o" style="font-size: 50px;" onclick="viewGeren()"></a>
+									<a class="fa fa-file-photo-o" style="font-size: 50px;" onclick="viewGeren()"></a>
 									<div onclick="viewGeren()">病历复印证</div>
 								</td>
 							</tr>

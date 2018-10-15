@@ -97,7 +97,7 @@
                         <div class="card-header">
                             <i class="fa fa-address-book-o"></i> 事迹材料</div>
                         <div class="card-body">
-                            <input name="shiJiCaiLiao" type="file"
+                            <input id="shiJiFile" name="shiJiCaiLiao" type="file" multiple="multiple"
                                    accept="application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
                             <span class='file-type-tip' style="color:#999999">注：请上传word格式文档</span>
                         </div>
@@ -332,15 +332,19 @@
         }
 
         function submitPerformances() {
+            var array = $("#processCommendReward").serialize();
             var temp = $("#processCommendReward").serializeArray();
             var shouJiang = [], names = [], scores = [], data = {};
             $.each(temp,function(i,v){
                 if(v.name.indexOf("_shouJiangs")>-1){
                     shouJiang.push(v.value);
+                    array = array+"&biaoZhang="+v.value;
                 }else if(v.name.indexOf("_names")>-1){
                     names.push(v.value||"");
+                    array = array+"&names="+v.value;
                 }else if(v.name.indexOf("_scores")>-1){
                     scores.push(v.value||"");
+                    array = array+"&scores="+v.value;
                 }else {
                     data[v.name] = v.value;
                 }
@@ -349,13 +353,16 @@
             data.names = names;
             data.scores = scores;
             var id = "${commendrewardPage.entity.id}";
+            var formData = new FormData();
+            formData.append("shiJiFile", $('#shiJiFile')[0].files[0]);
             $.ajax({
-                url : "commendRewardController.do?modifyProcess&id="+id,
+                url : "commendRewardController.do?modifyProcess&id="+id+"&"+array,
                 type : "POST",
-                data : data,
+                data : formData,
                 async : false,
                 cache : false,
-                traditional : true,
+                processData: false,
+                contentType: false,
                 error : function() {
                     alert("修改失败!!!");
                 },
