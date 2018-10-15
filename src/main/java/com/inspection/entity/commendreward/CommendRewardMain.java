@@ -4,10 +4,7 @@ import com.inspection.entity.JunShiXunLian;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -16,6 +13,15 @@ import java.util.List;
 @DynamicUpdate(true)
 @DynamicInsert(true)
 public class CommendRewardMain {
+    private String shiJiFilename;
+
+    public String getShiJiFilename() {
+        return shiJiFilename;
+    }
+
+    public void setShiJiFilename(String shiJiFilename) {
+        this.shiJiFilename = shiJiFilename;
+    }
 
     private String id;
 
@@ -120,6 +126,8 @@ public class CommendRewardMain {
         this.tiMingLeiXing = tiMingLeiXing;
     }
 
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
     public byte[] getShiJiCaiLiao() {
         return shiJiCaiLiao;
     }

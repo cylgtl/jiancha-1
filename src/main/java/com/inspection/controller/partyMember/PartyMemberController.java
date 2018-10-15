@@ -397,16 +397,18 @@ public class PartyMemberController extends BaseController {
 			if (result==null){
 				result = new PartyMemberMain();
 			}
-			File dest = new File(req.getSession().getServletContext().getRealPath("/partyMember")
-					+"/"+result.getId()+"/"+result.getRuDangFilename());
-			System.out.println("fff "+ result.getRuDangShenQing().length);
-			if (!dest.getParentFile().exists()) { // 判断文件父目录是否存在
-				dest.getParentFile().mkdir();
-			}
-			try {
-				FileUtils.writeByteArrayToFile(dest, result.getRuDangShenQing());
-			} catch (IOException e) {
-				e.printStackTrace();
+
+			if(result.getRuDangShenQing() != null && result.getRuDangShenQing().length > 0) {
+				File dest = new File(req.getSession().getServletContext().getRealPath("/downloadFiles/partyMember")
+						+ "/" + result.getId() + "/" + result.getRuDangFilename());
+				if (!dest.getParentFile().exists()) { // 判断文件父目录是否存在
+					dest.getParentFile().mkdir();
+				}
+				try {
+					FileUtils.writeByteArrayToFile(dest, result.getRuDangShenQing());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 			entity = partyMemberService.findEntity(PartyMemberEntity.class, id);
 			result.setEntity(entity);

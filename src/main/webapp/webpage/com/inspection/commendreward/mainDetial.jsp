@@ -93,8 +93,7 @@
 				  <div class="card-header">
 					  <i class="fa fa-address-book-o"></i> 事迹材料</div>
 				  <div class="card-body shijicailiao">
-					  <a class="fa fa-file-word-o" style="font-size: 50px;" onclick="viewShiJiCaiLiao()"></a>
-					  <div onclick="viewShiJiCaiLiao()">在线预览</div>
+					  <a class="fa fa-file-word-o" style="font-size: 50px;" href="./downloadFiles/commendReward/${commendrewardPage.id}/${commendrewardPage.shiJiFilename}"></a>
 				  </div>
 			  </div>
 		  </div>

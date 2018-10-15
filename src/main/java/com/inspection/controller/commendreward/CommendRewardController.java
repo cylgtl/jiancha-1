@@ -1,4 +1,6 @@
 package com.inspection.controller.commendreward;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.inspection.entity.JunShiXunLian;
 import com.inspection.entity.commendreward.CommendRewardMain;
 import net.sf.json.JSONArray;
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -334,6 +337,19 @@ public class CommendRewardController extends BaseController {
 			if (result==null){
 				result = new CommendRewardMain();
 			}
+
+			if(result.getShiJiCaiLiao() != null && result.getShiJiCaiLiao().length > 0) {
+				File dest = new File(req.getSession().getServletContext().getRealPath("/downloadFiles/commendReward")
+						+"/"+result.getId()+"/"+result.getShiJiFilename());
+				if (!dest.getParentFile().exists()) { // 判断文件父目录是否存在
+					dest.getParentFile().mkdir();
+				}
+				try {
+					FileUtils.writeByteArrayToFile(dest, result.getShiJiCaiLiao());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 			commendReward = commendRewardService.findEntity(CommendRewardEntity.class, id);
 			result.setEntity(commendReward);
 			result.setJunShiXunLian(JSONArray.toList(JSONArray.fromObject(result.getXunLianString()), JunShiXunLian.class));
@@ -359,6 +375,17 @@ public class CommendRewardController extends BaseController {
 
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) req;
 		MultipartFile file = multipartRequest.getFile("shiJiFile");
+		if (file != null && !file.isEmpty()) {
+			String fileName = file.getOriginalFilename();
+			try {
+				commendRewardMain.setShiJiFilename(fileName);
+				commendRewardMain.setShiJiCaiLiao(file.getBytes());
+			} catch (Exception e) {
+				e.printStackTrace();
+				result.setMsg("文件保存失败，请重试");
+				return result;
+			}
+		}
 
 		List<String> names = commendRewardMain.getNames();
 		List<String> scores = commendRewardMain.getScores();
