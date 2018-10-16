@@ -93,7 +93,9 @@
 				  <div class="card-header">
 					  <i class="fa fa-address-book-o"></i> 事迹材料</div>
 				  <div class="card-body shijicailiao">
+                    <c:if test="${not empty commendrewardPage.shiJiFilename}">
 					  <a class="fa fa-file-word-o" style="font-size: 50px;" href="./downloadFiles/commendReward/${commendrewardPage.id}/${commendrewardPage.shiJiFilename}"></a>
+					</c:if>
 				  </div>
 			  </div>
 		  </div>

@@ -3,10 +3,7 @@ package com.inspection.entity.evaluation;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "t_evaluation", schema = "")
@@ -41,6 +38,16 @@ public class EvaluationResidualMain {
 
     //评残审查
     private byte[] geRenZiShu;
+    private String ziShuFilename;
+
+    public String getZiShuFilename() {
+        return ziShuFilename;
+    }
+
+    public void setZiShuFilename(String ziShuFilename) {
+        this.ziShuFilename = ziShuFilename;
+    }
+
     private String zhiCanXingZhi;
     private String oanZhengRen1;
     private String oanZhengRen2;
@@ -48,11 +55,57 @@ public class EvaluationResidualMain {
 
     //残疾评定
     private byte[] fuHeXing;
+    private String fuHeFilename;
+
+    public String getFuHeFilename() {
+        return fuHeFilename;
+    }
+
+    public void setFuHeFilename(String fuHeFilename) {
+        this.fuHeFilename = fuHeFilename;
+    }
+
     private String jueYi;
     private byte[] shenFenZheng;
+    private String ShenFenZhengFilename;
     private byte[] junGuangZheng;
+    private String junGuangZhengFilename;
     private byte[] baoZhangKa;
+    private String baoZhangKaFilename;
     private byte[] bingLi;
+    private String bingLiFilename;
+
+    public String getShenFenZhengFilename() {
+        return ShenFenZhengFilename;
+    }
+
+    public void setShenFenZhengFilename(String shenFenZhengFilename) {
+        ShenFenZhengFilename = shenFenZhengFilename;
+    }
+
+    public String getJunGuangZhengFilename() {
+        return junGuangZhengFilename;
+    }
+
+    public void setJunGuangZhengFilename(String junGuangZhengFilename) {
+        this.junGuangZhengFilename = junGuangZhengFilename;
+    }
+
+    public String getBaoZhangKaFilename() {
+        return baoZhangKaFilename;
+    }
+
+    public void setBaoZhangKaFilename(String baoZhangKaFilename) {
+        this.baoZhangKaFilename = baoZhangKaFilename;
+    }
+
+    public String getBingLiFilename() {
+        return bingLiFilename;
+    }
+
+    public void setBingLiFilename(String bingLiFilename) {
+        this.bingLiFilename = bingLiFilename;
+    }
 
     public String getZhengMingRen1() {
         return zhengMingRen1;
@@ -70,6 +123,8 @@ public class EvaluationResidualMain {
         this.zhengMingRen2 = zhengMingRen2;
     }
 
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
     public byte[] getGeRenZiShu() {
         return geRenZiShu;
     }
@@ -110,6 +165,8 @@ public class EvaluationResidualMain {
         this.oanZhengRen3 = oanZhengRen3;
     }
 
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
     public byte[] getFuHeXing() {
         return fuHeXing;
     }
@@ -126,6 +183,8 @@ public class EvaluationResidualMain {
         this.jueYi = jueYi;
     }
 
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
     public byte[] getShenFenZheng() {
         return shenFenZheng;
     }
@@ -134,6 +193,8 @@ public class EvaluationResidualMain {
         this.shenFenZheng = shenFenZheng;
     }
 
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
     public byte[] getJunGuangZheng() {
         return junGuangZheng;
     }
@@ -142,6 +203,8 @@ public class EvaluationResidualMain {
         this.junGuangZheng = junGuangZheng;
     }
 
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
     public byte[] getBaoZhangKa() {
         return baoZhangKa;
     }
@@ -150,6 +213,8 @@ public class EvaluationResidualMain {
         this.baoZhangKa = baoZhangKa;
     }
 
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
     public byte[] getBingLi() {
         return bingLi;
     }

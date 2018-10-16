@@ -1,4 +1,6 @@
 package com.inspection.controller.evaluation;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.inspection.entity.JunShiXunLian;
 import com.inspection.entity.evaluation.EvaluationResidualMain;
 import net.sf.json.JSONArray;
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -322,6 +325,85 @@ public class EvaluationResidualController extends BaseController {
 			if ( result == null ){
 				result = new EvaluationResidualMain();
 			}
+
+			if(result.getGeRenZiShu() != null && result.getGeRenZiShu().length > 0) {
+				File dest = new File(req.getSession().getServletContext().getRealPath("/downloadFiles/evaluationResidual")
+						+"/"+result.getId()+"/"+result.getZiShuFilename());
+				if (!dest.getParentFile().exists()) { // 判断文件父目录是否存在
+					dest.getParentFile().mkdir();
+				}
+				try {
+					FileUtils.writeByteArrayToFile(dest, result.getGeRenZiShu());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+			if(result.getFuHeXing() != null && result.getFuHeXing().length > 0) {
+				File dest = new File(req.getSession().getServletContext().getRealPath("/downloadFiles/evaluationResidual")
+						+"/"+result.getId()+"/"+result.getFuHeFilename());
+				if (!dest.getParentFile().exists()) { // 判断文件父目录是否存在
+					dest.getParentFile().mkdir();
+				}
+				try {
+					FileUtils.writeByteArrayToFile(dest, result.getFuHeXing());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+			if(result.getShenFenZheng() != null && result.getShenFenZheng().length > 0) {
+				File dest = new File(req.getSession().getServletContext().getRealPath("/downloadFiles/evaluationResidual")
+						+"/"+result.getId()+"/"+result.getShenFenZhengFilename());
+				if (!dest.getParentFile().exists()) { // 判断文件父目录是否存在
+					dest.getParentFile().mkdir();
+				}
+				try {
+					FileUtils.writeByteArrayToFile(dest, result.getShenFenZheng());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+			if(result.getJunGuangZheng() != null && result.getJunGuangZheng().length > 0) {
+				File dest = new File(req.getSession().getServletContext().getRealPath("/downloadFiles/evaluationResidual")
+						+"/"+result.getId()+"/"+result.getJunGuangZhengFilename());
+				if (!dest.getParentFile().exists()) { // 判断文件父目录是否存在
+					dest.getParentFile().mkdir();
+				}
+				try {
+					FileUtils.writeByteArrayToFile(dest, result.getJunGuangZheng());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+			if(result.getBaoZhangKa() != null && result.getBaoZhangKa().length > 0) {
+				File dest = new File(req.getSession().getServletContext().getRealPath("/downloadFiles/evaluationResidual")
+						+"/"+result.getId()+"/"+result.getBaoZhangKaFilename());
+				if (!dest.getParentFile().exists()) { // 判断文件父目录是否存在
+					dest.getParentFile().mkdir();
+				}
+				try {
+					FileUtils.writeByteArrayToFile(dest, result.getBaoZhangKa());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+			if(result.getBingLi() != null && result.getBingLi().length > 0) {
+				File dest = new File(req.getSession().getServletContext().getRealPath("/downloadFiles/evaluationResidual")
+						+"/"+result.getId()+"/"+result.getBingLiFilename());
+				if (!dest.getParentFile().exists()) { // 判断文件父目录是否存在
+					dest.getParentFile().mkdir();
+				}
+				try {
+					FileUtils.writeByteArrayToFile(dest, result.getBingLi());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
 			evaluationResidual = evaluationResidualService.findEntity(EvaluationResidualEntity.class, id);
 			result.setEntity(evaluationResidual);
 			req.setAttribute("evaluationResidualPage", result);
@@ -345,12 +427,78 @@ public class EvaluationResidualController extends BaseController {
 		evaluationResidualMain.setId(id);
 
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) req;
-		MultipartFile file1 = multipartRequest.getFile("ziShuFile");
-		MultipartFile file2 = multipartRequest.getFile("fuHeFile");
-		MultipartFile file3 = multipartRequest.getFile("shenFenFile");
-		MultipartFile file4 = multipartRequest.getFile("junGuanFile");
-		MultipartFile file5 = multipartRequest.getFile("baoZhangFile");
-		MultipartFile file6 = multipartRequest.getFile("bingLiFile");
+		MultipartFile file = multipartRequest.getFile("ziShuFile");
+		if (file != null && !file.isEmpty()) {
+			String fileName = file.getOriginalFilename();
+			try {
+				evaluationResidualMain.setZiShuFilename(fileName);
+				evaluationResidualMain.setGeRenZiShu(file.getBytes());
+			} catch (Exception e) {
+				e.printStackTrace();
+				result.setMsg("个人自述文件保存失败，请重试");
+				return result;
+			}
+		}
+		file = multipartRequest.getFile("fuHeFile");
+		if (file != null && !file.isEmpty()) {
+			String fileName = file.getOriginalFilename();
+			try {
+				evaluationResidualMain.setFuHeFilename(fileName);
+				evaluationResidualMain.setFuHeXing(file.getBytes());
+			} catch (Exception e) {
+				e.printStackTrace();
+				result.setMsg("病情与致残标准符合性文件保存失败，请重试");
+				return result;
+			}
+		}
+		file = multipartRequest.getFile("shenFenFile");
+		if (file != null && !file.isEmpty()) {
+			String fileName = file.getOriginalFilename();
+			try {
+				evaluationResidualMain.setShenFenZhengFilename(fileName);
+				evaluationResidualMain.setShenFenZheng(file.getBytes());
+			} catch (Exception e) {
+				e.printStackTrace();
+				result.setMsg("身份证图片保存失败，请重试");
+				return result;
+			}
+		}
+		file = multipartRequest.getFile("junGuanFile");
+		if (file != null && !file.isEmpty()) {
+			String fileName = file.getOriginalFilename();
+			try {
+				evaluationResidualMain.setJunGuangZhengFilename(fileName);
+				evaluationResidualMain.setJunGuangZheng(file.getBytes());
+			} catch (Exception e) {
+				e.printStackTrace();
+				result.setMsg("军官证图片保存失败，请重试");
+				return result;
+			}
+		}
+		file = multipartRequest.getFile("baoZhangFile");
+		if (file != null && !file.isEmpty()) {
+			String fileName = file.getOriginalFilename();
+			try {
+				evaluationResidualMain.setBaoZhangKaFilename(fileName);
+				evaluationResidualMain.setBaoZhangKa(file.getBytes());
+			} catch (Exception e) {
+				e.printStackTrace();
+				result.setMsg("保障卡图片保存失败，请重试");
+				return result;
+			}
+		}
+		file = multipartRequest.getFile("bingLiFile");
+		if (file != null && !file.isEmpty()) {
+			String fileName = file.getOriginalFilename();
+			try {
+				evaluationResidualMain.setBingLiFilename(fileName);
+				evaluationResidualMain.setBingLi(file.getBytes());
+			} catch (Exception e) {
+				e.printStackTrace();
+				result.setMsg("病历图片保存失败，请重试");
+				return result;
+			}
+		}
 
 		evaluationResidualService.saveOrUpdate(evaluationResidualMain);
 		result.setMsg("保存成功");

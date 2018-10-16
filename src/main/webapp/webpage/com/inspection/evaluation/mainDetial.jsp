@@ -130,8 +130,9 @@
 							</tr>
 							<tr>
 								<td class="file-space">
-									<a class="fa fa-file-word-o" style="font-size: 50px;" onclick="viewGeren()"></a>
-									<div onclick="viewGeren()">在线预览</div>
+								    <c:if test="${not empty evaluationResidualPage.ziShuFilename}">
+								        <a class="fa fa-file-word-o" style="font-size: 50px;" href="./downloadFiles/evaluationResidual/${evaluationResidualPage.id}/${evaluationResidualPage.ziShuFilename}"></a>
+								    </c:if>
 								</td>
 								<td>${evaluationResidualPage.zhiCanXingZhi}</td>
 								<td>${evaluationResidualPage.oanZhengRen1}</td>
@@ -158,27 +159,36 @@
 							</tr>
 							<tr>
 								<td class="file-space" rowspan="2" style="vertical-align: middle">
-									<a class="fa fa-file-photo-o" style="font-size: 50px;" onclick="viewGeren()"></a>
-									<div onclick="viewGeren()">在线预览</div>
+								    <c:if test="${not empty evaluationResidualPage.fuHeFilename}">
+									    <a class="fa fa-file-word-o" style="font-size: 50px;" href="./downloadFiles/evaluationResidual/${evaluationResidualPage.id}/${evaluationResidualPage.fuHeFilename}"></a>
+									</c:if>
 								</td>
 								<td rowspan="2">${evaluationResidualPage.jueYi}</td>
 								<td class="file-space">
-									<a class="fa fa-file-photo-o" style="font-size: 50px;" onclick="viewGeren()"></a>
-									<div onclick="viewGeren()">身份证</div>
+								    <c:if test="${not empty evaluationResidualPage.shenFenZhengFilename}">
+									    <img  src="./downloadFiles/evaluationResidual/${evaluationResidualPage.id}/${evaluationResidualPage.shenFenZhengFilename}"/>
+									</c:if>
+									<div>身份证</div>
 								</td>
 								<td class="file-space">
-									<a class="fa fa-file-photo-o" style="font-size: 50px;" onclick="viewGeren()"></a>
-									<div onclick="viewGeren()">军官证</div>
+								    <c:if test="${not empty evaluationResidualPage.junGuangZhengFilename}">
+									    <img  src="./downloadFiles/evaluationResidual/${evaluationResidualPage.id}/${evaluationResidualPage.junGuangZhengFilename}"/>
+									</c:if>
+									<div>军官证</div>
 								</td>
 							</tr>
 							<tr>
 								<td class="file-space">
-									<a class="fa fa-file-photo-o" style="font-size: 50px;" onclick="viewGeren()"></a>
-									<div onclick="viewGeren()">保障卡</div>
+								    <c:if test="${not empty evaluationResidualPage.baoZhangKaFilename}">
+									    <img  src="./downloadFiles/evaluationResidual/${evaluationResidualPage.id}/${evaluationResidualPage.baoZhangKaFilename}"/>
+									</c:if>
+									<div>保障卡</div>
 								</td>
 								<td class="file-space">
-									<a class="fa fa-file-photo-o" style="font-size: 50px;" onclick="viewGeren()"></a>
-									<div onclick="viewGeren()">病历复印证</div>
+								    <c:if test="${not empty evaluationResidualPage.bingLiFilename}">
+									    <img  src="./downloadFiles/evaluationResidual/${evaluationResidualPage.id}/${evaluationResidualPage.bingLiFilename}"/>
+									</c:if>
+									<div>病历复印证</div>
 								</td>
 							</tr>
 						</table>
