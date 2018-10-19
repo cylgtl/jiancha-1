@@ -394,9 +394,7 @@ public class AdjustController extends BaseController {
         AjaxJson result = new AjaxJson();
         String id = req.getParameter("id");
         adjustMain.setId(id);
-		//System.out.println("tttt   "+adjustMain.getJiaJianXiang().size());
 		adjustMain.setJiaJianString(JSONArray.fromObject(adjustMain.getJiaJianXiang()).toString());
-		//System.out.println("ttt   "+JSONArray.fromObject(adjustMain.getJiaJianXiang()).toString());
         adjustService.saveOrUpdate(adjustMain);
         result.setMsg("保存成功");
         return result;
