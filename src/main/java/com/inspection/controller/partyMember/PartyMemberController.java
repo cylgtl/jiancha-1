@@ -442,6 +442,12 @@ public class PartyMemberController extends BaseController {
 				result.setMsg("文件保存失败，请重试");
 				return result;
 			}
+		} else {
+			PartyMemberMain main = partyMemberService.findEntity(PartyMemberMain.class, id);
+			if (main!=null){
+				partyMemberMain.setRuDangFilename(main.getRuDangFilename());
+				partyMemberMain.setRuDangShenQing(main.getRuDangShenQing());
+			}
 		}
 
 		partyMemberMain.setId(id);

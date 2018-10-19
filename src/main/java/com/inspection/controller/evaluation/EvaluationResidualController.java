@@ -438,7 +438,14 @@ public class EvaluationResidualController extends BaseController {
 				result.setMsg("个人自述文件保存失败，请重试");
 				return result;
 			}
+		}else {
+			EvaluationResidualMain main = evaluationResidualService.findEntity(EvaluationResidualMain.class, id);
+			if (main!=null){
+				evaluationResidualMain.setZiShuFilename(main.getZiShuFilename());
+				evaluationResidualMain.setGeRenZiShu(main.getGeRenZiShu());
+			}
 		}
+
 		file = multipartRequest.getFile("fuHeFile");
 		if (file != null && !file.isEmpty()) {
 			String fileName = file.getOriginalFilename();
@@ -450,7 +457,14 @@ public class EvaluationResidualController extends BaseController {
 				result.setMsg("病情与致残标准符合性文件保存失败，请重试");
 				return result;
 			}
+		}else {
+			EvaluationResidualMain main = evaluationResidualService.findEntity(EvaluationResidualMain.class, id);
+			if (main!=null){
+				evaluationResidualMain.setFuHeFilename(main.getFuHeFilename());
+				evaluationResidualMain.setFuHeXing(main.getFuHeXing());
+			}
 		}
+
 		file = multipartRequest.getFile("shenFenFile");
 		if (file != null && !file.isEmpty()) {
 			String fileName = file.getOriginalFilename();
@@ -462,7 +476,14 @@ public class EvaluationResidualController extends BaseController {
 				result.setMsg("身份证图片保存失败，请重试");
 				return result;
 			}
+		}else {
+			EvaluationResidualMain main = evaluationResidualService.findEntity(EvaluationResidualMain.class, id);
+			if (main!=null){
+				evaluationResidualMain.setShenFenZhengFilename(main.getShenFenZhengFilename());
+				evaluationResidualMain.setShenFenZheng(main.getShenFenZheng());
+			}
 		}
+
 		file = multipartRequest.getFile("junGuanFile");
 		if (file != null && !file.isEmpty()) {
 			String fileName = file.getOriginalFilename();
@@ -474,7 +495,14 @@ public class EvaluationResidualController extends BaseController {
 				result.setMsg("军官证图片保存失败，请重试");
 				return result;
 			}
+		}else {
+			EvaluationResidualMain main = evaluationResidualService.findEntity(EvaluationResidualMain.class, id);
+			if (main!=null){
+				evaluationResidualMain.setJunGuangZhengFilename(main.getJunGuangZhengFilename());
+				evaluationResidualMain.setJunGuangZheng(main.getJunGuangZheng());
+			}
 		}
+
 		file = multipartRequest.getFile("baoZhangFile");
 		if (file != null && !file.isEmpty()) {
 			String fileName = file.getOriginalFilename();
@@ -486,7 +514,14 @@ public class EvaluationResidualController extends BaseController {
 				result.setMsg("保障卡图片保存失败，请重试");
 				return result;
 			}
+		}else {
+			EvaluationResidualMain main = evaluationResidualService.findEntity(EvaluationResidualMain.class, id);
+			if (main!=null){
+				evaluationResidualMain.setBaoZhangKaFilename(main.getBaoZhangKaFilename());
+				evaluationResidualMain.setBaoZhangKa(main.getBaoZhangKa());
+			}
 		}
+
 		file = multipartRequest.getFile("bingLiFile");
 		if (file != null && !file.isEmpty()) {
 			String fileName = file.getOriginalFilename();
@@ -497,6 +532,12 @@ public class EvaluationResidualController extends BaseController {
 				e.printStackTrace();
 				result.setMsg("病历图片保存失败，请重试");
 				return result;
+			}
+		}else {
+			EvaluationResidualMain main = evaluationResidualService.findEntity(EvaluationResidualMain.class, id);
+			if (main!=null){
+				evaluationResidualMain.setBingLiFilename(main.getBingLiFilename());
+				evaluationResidualMain.setBingLi(main.getBingLi());
 			}
 		}
 

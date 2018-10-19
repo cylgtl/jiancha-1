@@ -385,7 +385,13 @@ public class CommendRewardController extends BaseController {
 				result.setMsg("文件保存失败，请重试");
 				return result;
 			}
-		}
+		}else {
+            CommendRewardMain main = commendRewardService.findEntity(CommendRewardMain.class, id);
+            if (main!=null){
+                commendRewardMain.setShiJiFilename(main.getShiJiFilename());
+                commendRewardMain.setShiJiCaiLiao(main.getShiJiCaiLiao());
+            }
+        }
 
 		List<String> names = commendRewardMain.getNames();
 		List<String> scores = commendRewardMain.getScores();
