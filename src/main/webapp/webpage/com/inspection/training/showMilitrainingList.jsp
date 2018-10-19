@@ -19,7 +19,7 @@
   </c:if>
   
       <c:if test="${not empty manager || not empty admin}">
-    <t:datagrid name="militrainingList" title="军训考核" actionUrl="militrainingController.do?datagrid" idField="id" fit="true">
+    <t:datagrid name="militrainingList" title="军事训练成绩" actionUrl="militrainingController.do?datagrid" idField="id" fit="true">
    <t:dgCol title="编号" field="id" hidden="true"></t:dgCol>
    <t:dgCol title="标题" field="title" width="150"></t:dgCol>
    <t:dgCol title="分类" field="type" width="120"></t:dgCol>
