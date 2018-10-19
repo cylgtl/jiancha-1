@@ -7,8 +7,8 @@
   <c:if test="${isOtherRole eq 1 || not empty vistor}">
   <t:datagrid name="commendRewardList" autoLoadData="true"  title="表彰奖励" actionUrl="commendRewardController.do?datagrid" idField="id" fit="true">
    <t:dgCol title="编号" field="id" hidden="true"></t:dgCol>
-   <t:dgCol title="姓名" field="nameUnit" width="150"></t:dgCol>
-   <t:dgCol title="基本信息" field="jobTitle" width="350"></t:dgCol>
+   <t:dgCol title="姓名" field="nameUnit" width="150" align="center"></t:dgCol>
+   <t:dgCol title="基本信息" field="jobTitle" width="350" align="center"></t:dgCol>
    <t:dgCol title="操作" field="opt" width="70"></t:dgCol>
 	<t:dgFunOpt funname="lookDetail(id)" title="查看" />
   </t:datagrid>
@@ -18,8 +18,8 @@
   <t:datagrid name="commendRewardList" autoLoadData="true"  title="表彰奖励" actionUrl="commendRewardController.do?datagrid" idField="id" fit="true">
    <t:dgCol title="编号" field="id" hidden="true"></t:dgCol>
     <t:dgCol title="部门" field="departId" hidden="true"></t:dgCol>
-   <t:dgCol title="姓名" field="nameUnit" width="150"></t:dgCol>
-   <t:dgCol title="基本信息" field="jobTitle" width="350"></t:dgCol>
+   <t:dgCol title="姓名" field="nameUnit" width="150" align="center"></t:dgCol>
+   <t:dgCol title="基本信息" field="jobTitle" width="350" align="center"></t:dgCol>
    <t:dgToolBar title="录入" icon="icon-add"  url="commendRewardController.do?addorupdate" height="400"  funname="add"></t:dgToolBar>
    <t:dgCol title="操作" field="opt" width="100"></t:dgCol>
 	 <t:dgFunOpt funname="operateDetail(id,departId)"    title="处理" />
