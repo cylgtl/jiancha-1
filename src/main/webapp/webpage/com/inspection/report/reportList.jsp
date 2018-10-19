@@ -61,7 +61,7 @@
 	
 	function goToDetail(id,url) {
 		if(url){
-			location.href = url;
+			location.href = url + "&isView=true";
 		}else{
 			createwindow('原始举报信息',"reportController.do?addorupdate&reportId="+id,650, 600);
 		}
