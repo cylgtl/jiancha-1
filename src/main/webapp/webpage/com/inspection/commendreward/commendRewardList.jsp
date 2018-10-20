@@ -9,7 +9,7 @@
    <t:dgCol title="编号" field="id" hidden="true"></t:dgCol>
    <t:dgCol title="姓名" field="nameUnit" width="150" align="center"></t:dgCol>
    <t:dgCol title="基本信息" field="jobTitle" width="350" align="center"></t:dgCol>
-   <t:dgCol title="操作" field="opt" width="70"></t:dgCol>
+   <t:dgCol title="操作" field="opt" width="70" align="center"></t:dgCol>
 	<t:dgFunOpt funname="lookDetail(id)" title="查看" />
   </t:datagrid>
   </c:if>
@@ -21,7 +21,7 @@
    <t:dgCol title="姓名" field="nameUnit" width="150" align="center"></t:dgCol>
    <t:dgCol title="基本信息" field="jobTitle" width="350" align="center"></t:dgCol>
    <t:dgToolBar title="录入" icon="icon-add"  url="commendRewardController.do?addorupdate" height="400"  funname="add"></t:dgToolBar>
-   <t:dgCol title="操作" field="opt" width="100"></t:dgCol>
+   <t:dgCol title="操作" field="opt" width="100" align="center"></t:dgCol>
 	 <t:dgFunOpt funname="operateDetail(id,departId)"    title="处理" />
 	<t:dgFunOpt funname="lookDetail(id)" title="查看" />
       <t:dgFunOpt title="删除" funname="deleteConfirm(id,departId)"/> 
