@@ -32,8 +32,8 @@
 		    </div>
 			<div class="form">
 		      <label class="Validform_label">内容:</label>
-		      <input class="inputxt" name="content" ignore="ignore" style="width:500px; height:75px;"
-					   value="${informPage.content}" disabled="disabled">
+				<textarea class="inputxt" name="content" ignore="ignore" style="width:500px; height:75px;" disabled="disabled">
+						${informPage.content} </textarea>
 		      <span class="Validform_checktip"></span>
 		    </div>
 			<div class="form">
