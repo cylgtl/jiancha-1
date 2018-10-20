@@ -61,41 +61,43 @@
                                 </tr>
 
                                 <tr>
-                                    <td>出生时间：</td>
-                                    <td>
-                                        <fmt:formatDate value='${adjustPage.adjust.birthDay}' type="date" pattern="yyyy-MM-dd"/>
-                                    </td>
+                                    <td>身份证号：</td>
+                                    <td>${adjustPage.adjust.idCard}</td>
                                     <td>政治面貌：</td>
                                     <td>${adjustPage.adjust.politicalLandscape}</td>
                                 </tr>
 
                                 <tr>
-                                    <td>籍贯：</td>
-                                    <td>${adjustPage.adjust.nativePlace}</td>
                                     <td>民族：</td>
                                     <td>${adjustPage.adjust.nationalName}</td>
+                                    <td>籍贯：</td>
+                                    <td>${adjustPage.adjust.nativePlace}</td>
                                 </tr>
 
                                 <tr>
+                                    <td>出生日期：</td>
+                                    <td>
+                                        <fmt:formatDate value='${adjustPage.adjust.birthDay}' type="date" pattern="yyyy-MM-dd"/>
+                                    </td>
                                     <td>部职别：</td>
                                     <td>${adjustPage.adjust.jobTitle}</td>
-                                    <td>现军衔：</td>
-                                    <td>${adjustPage.adjust.nowRank}</td>
                                 </tr>
 
-                                <tr>
-                                    <td>现军衔时间：</td>
-                                    <td>
-                                        <fmt:formatDate value='${adjustPage.adjust.rankTime}' type="date" pattern="yyyy-MM-dd"/>
-                                    </td>
-                                    <td>学历：</td>
-                                    <td>${adjustPage.adjust.education}</td>
-                                </tr>
                                 <tr>
                                     <td>入伍时间：</td>
                                     <td>
                                         <fmt:formatDate value='${adjustPage.adjust.militaryTime}' type="date" pattern="yyyy-MM-dd"/>
                                     </td>
+                                    <td>军衔时间：</td>
+                                    <td>
+                                        <fmt:formatDate value='${adjustPage.adjust.rankTime}' type="date" pattern="yyyy-MM-dd"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>现军衔：</td>
+                                    <td>${adjustPage.adjust.nowRank}</td>
+                                    <td>学历：</td>
+                                    <td>${adjustPage.adjust.education}</td>
                                 </tr>
                             </table>
                         </div>

@@ -79,7 +79,51 @@
 							</tr>
 							<tr>
 								<td>学历:</td>
-								<td colspan="3">${soldierSchoolPage.schoolEntity.education}</td>
+								<td>${soldierSchoolPage.schoolEntity.education}</td>
+								<td>现专业:</td>
+								<td>${soldierSchoolPage.schoolEntity.nowProfessional}</td>
+							</tr>
+							<tr>
+								<td>毕业院校:</td>
+								<td>${soldierSchoolPage.schoolEntity.graduateSchool}</td>
+								<td>毕业时间:</td>
+								<td>
+									<fmt:formatDate value='${soldierSchoolPage.schoolEntity.graduateTime}' type="date" pattern="yyyy-MM-dd"/>
+								</td>
+							</tr>
+							<tr>
+								<td>专业:</td>
+								<td>${soldierSchoolPage.schoolEntity.professional}</td>
+								<td>录取批次:</td>
+								<td>${soldierSchoolPage.schoolEntity.essenceWork}</td>
+							</tr>
+							<tr>
+								<td>开始时间:</td>
+								<td>
+									<fmt:formatDate value='${soldierSchoolPage.schoolEntity.beginTime}' type="date" pattern="yyyy-MM-dd"/>
+								</td>
+								<td>结束时间:</td>
+								<td>
+									<fmt:formatDate value='${soldierSchoolPage.schoolEntity.endTime}' type="date" pattern="yyyy-MM-dd"/>
+								</td>
+							</tr>
+							<tr>
+								<td>任班长或技术尖子:</td>
+								<td>${soldierSchoolPage.schoolEntity.position}</td>
+								<td>立功情况:</td>
+								<td>${soldierSchoolPage.schoolEntity.merit}</td>
+							</tr>
+							<tr>
+								<td>立功次数:</td>
+								<td colspan="3">${soldierSchoolPage.schoolEntity.meritNumber}</td>
+							</tr>
+							<tr>
+								<td>立功类型:</td>
+								<td>${soldierSchoolPage.schoolEntity.meritType}</td>
+								<td>立功情况:</td>
+								<td>
+									<fmt:formatDate value='${soldierSchoolPage.schoolEntity.meritTime}' type="date" pattern="yyyy-MM-dd"/>
+								</td>
 							</tr>
 						</table>
 					</div>

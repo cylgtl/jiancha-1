@@ -56,16 +56,10 @@
                                     <td>${backbonePage.entity.sex}</td>
                                 </tr>
                                 <tr>
-                                    <td>部职别：</td>
-                                    <td >${backbonePage.entity.jobTitle}</td>
-                                    <td>政治面貌:</td>
-                                    <td >${backbonePage.entity.politicalLandscape}</td>
-                                </tr>
-                                <tr>
                                     <td>籍贯：</td>
                                     <td>${backbonePage.entity.nativePlace}</td>
-                                    <td>民族：</td>
-                                    <td>${backbonePage.entity.nationalName}</td>
+                                    <td>部职别：</td>
+                                    <td >${backbonePage.entity.jobTitle}</td>
                                 </tr>
                                 <tr>
                                     <td>出生日期:</td>
@@ -87,7 +81,27 @@
                                 </tr>
                                 <tr>
                                     <td>学历:</td>
-                                    <td colspan="3">${backbonePage.entity.education}</td>
+                                    <td>${backbonePage.entity.education}</td>
+                                    <td>现专业:</td>
+                                    <td>${backbonePage.entity.nowProfessional}</td>
+                                </tr>
+                                <tr>
+                                    <td>毕业时间:</td>
+                                    <td>
+                                        <fmt:formatDate value='${backbonePage.entity.graduateTime}' type="date" pattern="yyyy-MM-dd"/>
+                                    </td>
+                                    <td>民族：</td>
+                                    <td>${backbonePage.entity.nationalName}</td>
+                                </tr>
+                                <tr>
+                                    <td>职务:</td>
+                                    <td>${backbonePage.entity.position}</td>
+                                    <td>班级:</td>
+                                    <td>${backbonePage.entity.banji}</td>
+                                </tr>
+                                <tr>
+                                    <td>政治面貌:</td>
+                                    <td colspan="3">${backbonePage.entity.politicalLandscape}</td>
                                 </tr>
                             </table>
                         </div>

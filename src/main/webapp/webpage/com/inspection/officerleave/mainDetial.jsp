@@ -50,8 +50,8 @@
 					<td>${officerLeavePage.entity.sex}</td>
 				</tr>
 				<tr>
-					<td>部职别：</td>
-					<td >${officerLeavePage.entity.jobTitle}</td>
+					<td>学历:</td>
+					<td>${officerLeavePage.entity.educational}</td>
 					<td>政治面貌:</td>
 					<td >${officerLeavePage.entity.political}</td>
 				</tr>
@@ -60,6 +60,14 @@
 					<td>${officerLeavePage.entity.nativePlace}</td>
 					<td>民族：</td>
 					<td>${officerLeavePage.entity.national}</td>
+				</tr>
+				<tr>
+					<td>现军衔:</td>
+					<td>${officerLeavePage.entity.nowRank}</td>
+					<td>军衔时间:</td>
+					<td>
+						<fmt:formatDate value='${officerLeavePage.entity.rankTime}' type="date" pattern="yyyy-MM-dd"/>
+					</td>
 				</tr>
 				<tr>
 					<td>出生日期:</td>
@@ -72,27 +80,19 @@
 					</td>
 				</tr>
 				<tr>
-					<td>现军衔:</td>
-					<td>${officerLeavePage.entity.nowRank}</td>
-					<td>军衔时间:</td>
-					<td>
-						<fmt:formatDate value='${officerLeavePage.entity.rankTime}' type="date" pattern="yyyy-MM-dd"/>
-					</td>
-				</tr>
-				<tr>
-					<td>学历:</td>
-					<td>${officerLeavePage.entity.educational}</td>
-					<td>请假开始时间:</td>
+					<td>部职别：</td>
+					<td >${officerLeavePage.entity.jobTitle}</td>
+					<td>休假开始时间:</td>
 					<td>
 						<fmt:formatDate value='${officerLeavePage.entity.beginTime}' type="date" pattern="yyyy-MM-dd"/>
 					</td>
 				</tr>
 				<tr>
-					<td>请假结束时间:</td>
+					<td>休假结束时间:</td>
 					<td>
 						<fmt:formatDate value='${officerLeavePage.entity.endTime}' type="date" pattern="yyyy-MM-dd"/>
 					</td>
-					<td>请假时长:</td>
+					<td>请假天数:</td>
 					<td >${officerLeavePage.entity.days}(天)</td>
 				</tr>
                 </table>

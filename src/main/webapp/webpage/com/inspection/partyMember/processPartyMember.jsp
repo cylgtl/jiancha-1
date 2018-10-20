@@ -53,35 +53,49 @@
                                 <tr>
                                     <td>姓名：</td>
                                     <td>${partyMemberPage.entity.name}</td>
-                                    <td>性别：</td>
-                                    <td>${partyMemberPage.entity.sex}</td>
+                                    <td>身份证号：</td>
+                                    <td>${partyMemberPage.entity.idcard}</td>
                                 </tr>
                                 <tr>
-                                    <td>出生时间：</td>
-                                    <td>
-                                        <fmt:formatDate value='${partyMemberPage.entity.birthDay}' type="date" pattern="yyyy-MM-dd"/>
-                                    </td>
                                     <td>部职别：</td>
                                     <td>${partyMemberPage.entity.jobTitle}</td>
-                                </tr>
-                                <tr>
-                                    <td>籍贯：</td>
-                                    <td>${partyMemberPage.entity.nativePlace}</td>
                                     <td>民族：</td>
                                     <td>${partyMemberPage.entity.national}</td>
                                 </tr>
                                 <tr>
+                                    <td>性别：</td>
+                                    <td>${partyMemberPage.entity.sex}</td>
+                                    <td>籍贯：</td>
+                                    <td>${partyMemberPage.entity.nativePlace}</td>
+
+                                </tr>
+                                <tr>
+                                    <td>出生日期：</td>
+                                    <td>
+                                        <fmt:formatDate value='${partyMemberPage.entity.birthDay}' type="date" pattern="yyyy-MM-dd"/>
+                                    </td>
+                                    <td>入伍时间：</td>
+                                    <td>
+                                        <fmt:formatDate value='${partyMemberPage.entity.militaryTime}' type="date" pattern="yyyy-MM-dd"/>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td>现军衔：</td>
                                     <td>${partyMemberPage.entity.nowRank}</td>
-                                    <td>现军衔时间：</td>
-                                    <td>${partyMemberPage.entity.rankTime}</td>
+                                    <td>
+                                        <fmt:formatDate value='${partyMemberPage.entity.rankTime}' type="date" pattern="yyyy-MM-dd"/>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>学历：</td>
                                     <td>${partyMemberPage.entity.education}</td>
-                                    <td>入伍时间：</td>
+                                    <td>现专业：</td>
+                                    <td>${partyMemberPage.entity.professional}</td>
+                                </tr>
+                                <tr>
+                                    <td>毕业时间：</td>
                                     <td>
-                                        <fmt:formatDate value='${partyMemberPage.entity.militaryTime}' type="date" pattern="yyyy-MM-dd"/>
+                                        <fmt:formatDate value='${partyMemberPage.entity.graduateTime}' type="date" pattern="yyyy-MM-dd"/>
                                     </td>
                                 </tr>
                             </table>

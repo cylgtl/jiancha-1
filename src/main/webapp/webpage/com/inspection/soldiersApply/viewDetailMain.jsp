@@ -46,39 +46,49 @@
 				<tr>
 					<td>姓名：</td>
 					<td>${soldiersApplyPage.entity.name}</td>
+					<td>部职别：</td>
+					<td>${soldiersApplyPage.entity.jobTitle}</td>
+				</tr>
+				<tr>
 					<td>性别：</td>
 					<td>${soldiersApplyPage.entity.sex}</td>
+					<td>民族：</td>
+					<td>${soldiersApplyPage.entity.nation}</td>
+				</tr>
+				<tr>
+					<td>政治面貌：</td>
+					<td>${soldiersApplyPage.entity.politicalStatus}</td>
+					<td>籍贯：</td>
+					<td>${soldiersApplyPage.entity.nativePlace}</td>
 				</tr>
 				<tr>
 					<td>出生时间：</td>
 					<td>
 						<fmt:formatDate value='${soldiersApplyPage.entity.birthday}' type="date" pattern="yyyy-MM-dd"/>
 					</td>
-					<td>政治面貌：</td>
-					<td>${soldiersApplyPage.entity.politicalStatus}</td>
-				</tr>
-				<tr>
-					<td>籍贯：</td>
-					<td>${soldiersApplyPage.entity.nativePlace}</td>
-					<td>民族：</td>
-					<td>${soldiersApplyPage.entity.nation}</td>
-				</tr>
-				<tr>
-					<td>部职别：</td>
-					<td>${soldiersApplyPage.entity.jobTitle}</td>
-					<td>现军衔：</td>
-					<td>${soldiersApplyPage.entity.nowRank}</td>
-				</tr>
-				<tr>
-					<td>现军衔时间：</td>
-					<td>${soldiersApplyPage.entity.rankTime}</td>
-					<td>学历：</td>
-					<td>${soldiersApplyPage.entity.educational}</td>
-				</tr>
-				<tr>
 					<td>入伍时间：</td>
 					<td>
 						<fmt:formatDate value='${soldiersApplyPage.entity.militaryTime}' type="date" pattern="yyyy-MM-dd"/>
+					</td>
+				</tr>
+				<tr>
+					<td>现军衔：</td>
+					<td>${soldiersApplyPage.entity.nowRank}</td>
+					<td>现军衔时间：</td>
+					<td>
+						<fmt:formatDate value='${soldiersApplyPage.entity.rankTime}' type="date" pattern="yyyy-MM-dd"/>
+					</td>
+				</tr>
+				<tr>
+					<td>学历：</td>
+					<td>${soldiersApplyPage.entity.educational}</td>
+					<td>专业：</td>
+					<td>${soldiersApplyPage.entity.specialty}</td>
+				</tr>
+				<tr>
+					<td>毕业时间：</td>
+					<td>
+						<fmt:formatDate value='${soldiersApplyPage.entity.graduateTime}' type="date" pattern="yyyy-MM-dd"/>
 					</td>
 					<td>身份证号：</td>
 					<td>${soldiersApplyPage.entity.idcard}</td>

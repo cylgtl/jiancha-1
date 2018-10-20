@@ -63,6 +63,14 @@
 						<fmt:formatDate value='${commendrewardPage.entity.rankTime}' type="date" pattern="yyyy-MM-dd"/>
 					</td>
 				</tr>
+				<tr>
+					<td>名额:</td>
+					<td>${commendrewardPage.entity.places}</td>
+					<td>录用时间:</td>
+					<td>
+						<fmt:formatDate value='${commendrewardPage.entity.employTime}' type="date" pattern="yyyy-MM-dd"/>
+					</td>
+				</tr>
 			</table>
             </div>
           </div>
