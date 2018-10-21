@@ -110,9 +110,31 @@
  </div>
  <script>
  function createDetail(url,type) {
-		createwindow(type,
-				url,
-				600, 400);
+     if("士兵考学" === type){
+         location.href = "soldiersApplyController.do?soldiersApply";
+	 }else if("干部调整配备" === type){
+         location.href = "adjustController.do?adjust";
+	 }else if("士官选取" === type){
+         location.href = "soldierSelectController.do?soldierselect";
+     }else if("大学毕业生士兵提干" === type){
+         location.href = "soldierStudentController.do?soldierStudent";
+     }else if("优秀士兵保送入学" === type){
+         location.href = "soldierSchoolController.do?soldierSchool";
+     }else if("骨干配备" === type){
+         location.href = "backboneController.do?backbone";
+     }else if("表彰奖励" === type){
+         location.href = "commendRewardController.do?commendReward";
+     }else if("官兵评残" === type){
+         location.href = "evaluationResidualController.do?evaluationResidual";
+     }else if("技术学兵选调" === type){
+         location.href = "personnelSelectionController.do?personnelSelection";
+     }else if("党员发展" === type){
+         location.href = "partyMemberController.do?partyMember";
+     }else{
+         createwindow(type,
+             url,
+             600, 400);
+	 }
 	}
  function viewDetail(id) {
 		createwindow("通知详情",
