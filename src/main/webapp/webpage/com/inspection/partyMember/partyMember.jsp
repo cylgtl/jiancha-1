@@ -19,8 +19,8 @@
 					</td>
 					<td class="value" colspan="3">
 						<select id="type" name="type" >
-					   		<option value="1" <c:if test="${partyMemberPage.type==1}">selected="selected"</c:if>>入党积极分子</option>
-					   		<option value="2" <c:if test="${partyMemberPage.type==2}">selected="selected"</c:if>>党员发展</option>
+					   		<option value="1" <c:if test="${partyMemberPage.type=='入党积极分子'}">selected="selected"</c:if>>入党积极分子</option>
+					   		<option value="2" <c:if test="${partyMemberPage.type=='党员发展'}">selected="selected"</c:if>>党员发展</option>
 					    </select>
 						<span class="Validform_checktip"></span>
 					</td>
