@@ -23,8 +23,8 @@
         background: #9bc5ec;
     }
 </style>
-<div class="easyui-layout" fit="true">
-  <div region="center" style="padding:1px; text-align: center;">
+<div class="easyui-layout">
+  <div style="text-align: center; width: 100%;">
 	  <p style="margin-top: 80px; font-size: 20px">请选择要创建的事务类型</p>
 	  <button onclick="save('1');">入党积极分子发展</button>
 	  <button onclick="save('2');">党员发展</button>

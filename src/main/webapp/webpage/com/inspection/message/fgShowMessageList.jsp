@@ -5,10 +5,10 @@
   <div region="center" style="padding:1px;">
   <t:datagrid name="messageList" title="廉情公示" actionUrl="messageController.do?datagrid&type=1" idField="id" fit="true">
    <t:dgCol title="编号" field="id" hidden="true"></t:dgCol>
-<t:dgCol title="标题" field="title" width="150"></t:dgCol>
+<t:dgCol title="标题" field="title" width="150" align="center"></t:dgCol>
    <%-- <t:dgCol title="具体内容" field="content" width="250"></t:dgCol> --%>
-   <t:dgCol title="创建时间" field="createTime" width="120" formatter="yyyy-MM-dd hh:mm:ss"></t:dgCol>
-   <t:dgCol title="更新时间" field="updateTime" width="120" formatter="yyyy-MM-dd hh:mm:ss"></t:dgCol>
+   <t:dgCol title="创建时间" field="createTime" width="120" formatter="yyyy-MM-dd hh:mm:ss" align="center"></t:dgCol>
+   <t:dgCol title="更新时间" field="updateTime" width="120" formatter="yyyy-MM-dd hh:mm:ss" align="center"></t:dgCol>
   <%--  <t:dgCol title="D表示删除，E表示正常" field="status" replace="无效_D,_E"></t:dgCol> --%>
   <%--  <t:dgCol title="点击次数" field="clickCount" ></t:dgCol> --%>
   <%--  <t:dgCol title="操作" field="opt" width="100"></t:dgCol>

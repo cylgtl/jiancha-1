@@ -33,7 +33,7 @@
   <div   style="padding: 3px; height: 40px">
     <div name="searchColums" style="float: left; padding-left: 15px;">
               <span style="vertical-align:middle;display:-moz-inline-box;display:inline-block;width: 80px;text-align:right;" title="营部">营部: </span>
-              <select name="depart_parent" id="" onchange="findDepartByParentId(this.value)" style="width: 80px">
+              <select name="depart_parent" id="" onchange="findDepartByParentId(this.value)" style="width: 150px">
                   <option value="">全部</option>
                   <c:forEach var="depart" items="${departList}">
                       <option value="${depart.orgCode}">${depart.departname}</option>
@@ -41,7 +41,7 @@
                </select>
         
               <span style="vertical-align:middle;display:-moz-inline-box;display:inline-block;width: 80px;text-align:right;" title="连部">连部: </span>
-              <select name="departId" id="departId"  style="width: 80px">
+              <select name="departId" id="departId"  style="width: 150px">
                   <option value="">全部</option>
                </select>
    
