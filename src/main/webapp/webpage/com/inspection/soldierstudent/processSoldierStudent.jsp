@@ -53,82 +53,40 @@
                                     <td>${soldierStudentPage.entity.sex}</td>
                                 </tr>
                                 <tr>
-                                    <td>部职别：</td>
-                                    <td>${soldierStudentPage.entity.jobTitle}</td>
+                                    <td>身份证号：</td>
+                                    <td>${soldierStudentPage.entity.idCard}</td>
                                     <td>政治面貌:</td>
                                     <td>${soldierStudentPage.entity.politicalLandscape}</td>
                                 </tr>
                                 <tr>
-                                    <td>籍贯：</td>
-                                    <td>${soldierStudentPage.entity.nativePlace}</td>
                                     <td>民族：</td>
                                     <td>${soldierStudentPage.entity.nationalName}</td>
+                                    <td>籍贯：</td>
+                                    <td>${soldierStudentPage.entity.nativePlace}</td>
                                 </tr>
                                 <tr>
                                     <td>出生日期:</td>
                                     <td>
                                         <fmt:formatDate value='${soldierStudentPage.entity.birthDay}' type="date" pattern="yyyy-MM-dd"/>
                                     </td>
+                                    <td>部职别：</td>
+                                    <td>${soldierStudentPage.entity.jobTitle}</td>
+                                </tr>
+                                <tr>
                                     <td>入伍时间:</td>
                                     <td>
                                         <fmt:formatDate value='${soldierStudentPage.entity.militaryTime}' type="date" pattern="yyyy-MM-dd"/>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>现军衔:</td>
-                                    <td>${soldierStudentPage.entity.nowRank}</td>
                                     <td>军衔时间:</td>
                                     <td>
                                         <fmt:formatDate value='${soldierStudentPage.entity.rankTime}' type="date" pattern="yyyy-MM-dd"/>
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td>现军衔:</td>
+                                    <td>${soldierStudentPage.entity.nowRank}</td>
                                     <td>学历:</td>
                                     <td>${soldierStudentPage.entity.education}</td>
-                                    <td>现专业:</td>
-                                    <td>${soldierStudentPage.entity.nowProfessional}</td>
-                                </tr>
-                                <tr>
-                                    <td>毕业院校:</td>
-                                    <td>${soldierStudentPage.entity.graduateSchool}</td>
-                                    <td>毕业时间:</td>
-                                    <td>
-                                        <fmt:formatDate value='${soldierStudentPage.entity.graduateTime}' type="date" pattern="yyyy-MM-dd"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>专业:</td>
-                                    <td>${soldierStudentPage.entity.professional}</td>
-                                    <td>录取批次:</td>
-                                    <td>${soldierStudentPage.entity.essenceWork}</td>
-                                </tr>
-                                <tr>
-                                    <td>任骨干情况:</td>
-                                    <td>${soldierStudentPage.entity.position}</td>
-                                    <td>立功情况:</td>
-                                    <td>${soldierStudentPage.entity.merit}</td>
-                                </tr>
-                                <tr>
-                                    <td>开始时间:</td>
-                                    <td>
-                                        <fmt:formatDate value='${soldierStudentPage.entity.beginTime}' type="date" pattern="yyyy-MM-dd"/>
-                                    </td>
-                                    <td>结束时间:</td>
-                                    <td>
-                                        <fmt:formatDate value='${soldierStudentPage.entity.endTime}' type="date" pattern="yyyy-MM-dd"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>立功次数:</td>
-                                    <td colspan="3">${soldierStudentPage.entity.meritNumber}</td>
-                                </tr>
-                                <tr>
-                                    <td>立功类型:</td>
-                                    <td>${soldierStudentPage.entity.meritType}</td>
-                                    <td>立功时间:</td>
-                                    <td>
-                                        <fmt:formatDate value='${soldierStudentPage.entity.meritTime}' type="date" pattern="yyyy-MM-dd"/>
-                                    </td>
                                 </tr>
                             </table>
                         </div>
