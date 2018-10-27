@@ -35,53 +35,16 @@
 					</td>
 					<td align="right">
 						<label class="Validform_label">
-							部职别:
-						</label>
-					</td>
-					<td class="value">
-						<input class="inputxt" id="jobTitle" name="jobTitle"
-							   value="${personnelSelectionPage.jobTitle}">
-						<span class="Validform_checktip"></span>
-					</td>
-				</tr>
-				<tr>
-					<td align="right">
-						<label class="Validform_label">
 							性别:
 						</label>
 					</td>
 					<td class="value">
 						<input class="inputxt" id="sex" name="sex"
 							   value="${personnelSelectionPage.sex}">
-						<%-- <select name ="sex"  style="width:200px;">
-							<c:forEach items="${sexList}" var="sex">
-			                    <option value="${sex.typename}"<c:if test="${sex.typename==personnelSelectionPage.sex}">selected="selected"</c:if>>${sex.typename}</option>
-			                </c:forEach>
-						</select> --%>
-						<span class="Validform_checktip"></span>
-					</td>
-					<td align="right">
-						<label class="Validform_label">
-							民族:
-						</label>
-					</td>
-					<td class="value">
-						<input class="inputxt" id="nation" name="nation"
-							   value="${personnelSelectionPage.nation}">
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>
 				<tr>
-					<td align="right">
-						<label class="Validform_label">
-							籍贯:
-						</label>
-					</td>
-					<td class="value">
-						<input class="inputxt" id="nativePlace" name="nativePlace"
-							   value="${personnelSelectionPage.nativePlace}">
-						<span class="Validform_checktip"></span>
-					</td>
 					<td align="right">
 						<label class="Validform_label">
 							政治面貌:
@@ -96,7 +59,29 @@
 				<tr>
 					<td align="right">
 						<label class="Validform_label">
-							出生时间:
+							民族:
+						</label>
+					</td>
+					<td class="value">
+						<input class="inputxt" id="nation" name="nation"
+							   value="${personnelSelectionPage.nation}">
+						<span class="Validform_checktip"></span>
+					</td>
+					<td align="right">
+						<label class="Validform_label">
+							籍贯:
+						</label>
+					</td>
+					<td class="value">
+						<input class="inputxt" id="nativePlace" name="nativePlace"
+							   value="${personnelSelectionPage.nativePlace}">
+						<span class="Validform_checktip"></span>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<label class="Validform_label">
+							出生日期:
 						</label>
 					</td>
 					<td class="value">
@@ -106,12 +91,34 @@
 					</td>
 					<td align="right">
 						<label class="Validform_label">
+							部职别:
+						</label>
+					</td>
+					<td class="value">
+						<input class="inputxt" id="jobTitle" name="jobTitle"
+							   value="${personnelSelectionPage.jobTitle}">
+						<span class="Validform_checktip"></span>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<label class="Validform_label">
 							入伍时间:
 						</label>
 					</td>
 					<td class="value">
 						<input class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"  style="width: 200px;height:30px" id="militaryTime" name="militaryTime"
 							   value="<fmt:formatDate value='${personnelSelectionPage.militaryTime}' type="date" pattern="yyyy-MM-dd"/>">
+						<span class="Validform_checktip"></span>
+					</td>
+					<td align="right">
+						<label class="Validform_label">
+							军衔时间:
+						</label>
+					</td>
+					<td class="value">
+						<input class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"  style="width: 200px;height:30px" id="rankTime" name="rankTime" ignore="ignore"
+							   value="<fmt:formatDate value='${partyMemberPage.rankTime}' type="date" pattern="yyyy-MM-dd"/>">
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>
@@ -128,146 +135,15 @@
 					</td>
 					<td align="right">
 						<label class="Validform_label">
-							现军衔时间:
+							学历:
 						</label>
 					</td>
 					<td class="value">
-						<%-- <input class="inputxt" id="rankTime" name="rankTime"
-							   value="${personnelSelectionPage.rankTime}"> --%>
-						<input class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"  style="width: 200px;height:30px" id="rankTime" name="rankTime" ignore="ignore"
-							   value="<fmt:formatDate value='${partyMemberPage.rankTime}' type="date" pattern="yyyy-MM-dd"/>">
+						<input class="inputxt" id="educational" name="educational"
+							   value="${personnelSelectionPage.educational}">
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>
-				<tr>
-					<td align="right">
-						<label class="Validform_label">
-							选调类型:
-						</label>
-					</td>
-					<td class="value">
-						<select name ="selectionType" style="width:200px;">
-							<c:forEach items="${selectionList}" var="selection">
-			                    <option value="${selection.typename}"<c:if test="${selection.typename==personnelSelectionPage.selectionType}">selected="selected"</c:if>>${selection.typename}</option>
-			                </c:forEach>
-						</select>
-						<span class="Validform_checktip"></span>
-					</td>
-					<td align="right">
-						<label class="Validform_label">
-							专业:
-						</label>
-					</td>
-					<td class="value">
-						<input class="inputxt" id="specialty" name="specialty"
-							   value="${personnelSelectionPage.specialty}">
-						<span class="Validform_checktip"></span>
-					</td>
-				</tr>
-				<tr>
-					<td align="right">
-						<label class="Validform_label">
-							从事本专业时间:
-						</label>
-					</td>
-					<td class="value">
-						<input class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"  style="width: 200px;height:30px" id="specialtyTime" name="specialtyTime"
-							   value="<fmt:formatDate value='${personnelSelectionPage.specialtyTime}' type="date" pattern="yyyy-MM-dd"/>">
-						<span class="Validform_checktip"></span>
-					</td>
-					<td align="right">
-						<label class="Validform_label">
-							培训单位:
-						</label>
-					</td>
-					<td class="value">
-						<input class="inputxt" id="trainingUnit" name="trainingUnit"
-							   value="${personnelSelectionPage.trainingUnit}">
-						<span class="Validform_checktip"></span>
-					</td>
-				</tr>
-				<tr>
-					<td align="right">
-						<label class="Validform_label">
-							培训专业:
-						</label>
-					</td>
-					<td class="value">
-						<input class="inputxt" id="trainingSpecialty" name="trainingSpecialty"
-							   value="${personnelSelectionPage.trainingSpecialty}">
-						<span class="Validform_checktip"></span>
-					</td>
-					<td align="right">
-						<label class="Validform_label">
-							当前专业分配名额:
-						</label>
-					</td>
-					<td class="value">
-						<input class="inputxt" id="places" name="places"
-							   value="${personnelSelectionPage.places}">
-						<span class="Validform_checktip"></span>
-					</td>
-				</tr>
-				<%-- <tr>
-					<td align="right">
-						<label class="Validform_label">
-							创建时间:
-						</label>
-					</td>
-					<td class="value">
-						<input class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  style="width: 150px" id="createTime" name="createTime" ignore="ignore"
-							     value="<fmt:formatDate value='${personnelSelectionPage.createTime}' type="date" pattern="yyyy-MM-dd hh:mm:ss"/>">
-						<span class="Validform_checktip"></span>
-					</td>
-				</tr>
-				<tr>
-					<td align="right">
-						<label class="Validform_label">
-							更新时间:
-						</label>
-					</td>
-					<td class="value">
-						<input class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  style="width: 150px" id="updateTime" name="updateTime" ignore="ignore"
-							     value="<fmt:formatDate value='${personnelSelectionPage.updateTime}' type="date" pattern="yyyy-MM-dd hh:mm:ss"/>">
-						<span class="Validform_checktip"></span>
-					</td>
-				</tr>
-				<tr>
-					<td align="right">
-						<label class="Validform_label">
-							修改人ID:
-						</label>
-					</td>
-					<td class="value">
-						<input class="inputxt" id="updateId" name="updateId" ignore="ignore"
-							   value="${personnelSelectionPage.updateId}">
-						<span class="Validform_checktip"></span>
-					</td>
-				</tr>
-				<tr>
-					<td align="right">
-						<label class="Validform_label">
-							创建人ID:
-						</label>
-					</td>
-					<td class="value">
-						<input class="inputxt" id="createId" name="createId" ignore="ignore"
-							   value="${personnelSelectionPage.createId}">
-						<span class="Validform_checktip"></span>
-					</td>
-				</tr>
-				<tr>
-					<td align="right">
-						<label class="Validform_label">
-							部门ID:
-						</label>
-					</td>
-					<td class="value">
-						<input class="inputxt" id="departId" name="departId" ignore="ignore"
-							   value="${personnelSelectionPage.departId}">
-						<span class="Validform_checktip"></span>
-					</td>
-				</tr> --%>
 			</table>
 		</t:formvalid>
  </body>

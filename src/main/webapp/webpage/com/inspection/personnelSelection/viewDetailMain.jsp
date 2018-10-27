@@ -45,58 +45,42 @@
 				<tr>
 					<td>姓名：</td>
 					<td>${personnelSelectionPage.entity.name}</td>
-					<td>部职别：</td>
-					<td>${personnelSelectionPage.entity.jobTitle}</td>
-				</tr>
-				<tr>
 					<td>性别：</td>
 					<td>${personnelSelectionPage.entity.sex}</td>
-					<td>民族：</td>
-					<td>${personnelSelectionPage.entity.nation}</td>
 				</tr>
 				<tr>
-					<td>籍贯：</td>
-					<td>${personnelSelectionPage.entity.nativePlace}</td>
 					<td>政治面貌：</td>
 					<td>${personnelSelectionPage.entity.politicalStatus}</td>
 				</tr>
 				<tr>
-					<td>出生时间：</td>
+					<td>民族：</td>
+					<td>${personnelSelectionPage.entity.nation}</td>
+					<td>籍贯：</td>
+					<td>${personnelSelectionPage.entity.nativePlace}</td>
+				</tr>
+				<tr>
+					<td>出生日期：</td>
 					<td>
 						<fmt:formatDate value='${personnelSelectionPage.entity.birthday}' type="date" pattern="yyyy-MM-dd"/>
 					</td>
+					<td>部职别：</td>
+					<td>${personnelSelectionPage.entity.jobTitle}</td>
+				</tr>
+				<tr>
 					<td>入伍时间：</td>
 					<td>
 						<fmt:formatDate value='${personnelSelectionPage.entity.militaryTime}' type="date" pattern="yyyy-MM-dd"/>
 					</td>
-				</tr>
-				<tr>
-					<td>现军衔：</td>
-					<td>${personnelSelectionPage.entity.nowRank}</td>
-					<td>现军衔时间：</td>
+					<td>军衔时间：</td>
 					<td>
 						<fmt:formatDate value='${personnelSelectionPage.entity.rankTime}' type="date" pattern="yyyy-MM-dd"/>
 					</td>
 				</tr>
 				<tr>
-					<td>选调类型：</td>
-					<td>${personnelSelectionPage.entity.selectionType}</td>
-					<td>专业：</td>
-					<td>${personnelSelectionPage.entity.specialty}</td>
-				</tr>
-				<tr>
-					<td>从事本专业时间：</td>
-					<td>
-						<fmt:formatDate value='${personnelSelectionPage.entity.specialtyTime}' type="date" pattern="yyyy-MM-dd"/>
-					</td>
-					<td>培训单位：</td>
-					<td>${personnelSelectionPage.entity.trainingUnit}</td>
-				</tr>
-				<tr>
-					<td>培训专业：</td>
-					<td>${personnelSelectionPage.entity.trainingSpecialty}</td>
-					<td>当前专业分配名额：</td>
-					<td>${personnelSelectionPage.entity.places}</td>
+					<td>现军衔：</td>
+					<td>${personnelSelectionPage.entity.nowRank}</td>
+					<td>学历：</td>
+					<td>${personnelSelectionPage.entity.educational}</td>
 				</tr>
                 </table>
             </div>
