@@ -38,29 +38,63 @@
 					</td>
 					<td align="right">
 						<label class="Validform_label">
-							部职别:
-						</label>
-					</td>
-					<td class="value">
-						<input class="inputxt" id="jobTitle" name="jobTitle" ignore="ignore"
-							   value="${partyMemberPage.jobTitle}">
-						<span class="Validform_checktip"></span>
-					</td>
-				</tr>
-				<tr>
-					<td align="right">
-						<label class="Validform_label">
 							性别:
 						</label>
 					</td>
 					<td class="value">
 						<select name ="sex" style="width:200px;">
 							<c:forEach items="${sexList}" var="sex">
-			                    <option value="${sex.typename}"<c:if test="${sex.typename==partyMemberPage.sex}">selected="selected"</c:if>>${sex.typename}</option>
-			                </c:forEach>
+								<option value="${sex.typename}"<c:if test="${sex.typename==partyMemberPage.sex}">selected="selected"</c:if>>${sex.typename}</option>
+							</c:forEach>
 						</select>
 						<span class="Validform_checktip"></span>
 					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<label class="Validform_label">
+							身份证号:
+						</label>
+					</td>
+					<td class="value">
+						<input class="inputxt" id="idcard" name="idcard" ignore="ignore"
+							   value="${partyMemberPage.idcard}">
+						<span class="Validform_checktip"></span>
+					</td>
+					<td align="right">
+						<label class="Validform_label">
+							政治面貌:
+						</label>
+					</td>
+					<td class="value">
+						<input class="inputxt" id="politicalLandscape" name="politicalLandscape" ignore="ignore"
+							   value="${partyMemberPage.politicalLandscape}">
+						<span class="Validform_checktip"></span>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<label class="Validform_label">
+							民族:
+						</label>
+					</td>
+					<td class="value">
+						<input class="inputxt" id="national" name="national" ignore="ignore"
+							   value="${partyMemberPage.national}">
+						<span class="Validform_checktip"></span>
+					</td>
+					<td align="right">
+						<label class="Validform_label">
+							籍贯:
+						</label>
+					</td>
+					<td class="value">
+						<input class="inputxt" id="nativePlace" name="nativePlace" ignore="ignore"
+							   value="${partyMemberPage.nativePlace}">
+						<span class="Validform_checktip"></span>
+					</td>
+				</tr>
+				<tr>
 					<td align="right">
 						<label class="Validform_label">
 							出生日期:
@@ -71,7 +105,16 @@
 							   value="<fmt:formatDate value='${partyMemberPage.birthDay}' type="date" pattern="yyyy-MM-dd"/>">
 						<span class="Validform_checktip"></span>
 					</td>
-					
+					<td align="right">
+						<label class="Validform_label">
+							部职别:
+						</label>
+					</td>
+					<td class="value">
+						<input class="inputxt" id="jobTitle" name="jobTitle" ignore="ignore"
+							   value="${partyMemberPage.jobTitle}">
+						<span class="Validform_checktip"></span>
+					</td>
 				</tr>
 				<tr>
 					<td align="right">
@@ -86,6 +129,18 @@
 					</td>
 					<td align="right">
 						<label class="Validform_label">
+							军衔时间:
+						</label>
+					</td>
+					<td class="value">
+						<input class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"  style="width: 150px" id="rankTime" name="rankTime" ignore="ignore"
+							   value="<fmt:formatDate value='${partyMemberPage.rankTime}' type="date" pattern="yyyy-MM-dd"/>">
+						<span class="Validform_checktip"></span>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<label class="Validform_label">
 							现军衔:
 						</label>
 					</td>
@@ -94,40 +149,14 @@
 							   value="${partyMemberPage.nowRank}">
 						<span class="Validform_checktip"></span>
 					</td>
-				</tr>
-				<tr>
 					<td align="right">
 						<label class="Validform_label">
-							现军衔时间:
+							学历:
 						</label>
 					</td>
 					<td class="value">
-						<input class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"  style="width: 150px" id="rankTime" name="rankTime" ignore="ignore"
-							   value="<fmt:formatDate value='${partyMemberPage.rankTime}' type="date" pattern="yyyy-MM-dd"/>">
-						<span class="Validform_checktip"></span>
-					</td>
-					<td align="right">
-						<label class="Validform_label">
-							政治面貌:
-						</label>
-					</td>
-					<td class="value">
-						<select id="politicalLandscape" name="politicalLandscape" style="width:200px;" >
-					   		<option value="共青团员" <c:if test="${partyMemberPage.politicalLandscape=='共青团员'}">selected="selected"</c:if>>共青团员</option>
-					   		<option value="群众" <c:if test="${partyMemberPage.politicalLandscape=='群众'}">selected="selected"</c:if>>群众</option>
-					    </select>
-						<span class="Validform_checktip"></span>
-					</td>
-				</tr>
-				<tr>
-					<td align="right">
-						<label class="Validform_label">
-							录入时间:
-						</label>
-					</td>
-					<td class="value" colspan="3">
-						<input class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"  style="width: 200px" id="inputTime" name="inputTime" ignore="ignore"
-							   value="<fmt:formatDate value='${partyMemberPage.inputTime}' type="date" pattern="yyyy-MM-dd"/>">
+						<input class="inputxt" id="education" name="education" ignore="ignore"
+							   value="${partyMemberPage.education}">
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>
