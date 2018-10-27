@@ -48,82 +48,40 @@
 								<td>${soldierSchoolPage.schoolEntity.sex}</td>
 							</tr>
 							<tr>
-								<td>部职别：</td>
-								<td>${soldierSchoolPage.schoolEntity.jobTitle}</td>
+								<td>身份证号：</td>
+								<td>${soldierSchoolPage.schoolEntity.idCard}</td>
 								<td>政治面貌:</td>
 								<td>${soldierSchoolPage.schoolEntity.politicalLandscape}</td>
 							</tr>
 							<tr>
-								<td>籍贯：</td>
-								<td>${soldierSchoolPage.schoolEntity.nativePlace}</td>
 								<td>民族：</td>
 								<td>${soldierSchoolPage.schoolEntity.nationalName}</td>
+								<td>籍贯：</td>
+								<td>${soldierSchoolPage.schoolEntity.nativePlace}</td>
 							</tr>
 							<tr>
 								<td>出生日期:</td>
 								<td>
 									<fmt:formatDate value='${soldierSchoolPage.schoolEntity.birthDay}' type="date" pattern="yyyy-MM-dd"/>
 								</td>
+								<td>部职别：</td>
+								<td>${soldierSchoolPage.schoolEntity.jobTitle}</td>
+							</tr>
+							<tr>
 								<td>入伍时间:</td>
 								<td>
 									<fmt:formatDate value='${soldierSchoolPage.schoolEntity.militaryTime}' type="date" pattern="yyyy-MM-dd"/>
 								</td>
-							</tr>
-							<tr>
-								<td>现军衔:</td>
-								<td>${soldierSchoolPage.schoolEntity.nowRank}</td>
 								<td>军衔时间:</td>
 								<td>
 									<fmt:formatDate value='${soldierSchoolPage.schoolEntity.rankTime}' type="date" pattern="yyyy-MM-dd"/>
 								</td>
 							</tr>
 							<tr>
+								<td>现军衔:</td>
+								<td>${soldierSchoolPage.schoolEntity.nowRank}</td>
 								<td>学历:</td>
 								<td>${soldierSchoolPage.schoolEntity.education}</td>
-								<td>现专业:</td>
-								<td>${soldierSchoolPage.schoolEntity.nowProfessional}</td>
-							</tr>
-							<tr>
-								<td>毕业院校:</td>
-								<td>${soldierSchoolPage.schoolEntity.graduateSchool}</td>
-								<td>毕业时间:</td>
-								<td>
-									<fmt:formatDate value='${soldierSchoolPage.schoolEntity.graduateTime}' type="date" pattern="yyyy-MM-dd"/>
-								</td>
-							</tr>
-							<tr>
-								<td>专业:</td>
-								<td>${soldierSchoolPage.schoolEntity.professional}</td>
-								<td>录取批次:</td>
-								<td>${soldierSchoolPage.schoolEntity.essenceWork}</td>
-							</tr>
-							<tr>
-								<td>开始时间:</td>
-								<td>
-									<fmt:formatDate value='${soldierSchoolPage.schoolEntity.beginTime}' type="date" pattern="yyyy-MM-dd"/>
-								</td>
-								<td>结束时间:</td>
-								<td>
-									<fmt:formatDate value='${soldierSchoolPage.schoolEntity.endTime}' type="date" pattern="yyyy-MM-dd"/>
-								</td>
-							</tr>
-							<tr>
-								<td>任班长或技术尖子:</td>
-								<td>${soldierSchoolPage.schoolEntity.position}</td>
-								<td>立功情况:</td>
-								<td>${soldierSchoolPage.schoolEntity.merit}</td>
-							</tr>
-							<tr>
-								<td>立功次数:</td>
-								<td colspan="3">${soldierSchoolPage.schoolEntity.meritNumber}</td>
-							</tr>
-							<tr>
-								<td>立功类型:</td>
-								<td>${soldierSchoolPage.schoolEntity.meritType}</td>
-								<td>立功情况:</td>
-								<td>
-									<fmt:formatDate value='${soldierSchoolPage.schoolEntity.meritTime}' type="date" pattern="yyyy-MM-dd"/>
-								</td>
 							</tr>
 						</table>
 					</div>
