@@ -48,7 +48,38 @@
 					</td>
 				</tr>
 				<tr>
-					
+					<td align="right">
+						<label class="Validform_label">
+							身份证号:
+						</label>
+					</td>
+					<td class="value">
+						<input class="inputxt" id="idCard" name="idCard" ignore="ignore"
+							   value="${backbonePage.idCard}">
+						<span class="Validform_checktip"></span>
+					</td>
+					<td align="right">
+						<label class="Validform_label">
+							政治面貌:
+						</label>
+					</td>
+					<td class="value">
+						<input class="inputxt" id="politicalLandscape" name="politicalLandscape" ignore="ignore"
+							   value="${backbonePage.politicalLandscape}">
+						<span class="Validform_checktip"></span>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<label class="Validform_label">
+							民族:
+						</label>
+					</td>
+					<td class="value">
+						<input class="inputxt" id="nationalName" name="nationalName" ignore="ignore"
+							   value="${backbonePage.nationalName}">
+						<span class="Validform_checktip"></span>
+					</td>
 					<td align="right">
 						<label class="Validform_label">
 							籍贯:
@@ -57,16 +88,6 @@
 					<td class="value">
 						<input class="inputxt" id="nativePlace" name="nativePlace" ignore="ignore"
 							   value="${backbonePage.nativePlace}">
-						<span class="Validform_checktip"></span>
-					</td>
-						<td align="right">
-						<label class="Validform_label">
-							部职别:
-						</label>
-					</td>
-					<td class="value">
-						<input class="inputxt" id="jobTitle" name="jobTitle" ignore="ignore"
-							   value="${backbonePage.jobTitle}">
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>
@@ -81,7 +102,18 @@
 							   value="<fmt:formatDate value='${backbonePage.birthDay}' type="date" pattern="yyyy-MM-dd"/>">
 						<span class="Validform_checktip"></span>
 					</td>
-				
+					<td align="right">
+						<label class="Validform_label">
+							部职别:
+						</label>
+					</td>
+					<td class="value">
+						<input class="inputxt" id="jobTitle" name="jobTitle" ignore="ignore"
+							   value="${backbonePage.jobTitle}">
+						<span class="Validform_checktip"></span>
+					</td>
+				</tr>
+				<tr>
 					<td align="right">
 						<label class="Validform_label">
 							入伍时间:
@@ -92,20 +124,6 @@
 							   value="<fmt:formatDate value='${backbonePage.militaryTime}' type="date" pattern="yyyy-MM-dd"/>">
 						<span class="Validform_checktip"></span>
 					</td>
-				</tr>
-				<tr>
-					<td align="right">
-						<label class="Validform_label">
-							现军衔:
-						</label>
-					</td>
-					<td class="value">
-					
-						<input class="inputxt" id="nowRank" name="nowRank" ignore="ignore"
-							   value="${backbonePage.nowRank}">
-						<span class="Validform_checktip"></span>
-					</td>
-				
 					<td align="right">
 						<label class="Validform_label">
 							军衔时间:
@@ -121,6 +139,17 @@
 				<tr>
 					<td align="right">
 						<label class="Validform_label">
+							现军衔:
+						</label>
+					</td>
+					<td class="value">
+
+						<input class="inputxt" id="nowRank" name="nowRank" ignore="ignore"
+							   value="${backbonePage.nowRank}">
+						<span class="Validform_checktip"></span>
+					</td>
+					<td align="right">
+						<label class="Validform_label">
 							学历:
 						</label>
 					</td>
@@ -129,79 +158,7 @@
 							   value="${backbonePage.education}">
 						<span class="Validform_checktip"></span>
 					</td>
-			
-					<td align="right">
-						<label class="Validform_label">
-							现专业:
-						</label>
-					</td>
-					<td class="value">
-						<input class="inputxt" id="nowProfessional" name="nowProfessional" ignore="ignore"
-							   value="${backbonePage.nowProfessional}">
-						<span class="Validform_checktip"></span>
-					</td>
 				</tr>
-				<tr>
-					<td align="right">
-						<label class="Validform_label">
-							毕业时间:
-						</label>
-					</td>
-					<td class="value">
-						<input class="Wdate" onClick="WdatePicker()"  style="width: 150px" id="graduateTime" name="graduateTime" ignore="ignore"
-							   value="<fmt:formatDate value='${backbonePage.graduateTime}' type="date" pattern="yyyy-MM-dd"/>">
-						<span class="Validform_checktip"></span>
-					</td>
-				
-					<td align="right">
-						<label class="Validform_label">
-							民族:
-						</label>
-					</td>
-					<td class="value">
-						<input class="inputxt" id="nationalName" name="nationalName" ignore="ignore"
-							   value="${backbonePage.nationalName}">
-						<span class="Validform_checktip"></span>
-					</td>
-				</tr>
-				<tr>
-					<td align="right">
-						<label class="Validform_label">
-							职务:
-						</label>
-					</td>
-					<td class="value">
-						<input class="inputxt" id="position" name="position" ignore="ignore"
-							   value="${backbonePage.position}">
-						<span class="Validform_checktip"></span>
-					</td>
-				
-					<td align="right">
-						<label class="Validform_label">
-							班级:
-						</label>
-					</td>
-					<td class="value">
-						<input class="inputxt" id="banji" name="banji" ignore="ignore"
-							   value="${backbonePage.banji}">
-						<span class="Validform_checktip"></span>
-					</td>
-				</tr>
-				<tr>
-					<td align="right">
-						<label class="Validform_label">
-							政治面貌:
-						</label>
-					</td>
-					<td class="value" colspan="3">
-						<input class="inputxt" id="politicalLandscape" name="politicalLandscape" ignore="ignore"
-							   value="${backbonePage.politicalLandscape}">
-						<span class="Validform_checktip"></span>
-					</td>
-				
-					
-				</tr>
-				
 			</table>
 	
 		</t:formvalid>

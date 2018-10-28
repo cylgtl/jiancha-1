@@ -49,46 +49,32 @@
 					<td>${soldierLeavePage.soldierEntity.sex}</td>
 				</tr>
 				<tr>
-					<td>部职别：</td>
-					<td>${soldierLeavePage.soldierEntity.jobTitle}</td>
-					<td>现军衔：</td>
-					<td>${soldierLeavePage.soldierEntity.rank}</td>
-				</tr>
-				<tr>
-					<td>休假类型：</td>
-					<td>${soldierLeavePage.soldierEntity.leaveType}</td>
-					<td>学历：</td>
-					<td>${soldierLeavePage.soldierEntity.educational}</td>
-				</tr>
-				<tr>
-					<td>出生日期：</td>
-					<td>${soldierLeavePage.soldierEntity.birthday}</td>
-					<td>入伍时间：</td>
-					<td>${soldierLeavePage.soldierEntity.militaryTime}</td>
-				</tr>
-				<tr>
-					<td>现军衔时间：</td>
-					<td>${soldierLeavePage.soldierEntity.rankTime}</td>
-					<td>籍贯：</td>
-					<td>${soldierLeavePage.soldierEntity.nativePlace}</td>
-				</tr>
-				<tr>
-					<td>民族：</td>
-					<td>${soldierLeavePage.soldierEntity.national}</td>
 					<td>政治面貌：</td>
 					<td>${soldierLeavePage.soldierEntity.political}</td>
 				</tr>
 				<tr>
-				<tr>
-					<td>休假开始时间：</td>
-					<td>${soldierLeavePage.soldierEntity.beginTime}</td>
-					<td>休假结束时间：</td>
-					<td>${soldierLeavePage.soldierEntity.endTime}</td>
-				</tr>
+					<td>民族：</td>
+					<td>${soldierLeavePage.soldierEntity.national}</td>
+					<td>籍贯：</td>
+					<td>${soldierLeavePage.soldierEntity.nativePlace}</td>
 				</tr>
 				<tr>
-					<td>请假天数：</td>
-					<td colspan="3">${soldierLeavePage.soldierEntity.days}</td>
+					<td>出生日期：</td>
+					<td>${soldierLeavePage.soldierEntity.birthday}</td>
+					<td>部职别：</td>
+					<td>${soldierLeavePage.soldierEntity.jobTitle}</td>
+				</tr>
+				<tr>
+					<td>入伍时间：</td>
+					<td>${soldierLeavePage.soldierEntity.militaryTime}</td>
+					<td>军衔时间：</td>
+					<td>${soldierLeavePage.soldierEntity.rankTime}</td>
+				</tr>
+				<tr>
+					<td>现军衔：</td>
+					<td>${soldierLeavePage.soldierEntity.rank}</td>
+					<td>学历：</td>
+					<td>${soldierLeavePage.soldierEntity.educational}</td>
 				</tr>
 			</table>
             </div>

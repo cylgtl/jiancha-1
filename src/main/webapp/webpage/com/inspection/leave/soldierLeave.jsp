@@ -48,51 +48,37 @@
 				<tr>
 					<td align="right">
 						<label class="Validform_label">
-							部职别:
+							政治面貌:
 						</label>
 					</td>
-					<td class="value" >
-						<input class="inputxt" id="jobTitle" name="jobTitle" 
-							   value="${soldierLeavePage.jobTitle}">
-						<span class="Validform_checktip"></span>
-					</td>
-					
-					<td align="right">
-						<label class="Validform_label">
-							现军衔:
-						</label>
-					</td>
-					<td class="value" >
-						<input class="inputxt" id="rank" name="rank" 
-							   value="${soldierLeavePage.rank}">
+					<td class="value">
+						<input class="inputxt" id="political" name="political"
+							   value="${soldierLeavePage.political}">
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>
 				<tr>
 					<td align="right">
 						<label class="Validform_label">
-							休假类型:
-						</label>
-					</td>
-					<td class="value" >
-						<select name="leaveType" id="leaveType">
-		                <c:forEach items="${leaveTypeList}" var="type">
-		                    <option value="${type.id}" <c:if test="${type.id==soldierLeavePage.leaveType }">selected="selected"</c:if>>${type.typename}</option>
-		                </c:forEach>
-		              </select>
-					</td>
-					<td align="right">
-						<label class="Validform_label">
-							学历:
+							民族:
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="educational" name="educational"
-							   value="${soldierLeavePage.educational}">
+						<input class="inputxt" id="national" name="national"
+							   value="${soldierLeavePage.national}">
+						<span class="Validform_checktip"></span>
+					</td>
+					<td align="right">
+						<label class="Validform_label">
+							籍贯:
+						</label>
+					</td>
+					<td class="value">
+						<input class="inputxt" id="nativePlace" name="nativePlace"
+							   value="${soldierLeavePage.nativePlace}">
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>
-				
 				<tr>
 					<td align="right">
 						<label class="Validform_label">
@@ -101,10 +87,21 @@
 					</td>
 					<td class="value">
 						<input  id="birthday" name="birthday" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"  style="width: 200px;height:30px"
-							   value="${soldierLeavePage.birthday}">
+								value="${soldierLeavePage.birthday}">
 						<span class="Validform_checktip"></span>
 					</td>
-					
+					<td align="right">
+						<label class="Validform_label">
+							部职别:
+						</label>
+					</td>
+					<td class="value" >
+						<input class="inputxt" id="jobTitle" name="jobTitle"
+							   value="${soldierLeavePage.jobTitle}">
+						<span class="Validform_checktip"></span>
+					</td>
+				</tr>
+				<tr>
 					<td align="right">
 						<label class="Validform_label">
 							入伍时间:
@@ -115,12 +112,9 @@
 							   value="${soldierLeavePage.militaryTime}">
 						<span class="Validform_checktip"></span>
 					</td>
-				</tr>
-		
-				<tr>
 					<td align="right">
 						<label class="Validform_label">
-							现军衔时间:
+							军衔时间:
 						</label>
 					</td>
 					<td class="value" >
@@ -128,78 +122,26 @@
 							   value="${soldierLeavePage.rankTime}">
 						<span class="Validform_checktip"></span>
 					</td>
-					
-					<td align="right">
-						<label class="Validform_label">
-							籍贯:
-						</label>
-					</td>
-					<td class="value">
-						<input class="inputxt" id="nativePlace" name="nativePlace" 
-							   value="${soldierLeavePage.nativePlace}">
-						<span class="Validform_checktip"></span>
-					</td>
 				</tr>
-				
-				
 				<tr>
 					<td align="right">
 						<label class="Validform_label">
-							民族:
+							现军衔:
+						</label>
+					</td>
+					<td class="value" >
+						<input class="inputxt" id="rank" name="rank"
+							   value="${soldierLeavePage.rank}">
+						<span class="Validform_checktip"></span>
+					</td>
+					<td align="right">
+						<label class="Validform_label">
+							学历:
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="national" name="national" 
-							   value="${soldierLeavePage.national}">
-						<span class="Validform_checktip"></span>
-					</td>
-			
-					<td align="right">
-						<label class="Validform_label">
-							政治面貌:
-						</label>
-					</td>
-					<td class="value">
-						<input class="inputxt" id="political" name="political" 
-							   value="${soldierLeavePage.political}">
-						<span class="Validform_checktip"></span>
-					</td>
-				</tr>
-				
-				
-				<tr>
-					<td align="right">
-						<label class="Validform_label">
-							休假开始时间:
-						</label>
-					</td>
-					<td class="value">
-						<input class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"  style="width: 200px;height:30px" id="beginTime" name="beginTime" 
-							   value="${soldierLeavePage.beginTime}">
-						<span class="Validform_checktip"></span>
-					</td>
-			
-					<td align="right">
-						<label class="Validform_label">
-							休假结束时间:
-						</label>
-					</td>
-					<td class="value">
-						<input class="Wdate" onchange="getDays()" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"  style="width: 200px;height:30px" id="endTime" name="endTime" 
-							   value="${soldierLeavePage.endTime}">
-						<span class="Validform_checktip"></span>
-					</td>
-				</tr>
-				
-				<tr>
-					<td align="right">
-						<label class="Validform_label">
-							请假天数:
-						</label>
-					</td>
-					<td class="value" colspan="3">
-						<input class="inputxt" readonly="readonly" id="days" name="days" 
-							   value="${soldierLeavePage.days}">
+						<input class="inputxt" id="educational" name="educational"
+							   value="${soldierLeavePage.educational}">
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>

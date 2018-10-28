@@ -17,27 +17,10 @@
 						</label>
 					</td>
 					<td class="value" colspan="3">
-						<%-- <input class="inputxt" id="type" name="type" ignore="ignore"
-							   value="${officerLeavePage.type}">
-						<span class="Validform_checktip"></span> --%>
 						<select name="type" id="type">
 						    <option value="军官请假">军官请假</option>
 						</select>
 					</td>
-				</tr>
-				<tr>
-					<td align="right">
-						<label class="Validform_label">
-							标题:
-						</label>
-					</td>
-					<td class="value" colspan="3">
-						<input class="inputxt" id="title" name="title"  ignore="ignore"
-							   value="${officerLeavePage.title}">
-						<span class="Validform_checktip"></span>
-					</td>
-					
-					
 				</tr>
 				<tr>
 					<td align="right">
@@ -64,16 +47,6 @@
 				<tr>
 					<td align="right">
 						<label class="Validform_label">
-							学历:
-						</label>
-					</td>
-					<td class="value">
-						<input class="inputxt" id="educational" name="educational"  ignore="ignore"
-							   value="${officerLeavePage.educational}">
-						<span class="Validform_checktip"></span>
-					</td>
-						<td align="right">
-						<label class="Validform_label">
 							政治面貌:
 						</label>
 					</td>
@@ -82,9 +55,18 @@
 							   value="${officerLeavePage.political}">
 						<span class="Validform_checktip"></span>
 					</td>
-					
 				</tr>
 				<tr>
+					<td align="right">
+						<label class="Validform_label">
+							民族:
+						</label>
+					</td>
+					<td class="value">
+						<input class="inputxt" id="national" name="national" ignore="ignore"
+							   value="${officerLeavePage.national}">
+						<span class="Validform_checktip"></span>
+					</td>
 					<td align="right">
 						<label class="Validform_label">
 							籍贯:
@@ -95,21 +77,54 @@
 							   value="${officerLeavePage.nativePlace}">
 						<span class="Validform_checktip"></span>
 					</td>
-						<td align="right">
+				</tr>
+				<tr>
+					<td align="right">
 						<label class="Validform_label">
-							民族:
+							出生日期:
+						</label>
+					</td>
+					<td class="value" >
+						<input class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"  style="width: 150px" id="birthday" name="birthday" datatype="*"
+							   value="<fmt:formatDate value='${officerLeavePage.birthday}' type="date" pattern="yyyy-MM-dd"/>">
+						<span class="Validform_checktip"></span>
+					</td>
+					<td align="right">
+						<label class="Validform_label">
+							部职别:
+						</label>
+					</td>
+					<td class="value" >
+						<input class="inputxt" id="jobTitle" name="jobTitle" ignore="ignore"
+							   value="${officerLeavePage.jobTitle}">
+						<span class="Validform_checktip"></span>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<label class="Validform_label">
+							入伍时间:
+						</label>
+					</td>
+					<td class="value" >
+						<input class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"  style="width: 150px" id="militaryTime" name="militaryTime" datatype="*"
+							     value="<fmt:formatDate value='${officerLeavePage.militaryTime}' type="date" pattern="yyyy-MM-dd"/>">
+						<span class="Validform_checktip"></span>
+					</td>
+					<td align="right">
+						<label class="Validform_label">
+							军衔时间:
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="national" name="national" ignore="ignore"
-							   value="${officerLeavePage.national}">
+
+						<input class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"  style="width: 150px" id="rankTime" name="rankTime" datatype="*"
+							   value="<fmt:formatDate value='${officerLeavePage.rankTime}' type="date" pattern="yyyy-MM-dd"/>">
 						<span class="Validform_checktip"></span>
 					</td>
-					
 				</tr>
-				
 				<tr>
-				<td align="right">
+					<td align="right">
 						<label class="Validform_label">
 							现军衔:
 						</label>
@@ -121,86 +136,15 @@
 					</td>
 					<td align="right">
 						<label class="Validform_label">
-							军衔时间:
+							学历:
 						</label>
 					</td>
 					<td class="value">
-					
-							   <input class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"  style="width: 150px" id="rankTime" name="rankTime" datatype="*"
-							     value="<fmt:formatDate value='${officerLeavePage.rankTime}' type="date" pattern="yyyy-MM-dd"/>">
+						<input class="inputxt" id="educational" name="educational"  ignore="ignore"
+							   value="${officerLeavePage.educational}">
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>
-				
-				<tr>
-					<td align="right">
-						<label class="Validform_label">
-							出生日期:
-						</label>
-					</td>
-					<td class="value" >
-						<input class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"  style="width: 150px" id="birthday" name="birthday" datatype="*"
-							     value="<fmt:formatDate value='${officerLeavePage.birthday}' type="date" pattern="yyyy-MM-dd"/>">
-						<span class="Validform_checktip"></span>
-					</td>
-					<td align="right">
-						<label class="Validform_label">
-							入伍时间:
-						</label>
-					</td>
-					<td class="value" >
-						<input class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"  style="width: 150px" id="militaryTime" name="militaryTime" datatype="*"
-							     value="<fmt:formatDate value='${officerLeavePage.militaryTime}' type="date" pattern="yyyy-MM-dd"/>">
-						<span class="Validform_checktip"></span>
-					</td>
-				</tr>
-				<tr>
-					<td align="right">
-						<label class="Validform_label">
-							部职别:
-						</label>
-					</td>
-					<td class="value" >
-						<input class="inputxt" id="jobTitle" name="jobTitle" ignore="ignore"
-							   value="${officerLeavePage.jobTitle}">
-						<span class="Validform_checktip"></span>
-					</td>
-				
-					<td align="right">
-						<label class="Validform_label">
-							休假开始时间:
-						</label>
-					</td>
-					<td class="value">
-						<input class="Wdate" onchange="getDays()" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"  style="width: 150px" id="beginTime" name="beginTime" datatype="*"
-							     value="<fmt:formatDate value='${officerLeavePage.beginTime}' type="date" pattern="yyyy-MM-dd"/>">
-						<span class="Validform_checktip"></span>
-					</td>
-					</tr>
-				<tr>
-					<td align="right">
-						<label class="Validform_label">
-							休假结束时间:
-						</label>
-					</td>
-					<td class="value">
-						<input class="Wdate" onchange="getDays()" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"  style="width: 150px" id="endTime" name="endTime" datatype="*"
-							     value="<fmt:formatDate value='${officerLeavePage.endTime}' type="date" pattern="yyyy-MM-dd"/>">
-						<span class="Validform_checktip"></span>
-					</td>
-				
-					<td align="right">
-						<label class="Validform_label">
-							请假天数:
-						</label>
-					</td>
-					<td class="value">
-						<input class="inputxt" id="days" name="days"  readonly="readonly"
-							   value="${officerLeavePage.days}">
-						<span class="Validform_checktip"></span>
-					</td>
-				</tr>
-				
 			</table>
 		</t:formvalid>
  </body>

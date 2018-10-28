@@ -54,46 +54,40 @@
 					<td>${evaluationResidualPage.entity.sex}</td>
 				</tr>
 				<tr>
-					<td>部职别：</td>
-					<td>${evaluationResidualPage.entity.jobTitle}</td>
-					<td>民族：</td>
-					<td>${evaluationResidualPage.entity.nationalName}</td>
-				</tr>
-				<tr>
-					<td>籍贯：</td>
-					<td>${evaluationResidualPage.entity.nativePlace}</td>
+					<td>身份证：</td>
+					<td>${evaluationResidualPage.entity.idCard}</td>
 					<td>政治面貌：</td>
 					<td>${evaluationResidualPage.entity.political}</td>
+				</tr>
+				<tr>
+					<td>民族：</td>
+					<td>${evaluationResidualPage.entity.nationalName}</td>
+					<td>籍贯：</td>
+					<td>${evaluationResidualPage.entity.nativePlace}</td>
 				</tr>
 				<tr>
 					<td>出生日期：</td>
 					<td>
 						<fmt:formatDate value='${evaluationResidualPage.entity.birthDay}' type="date" pattern="yyyy-MM-dd"/>
 					</td>
+					<td>部职别：</td>
+					<td>${evaluationResidualPage.entity.jobTitle}</td>
+				</tr>
+				<tr>
 					<td>入伍时间：</td>
 					<td>
 						<fmt:formatDate value='${evaluationResidualPage.entity.militaryTime}' type="date" pattern="yyyy-MM-dd"/>
 					</td>
-				</tr>
-				<tr>
-					<td>现军衔：</td>
-					<td>${evaluationResidualPage.entity.nowRank}</td>
-					<td>现军衔时间：</td>
+					<td>军衔时间：</td>
 					<td>
 						<fmt:formatDate value='${evaluationResidualPage.entity.rankTime}' type="date" pattern="yyyy-MM-dd"/>
 					</td>
 				</tr>
 				<tr>
+					<td>现军衔：</td>
+					<td>${evaluationResidualPage.entity.nowRank}</td>
 					<td>学历：</td>
 					<td>${evaluationResidualPage.entity.education}</td>
-					<td>现专业：</td>
-					<td>${evaluationResidualPage.entity.nowProfessional}</td>
-				</tr>
-				<tr>
-					<td>毕业时间：</td>
-					<td colspan="3">
-						<fmt:formatDate value='${evaluationResidualPage.entity.graduateTime}' type="date" pattern="yyyy-MM-dd"/>
-					</td>
 				</tr>
                 </table>
             </div>
