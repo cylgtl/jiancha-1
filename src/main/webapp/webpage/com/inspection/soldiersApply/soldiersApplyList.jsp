@@ -42,11 +42,11 @@
                </select>
         
               <span style="vertical-align:middle;display:-moz-inline-box;display:inline-block;width: 80px;text-align:right;" title="连/科">连科: </span>
-               <select name="soldierLeave.departId" id="departId"  style="width: 150px">
+               <select name="departId" id="departId"  style="width: 150px">
                   <option value="">全部</option>
                </select>
    
-         <a href="#" class="easyui-linkbutton" iconCls="icon-search" onclick="soldierLeaveListsearch();" style="text-align: center;width: 140px">查询</a>
+         <a href="#" class="easyui-linkbutton" iconCls="icon-search" onclick="soldiersApplyListsearch();" style="text-align: center;width: 140px">查询</a>
     </div>
 </div>
   </div>
