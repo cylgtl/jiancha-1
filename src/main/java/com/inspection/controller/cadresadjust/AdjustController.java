@@ -89,7 +89,13 @@ public class AdjustController extends BaseController {
 				}
 			}
 		}
+		System.out.println("ddd depart name" + SessionUtils.getCurrentUser().getCurrentDepart().getDepartname());
+		System.out.println("ddd depart code" + SessionUtils.getCurrentUser().getCurrentDepart().getOrgCode());
+		System.out.println("ddd parent depart name" + SessionUtils.getCurrentUser().getCurrentDepart().getTSPDepart().getDepartname());
+		System.out.println("ddd parent depart code" + SessionUtils.getCurrentUser().getCurrentDepart().getTSPDepart().getOrgCode());
+
 		request.setAttribute("departList", list);
+		request.setAttribute("currentDepart",SessionUtils.getCurrentUser().getCurrentDepart());
 		return new ModelAndView("com/inspection/adjust/adjustList");
 	}
 
@@ -108,6 +114,10 @@ public class AdjustController extends BaseController {
 		CriteriaQuery cq = new CriteriaQuery(AdjustEntity.class, dataGrid);
 		// 默认查询当前用户所属部门下数据
 		String departId = adjust.getDepartId();
+		if (StringUtils.isEmpty(request.getParameter("search"))){
+			departId = request.getParameter("currentDepartId");
+		}
+
 		/*
 		 * boolean isAdmin = SessionUtils.isAdminRole("admin"); boolean isManager =
 		 * SessionUtils.isAdminRole("manager");

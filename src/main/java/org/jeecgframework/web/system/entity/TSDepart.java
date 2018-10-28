@@ -19,7 +19,7 @@ public class TSDepart extends IdEntity implements java.io.Serializable {
     private String orgCode;//机构编码
     private String orgType;//机构编码
 	private List<TSDepart> TSDeparts = new ArrayList<TSDepart>();//下属部门
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "parentdepartid")
 	public TSDepart getTSPDepart() {
 		return this.TSPDepart;
