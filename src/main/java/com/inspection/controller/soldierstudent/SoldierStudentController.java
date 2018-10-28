@@ -96,6 +96,7 @@ public class SoldierStudentController extends BaseController {
 			}
 		}
 		request.setAttribute("departList", list);
+		request.setAttribute("currentDepart",SessionUtils.getCurrentUser().getCurrentDepart());
 		return new ModelAndView("com/inspection/soldierstudent/soldierStudentList");
 	}
 
@@ -112,7 +113,10 @@ public class SoldierStudentController extends BaseController {
 	public void datagrid(SoldierStudentEntity soldierStudent,HttpServletRequest request, HttpServletResponse response, DataGrid dataGrid) {
 		CriteriaQuery cq = new CriteriaQuery(SoldierStudentEntity.class, dataGrid);
 		//默认查询当前用户所属部门下数据
-				String departId = soldierStudent.getDepartId();
+		String departId = soldierStudent.getDepartId();
+		if (StringUtils.isEmpty(request.getParameter("search"))){
+			departId = request.getParameter("currentDepartId");
+		}
 				/*boolean isAdmin = SessionUtils.isAdminRole("admin");
 				boolean isManager = SessionUtils.isAdminRole("manager");
 				

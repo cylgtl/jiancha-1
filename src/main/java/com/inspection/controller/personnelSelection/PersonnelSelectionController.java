@@ -88,6 +88,7 @@ public class PersonnelSelectionController extends BaseController {
 			}
 		}
 		request.setAttribute("departList", list);
+		request.setAttribute("currentDepart",SessionUtils.getCurrentUser().getCurrentDepart());
 		return new ModelAndView("com/inspection/personnelSelection/personnelSelectionList");
 	}
 
@@ -105,6 +106,9 @@ public class PersonnelSelectionController extends BaseController {
 		CriteriaQuery cq = new CriteriaQuery(PersonnelSelectionEntity.class, dataGrid);
 		//默认查询当前用户所属部门下数据
 		String departId = personnelSelection.getDepartId();
+		if (StringUtils.isEmpty(request.getParameter("search"))){
+			departId = request.getParameter("currentDepartId");
+		}
 		/*boolean isAdmin = SessionUtils.isAdminRole("admin");
 		boolean isManager = SessionUtils.isAdminRole("manager");
 		

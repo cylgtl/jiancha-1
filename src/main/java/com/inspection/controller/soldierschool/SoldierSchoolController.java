@@ -48,7 +48,7 @@ import org.jeecgframework.web.system.service.SystemService;
 
 /**   
  * @Title: Controller
- * @Description: 大学生毕业生提干
+ * @Description: 优秀士兵保送入学
  * @author zhangdaihao
  * @date 2018-07-10 15:35:12
  * @version V1.0   
@@ -96,6 +96,7 @@ public class SoldierSchoolController extends BaseController {
 			}
 		}
 		request.setAttribute("departList", list);
+		request.setAttribute("currentDepart",SessionUtils.getCurrentUser().getCurrentDepart());
 		return new ModelAndView("com/inspection/soldierschool/soldierSchoolList");
 	}
 
@@ -112,7 +113,10 @@ public class SoldierSchoolController extends BaseController {
 	public void datagrid(SoldierSchoolEntity soldierSchool,HttpServletRequest request, HttpServletResponse response, DataGrid dataGrid) {
 		CriteriaQuery cq = new CriteriaQuery(SoldierSchoolEntity.class, dataGrid);
 		//默认查询当前用户所属部门下数据
-				String departId = soldierSchool.getDepartId();
+		String departId = soldierSchool.getDepartId();
+		if (StringUtils.isEmpty(request.getParameter("search"))){
+			departId = request.getParameter("currentDepartId");
+		}
 			/*	boolean isAdmin = SessionUtils.isAdminRole("admin");
 				boolean isManager = SessionUtils.isAdminRole("manager");
 				

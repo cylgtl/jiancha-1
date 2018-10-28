@@ -6,7 +6,7 @@
   <div region="center" style="padding:1px;">
   
   <c:if test="${isOtherRole eq 1 || not empty vistor}">
-  <t:datagrid name="partyMemberList" title="党员发展" actionUrl="partyMemberController.do?datagrid" idField="id" fit="true">
+  <t:datagrid name="partyMemberList" title="党员发展" actionUrl="partyMemberController.do?datagrid&currentDepartId=${currentDepart.orgCode}" idField="id" fit="true">
    <t:dgCol title="编号" field="id" hidden="true"></t:dgCol>
    <t:dgCol title="姓名" field="name"  width="150" align="center"></t:dgCol>
    <t:dgCol title="基本信息" field="jobTitle" width="350" align="center"></t:dgCol>
@@ -16,7 +16,7 @@
   </c:if>
   
   <c:if test="${not empty manager || not empty admin}">
-  <t:datagrid name="partyMemberList" title="党员发展" actionUrl="partyMemberController.do?datagrid" idField="id" fit="true">
+  <t:datagrid name="partyMemberList" title="党员发展" actionUrl="partyMemberController.do?datagrid&currentDepartId=${currentDepart.orgCode}" idField="id" fit="true">
    <t:dgCol title="编号" field="id" hidden="true"></t:dgCol>
     <t:dgCol title="部门" field="departId" hidden="true"></t:dgCol>
    <t:dgCol title="姓名" field="name"  width="150" align="center"></t:dgCol>
@@ -40,15 +40,25 @@
               <select name="depart_parent" id="" onchange="findDepartByParentId(this.value)" style="width: 150px">
                   <option value="">全部</option>
                   <c:forEach var="depart" items="${departList}">
-                      <option value="${depart.orgCode}">${depart.departname}</option>
+                      <c:choose>
+                          <c:when test="${not empty currentDepart && not empty currentDepart.TSPDepart && currentDepart.TSPDepart.orgCode == depart.orgCode }">
+                             <option value="${depart.orgCode}"  selected="selected" >${depart.departname}</option>
+                         </c:when>
+                          <c:otherwise>
+                            <option value="${depart.orgCode}">${depart.departname}</option>
+                         </c:otherwise>
+                       </c:choose>
                   </c:forEach>
                </select>
         
               <span style="vertical-align:middle;display:-moz-inline-box;display:inline-block;width: 80px;text-align:right;" title="连/科">连科: </span>
                <select name="departId" id="departId"  style="width: 150px">
-                  <option value="">全部</option>
+                  <option value=${currentDepart.orgCode}>${currentDepart.departname}</option>
                </select>
-   				
+
+	              <select name="search" id="search"  style="width: 150px" hidden="true">
+                <option value="search">search</option>
+             </select>
          <a href="#" class="easyui-linkbutton" iconCls="icon-search" onclick="partyMemberListsearch();" style="text-align: center;width: 140px">查询</a>
     </div>
 </div>

@@ -95,6 +95,7 @@ public class PartyMemberController extends BaseController {
 			}
 		}
 		request.setAttribute("departList", list);
+		request.setAttribute("currentDepart",SessionUtils.getCurrentUser().getCurrentDepart());
 		return new ModelAndView("com/inspection/partyMember/partyMemberList");
 	}
 
@@ -119,6 +120,9 @@ public class PartyMemberController extends BaseController {
 		}
 		cq.add();*/
 		String departId = partyMember.getDepartId();
+		if (StringUtils.isEmpty(request.getParameter("search"))){
+			departId = request.getParameter("currentDepartId");
+		}
 		partyMember.setDepartId(StringUtils.isNotEmpty(departId)?departId:null);
 		//查询条件组装器
 		HqlGenerateUtil.installHql(cq, partyMember, request.getParameterMap());

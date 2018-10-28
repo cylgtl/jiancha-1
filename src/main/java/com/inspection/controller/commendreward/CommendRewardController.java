@@ -95,6 +95,7 @@ public class CommendRewardController extends BaseController {
 			}
 		}
 		request.setAttribute("departList", list);
+		request.setAttribute("currentDepart",SessionUtils.getCurrentUser().getCurrentDepart());
 		return new ModelAndView("com/inspection/commendreward/commendRewardList");
 	}
 
@@ -111,7 +112,10 @@ public class CommendRewardController extends BaseController {
 	public void datagrid(CommendRewardEntity commendReward,HttpServletRequest request, HttpServletResponse response, DataGrid dataGrid) {
 		CriteriaQuery cq = new CriteriaQuery(CommendRewardEntity.class, dataGrid);
 		//默认查询当前用户所属部门下数据
-				String departId = commendReward.getDepartId();
+		String departId = commendReward.getDepartId();
+		if (StringUtils.isEmpty(request.getParameter("search"))){
+			departId = request.getParameter("currentDepartId");
+		}
 				/*boolean isAdmin = SessionUtils.isAdminRole("admin");
 				boolean isManager = SessionUtils.isAdminRole("manager");
 				
