@@ -120,29 +120,37 @@
 		 location.href = "soldierStudentController.do?viewMainDetial&id=" + id + "&isView=true";
     }
 	
-	function findDepartByParentId(departId){
-		if("" == departId){
-			$("#departId").html("<option value=\"\">全部</option>");
-		}else{
-			$.ajax({
-				async : false,
-				cache : false,
-				type : 'POST',
-				url : "departController.do?findDepartByParentId&parentId="+departId+"&random="+Math.random(),
-				error : function() {// 请求失败处理函数
-				},
-				success : function(data) {
-					var list = $.parseJSON(data); 
-					if(list){
-						var html ="<option value=\"\">全部</option>";
-						$.each(list, function(i, depart){  
-						    html = html +"<option value=\""+depart.orgCode+"\">"+depart.departname+"</option>";
-						}); 
-						$("#departId").html(html);
-					}
-				}
-			});
-		}
-	}
+	function findDepartByParentId(departId, currentDepartId = "", currentDepart = ""){
+         if("" != departId){
+             $.ajax({
+                 async : false,
+                 cache : false,
+                 type : 'POST',
+                 url : "departController.do?findDepartByParentId&parentId="+departId+"&random="+Math.random(),
+                 error : function() {// 请求失败处理函数
+                 },
+                 success : function(data) {
+                     var list = $.parseJSON(data);
+                     if(list){
+                         var html ="<option value=\"\">全部</option>";
+                         $.each(list, function(i, depart){
+                             if (depart.orgCode == currentDepartId){
+                                 html = html +"<option selected=\"selected\" value=\""+depart.orgCode+"\">"+depart.departname+"</option>";
+                             } else {
+                                 html = html +"<option value=\""+depart.orgCode+"\">"+depart.departname+"</option>";
+                             }
+
+                         });
+                         $("#departId").html(html);
+                     }
+                 }
+             });
+         }
+     }
+
+
+     window.onload = function(){
+         findDepartByParentId("${currentDepart.TSPDepart.orgCode}","${currentDepart.orgCode}","${currentDepart.departname}")
+     }
 	
 </script>
