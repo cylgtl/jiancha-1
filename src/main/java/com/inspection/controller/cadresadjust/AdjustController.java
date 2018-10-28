@@ -89,11 +89,6 @@ public class AdjustController extends BaseController {
 				}
 			}
 		}
-		System.out.println("ddd depart name" + SessionUtils.getCurrentUser().getCurrentDepart().getDepartname());
-		System.out.println("ddd depart code" + SessionUtils.getCurrentUser().getCurrentDepart().getOrgCode());
-		System.out.println("ddd parent depart name" + SessionUtils.getCurrentUser().getCurrentDepart().getTSPDepart().getDepartname());
-		System.out.println("ddd parent depart code" + SessionUtils.getCurrentUser().getCurrentDepart().getTSPDepart().getOrgCode());
-
 		request.setAttribute("departList", list);
 		request.setAttribute("currentDepart",SessionUtils.getCurrentUser().getCurrentDepart());
 		return new ModelAndView("com/inspection/adjust/adjustList");
