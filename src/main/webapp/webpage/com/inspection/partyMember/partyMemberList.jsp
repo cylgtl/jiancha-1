@@ -22,8 +22,8 @@
    <t:dgCol title="姓名" field="name"  width="150" align="center"></t:dgCol>
    <t:dgCol title="基本信息" field="jobTitle" width="350" align="center"></t:dgCol>
    <t:dgCol title="操作" field="opt" width="100" align="center"></t:dgCol>
+      <t:dgFunOpt funname="lookDetail(id)" title="查看" />
 	<t:dgFunOpt funname="operateDetail(id,departId)" title="处理" />
-	<t:dgFunOpt funname="lookDetail(id)" title="查看" />
     <t:dgFunOpt title="删除" funname="deleteConfirm(id,departId)"/> 
 	<t:dgToolBar title="录入" icon="icon-add" url="partyMemberController.do?selectType" funname="add" height="400" width="600"></t:dgToolBar>
     <t:dgToolBar title="编辑" icon="icon-edit" url="partyMemberController.do?addorupdate" height="400" width="600" funname="update"></t:dgToolBar>

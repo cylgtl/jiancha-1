@@ -22,8 +22,8 @@
    <t:dgCol title="部门" field="departId" hidden="true" ></t:dgCol>
    <t:dgCol title="部职别" field="jobTitle" width="350" align="center"></t:dgCol>
    <t:dgCol title="操作" field="opt" width="100" align="center"></t:dgCol>
+      <t:dgFunOpt funname="lookDetail(id)" title="查看" />
 	<t:dgFunOpt funname="operateDetail(id,departId)"    title="处理" />
-	<t:dgFunOpt funname="lookDetail(id)" title="查看" />
 	<t:dgToolBar title="录入" icon="icon-add"  url="adjustController.do?addorupdate" height="400"  funname="add"/>
 	 <t:dgFunOpt title="删除" funname="deleteConfirm(id,departId)"/> 
     <t:dgToolBar title="编辑"  icon="icon-edit"  url="adjustController.do?addorupdate" height="400" funname="update"/>

@@ -24,9 +24,8 @@
    <t:dgCol title="操作" field="opt" width="100" align="center"></t:dgCol>
 
    	<t:dgToolBar  title="录入"   operationCode="zsxj_add" icon="icon-add" url="soldierLeaveController.do?addorupdate" height="500" width="950" funname="add"></t:dgToolBar>
-	<t:dgFunOpt operationCode="zsxj_operate" funname="operateDetail(id,departId)" title="处理" />
-
-	<t:dgFunOpt funname="lookDetail(id)" title="查看" />
+      <t:dgFunOpt funname="lookDetail(id)" title="查看" />
+      <t:dgFunOpt operationCode="zsxj_operate" funname="operateDetail(id,departId)" title="处理" />
     <t:dgFunOpt title="删除" funname="deleteConfirm(id,departId)"/> 
     <t:dgToolBar title="编辑"   icon="icon-edit" url="soldierLeaveController.do?addorupdate" height="450" width="750" funname="update"></t:dgToolBar>
   </t:datagrid>
