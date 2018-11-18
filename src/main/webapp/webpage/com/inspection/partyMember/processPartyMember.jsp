@@ -41,7 +41,7 @@
         <form id="processPartyMember" method="post" enctype="multipart/form-data">
             <ol class="breadcrumb">
                 <a class="breadcrumb-item active" href="${webRoot }/partyMemberController.do?partyMember">党员发展</a>
-                <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('partyMemberController.do?viewDetailMain&id=${partyMemberPage.entity.id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
+                <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('partyMemberController.do?viewDetailMain&id=${partyMemberPage.entity.id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>监督纠错</a>
             </ol>
             <div class="row">
                 <div class="col-lg-6">

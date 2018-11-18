@@ -34,7 +34,7 @@
     <div class="container-fluid">
       <ol class="breadcrumb">
         <a class="breadcrumb-item active" href="${webRoot }/officerLeaveController.do?officerLeave">军官请假</a>
-        <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('officerLeaveController.do?viewMainDetial&id=${officerLeaveId}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
+        <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('officerLeaveController.do?viewMainDetial&id=${officerLeaveId}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>监督纠错</a>
       </ol>
       <div class="row">
         <div class="col-lg-6">

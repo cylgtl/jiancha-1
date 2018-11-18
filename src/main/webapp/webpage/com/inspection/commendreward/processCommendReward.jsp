@@ -40,7 +40,7 @@
         <form id="processCommendReward" method="post" enctype="multipart/form-data">
             <ol class="breadcrumb">
                 <a class="breadcrumb-item active" href="${webRoot }/commendRewardController.do?commendReward">表彰奖励</a>
-                <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('commendRewardController.do?viewMainDetial&id=${commendrewardPage.entity.id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
+                <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('commendRewardController.do?viewMainDetial&id=${commendrewardPage.entity.id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>监督纠错</a>
             </ol>
             <div class="row">
                 <div class="col-lg-6">

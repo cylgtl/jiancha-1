@@ -35,7 +35,7 @@
       <!-- Breadcrumbs-->
 	  <ol class="breadcrumb">
 		  <a class="breadcrumb-item active" href="${webRoot }/soldierSelectController.do?soldierselect">士官选取</a>
-		  <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('soldierSelectController.do?viewMainDetial&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
+		  <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('soldierSelectController.do?viewMainDetial&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>监督纠错</a>
 	  </ol>
       <div class="row">
         <div class="col-lg-6">

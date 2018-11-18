@@ -34,7 +34,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <a class="breadcrumb-item active" href="${webRoot }/soldierStudentController.do?soldierStudent">大学毕业生士兵提干</a>
-        <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('soldierStudentController.do?viewMainDetial&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>我要举报</a>
+        <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('soldierStudentController.do?viewMainDetial&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>监督纠错</a>
       </ol>
       <div class="row">
         <div class="col-lg-6">
