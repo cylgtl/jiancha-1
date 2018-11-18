@@ -3,7 +3,7 @@
 <t:base type="jquery,easyui,tools,DatePicker"></t:base>
 <div class="easyui-layout" fit="true">
   <div region="center" style="padding:1px;">
-  <t:datagrid name="messageList" title="法规展示" actionUrl="messageController.do?datagrid&type=0" idField="id" fit="true">
+  <t:datagrid name="messageList" title="述廉报告" actionUrl="messageController.do?datagrid&type=0" idField="id" fit="true">
    <t:dgCol title="编号" field="id" hidden="true"></t:dgCol>
    <t:dgCol title="标题" field="title" width="150" align="center"></t:dgCol>
    <%-- <t:dgCol title="具体内容" field="content" width="250"></t:dgCol> --%>

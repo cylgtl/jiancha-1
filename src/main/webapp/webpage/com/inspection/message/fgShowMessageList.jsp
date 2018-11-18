@@ -3,7 +3,7 @@
 <t:base type="jquery,easyui,tools,DatePicker"></t:base>
 <div class="easyui-layout" fit="true">
   <div region="center" style="padding:1px;">
-  <t:datagrid name="messageList" title="廉情公示" actionUrl="messageController.do?datagrid&type=1" idField="id" fit="true">
+  <t:datagrid name="messageList" title="法规展示" actionUrl="messageController.do?datagrid&type=1" idField="id" fit="true">
    <t:dgCol title="编号" field="id" hidden="true"></t:dgCol>
 <t:dgCol title="标题" field="title" width="150" align="center"></t:dgCol>
    <%-- <t:dgCol title="具体内容" field="content" width="250"></t:dgCol> --%>
@@ -15,7 +15,7 @@
    <t:dgDelOpt title="删除" url="messageController.do?del&id={id}" />
    <t:dgToolBar title="录入" icon="icon-add" url="messageController.do?fgAddorupdate" funname="add"></t:dgToolBar>
    <t:dgToolBar title="编辑" icon="icon-edit" url="messageController.do?fgAddorupdate" funname="update"></t:dgToolBar> --%>
-   <t:dgToolBar title="查看" icon="icon-search" url="messageController.do?addorupdate" funname="detail"></t:dgToolBar>
+   <t:dgToolBar title="查看" icon="icon-search" url="messageController.do?addorupdate" funname="detail" width="700" height="500"></t:dgToolBar>
   </t:datagrid>
   </div>
  </div>

@@ -13,8 +13,8 @@
   <%--  <t:dgCol title="点击次数" field="clickCount" ></t:dgCol> --%>
    <t:dgCol title="操作" field="opt" width="100" align="center"></t:dgCol>
     <t:dgDelOpt title="删除" url="messageController.do?del&id={id}" />
-   <t:dgToolBar title="录入" icon="icon-add" url="messageController.do?fgAddorupdate" funname="add" width="650" height="450"></t:dgToolBar>
-   <t:dgToolBar title="编辑" icon="icon-edit" url="messageController.do?fgAddorupdate" funname="update" width="650" height="450"></t:dgToolBar>
+   <t:dgToolBar title="录入" icon="icon-add" url="messageController.do?fgAddorupdate" funname="add" width="700" height="500"></t:dgToolBar>
+   <t:dgToolBar title="编辑" icon="icon-edit" url="messageController.do?fgAddorupdate" funname="update" width="700" height="500"></t:dgToolBar>
 <%--    <t:dgToolBar title="查看" icon="icon-search" url="messageController.do?addorupdate" funname="detail" width="650" height="450"></t:dgToolBar>
  --%>  </t:datagrid>
   </div>
