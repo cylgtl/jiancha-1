@@ -69,6 +69,11 @@ public class ReportController extends BaseController {
 	 */
 	@RequestMapping(params = "report")
 	public ModelAndView report(HttpServletRequest request) {
+		String type = request.getParameter("type");
+		if(StringUtils.isEmpty(type)){
+			type = "jiucuo";
+		}
+		request.setAttribute("type", type);
 		return new ModelAndView("com/inspection/report/reportList");
 	}
 	
@@ -149,7 +154,7 @@ public class ReportController extends BaseController {
 	public AjaxJson del(ReportEntity report, HttpServletRequest request) {
 		AjaxJson j = new AjaxJson();
 		report = systemService.findEntity(ReportEntity.class, report.getId());
-		message = "信访举报删除成功";
+		message = "删除成功";
 		reportService.delete(report);
 		systemService.addLog(message, Globals.Log_Type_DEL, Globals.Log_Leavel_INFO);
 		
@@ -171,7 +176,7 @@ public class ReportController extends BaseController {
 		
 		TSUser user = SessionUtils.getCurrentUser();
 		if (StringUtils.isNotEmpty(report.getId())) {
-			message = "信访举报更新成功";
+			message = "更新成功";
 			ReportEntity t = reportService.find(ReportEntity.class, report.getId());
 			try {
                 BeanPropertyUtils.copyBeanNotNull2Bean(report, t);

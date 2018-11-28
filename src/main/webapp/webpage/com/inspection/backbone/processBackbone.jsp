@@ -40,8 +40,9 @@
         <form id="processBackbone" method="post" enctype="multipart/form-data">
             <ol class="breadcrumb">
                 <a class="breadcrumb-item active" href="${webRoot }/backboneController.do?backbone">骨干配备</a>
-                <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('backboneController.do?viewMainDetial&id=${backbonePage.entity.id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>监督纠错</a>
-            </ol>
+                <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('jiucuo','backboneController.do?viewMainDetial&id=${backbonePage.entity.id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>监督纠错</a>
+            <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('fankui','backboneController.do?viewMainDetial&id=${backbonePage.entity.id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>情况反馈</a>
+                        </ol>
             <div class="row">
                 <div class="col-lg-6">
                     <div class="card mb-3">
@@ -276,8 +277,8 @@
     <script src="plug-in/lhgDialog/lhgdialog.min.js"></script>
 
     <script type="text/javascript">
-        function goToReport(url) {
-            add('录入',"reportController.do?addorupdate&type=jiucuo&url=" + url,'reportList',null,400);
+        function goToReport(type, url) {
+            add('录入',"reportController.do?addorupdate&type="+type+"&url=" + url,'reportList',null,400);
         }
 
         function demoEvalChange(){

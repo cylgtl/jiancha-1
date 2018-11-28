@@ -33,8 +33,9 @@
     <div class="container-fluid">
       <ol class="breadcrumb">
         <a class="breadcrumb-item active" href="${webRoot }/soldierLeaveController.do?soldierLeave">战士请假</a>
-        <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('soldierLeaveController.do?viewDetailMain&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>监督纠错</a>
-      </ol>
+        <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('jiucuo','soldierLeaveController.do?viewDetailMain&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>监督纠错</a>
+      <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('fankui','soldierLeaveController.do?viewDetailMain&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>情况反馈</a>
+            </ol>
       <div class="row">
         <div class="col-lg-6">
           <div class="card mb-3">
@@ -162,8 +163,8 @@
     <script src="plug-in/lhgDialog/lhgdialog.min.js"></script>
     
     <script type="text/javascript">
-	 function goToReport(url) {
-		add('录入',"reportController.do?addorupdate&type=jiucuo&url=" + url,'reportList',null,400);
+	 function goToReport(type, url) {
+		add('录入',"reportController.do?addorupdate&type="+type+"&url=" + url,'reportList',null,400);
 	  }
     </script>
   </div>

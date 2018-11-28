@@ -36,7 +36,7 @@
 		<input id="url" name="url" type="hidden" <c:if test="${not empty reportPage.url }">value="${reportPage.url}"</c:if> <c:if test="${not empty url }">value="${url}"</c:if> />
 		<fieldset class="step">
 			<div class="form">
-		      <label class="Validform_label">举报标题:</label>
+		      <label class="Validform_label">标题:</label>
 		      <input class="inputxt" id="title" name="title" style="width: 300px" maxlength="150"  datatype="*"
 					   value="${reportPage.title}">
 		      <span class="Validform_checktip"></span>
@@ -59,13 +59,13 @@
 		    </div>
 			
 			<div class="form" id="name" style="display: none;">
-		      <label class="Validform_label">举报人姓名:</label>
+		      <label class="Validform_label">反馈人姓名:</label>
 		      <input class="inputxt" id="personName" name="personName" maxlength="150" ignore="ignore"
 					   value="${reportPage.personName}">
 		      <span class="Validform_checktip"></span>
 		    </div>
 			<div class="form" id="phone" style="display: none;">
-		      <label class="Validform_label">举报人手机号:</label>
+		      <label class="Validform_label">反馈人手机号:</label>
 		      <input class="inputxt" id="personPhone" name="personPhone" datatype="m" errormsg="手机号码不正确" ignore="ignore"
 					   value="${reportPage.personPhone}">
 		      <span class="Validform_checktip"></span>

@@ -38,8 +38,9 @@
         <form id="processSoldierSelect" method="post">
             <ol class="breadcrumb">
                 <a class="breadcrumb-item active" href="${webRoot }/soldierSelectController.do?soldierselect">士官选取</a>
-                <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('soldierSelectController.do?viewMainDetial&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>监督纠错</a>
-            </ol>
+                <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('jiucuo','soldierSelectController.do?viewMainDetial&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>监督纠错</a>
+            <a id="toReport" class="mr-3 d-inline-block" href="javascript:goToReport('fankui','soldierSelectController.do?viewMainDetial&id=${id}')" style="margin-left: 100px;"><i class="fa fa-fw fa-comment"></i>情况反馈</a>
+                        </ol>
             <div class="row">
                 <div class="col-lg-6">
                     <div class="card mb-3">
@@ -361,8 +362,8 @@
     <script src="plug-in/lhgDialog/lhgdialog.min.js"></script>
 
     <script type="text/javascript">
-        function goToReport(url) {
-            add('录入',"reportController.do?addorupdate&type=jiucuo&url=" + url,'reportList',null,400);
+        function goToReport(type, url) {
+            add('录入',"reportController.do?addorupdate&type="+type+"&url=" + url,'reportList',null,400);
         }
 
         function demoEvalChange(){

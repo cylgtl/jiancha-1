@@ -40,7 +40,7 @@
 		<input id="id" name="id" type="hidden" value="${reportPage.id }">
 		<fieldset class="step">
 			<div class="form" style="height:20px;">
-		      <label class="Validform_label">举报标题:</label>
+		      <label class="Validform_label">标题:</label>
 		      <input class="inputxt" id="title" readonly="readonly" name="title" style="width: 300px" maxlength="150"  
 					   value="${reportPage.title}">
 		      <span class="Validform_checktip"></span>
@@ -63,13 +63,13 @@
 		    </div>
 			
 			<div class="form" style="height:20px;" id="name" style="display: none;">
-		      <label class="Validform_label">举报人姓名:</label>
+		      <label class="Validform_label">反馈人姓名:</label>
 		      <input class="inputxt" id="personName" readonly="readonly" name="personName" maxlength="150" ignore="ignore"
 					   value="${reportPage.personName}">
 		      <span class="Validform_checktip"></span>
 		    </div>
 			<div class="form" style="height:20px;" id="phone" style="display: none;">
-		      <label class="Validform_label">举报人手机号:</label>
+		      <label class="Validform_label">反馈人手机号:</label>
 		      <input class="inputxt" id="personPhone" readonly="readonly" name="personPhone" datatype="m" errormsg="手机号码不正确" ignore="ignore"
 					   value="${reportPage.personPhone}">
 		      <span class="Validform_checktip"></span>
