@@ -16,8 +16,8 @@
    <t:dgCol title="举报人手机号" field="personPhone" width="150" align="center"></t:dgCol>
    <t:dgCol title="是否匿名" field="anonymous" replace="匿名_0,实名_1" align="center"></t:dgCol>
    <%-- <t:dgCol title="操作" field="opt" width="100"></t:dgCol> --%>
-   <%-- <t:dgToolBar title="录入" icon="icon-add" url="reportController.do?addorupdate" funname="add" height="550"></t:dgToolBar> --%>
-   <t:dgToolBar title="查看" icon="icon-search" url="reportController.do?addorupdate" funname="detail" height="550"></t:dgToolBar>
+   <%-- <t:dgToolBar title="录入" icon="icon-add" url="reportController.do?addorupdate&type=jiucuo" funname="add" height="550"></t:dgToolBar> --%>
+   <t:dgToolBar title="查看" icon="icon-search" url="reportController.do?addorupdate&type=jiucuo" funname="detail" height="550"></t:dgToolBar>
   </t:datagrid>
   </div>
  </div>
@@ -30,7 +30,7 @@
               });
 		}else{
 			createwindow('举报详情',
-					"reportController.do?addorupdate&id=" + id,
+					"reportController.do?addorupdate&type=jiucuo&id=" + id,
 					650, 550);
 		}
 	}

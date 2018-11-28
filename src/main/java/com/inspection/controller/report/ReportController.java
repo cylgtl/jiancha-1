@@ -122,7 +122,11 @@ public class ReportController extends BaseController {
 				cq.eq("createUserId", user.getId());
 			}
 		}*/
-		
+		String type = request.getParameter("type");
+		if(!"".equals(type)){
+			cq.eq("type", type);
+		}
+
 		boolean isVistor = SessionUtils.isAdminRole("vistor");
 		if(isVistor){
 			cq.isNotNull("replyContent");
@@ -215,12 +219,19 @@ public class ReportController extends BaseController {
 		if (StringUtils.isNotEmpty(report.getId())) {
 			reportId = report.getId();
 		}
-		
+		String type = req.getParameter("type");
 		if(StringUtils.isNotEmpty(reportId)){
 			report = reportService.findEntity(ReportEntity.class,reportId);
-			req.setAttribute("reportPage", report);
 		}
-		
+
+		if(report == null){
+			report = new ReportEntity();
+		}
+		if(StringUtils.isEmpty(report.getType())){
+			report.setType(type);
+		}
+		req.setAttribute("reportPage", report);
+
 		if(StringUtils.isNotEmpty(id) && StringUtils.isNotEmpty(url)) {
 			req.setAttribute("url", url+"&id="+id);
 		}

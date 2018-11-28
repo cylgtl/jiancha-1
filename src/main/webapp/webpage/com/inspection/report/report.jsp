@@ -31,7 +31,7 @@
 </script>
  </head>
  <body  style="overflow-y:scroll;" scroll="no">
-  <t:formvalid formid="formobj" dialog="true" usePlugin="password" layout="div" action="reportController.do?save">
+  <t:formvalid formid="formobj" dialog="true" usePlugin="password" layout="div" action="reportController.do?save&type=${reportPage.type}">
 		<input id="id" name="id" type="hidden" value="${reportPage.id }">
 		<input id="url" name="url" type="hidden" <c:if test="${not empty reportPage.url }">value="${reportPage.url}"</c:if> <c:if test="${not empty url }">value="${url}"</c:if> />
 		<fieldset class="step">

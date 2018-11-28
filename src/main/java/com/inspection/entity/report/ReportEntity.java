@@ -52,6 +52,17 @@ public class ReportEntity implements java.io.Serializable {
 	private java.lang.String anonymous;
 	/**来源地址*/
 	private java.lang.String url;
+
+	/**类型：监督纠错 情况反映*/
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	private String type;
 	
 	/**
 	 *方法: 取得java.lang.String

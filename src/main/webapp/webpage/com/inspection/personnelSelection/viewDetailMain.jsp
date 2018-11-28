@@ -231,7 +231,7 @@
     
     <script type="text/javascript">
 	 function goToReport(url) {
-		add('录入',"reportController.do?addorupdate&url=" + url,'reportList',null,400);
+		add('录入',"reportController.do?addorupdate&type=jiucuo&url=" + url,'reportList',null,400);
 	  }
     </script>
   </div>
